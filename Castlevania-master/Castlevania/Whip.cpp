@@ -1,7 +1,10 @@
 #include "Whip.h"
 #include"Torch.h"
 #include"debug.h"
-void Whip::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
+#include "Effect.h"
+#include"Spark.h"
+#include"PlayScene.h"
+void Whip::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
 	int ani = getCurrentAni();
 	if (animations[ani]->GetCurrentFrame() < animations[ani]->GetlastFrame())
@@ -16,9 +19,16 @@ void Whip::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 			Torch* torch = dynamic_cast<Torch*>(colliable_objects->at(i));
 			if (this->isColliding(torch))
 			{
+				PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
 				DebugOut(L"Va cham voi torch \n");
-
+				static Effect* spark = new Spark();
+				float tx, ty;
+				torch->GetPosition(tx, ty);
+				spark->SetPosition(tx, ty);
+				pScene->SpawnObject(spark);
 				torch->SetDestroy();
+
+
 				UpLevel();
 			}
 
@@ -26,9 +36,6 @@ void Whip::Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects)
 		}
 
 	}
-
-
-
 }
 
 int Whip::getCurrentAni()

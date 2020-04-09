@@ -19,14 +19,14 @@ void Torch::GetBoundingBox(float& l, float& t, float& r, float& b)
 		b = y + 64;
 	}
 }
-void Torch::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL)
+void Torch::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
-	if(this->IsDestroy)
+	if(this->isDestroy)
 	{
 		return;
 	}
 	if (this->setDestroy)
 	{
-		IsDestroy = true;
+		isDestroy = true;
 	}
 }

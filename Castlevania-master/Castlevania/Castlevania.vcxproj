@@ -147,6 +147,8 @@
     <ClInclude Include="Brick.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="define.h" />
+    <ClInclude Include="Effect.h" />
+    <ClInclude Include="flame.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Ground.h" />
@@ -160,6 +162,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneStateMachine.h" />
     <ClInclude Include="Simon.h" />
+    <ClInclude Include="Spark.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="SubWeapon.h" />
     <ClInclude Include="Textures.h" />
@@ -170,6 +173,8 @@
   <ItemGroup>
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="flame.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Ground.cpp" />
@@ -183,6 +188,7 @@
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="SceneStateMachine.cpp" />
     <ClCompile Include="Simon.cpp" />
+    <ClCompile Include="Spark.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="SubWeapon.cpp" />
     <ClCompile Include="Textures.cpp" />

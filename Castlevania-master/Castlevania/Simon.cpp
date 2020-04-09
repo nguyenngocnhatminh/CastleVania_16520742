@@ -96,7 +96,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *coObjects)
 		}
 
 		whip->SetNxDirection(this->nx);
-		whip->Update(dt, coObjects);
+		whip->Update(dt,scene, coObjects);
 	}
 
 

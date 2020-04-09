@@ -8,7 +8,10 @@
 class knife:public SubWeapon
 {
 public:
-	knife();
+	knife()
+	{
+		AddAnimation("KNIFE_ANI");
+	}
 	~knife();
 
 	virtual void Render();

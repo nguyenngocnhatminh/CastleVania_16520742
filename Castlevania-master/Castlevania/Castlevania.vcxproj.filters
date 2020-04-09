@@ -49,23 +49,8 @@
     <Filter Include="Source Files\Object\Item">
       <UniqueIdentifier>{5aec96d1-4b32-4830-8979-41a0ccd63d1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Object\Item\SubWeaponFactory">
-      <UniqueIdentifier>{1454ab98-09c8-407d-b53b-9e363107aa21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object\Item\SubWeaponFactory\Base">
-      <UniqueIdentifier>{2c76b658-f3a5-4e9b-8c8f-f07b787ec39d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object\Item\EffectFactory">
+    <Filter Include="Source Files\Effect">
       <UniqueIdentifier>{dcbc8c3c-1f01-4277-bb9f-a13d18c119b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object\Item\EffectFactory\Base">
-      <UniqueIdentifier>{e0ff92e3-541c-44c9-b613-7b7b9f3150d8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object\Item\ItemFactory">
-      <UniqueIdentifier>{b90e038b-e284-461a-afd5-d0514b47c56f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object\Item\ItemFactory\Base">
-      <UniqueIdentifier>{16d52759-25b0-4043-a1f0-5f7a470e7afd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +120,15 @@
     <ClInclude Include="GameObject.h">
       <Filter>Source Files\Framework</Filter>
     </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>Source Files\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="flame.h">
+      <Filter>Source Files\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Spark.h">
+      <Filter>Source Files\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -196,6 +190,15 @@
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>Source Files\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="flame.cpp">
+      <Filter>Source Files\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Spark.cpp">
+      <Filter>Source Files\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

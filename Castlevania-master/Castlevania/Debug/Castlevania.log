@@ -1,7 +1,8 @@
-﻿  knife.cpp
-  main.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
+﻿  Effect.cpp
+  Spark.cpp
   Whip.cpp
+D:\hoc\Game\CastleVania\CastleVania_16520742\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\CastleVania_16520742\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
+  flame.cpp
   Generating Code...
-  Castlevania.vcxproj -> D:\hoc\Game\CastleVania\Castlevania-master\Debug\Castlevania.exe
+  Castlevania.vcxproj -> D:\hoc\Game\CastleVania\CastleVania_16520742\Castlevania-master\Debug\Castlevania.exe

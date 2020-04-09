@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include"Whip.h"
 #include "HiddenObject.h"
+#include"knife.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f
@@ -57,6 +58,7 @@ class CSIMON : public CGameObject
 	DWORD fight_start;
 	int state;
 	Whip* whip;
+
 public: 
 	CSIMON() : CGameObject()
 	{

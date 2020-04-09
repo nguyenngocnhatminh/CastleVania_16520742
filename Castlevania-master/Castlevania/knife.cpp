@@ -14,7 +14,7 @@ void knife::Update(DWORD dt, Scene* scene,vector<LPGAMEOBJECT>* coObjects)
 	{
 		return;
 	}
-	if (this->SetDestroy)
+	if (this->setDestroy)
 	{
 		this->isDestroy = true;
 		return;
@@ -53,7 +53,16 @@ void knife::Update(DWORD dt, Scene* scene,vector<LPGAMEOBJECT>* coObjects)
 				}
 				this->SetDestroy();
 			}
+			else
+			{
+				if (nx != 0)
+				{
+					x += dx;
+					y += dy;
+				}
+			}
 		}
+		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 	}
 
 }
