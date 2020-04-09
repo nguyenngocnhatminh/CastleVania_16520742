@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<spritesheet TextureAtlas="gameObject.png">
+		<sprite ID="BRICK_NORMAL">
+			<frame x="99" y="313" width="32" height="32" />
+		</sprite>
+		<sprite ID="BRICK_BREAKING">
+			<frame x="131" y="313" width="32" height="32" />
+		</sprite>
+
+		<sprite ID="CANDLE_BURNING_01">
+			<frame x="219" y="443" width="16" height="32" />
+		</sprite>
+		<sprite ID="CANDLE_BURNING_02">
+			<frame x="235" y="443" width="16" height="32" />
+		</sprite>
+
+
+		<sprite ID="DOOR_CLOSE">
+			<frame x="99" y="413" width="16" height="96" />
+		</sprite>
+		<sprite ID="DOOR_OPEN_01">
+			<frame x="115" y="413" width="32" height="96" />
+		</sprite>
+		<sprite ID="DOOR_OPEN_02">
+			<frame x="147" y="413" width="52" height="96" />
+		</sprite>
+
+		<sprite ID="TORCH_BURNING_01">
+			<frame x="1" y="23" width="32" height="64" />
+		</sprite>
+		<sprite ID="TORCH_BURNING_02">
+			<frame x="33" y="23" width="32" height="64" />
+		</sprite>
+
+
+	</spritesheet>
+</resource>

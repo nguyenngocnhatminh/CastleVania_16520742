@@ -1,0 +1,103 @@
+
+ITEM_PACK.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Money_Bag
+  rotate: false
+  xy: 1, 33
+  size: 93, 30
+  orig: 93, 30
+  offset: 0, 0
+  index: -1
+INVICIBILITY_ITEM
+  rotate: false
+  xy: 96, 23
+  size: 33, 40
+  orig: 33, 40
+  offset: 0, 0
+  index: -1
+Cross
+  rotate: false
+  xy: 131, 31
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+Axe
+  rotate: false
+  xy: 131, 1
+  size: 30, 28
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
+HOLY_WATER
+  rotate: false
+  xy: 165, 31
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+DOUBLE_SHOT
+  rotate: false
+  xy: 163, 1
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+MORNING_STAR
+  rotate: false
+  xy: 199, 31
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+TRIPLE_SHOT
+  rotate: false
+  xy: 193, 1
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+Stopwatch
+  rotate: false
+  xy: 233, 31
+  size: 30, 32
+  orig: 30, 32
+  offset: 0, 0
+  index: -1
+13
+  rotate: false
+  xy: 265, 31
+  size: 28, 32
+  orig: 28, 32
+  offset: 0, 0
+  index: -1
+Heart
+  rotate: false
+  xy: 1, 11
+  size: 40, 20
+  orig: 40, 20
+  offset: 0, 0
+  index: -1
+ROAST
+  rotate: false
+  xy: 223, 3
+  size: 32, 26
+  orig: 32, 26
+  offset: 0, 0
+  index: -1
+Dagger
+  rotate: false
+  xy: 295, 45
+  size: 32, 18
+  orig: 32, 18
+  offset: 0, 0
+  index: -1
+SMALL_HEART
+  rotate: false
+  xy: 43, 15
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1

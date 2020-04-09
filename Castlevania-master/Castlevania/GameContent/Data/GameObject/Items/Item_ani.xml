@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<animations AtlasPath="Item_sprite.xml">
+		<animation ID="AXE_ITEM_ANI" defaulttime="100">
+			<frame spriteID="AXE_ITEM_01" />
+		</animation>
+
+		<animation ID="CROSS_ITEM_ANI" defaulttime="100">
+			<frame spriteID="CROSS_ITEM_01" />
+		</animation>
+		<animation ID="DAGGER_ITEM_ANI" defaulttime="100">
+			<frame spriteID="DAGGER_ITEM_01" />
+		</animation>
+
+		<animation ID="HEART_ANI_BIG" defaulttime="100">
+			<frame spriteID="HEART_BIG" />
+		</animation>
+		<animation ID="HEART_ANI_SMALL" defaulttime="100">
+			<frame spriteID="HEART_SMALL" />
+		</animation>
+
+		<animation ID="IHOLY_WATER_ANI_JAV" defaulttime="100">
+			<frame spriteID="HOLYWATER_ITEM_01" />
+		</animation>
+
+		<animation ID="INVICIBILITY_ITEM_ANI" defaulttime="100">
+			<frame spriteID="INVICIBILITY_ITEM_01" />
+		</animation>
+		<animation ID="MONEYBAG_ANI_COLOR" defaulttime="100">
+			<frame spriteID="MONEYBAG_RED" />
+			<frame spriteID="MONEYBAG_BLUE" />
+			<frame spriteID="MONEYBAG_WHITE" />
+		</animation>
+		<animation ID="MONEYBAG_ANI_BLUE" defaulttime="100">
+			<frame spriteID="MONEYBAG_BLUE" />
+		</animation>
+		<animation ID="MONEYBAG_ANI_RED" defaulttime="100">
+			<frame spriteID="MONEYBAG_RED" />
+		</animation>
+		<animation ID="MONEYBAG_ANI_WHITE" defaulttime="100">
+			<frame spriteID="MONEYBAG_WHITE" />
+		</animation>
+		<animation ID="MORNING_STAR_ANI" defaulttime="100">
+			<frame spriteID="MORNING_STAR_01" />
+		</animation>
+		<animation ID="STOPWATCH_ITEM_ANI" defaulttime="100">
+			<frame spriteID="STOPWATCH_ITEM_01" />
+		</animation>
+		<animation ID="ROAST_ITEM_ANI" defaulttime="100">
+			<frame spriteID="ROAST_ITEM_01" />
+		</animation>
+		
+		
+		<animation ID="DOUBLESHOT_ITEM_ANI" defaulttime="100">
+			<frame spriteID="DOUBLESHOT_ITEM_01" />
+		</animation>
+		
+		
+			<animation ID="CRYSTALL_ITEM_ANI" defaulttime="100">
+			<frame spriteID="CRYSTALL_ITEM_01" />
+		</animation>
+	</animations>
+
+</resource>

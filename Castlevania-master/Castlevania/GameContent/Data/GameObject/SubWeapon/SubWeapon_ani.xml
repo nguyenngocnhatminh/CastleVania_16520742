@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<animations AtlasPath="Axe_sprite.xml">
+		<animation ID="AXE_SUBWEAPON_ANI" defaulttime="100">
+			<frame spriteID="AXE_SUBWEAPON_01" />
+			<frame spriteID="AXE_SUBWEAPON_02" />
+			<frame spriteID="AXE_SUBWEAPON_03" />
+			<frame spriteID="AXE_SUBWEAPON_04" />
+		</animation>
+		<animation ID="SWHOLYWATER_ANI_JAR" defaulttime="100">
+			<frame spriteID="HOLYWATER_JAR_01" />
+		</animation>
+
+		<animation ID="SWHOLYWATER_ANI_BURNING" defaulttime="100">
+			<frame spriteID="HOLYWATER_BURNING_01" />
+			<frame spriteID="HOLYWATER_BURNING_02" />
+		</animation>
+	</animations>
+
+</resource>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<animations AtlasPath="Brick_sprite.xml">
+		<animation ID="BRICK_ANI_NORMAL" defaulttime="100">
+			<frame spriteID="BRICK_NORMAL" />
+		</animation>
+		<animation ID="BRICK_ANI_BREAKING" defaulttime="100">
+			<frame spriteID="BRICK_BREAKING" />
+		</animation>
+		<animation ID="CANDLE_ANI_BURNING" defaulttime="100">
+			<frame spriteID="CANDLE_BURNING_01" />
+			<frame spriteID="CANDLE_BURNING_02" />
+		</animation>
+	<animation ID="DOOR_ANI_CLOSE" defaulttime="500">
+			<frame spriteID="DOOR_CLOSE" />
+		</animation>
+		<animation ID="DOOR_ANI_OPEN" defaulttime="500">
+			<frame spriteID="DOOR_OPEN_01" />
+			<frame spriteID="DOOR_OPEN_02" />
+		</animation>
+
+		<animation ID="DOOR_ANI_CLOSING" defaulttime="500">
+			<frame spriteID="DOOR_OPEN_02" />
+			<frame spriteID="DOOR_OPEN_01" />
+			<frame spriteID="DOOR_CLOSE" />
+		</animation>
+
+	<animation ID="TORCH_ANI" defaulttime="100">
+			<frame spriteID="TORCH_BURNING_01" />
+			<frame spriteID="TORCH_BURNING_02" />
+		</animation>
+		
+
+	</animations>
+
+</resource>

@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Map">
+      <UniqueIdentifier>{dec049cb-316c-4a6d-8fca-ecad14691fb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{e935a47e-fbf9-4ce1-9b2b-4f490f65705d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{a8e30f95-23b5-4f1c-b07f-15dfab662989}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework">
+      <UniqueIdentifier>{70224bec-fcad-4327-8e79-fe013a1fae91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object">
+      <UniqueIdentifier>{e9386874-6de8-4f26-a57a-11562573e48c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Enemy">
+      <UniqueIdentifier>{b48c7994-ac98-49f5-aa32-94e00ceb3ac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\StaticObjects">
+      <UniqueIdentifier>{275cc7ad-810f-43cc-a9a8-02f482289eae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\StaticObjects\Hidden">
+      <UniqueIdentifier>{be8497c8-ed58-4b00-8422-666ff77929fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\PlayerAndWeapon">
+      <UniqueIdentifier>{b7a250e7-9a88-4ef1-893c-e07e8b229efc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\PlayerAndWeapon\Weapon">
+      <UniqueIdentifier>{55056a26-1f89-4c83-921c-d03d0358143c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\PlayerAndWeapon\SubWeapon">
+      <UniqueIdentifier>{edf34f8a-f6c1-4a42-82c0-9a79af128dec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item">
+      <UniqueIdentifier>{5aec96d1-4b32-4830-8979-41a0ccd63d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item\SubWeaponFactory">
+      <UniqueIdentifier>{1454ab98-09c8-407d-b53b-9e363107aa21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item\SubWeaponFactory\Base">
+      <UniqueIdentifier>{2c76b658-f3a5-4e9b-8c8f-f07b787ec39d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item\EffectFactory">
+      <UniqueIdentifier>{dcbc8c3c-1f01-4277-bb9f-a13d18c119b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item\EffectFactory\Base">
+      <UniqueIdentifier>{e0ff92e3-541c-44c9-b613-7b7b9f3150d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item\ItemFactory">
+      <UniqueIdentifier>{b90e038b-e284-461a-afd5-d0514b47c56f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item\ItemFactory\Base">
+      <UniqueIdentifier>{16d52759-25b0-4043-a1f0-5f7a470e7afd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Map.h">
+      <Filter>Source Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Source Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectLayer.h">
+      <Filter>Source Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneStateMachine.h">
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Source Files\Object\StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Simon.h">
+      <Filter>Source Files\Object\PlayerAndWeapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprites.h">
+      <Filter>Source Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Source Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="HiddenObject.h">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeConverter.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="debug.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures.h">
+      <Filter>Source Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Whip.h">
+      <Filter>Source Files\Object\PlayerAndWeapon\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch.h">
+      <Filter>Source Files\Object\StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SubWeapon.h">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClInclude>
+    <ClInclude Include="knife.h">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Source Files\Framework</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectLayer.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneStateMachine.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Source Files\Object\StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Simon.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon</Filter>
+    </ClCompile>
+    <ClCompile Include="debug.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprites.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="HiddenObject.cpp">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+    </ClCompile>
+    <ClCompile Include="Whip.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch.cpp">
+      <Filter>Source Files\Object\StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SubWeapon.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClCompile>
+    <ClCompile Include="knife.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<spritesheet TextureAtlas="VAMPIRE_BAT.png">
+		<sprite ID="VAMPIREBAT_SPRITE_SLEEP">
+			<frame x="0" y="0" width="100" height="46" />
+		</sprite>
+		<sprite ID="VAMPIREBAT_SPRITE_FLYING_01">
+			<frame x="100" y="0" width="100" height="46" />
+		</sprite>
+		<sprite ID="VAMPIREBAT_SPRITE_FLYING_02">
+			<frame x="200" y="0" width="100" height="46" />
+		</sprite>
+	</spritesheet>
+</resource>

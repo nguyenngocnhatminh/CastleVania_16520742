@@ -1,0 +1,54 @@
+
+EFFECT_PACK.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+BOSS_DEAD
+  rotate: false
+  xy: 1, 65
+  size: 384, 60
+  orig: 384, 60
+  offset: 0, 0
+  index: -1
+DEAD
+  rotate: false
+  xy: 1, 19
+  size: 128, 44
+  orig: 128, 44
+  offset: 0, 0
+  index: -1
+ScoreText
+  rotate: false
+  xy: 387, 23
+  size: 32, 102
+  orig: 32, 102
+  offset: 0, 0
+  index: -1
+Flame
+  rotate: false
+  xy: 421, 93
+  size: 54, 32
+  orig: 54, 32
+  offset: 0, 0
+  index: -1
+Bubble
+  rotate: false
+  xy: 131, 35
+  size: 14, 28
+  orig: 14, 28
+  offset: 0, 0
+  index: -1
+Spark
+  rotate: false
+  xy: 421, 71
+  size: 16, 20
+  orig: 16, 20
+  offset: 0, 0
+  index: -1
+Debris
+  rotate: false
+  xy: 1, 1
+  size: 14, 16
+  orig: 14, 16
+  offset: 0, 0
+  index: -1

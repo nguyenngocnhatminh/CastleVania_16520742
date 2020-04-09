@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<spritesheet TextureAtlas="ITEM_PACK.png">
+		<sprite ID="AXE_ITEM_01">
+			<frame x="131" y="1" width="30" height="28" />
+		</sprite>
+
+		<sprite ID="CROSS_ITEM_01">
+			<frame x="131" y="31" width="32" height="26" />
+		</sprite>
+		<sprite ID="DAGGER_ITEM_01">
+			<frame x="295" y="45" width="32" height="18" />
+		</sprite>
+
+
+
+		<sprite ID="HEART_BIG">
+			<frame x="1" y="11" width="24" height="20" />
+		</sprite>
+		<sprite ID="HEART_SMALL">
+			<frame x="25" y="11" width="16" height="16" />
+		</sprite>
+
+		<sprite ID="HOLYWATER_ITEM_01">
+			<frame x="165" y="31" width="32" height="32" />
+		</sprite>
+
+		<sprite ID="INVICIBILITY_ITEM_01">
+			<frame x="96" y="23" width="33" height="40" />
+		</sprite>
+
+
+		<sprite ID="MONEYBAG_RED">
+			<frame x="1" y="33" width="31" height="30" />
+		</sprite>
+		<sprite ID="MONEYBAG_BLUE">
+			<frame x="32" y="33" width="31" height="30" />
+		</sprite>
+		<sprite ID="MONEYBAG_WHITE">
+			<frame x="63" y="33" width="31" height="30" />
+		</sprite>
+
+
+		<sprite ID="MORNING_STAR_01">
+			<frame x="199" y="31" width="32" height="32" />
+		</sprite>	
+
+		<sprite ID="ROAST_ITEM_01">
+			<frame x="223" y="3" width="32" height="26" />
+		</sprite>
+
+		<sprite ID="STOPWATCH_ITEM_01">
+			<frame x="233" y="31" width="30" height="32" />
+		</sprite>
+
+
+
+		<sprite ID="DOUBLESHOT_ITEM_01">
+			<frame x="163" y="1" width="28" height="28" />
+		</sprite>
+		
+		
+		
+
+		<sprite ID="CRYSTALL_ITEM_01">
+			<frame x="265" y="31" width="28" height="32" />
+		</sprite>
+
+	</spritesheet>
+</resource>

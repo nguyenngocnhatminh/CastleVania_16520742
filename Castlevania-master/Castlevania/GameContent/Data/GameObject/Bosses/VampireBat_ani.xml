@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<animations AtlasPath="VampireBat_sprite.xml">
+		<animation ID="VAMPIREBAT_ANI_SLEEP" defaulttime="100">
+			<frame spriteID="VAMPIREBAT_SPRITE_SLEEP" />
+		</animation>
+		<animation ID="VAMPIREBAT_ANI_FLYING" defaulttime="100">
+			<frame spriteID="VAMPIREBAT_SPRITE_FLYING_01" />
+			<frame spriteID="VAMPIREBAT_SPRITE_FLYING_02" />
+		</animation>
+	</animations>
+
+</resource>

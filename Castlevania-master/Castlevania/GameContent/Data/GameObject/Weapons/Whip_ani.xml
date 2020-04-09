@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<animations AtlasPath="Whip_sprite.xml">
+		<animation ID="WHIP_ANI_NORMAL" defaulttime="100">
+			<frame spriteID="WHIP_LV1_01" />
+			<frame spriteID="WHIP_LV1_02" />
+			<frame spriteID="WHIP_LV1_03" />
+			<frame spriteID="WHIP_MORNINGSTAR_12" />
+		</animation>
+
+		<animation ID="WHIP_ANI_CHAIN" defaulttime="100">
+			<frame spriteID="WHIP_CHAIN_01" />
+			<frame spriteID="WHIP_CHAIN_02" />
+			<frame spriteID="WHIP_CHAIN_03" />
+			<frame spriteID="WHIP_MORNINGSTAR_12" />
+		</animation>
+		<animation ID="WHIP_ANI_MORNINGSTAR" defaulttime="25" isLoop="false">
+			<frame spriteID="WHIP_MORNINGSTAR_01" />
+			<frame spriteID="WHIP_MORNINGSTAR_02" />
+			<frame spriteID="WHIP_MORNINGSTAR_03" />
+			<frame spriteID="WHIP_MORNINGSTAR_04" />
+			<frame spriteID="WHIP_MORNINGSTAR_05" /> 
+			<frame spriteID="WHIP_MORNINGSTAR_06" />
+			<frame spriteID="WHIP_MORNINGSTAR_07" />
+			<frame spriteID="WHIP_MORNINGSTAR_08" />
+			<frame spriteID="WHIP_MORNINGSTAR_09" />
+			<frame spriteID="WHIP_MORNINGSTAR_10" />
+			<frame spriteID="WHIP_MORNINGSTAR_11" />
+			<frame spriteID="WHIP_MORNINGSTAR_12" />
+		</animation>	
+	</animations>
+</resource>

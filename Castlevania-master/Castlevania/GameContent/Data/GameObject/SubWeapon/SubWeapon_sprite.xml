@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<spritesheet TextureAtlas="Axe.png">
+		<sprite ID="AXE_SUBWEAPON_01">
+			<frame x="67" y="35" width="30" height="28" />
+		</sprite>
+		<sprite ID="AXE_SUBWEAPON_02">
+			<frame x="97" y="35" width="30" height="28" />
+		</sprite>
+		<sprite ID="AXE_SUBWEAPON_03">
+			<frame x="127" y="35" width="30" height="28" />
+		</sprite>
+		<sprite ID="AXE_SUBWEAPON_04">
+			<frame x="157" y="35" width="30" height="28" />
+		</sprite>
+		<sprite ID="HOLYWATER_JAR_01">
+			<frame x="153" y="7" width="32" height="26" />
+		</sprite>
+		<sprite ID="HOLYWATER_BURNING_01">
+			<frame x="185" y="7" width="32" height="26" />
+		</sprite>
+		<sprite ID="HOLYWATER_BURNING_02">
+			<frame x="217" y="7" width="32" height="26" />
+		</sprite>
+	</spritesheet>
+</resource>

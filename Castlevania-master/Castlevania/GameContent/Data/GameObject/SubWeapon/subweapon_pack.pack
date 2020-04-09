@@ -1,0 +1,68 @@
+
+subweapon_pack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+IHOLY_WATER
+  rotate: false
+  xy: 1, 31
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+STOP_WATCH
+  rotate: false
+  xy: 35, 31
+  size: 30, 32
+  orig: 30, 32
+  offset: 0, 0
+  index: -1
+AXE
+  rotate: false
+  xy: 67, 35
+  size: 120, 28
+  orig: 120, 28
+  offset: 0, 0
+  index: -1
+CROSS_ACTION
+  rotate: false
+  xy: 67, 5
+  size: 84, 28
+  orig: 84, 28
+  offset: 0, 0
+  index: -1
+AXE1
+  rotate: false
+  xy: 1, 1
+  size: 30, 28
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
+CROSS
+  rotate: false
+  xy: 33, 1
+  size: 30, 28
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
+HOLY_WATER
+  rotate: false
+  xy: 153, 7
+  size: 96, 26
+  orig: 96, 26
+  offset: 0, 0
+  index: -1
+KNIFE
+  rotate: false
+  xy: 189, 45
+  size: 32, 18
+  orig: 32, 18
+  offset: 0, 0
+  index: -1
+KNIFE_ACTION
+  rotate: false
+  xy: 223, 45
+  size: 32, 18
+  orig: 32, 18
+  offset: 0, 0
+  index: -1

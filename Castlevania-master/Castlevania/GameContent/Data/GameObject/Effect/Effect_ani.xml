@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<animations AtlasPath="Effect_sprite.xml">
+		<animation ID="BUBBLE_ANI" defaulttime="100">
+			<frame spriteID="BUBBLE_01" />
+		</animation>
+		<animation ID="BUBBLE_ANI" defaulttime="100">
+			<frame spriteID="BUBBLE_01" />
+		</animation>
+		<animation ID="DEBRIS_ANI" defaulttime="100">
+			<frame spriteID="DEBRIS_01" />
+
+		</animation>
+
+		<animation ID="SPARK_ANI" defaulttime="100">
+			<frame spriteID="SPARK_01" />
+		</animation>
+
+		<animation ID="BOSS_DEAD_ANI" defaulttime="100">
+			<frame spriteID="BOSS_DEAD_01" />
+			<frame spriteID="BOSS_DEAD_02" />
+			<frame spriteID="BOSS_DEAD_03" />
+		</animation>
+
+
+		<animation ID="FLAME_ANI_BURNING" defaulttime="100">
+			<frame spriteID="FLAME_BURNING_01" />
+			<frame spriteID="FLAME_BURNING_02" />
+			<frame spriteID="FLAME_BURNING_03" />
+		</animation>
+
+		<animation ID="SCORETEXT_ANI_100" defaulttime="100">
+			<frame spriteID="SCORETEXT_100" />
+		</animation>
+		<animation ID="SCORETEXT_ANI_400" defaulttime="100">
+			<frame spriteID="SCORETEXT_400" />
+		</animation>
+		<animation ID="SCORETEXT_ANI_700" defaulttime="100">
+			<frame spriteID="SCORETEXT_700" />
+		</animation>
+		<animation ID="SCORETEXT_ANI_1000" defaulttime="100">
+			<frame spriteID="SCORETEXT_1000_01" />
+			<frame spriteID="SCORETEXT_1000_02" />
+			<frame spriteID="SCORETEXT_1000_03" />
+		</animation>
+	</animations>
+</resource>

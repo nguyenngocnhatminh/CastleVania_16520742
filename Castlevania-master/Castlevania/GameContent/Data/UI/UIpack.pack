@@ -1,0 +1,96 @@
+
+UIpack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+BlackBoard
+  rotate: false
+  xy: 1, 85
+  size: 95, 40
+  orig: 95, 40
+  offset: 0, 0
+  index: -1
+Heart
+  rotate: false
+  xy: 98, 109
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+HP
+  rotate: false
+  xy: 98, 97
+  size: 18, 10
+  orig: 18, 10
+  offset: 0, 0
+  index: -1
+EnemyHP
+  rotate: false
+  xy: 116, 115
+  size: 5, 10
+  orig: 5, 10
+  offset: 0, 0
+  index: -1
+NoHP
+  rotate: false
+  xy: 98, 85
+  size: 5, 10
+  orig: 5, 10
+  offset: 0, 0
+  index: -1
+DOUBLE_SHOOT_UI
+  rotate: false
+  xy: 1, 41
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+TRIPLE_SHOOT_UI
+  rotate: false
+  xy: 45, 41
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+HOLY_WATER
+  rotate: false
+  xy: 89, 51
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+KNIFE
+  rotate: false
+  xy: 89, 31
+  size: 32, 18
+  orig: 32, 18
+  offset: 0, 0
+  index: -1
+STOP_WATCH
+  rotate: false
+  xy: 1, 7
+  size: 30, 32
+  orig: 30, 32
+  offset: 0, 0
+  index: -1
+black
+  rotate: false
+  xy: 33, 9
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+AXE
+  rotate: false
+  xy: 65, 1
+  size: 30, 28
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
+CROSS
+  rotate: false
+  xy: 97, 1
+  size: 30, 28
+  orig: 30, 28
+  offset: 0, 0
+  index: -1

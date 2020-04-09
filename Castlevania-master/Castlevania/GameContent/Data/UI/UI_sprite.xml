@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<spritesheet TextureAtlas="HP.png">
+		<sprite ID="PLAYER_HP_SPRITE">
+			<frame x="98" y="97" width="6" height="10" />
+		</sprite>
+		<sprite ID="BOSS_HP_SPRITE">
+			<frame x="108" y="97" width="6" height="10" />
+		</sprite>
+		
+		<sprite ID="BLACKBOARD_UI_SPRITE">
+			<frame x="1" y="85" width="95" height="40" />
+		</sprite>
+		
+		<sprite ID="DOUBLE_SHOOT_UI_SPRITE">
+			<frame x="1" y="41" width="42" height="42" />
+		</sprite>
+		
+		<sprite ID="TRIPLE_SHOOT_UI_SPRITE">
+			<frame x="45" y="41" width="42" height="42" />
+		</sprite>
+		
+		<sprite ID="HOLY_WATER_UI_SPRITE">
+			<frame x="89" y="51" width="32" height="32" />
+		</sprite>
+		
+		<sprite ID="KNIFE_UI_SPRITE">
+			<frame x="89" y="31" width="32" height="18" />
+		</sprite>
+		
+		<sprite ID="STOP_WATCH_UI_SPRITE">
+			<frame x="1" y="7" width="30" height="32" />
+		</sprite>
+		
+		<sprite ID="NOHP_UI_SPRITE">
+			<frame x="98" y="85" width="5" height="10" />
+		</sprite>
+		
+		<sprite ID="AXE_UI_SPRITE">
+			<frame x="65" y="1" width="30" height="28" />
+		</sprite>
+
+	</spritesheet>
+</resource>
