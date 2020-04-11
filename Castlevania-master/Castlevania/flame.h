@@ -1,9 +1,9 @@
 #pragma once
 #include "Effect.h"
-class flame:public Effect
+class Flame:public Effect
 {
 public:
-	flame() :Effect() {
+	Flame() :Effect() {
 		AddAnimation("FLAME_ANI_BURNING");
 	}
 	virtual void Render();

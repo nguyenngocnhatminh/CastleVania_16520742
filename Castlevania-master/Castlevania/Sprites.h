@@ -69,7 +69,7 @@ public:
 	void ResetFrame() { this->currentFrame = -1; }
 	int GetCurrentFrame() { return this->currentFrame; }
 	void Render(int nx,float x, float y, int alpha=255);
-	int GetlastFrame() { return frames.size() - 2; }
+	int GetlastFrame() { return frames.size() - 1; }
 };
 
 typedef CAnimation *LPANIMATION;

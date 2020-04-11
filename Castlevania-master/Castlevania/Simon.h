@@ -36,16 +36,13 @@
 #define	SIMON_LEVEL_SMALL	1
 #define	SIMON_LEVEL_BIG		2
 
-#define SIMON_BIG_BBOX_WIDTH  60
-#define SIMON_BIG_BBOX_HEIGHT 63
+#define SIMON_BBOX_WIDTH  55
+#define SIMON_BBOX_HEIGHT 63
 
 #define SIMON_SMALL_BBOX_WIDTH  13
 #define SIMON_SMALL_BBOX_HEIGHT 15
 
 #define SIMON_UNTOUCHABLE_TIME 5000
-
-
-
 
 
 
@@ -58,10 +55,11 @@ class CSIMON : public CGameObject
 	DWORD fight_start;
 	int state;
 	Whip* whip;
-
+	bool isSitting;
 public: 
 	CSIMON() : CGameObject()
 	{
+		isSitting = false;
 		level = SIMON_LEVEL_BIG;
 		untouchable = 0;
 		this->fight_start = 0;

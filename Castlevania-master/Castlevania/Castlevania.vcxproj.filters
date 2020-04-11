@@ -46,11 +46,11 @@
     <Filter Include="Source Files\Object\PlayerAndWeapon\SubWeapon">
       <UniqueIdentifier>{edf34f8a-f6c1-4a42-82c0-9a79af128dec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Object\Item">
-      <UniqueIdentifier>{5aec96d1-4b32-4830-8979-41a0ccd63d1d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Effect">
       <UniqueIdentifier>{dcbc8c3c-1f01-4277-bb9f-a13d18c119b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item">
+      <UniqueIdentifier>{5aec96d1-4b32-4830-8979-41a0ccd63d1d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +129,24 @@
     <ClInclude Include="Spark.h">
       <Filter>Source Files\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="Heart.h">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemCollection.h">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="BigHeart.h">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="WhipItem.h">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="DaggerItem.h">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -199,6 +217,24 @@
     </ClCompile>
     <ClCompile Include="Spark.cpp">
       <Filter>Source Files\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Heart.cpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemCollection.cpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="WhipItem.cpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="BigHeart.cpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="DaggerItem.cpp">
+      <Filter>Source Files\Object\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

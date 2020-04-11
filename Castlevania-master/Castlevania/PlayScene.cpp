@@ -289,6 +289,7 @@ void PlayScene::OnCreate()
 			{
 				Torch* torch = new Torch();
 				torch->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				torch->SetItem(y.second->GetProperty("item"));
 				objects.push_back(torch);
 			}
 			break;

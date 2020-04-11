@@ -2,10 +2,6 @@
 
 void Effect::Render()
 {
-	if (!isDestroy)
-	{
-		animations[Spark_Effect]->Render(0, x, y);
-	}
 	RenderBoundingBox();
 }
 
@@ -19,7 +15,7 @@ void Effect::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 		return;
 	}
 
-	if (life_time != 0 && GetTickCount() - life_time > EFFECT_LIFE_TIME)
+	if (lifetime != 0 && GetTickCount() - lifetime > EFFECT_LIFE_TIME)
 	{
 		this->isDestroy = true;
 	}

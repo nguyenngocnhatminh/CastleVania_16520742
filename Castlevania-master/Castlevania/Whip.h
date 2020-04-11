@@ -1,6 +1,7 @@
 #pragma once
 #include"GameObject.h"
 
+
 #define WHIP_STATE_NORMAL      0
 #define WHIP_STATE_CHAIN       1
 #define WHIP_STATE_MORNINGSTAR 2

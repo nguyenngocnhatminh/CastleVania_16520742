@@ -1,15 +1,27 @@
-#include "Whip.h"
+﻿#include "Whip.h"
 #include"Torch.h"
 #include"debug.h"
 #include "Effect.h"
 #include"Spark.h"
+#include"flame.h"
 #include"PlayScene.h"
+#include"ItemCollection.h"
+
 void Whip::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
 	int ani = getCurrentAni();
-	if (animations[ani]->GetCurrentFrame() < animations[ani]->GetlastFrame())
+	if (ani < 2)
 	{
-		return;
+		if (animations[ani]->GetCurrentFrame() < animations[ani]->GetlastFrame())
+		{
+			return;
+		}
+	}
+	else {
+		if(animations[ani]->GetCurrentFrame()<8)
+		{
+			return;
+		}
 	}
 
 	for (size_t i = 0; i < colliable_objects->size(); i++)
@@ -19,17 +31,25 @@ void Whip::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* colliable_objects
 			Torch* torch = dynamic_cast<Torch*>(colliable_objects->at(i));
 			if (this->isColliding(torch))
 			{
-				PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-				DebugOut(L"Va cham voi torch \n");
-				static Effect* spark = new Spark();
-				float tx, ty;
-				torch->GetPosition(tx, ty);
-				spark->SetPosition(tx, ty);
-				pScene->SpawnObject(spark);
-				torch->SetDestroy();
-
-
-				UpLevel();
+				ItemCollection* itemcolection = new ItemCollection();
+				Item* item = itemcolection->SpawnItem(torch->GetItem());
+				if (dynamic_cast<PlayScene*>(scene)) 
+				{
+					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+					DebugOut(L"Va cham voi torch \n");
+					float tx, ty;
+					Effect* spark = new Spark();
+					torch->GetPosition(tx, ty);
+					spark->SetPosition(tx, ty);
+					Effect* flame = new Flame();
+					flame->SetPosition(tx + 5, ty + 10);
+					item->SetPosition(tx, ty);
+					pScene->SpawnObject(spark);
+					pScene->SpawnObject(flame);
+					pScene->SpawnObject(item);
+					torch->SetDestroy();
+					UpLevel();
+				}
 			}
 
 	

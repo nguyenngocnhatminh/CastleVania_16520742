@@ -3,15 +3,13 @@
 
 #define EFFECT_LIFE_TIME 300
 
-#define Spark_Effect 0
-#define Flame_Effect 1
 
 class Effect :public CGameObject
 {
-	int life_time;
+	int lifetime;
 public:
 	Effect() :CGameObject() {
-		life_time = GetTickCount();
+		lifetime = GetTickCount();
 	}
 	virtual void Render();
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL);

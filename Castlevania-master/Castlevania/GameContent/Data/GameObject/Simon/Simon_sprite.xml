@@ -132,7 +132,7 @@
 		</sprite>
 
 		<sprite ID="SIMON_DIE_02">
-			<frame x="60" y="198" width="66" height="66" />
+			<frame x="60" y="198" width="64" height="66" />
 		</sprite>
 	</spritesheet>
 </resource>

@@ -5,16 +5,14 @@
 			<frame spriteID="WHIP_LV1_01" />
 			<frame spriteID="WHIP_LV1_02" />
 			<frame spriteID="WHIP_LV1_03" />
-			<frame spriteID="WHIP_MORNINGSTAR_12" />
 		</animation>
 
 		<animation ID="WHIP_ANI_CHAIN" defaulttime="100">
 			<frame spriteID="WHIP_CHAIN_01" />
 			<frame spriteID="WHIP_CHAIN_02" />
 			<frame spriteID="WHIP_CHAIN_03" />
-			<frame spriteID="WHIP_MORNINGSTAR_12" />
 		</animation>
-		<animation ID="WHIP_ANI_MORNINGSTAR" defaulttime="25" isLoop="false">
+		<animation ID="WHIP_ANI_MORNINGSTAR" defaulttime="25">
 			<frame spriteID="WHIP_MORNINGSTAR_01" />
 			<frame spriteID="WHIP_MORNINGSTAR_02" />
 			<frame spriteID="WHIP_MORNINGSTAR_03" />

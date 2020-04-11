@@ -3,7 +3,7 @@
 
 #include "SIMON.h"
 #include "Game.h"
-#include "Brick.h"
+#include "Ground.h"
 #include "Torch.h"
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *coObjects)
@@ -55,8 +55,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *coObjects)
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
-			
-			 if (dynamic_cast<HiddenObject*>(e->obj)) {
+			 if (dynamic_cast<Ground*>(e->obj)) {
 				if (e->ny != 0) { // kiểm tra va chạm trục y có va chạm trục y nhảy vào đây
 					if (GetState() == SIMON_STATE_JUMP) {
 						SetState(SIMON_STATE_IDLE);
@@ -73,8 +72,10 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *coObjects)
 			}
 			else
 			{
-				x += dx;
-			//	if (ny != 0) y += dy;
+				if (e->nx != 0) // va chạm chiều x
+					x += dx;
+				if (e->ny != 0)
+					y += dy;
 			}
 		}
 	}
@@ -88,11 +89,11 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *coObjects)
 	{
 		if (this->state == SIMON_STATE_FIGHT_SIT)
 		{
-			whip->SetPosition(this->x - 1.5 * SIMON_BIG_BBOX_WIDTH, this->y+0.25* SIMON_BIG_BBOX_HEIGHT);
+			whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y+0.25* SIMON_BBOX_HEIGHT);
 		}
 		else
 		{
-			whip->SetPosition(this->x - 1.5 * SIMON_BIG_BBOX_WIDTH, this->y);
+			whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y);
 		}
 
 		whip->SetNxDirection(this->nx);
@@ -143,13 +144,12 @@ void CSIMON::Render()
 
 	animations[ani]->Render(nx,x, y, alpha);
 
-	/*RenderBoundingBox();*/
+	//RenderBoundingBox();
 }
 
 void CSIMON::SetState(int state)
 {
-
-
+	isSitting = false;
 	switch (state)
 	{
 	case SIMON_STATE_WALKING_RIGHT:
@@ -162,6 +162,7 @@ void CSIMON::SetState(int state)
 		break;
 	case SIMON_STATE_JUMP: // nhảy rồi thì chắc ăn k chạm đất
 		vy = -SIMON_JUMP_SPEED_Y;
+		isSitting = true;
 		break;
 	case SIMON_STATE_IDLE:
 		vx = 0;
@@ -174,6 +175,7 @@ void CSIMON::SetState(int state)
 		break;
 	case SIMON_STATE_FIGHT_SIT:
 		vx = 0;
+		isSitting = true;
 		this->fight_start = GetTickCount();
 		whip->ResetWhip();
 		break;
@@ -181,22 +183,34 @@ void CSIMON::SetState(int state)
 		vy = -SIMON_DIE_DEFLECT_SPEED;
 		break;
 	case SIMON_STATE_SIT:
+		isSitting = true;
 		vx = 0; // vx vận tốc phương x
 		//nx=0; k cần xét nx vì khi bấm trái phải đã set nx ở 2 state phía trên
 		break;
 	}
 	this->state = state;
-
 }
 
 void CSIMON::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 {
-	left = x;
-	top = y; 
 
+	
 
-	right = x + SIMON_BIG_BBOX_WIDTH;
-	bottom = y + SIMON_BIG_BBOX_HEIGHT;
+	if (isSitting==true)
+	{
+		left = x+13;
+		top = y+20;
+		right = x + SIMON_BBOX_WIDTH;
+		bottom = y + SIMON_BBOX_HEIGHT;
+
+	}
+	else{
+		left = x+13;
+		top = y;
+		right = x + SIMON_BBOX_WIDTH;
+		bottom = y + SIMON_BBOX_HEIGHT;
+
+	}
 
 }
 
