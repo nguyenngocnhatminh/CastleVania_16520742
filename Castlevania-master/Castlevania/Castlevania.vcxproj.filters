@@ -114,9 +114,6 @@
     <ClInclude Include="SubWeapon.h">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClInclude>
-    <ClInclude Include="knife.h">
-      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Source Files\Framework</Filter>
     </ClInclude>
@@ -146,6 +143,15 @@
     </ClInclude>
     <ClInclude Include="DaggerItem.h">
       <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectCollection.h">
+      <Filter>Source Files\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Dagger.h">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClInclude>
+    <ClInclude Include="SubWeaponCollection.h">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -203,9 +209,6 @@
     <ClCompile Include="SubWeapon.cpp">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClCompile>
-    <ClCompile Include="knife.cpp">
-      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
-    </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\Framework</Filter>
     </ClCompile>
@@ -235,6 +238,15 @@
     </ClCompile>
     <ClCompile Include="DaggerItem.cpp">
       <Filter>Source Files\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectCollection.cpp">
+      <Filter>Source Files\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Dagger.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClCompile>
+    <ClCompile Include="SubWeaponCollection.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

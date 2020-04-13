@@ -6,6 +6,7 @@
 #include"flame.h"
 #include"PlayScene.h"
 #include"ItemCollection.h"
+#include"EffectCollection.h"
 
 void Whip::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
@@ -31,24 +32,24 @@ void Whip::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* colliable_objects
 			Torch* torch = dynamic_cast<Torch*>(colliable_objects->at(i));
 			if (this->isColliding(torch))
 			{
-				ItemCollection* itemcolection = new ItemCollection();
-				Item* item = itemcolection->SpawnItem(torch->GetItem());
+				ItemCollection* itemcollection = new ItemCollection();
+				Item* item = itemcollection->SpawnItem(torch->GetItem());
+				EffectCollection* effectcollection = new EffectCollection();
+				Effect* spark = effectcollection->SpawnEffect(1);	//1: id spark
+				Effect* flame = effectcollection->SpawnEffect(2);	//2: id flame
 				if (dynamic_cast<PlayScene*>(scene)) 
 				{
 					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
 					DebugOut(L"Va cham voi torch \n");
 					float tx, ty;
-					Effect* spark = new Spark();
 					torch->GetPosition(tx, ty);
-					spark->SetPosition(tx, ty);
-					Effect* flame = new Flame();
+					spark->SetPosition(tx, ty+8);
 					flame->SetPosition(tx + 5, ty + 10);
 					item->SetPosition(tx, ty);
 					pScene->SpawnObject(spark);
 					pScene->SpawnObject(flame);
 					pScene->SpawnObject(item);
 					torch->SetDestroy();
-					UpLevel();
 				}
 			}
 

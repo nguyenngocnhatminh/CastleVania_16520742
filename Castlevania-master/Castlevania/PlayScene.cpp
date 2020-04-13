@@ -452,6 +452,12 @@ void PlayScene::OnKeyUp(int KeyCode)
 void PlayScene::KeyState(BYTE* states)
 {
 	CGame* game = CGame::GetInstance();
+	if (SIMON->GetUpgrageTime() != 0 && GetTickCount() - SIMON->GetUpgrageTime() > Time_UpWhip)
+	{
+		SIMON->ResetUpgrageTime();
+		SIMON->SetState(SIMON_STATE_IDLE);
+	}
+	if (SIMON->GetState() == SIMON_STATE_UPWHIP) return;
 	if (SIMON->GetState() == SIMON_STATE_JUMP) return;
 
 	if (SIMON->GetFightTime() && GetTickCount() - SIMON->GetFightTime() > 350)

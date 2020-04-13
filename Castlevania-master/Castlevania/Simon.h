@@ -19,6 +19,7 @@
 #define SIMON_STATE_FIGHT_STAND 5
 #define SIMON_STATE_FIGHT_SIT 6
 #define SIMON_STATE_DIE 7
+#define SIMON_STATE_UPWHIP 8
 
 
 #define SIMON_ANI_IDLE 0 
@@ -26,6 +27,7 @@
 #define SIMON_ANI_SIT 2 
 #define SIMON_ANI_STAND_ATTACK				3
 #define SIMON_ANI_SIT_ATTACK				4
+#define SIMON_ANI_UPWHIP 5 
 #define SIMON_ANI_DIE				8
 
 
@@ -44,7 +46,7 @@
 
 #define SIMON_UNTOUCHABLE_TIME 5000
 
-
+#define Time_UpWhip 500
 
 
 class CSIMON : public CGameObject
@@ -56,26 +58,30 @@ class CSIMON : public CGameObject
 	int state;
 	Whip* whip;
 	bool isSitting;
+	DWORD upgrade_start;
 public: 
 	CSIMON() : CGameObject()
 	{
 		isSitting = false;
 		level = SIMON_LEVEL_BIG;
 		untouchable = 0;
+		upgrade_start = 0;
 		this->fight_start = 0;
 		state = SIMON_STATE_IDLE; // trạng thái ban đầu cần khai báo khi tạo object
 		whip = new Whip();
-		AddAnimation("SIMON_ANI_IDLE");	//0	
-		AddAnimation("SIMON_ANI_WALKING");//	1	
-		AddAnimation("SIMON_ANI_SIT");//	2	
-		AddAnimation("SIMON_ANI_STAND_ATTACK");//	2	
-		AddAnimation("SIMON_ANI_SIT_ATTACK");//	2	
+		AddAnimation("SIMON_ANI_IDLE");		
+		AddAnimation("SIMON_ANI_WALKING");	
+		AddAnimation("SIMON_ANI_SIT");
+		AddAnimation("SIMON_ANI_STAND_ATTACK");
+		AddAnimation("SIMON_ANI_SIT_ATTACK");
+		AddAnimation("SIMON_ANI_IDLE_UPWHIP");
 	}
 	~CSIMON() { delete whip; }
 	void ResetFightAnimation()
 	{
 		this->animations[SIMON_ANI_STAND_ATTACK]->ResetFrame();
 		this->animations[SIMON_ANI_SIT_ATTACK]->ResetFrame();
+		this->fight_start = 0;
 	}
 
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *colliable_objects = NULL);
@@ -94,7 +100,8 @@ public:
 	
 	}
 
-
+	DWORD GetUpgrageTime() { return this->upgrade_start; }
+	void ResetUpgrageTime() { this->upgrade_start = 0; }
 
 	int GetState() {
 		return this->state;

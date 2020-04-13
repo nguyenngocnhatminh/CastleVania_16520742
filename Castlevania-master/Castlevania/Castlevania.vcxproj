@@ -147,10 +147,12 @@
   <ItemGroup>
     <ClInclude Include="BigHeart.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="Dagger.h" />
     <ClInclude Include="DaggerItem.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="Effect.h" />
+    <ClInclude Include="EffectCollection.h" />
     <ClInclude Include="flame.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
@@ -159,7 +161,6 @@
     <ClInclude Include="HiddenObject.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemCollection.h" />
-    <ClInclude Include="knife.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MenuScene.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Spark.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="SubWeapon.h" />
+    <ClInclude Include="SubWeaponCollection.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="Torch.h" />
     <ClInclude Include="TypeConverter.h" />
@@ -180,9 +182,11 @@
   <ItemGroup>
     <ClCompile Include="BigHeart.cpp" />
     <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="Dagger.cpp" />
     <ClCompile Include="DaggerItem.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="EffectCollection.cpp" />
     <ClCompile Include="flame.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -191,7 +195,6 @@
     <ClCompile Include="HiddenObject.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemCollection.cpp" />
-    <ClCompile Include="knife.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -203,6 +206,7 @@
     <ClCompile Include="Spark.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="SubWeapon.cpp" />
+    <ClCompile Include="SubWeaponCollection.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="Torch.cpp" />
     <ClCompile Include="Whip.cpp" />

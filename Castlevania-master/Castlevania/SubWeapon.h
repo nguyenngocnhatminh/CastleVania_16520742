@@ -1,24 +1,16 @@
 #pragma once
 #include"GameObject.h"
-class SubWeapon:public CGameObject
+
+
+class SubWeapon :public CGameObject
 {
 protected:
-	unsigned int dame;
-	unsigned int heartCost;
-	
 public:
-	SubWeapon();
-	void SetNx(int nx)
-	{
-		this->nx = nx;
-	}
-	virtual void GetSpriteBox(float& width, float& height);
-	unsigned int GetDame() {
-		return this->dame;
-	}
-	unsigned int GetHeartCost()
-	{
-		return this->heartCost;
-	}
+
+	virtual void Render() {};
+	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) {};
+	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL);
+	void SetNx(int nx) { this->nx = nx; }
+
 };
 

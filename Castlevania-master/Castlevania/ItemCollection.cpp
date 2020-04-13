@@ -5,7 +5,7 @@ Item* ItemCollection::SpawnItem(int id)
 	switch (id)
 	{
 		case BIGHEART:
-			return new BigHeart;
+			return new BigHeart();
 			break;
 		case SMALLHEART:
 			return new Heart();

@@ -5,16 +5,19 @@
 #include "Game.h"
 #include "Ground.h"
 #include "Torch.h"
+#include "Item.h"
+#include"ItemCollection.h"
+#include"WhipItem.h"
+#include"BigHeart.h"
+#include"DaggerItem.h"
 
-void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *coObjects)
+void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
-	
-
 	// Calculate dx, dy 
 	CGameObject::Update(dt, scene);
 
 	// Simple fall down
-	vy += SIMON_GRAVITY*dt;
+	vy += SIMON_GRAVITY * dt;
 
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
@@ -22,20 +25,20 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *coObjects)
 	coEvents.clear();
 
 	// turn off collision when die 
-	if (state!=SIMON_STATE_DIE)
+	if (state != SIMON_STATE_DIE)
 		CalcPotentialCollisions(coObjects, coEvents);
 
 	// reset untouchable timer if untouchable time has passed
-	if ( GetTickCount() - untouchable_start > SIMON_UNTOUCHABLE_TIME) 
+	if (GetTickCount() - untouchable_start > SIMON_UNTOUCHABLE_TIME)
 	{
 		untouchable_start = 0;
 		untouchable = 0;
 	}
 
 	// No collision occured, proceed normally
-	if (coEvents.size()==0)
+	if (coEvents.size() == 0)
 	{
-		x += dx; 
+		x += dx;
 		y += dy;
 	}
 	else
@@ -45,17 +48,17 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *coObjects)
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
 		// block 
-		x += min_tx*dx + nx*0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
-		y += min_ty*dy + ny*0.4f;
-		
-		if (nx!=0) vx = 0;
-		if (ny!=0) vy = 0;
+		x += min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
+		y += min_ty * dy + ny * 0.4f;
+
+		if (nx != 0) vx = 0;
+		if (ny != 0) vy = 0;
 
 		// Collision logic with Goombas
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
-			 if (dynamic_cast<Ground*>(e->obj)) {
+			if (dynamic_cast<Ground*>(e->obj)) {
 				if (e->ny != 0) { // kiểm tra va chạm trục y có va chạm trục y nhảy vào đây
 					if (GetState() == SIMON_STATE_JUMP) {
 						SetState(SIMON_STATE_IDLE);
@@ -66,8 +69,27 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *coObjects)
 					}
 
 				}
-				
+
 				// cần xét kỹ phương va chạm
+			}
+			else if (dynamic_cast<Item*>(e->obj))
+			{
+				Item* item = dynamic_cast<Item*>(e->obj);
+				if (!item->IsDestroy())
+				{
+					item->Destroy();
+				}
+				if (dynamic_cast<BigHeart*>(e->obj))
+				{
+				}
+				if (dynamic_cast<WhipItem*>(e->obj))
+				{
+					this->SetState(SIMON_STATE_UPWHIP);
+				}
+				if (dynamic_cast<DaggerItem*>(e->obj))
+				{
+
+				}
 
 			}
 			else
@@ -77,6 +99,8 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *coObjects)
 				if (e->ny != 0)
 					y += dy;
 			}
+			 
+
 		}
 	}
 
@@ -133,7 +157,9 @@ void CSIMON::Render()
 		break;
 	case SIMON_STATE_DIE:
 		break;
-
+	case SIMON_STATE_UPWHIP:
+		ani = SIMON_ANI_UPWHIP;
+		break;
 	default:
 		break;
 	}
@@ -186,6 +212,12 @@ void CSIMON::SetState(int state)
 		isSitting = true;
 		vx = 0; // vx vận tốc phương x
 		//nx=0; k cần xét nx vì khi bấm trái phải đã set nx ở 2 state phía trên
+		break;
+	case SIMON_STATE_UPWHIP:
+		whip->UpLevel();
+		this->ResetFightAnimation();
+		upgrade_start = GetTickCount();
+		vx = 0;
 		break;
 	}
 	this->state = state;

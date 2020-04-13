@@ -1,14 +1,5 @@
 ﻿#include "Spark.h"
 
-Spark::Spark()
-{
-	AddAnimation("SPARK_ANI");
-}
-
-
-Spark::~Spark()
-{
-}
 
 void Spark::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
@@ -16,3 +7,8 @@ void Spark::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objec
 }
 
 
+
+void Spark::Render()
+{
+	animations[0]->Render(0, x, y);
+}
