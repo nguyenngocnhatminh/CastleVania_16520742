@@ -153,6 +153,18 @@
     <ClInclude Include="SubWeaponCollection.h">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClInclude>
+    <ClInclude Include="MoneyBag.h">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="HiddenItem.h">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+    </ClInclude>
+    <ClInclude Include="Entrance.h">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+    </ClInclude>
+    <ClInclude Include="MoneyTrigger.h">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -247,6 +259,18 @@
     </ClCompile>
     <ClCompile Include="SubWeaponCollection.cpp">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyBag.cpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="HiddenItem.cpp">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+    </ClCompile>
+    <ClCompile Include="Entrance.cpp">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyTrigger.cpp">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

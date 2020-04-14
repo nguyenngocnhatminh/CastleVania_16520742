@@ -16,5 +16,7 @@ Item* ItemCollection::SpawnItem(int id)
 		case WHIP:
 			return new WhipItem();
 			break;
+		case MONEYBAG:
+			return new MoneyBag();
 	}
 }

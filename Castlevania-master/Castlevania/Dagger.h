@@ -15,6 +15,7 @@ public:
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL);
-
+	virtual void SetWidth() { this->width = DAGGER_BBOX_WIDTH; }
+	virtual void SetHeight() { this->height = DAGGER_BBOX_HEIGHT; }
 };
 

@@ -4,8 +4,8 @@
   <image source="Courtyard_bank.png" width="256" height="320"/>
  </tileset>
  <tileset firstgid="81" source="SIMON.tsx"/>
- <tileset firstgid="153" source="Torch.tsx"/>
- <tileset firstgid="155" source="Money_Bag.tsx"/>
+ <tileset firstgid="81" source="Torch.tsx"/>
+ <tileset firstgid="83" source="Money_Bag.tsx"/>
  <layer id="1" name="Backround" width="47" height="11">
   <data>
    <tile gid="1"/>
@@ -1049,33 +1049,38 @@
   </data>
  </layer>
  <objectgroup id="8" name="Entrance">
-  <object id="14" x="1380.5" y="274" width="13.5" height="9.5"/>
+  <object id="14" x="1386.5" y="279.333" width="7.5" height="4.16667"/>
  </objectgroup>
  <objectgroup id="2" name="Player">
-  <object id="1" gid="82" x="51.3333" y="270.667" width="60" height="64"/>
+  <object id="1" x="51.3333" y="270.667" width="60" height="64"/>
  </objectgroup>
  <objectgroup id="3" name="Ground">
   <object id="9" name="Ground" x="0" y="287" width="1503" height="30"/>
  </objectgroup>
  <objectgroup id="4" name="Torch">
-  <object id="10" gid="153" x="165" y="284" width="32" height="64">
+  <object id="10" gid="81" x="165" y="287" width="32" height="64">
    <properties>
     <property name="item" type="int" value="1"/>
    </properties>
   </object>
-  <object id="11" gid="153" x="579" y="286" width="32" height="64">
+  <object id="11" gid="81" x="432.333" y="287" width="32" height="64">
    <properties>
     <property name="item" type="int" value="4"/>
    </properties>
   </object>
-  <object id="12" gid="153" x="964" y="287" width="32" height="64">
+  <object id="12" gid="81" x="686" y="287" width="32" height="64">
    <properties>
     <property name="item" type="int" value="4"/>
    </properties>
   </object>
-  <object id="13" gid="153" x="1307" y="286" width="32" height="64">
+  <object id="13" gid="81" x="1199" y="287" width="32" height="64">
    <properties>
     <property name="item" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="14" gid="81" x="944.667" y="287" width="32" height="64">
+   <properties>
+    <property name="item" type="int" value="1"/>
    </properties>
   </object>
  </objectgroup>
@@ -1086,6 +1091,6 @@
   <object id="17" x="1407.5" y="274" width="75.5" height="10"/>
  </objectgroup>
  <objectgroup id="10" name="MoneyBag">
-  <object id="18" gid="155" x="1237.5" y="317" width="31" height="30"/>
+  <object id="18" gid="83" x="1237.5" y="317" width="31" height="30"/>
  </objectgroup>
 </map>

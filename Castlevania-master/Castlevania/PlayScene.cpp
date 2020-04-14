@@ -7,6 +7,9 @@
 #include"Ground.h"
 #include"debug.h"
 #include"Torch.h"
+#include"MoneyTrigger.h"
+#include"ItemCollection.h"
+#include "Entrance.h"
 
 #include"TypeConverter.h"
 
@@ -282,7 +285,21 @@ void PlayScene::OnCreate()
 			}
 			break;
 		case OMoneyBagTrigger:
-
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				MoneyTrigger* trigger = new MoneyTrigger();
+				trigger->SetPosition(y.second->GetX(), y.second->GetY());
+				trigger->SetSize(y.second->GetWidth(), y.second->GetHeight());
+				auto moneyBagLayer = objectLayer.at("MoneyBag");
+				for (auto const& child : moneyBagLayer->GetObjectGroup())
+				{
+					ItemCollection* item = new ItemCollection();
+					Item *mnBag = item->SpawnItem(MONEYBAG);
+					mnBag->SetPosition(child.second->GetX(), child.second->GetY() - child.second->GetHeight());
+					trigger->SetItem(mnBag);
+				}
+				objects.push_back(trigger);
+			}
 			break;
 		case OTorch:
 			for (auto const& y : x.second->GetObjectGroup())
@@ -296,7 +313,13 @@ void PlayScene::OnCreate()
 		case ONextmap:
 			break;
 		case OEntrance:
-
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				Entrance* entrance = new Entrance();
+				entrance->SetSize(y.second->GetWidth(), y.second->GetHeight());
+				entrance->SetPosition(y.second->GetX(), y.second->GetY());
+				objects.push_back(entrance);
+			}
 			break;
 		case OMoneyBag:
 			break;
@@ -403,16 +426,21 @@ void PlayScene::Render()
 	gameMap->Render(cam);
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
-	SIMON->Render();// vẽ simon lên trên tất cả object
+	SIMON->Render();
+	if (SIMON->GetState() == SIMON_STATE_ENTERCASTLE)
+	{
+		gameMap->GetLayer("Mid")->Render(cam);
+	}
 
 
 }
 void PlayScene::OnKeyDown(int KeyCode)
 {
 	DebugOut(L"[INFO] PRESS KEY DOWN: %d\n", KeyCode);
+	if (SIMON->GetState() == SIMON_STATE_UPWHIP) return;
+	if (SIMON->GetState() == SIMON_STATE_ENTERCASTLE) return;
 	switch (KeyCode)
 	{
-
 	case DIK_SPACE:
 		// ta cần kiểm tra
 		if (SIMON->GetState() != SIMON_STATE_JUMP
@@ -427,7 +455,7 @@ void PlayScene::OnKeyDown(int KeyCode)
 		if (!SIMON->GetFightTime())
 		{
 			SIMON->ResetSpawnSubWeapon();
-			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->getCurrentSubweapon()!=0)
+			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->getCurrentSubweapon()!=0&& !SIMON->IsSpawnSubWeapon())
 			{
 				if (CGame::GetInstance()->IsKeyDown(DIK_DOWN))
 					SIMON->SetState(SIMON_STATE_IDLE);
@@ -468,6 +496,7 @@ void PlayScene::KeyState(BYTE* states)
 		SIMON->ResetUpgrageTime();
 		SIMON->SetState(SIMON_STATE_IDLE);
 	}
+	if (SIMON->GetState() == SIMON_STATE_ENTERCASTLE) return;
 	if (SIMON->GetState() == SIMON_STATE_UPWHIP) return;
 	if (SIMON->GetState() == SIMON_STATE_JUMP) return;
 

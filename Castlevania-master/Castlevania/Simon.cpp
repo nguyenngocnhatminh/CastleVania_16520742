@@ -1,6 +1,6 @@
 ﻿#include <algorithm>
 #include "debug.h"
-
+#include "MoneyTrigger.h"
 #include "SIMON.h"
 #include "Game.h"
 #include "Ground.h"
@@ -12,6 +12,7 @@
 #include"DaggerItem.h"
 #include"SubWeaponCollection.h"
 #include"SubWeapon.h"
+#include"Entrance.h"
 
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
@@ -70,38 +71,64 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					{
 						vx = 0;
 					}
+					if (ny != 0) vy = 0;
+					// cần xét kỹ phương va chạm
+					if (state != SIMON_STATE_ENTERCASTLE)
+					{
+						if (nx != 0) vx = 0;
+					}
 
 				}
-
+				if (state == SIMON_STATE_ENTERCASTLE)
+				{
+					break;
+				}
 				// cần xét kỹ phương va chạm
 			}
-			else if (dynamic_cast<Item*>(e->obj))
-			{
-				Item* item = dynamic_cast<Item*>(e->obj);
-				if (!item->IsDestroy())
+			else {
+				if (dynamic_cast<Item*>(e->obj))
 				{
-					if (dynamic_cast<BigHeart*>(e->obj))
+					Item* item = dynamic_cast<Item*>(e->obj);
+					if (!item->IsDestroy())
 					{
+						if (dynamic_cast<BigHeart*>(e->obj))
+						{
+						}
+						if (dynamic_cast<WhipItem*>(e->obj))
+						{
+							this->SetState(SIMON_STATE_UPWHIP);
+						}
+						if (dynamic_cast<DaggerItem*>(e->obj))
+						{
+							currenSubWeapon = DAGGER;
+						}
+						item->Destroy();
 					}
-					if (dynamic_cast<WhipItem*>(e->obj))
-					{
-						this->SetState(SIMON_STATE_UPWHIP);
-					}
-					if (dynamic_cast<DaggerItem*>(e->obj))
-					{
-						currenSubWeapon = DAGGER;
-					}
-					item->Destroy();
-				}
-			
 
-			}
-			else
-			{
-				if (e->nx != 0) // va chạm chiều x
+				}
+				else if (dynamic_cast<Entrance*>(e->obj))
+				{
+					auto entrance = dynamic_cast<Entrance*>(e->obj);
+					entrance->Destroy();
+					this->SetState(SIMON_STATE_ENTERCASTLE);
+				}
+				else if (dynamic_cast<MoneyTrigger*>(e->obj))
+				{
+					auto trigger = dynamic_cast<MoneyTrigger*>(e->obj);
+					trigger->SetDestroy();
+
+					if (dynamic_cast<PlayScene*>(scene))
+					{
+						auto pScene = dynamic_cast<PlayScene*>(scene);
+						pScene->SpawnObject(trigger->GetItem());
+					}
+
+				}
+								if (e->nx != 0) // va chạm chiều x
 					x += dx;
 				if (e->ny != 0)
 					y += dy;
+			
 			}
 			 
 
@@ -139,7 +166,10 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			{
 				PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
 				pScene->SpawnObject(subWeapon);
-				isSpawnSubweapon = true;
+			}
+			if (!subWeapon->isDestroy)
+			{
+				this->isSpawnSubweapon = true;
 			}
 		}
 	}
@@ -154,6 +184,7 @@ void CSIMON::Render()
 	case SIMON_STATE_IDLE:
 		ani = SIMON_ANI_IDLE;
 		break;
+	case SIMON_STATE_ENTERCASTLE:
 	case SIMON_STATE_WALKING_RIGHT:
 		ani = SIMON_ANI_WALKING;
 		break;			
@@ -199,6 +230,11 @@ void CSIMON::SetState(int state)
 	isSitting = false;
 	switch (state)
 	{
+	case SIMON_STATE_ENTERCASTLE:
+		this->ResetFightAnimation();
+		nx = 1;
+		vx = SIMON_WALKING_SPEED / 2;
+		break;
 	case SIMON_STATE_WALKING_RIGHT:
 		vx = SIMON_WALKING_SPEED;
 		nx = 1;

@@ -8,8 +8,7 @@ protected:
 	int item;
 public:
 	Torch():CGameObject() {
-		this->item = 2;
-		isDestroy = false;
+		this->item = 1;
 		AddAnimation("TORCH_ANI");	//0	
 	}
 	virtual void Render();

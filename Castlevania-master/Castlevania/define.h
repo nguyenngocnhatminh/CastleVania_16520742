@@ -1,7 +1,7 @@
 #pragma once
 
-#define WINDOW_CLASS_NAME L"Castlevania"
-#define MAIN_WINDOW_TITLE L"Castlevania"
+#define WINDOW_CLASS_NAME L"CASTLEvania"
+#define MAIN_WINDOW_TITLE L"CASTLEvania"
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(0, 0, 0)
 #define SCREEN_WIDTH 320
