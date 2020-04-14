@@ -10,6 +10,9 @@
 #include"WhipItem.h"
 #include"BigHeart.h"
 #include"DaggerItem.h"
+#include"SubWeaponCollection.h"
+#include"SubWeapon.h"
+
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
@@ -77,19 +80,20 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				Item* item = dynamic_cast<Item*>(e->obj);
 				if (!item->IsDestroy())
 				{
+					if (dynamic_cast<BigHeart*>(e->obj))
+					{
+					}
+					if (dynamic_cast<WhipItem*>(e->obj))
+					{
+						this->SetState(SIMON_STATE_UPWHIP);
+					}
+					if (dynamic_cast<DaggerItem*>(e->obj))
+					{
+						currenSubWeapon = DAGGER;
+					}
 					item->Destroy();
 				}
-				if (dynamic_cast<BigHeart*>(e->obj))
-				{
-				}
-				if (dynamic_cast<WhipItem*>(e->obj))
-				{
-					this->SetState(SIMON_STATE_UPWHIP);
-				}
-				if (dynamic_cast<DaggerItem*>(e->obj))
-				{
-
-				}
+			
 
 			}
 			else
@@ -111,19 +115,34 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 	if (this->fight_start!=0)
 	{
-		if (this->state == SIMON_STATE_FIGHT_SIT)
+		if (!this->spawnSubweapon)
 		{
-			whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y+0.25* SIMON_BBOX_HEIGHT);
-		}
-		else
-		{
-			whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y);
-		}
+			if (this->state == SIMON_STATE_FIGHT_SIT)
+			{
+				whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y + 0.25 * SIMON_BBOX_HEIGHT);
+			}
+			else
+			{
+				whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y);
+			}
 
-		whip->SetNxDirection(this->nx);
-		whip->Update(dt,scene, coObjects);
+			whip->SetNxDirection(this->nx);
+			whip->Update(dt, scene, coObjects);
+		}
+		else if (!isSpawnSubweapon && this->currenSubWeapon!=0)
+		{
+			SubWeaponCollection* sub = new SubWeaponCollection();
+			SubWeapon* subWeapon = sub->SpawnSubWeapon(currenSubWeapon);
+			subWeapon->SetPosition(this->x, this->y);
+			subWeapon->SetNx(this->nx);
+			if (dynamic_cast<PlayScene*>(scene))
+			{
+				PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+				pScene->SpawnObject(subWeapon);
+				isSpawnSubweapon = true;
+			}
+		}
 	}
-
 
 }
 
@@ -149,11 +168,9 @@ void CSIMON::Render()
 		break;
 	case SIMON_STATE_FIGHT_STAND:
 		ani = SIMON_ANI_STAND_ATTACK;
-		whip->Render();
 		break;
 	case SIMON_STATE_FIGHT_SIT:
 		ani = SIMON_ANI_SIT_ATTACK;
-		whip->Render();
 		break;
 	case SIMON_STATE_DIE:
 		break;
@@ -164,6 +181,10 @@ void CSIMON::Render()
 		break;
 	}
 	
+	if (this->fight_start != 0 && !this->spawnSubweapon)
+	{
+		whip->Render();
+	}
 	
 	int alpha = 255;
 	if (untouchable) alpha = 128;

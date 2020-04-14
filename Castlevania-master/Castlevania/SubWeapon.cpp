@@ -47,9 +47,9 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
-			if (dynamic_cast<CTorch*>(e->obj)) {
+			if (dynamic_cast<Torch*>(e->obj)) {
 
-				CTorch* torch = dynamic_cast<CTorch*>(e->obj);
+				Torch* torch = dynamic_cast<Torch*>(e->obj);
 				if (!torch->IsDestroy())
 				{
 					torch->SetDestroy();

@@ -424,7 +424,18 @@ void PlayScene::OnKeyDown(int KeyCode)
 
 	case DIK_Z:
 		// ta cần kiểm tra
-		if (!SIMON->GetFightTime()) {
+		if (!SIMON->GetFightTime())
+		{
+			SIMON->ResetSpawnSubWeapon();
+			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->getCurrentSubweapon()!=0)
+			{
+				if (CGame::GetInstance()->IsKeyDown(DIK_DOWN))
+					SIMON->SetState(SIMON_STATE_IDLE);
+				SIMON->SpawnSubWeapon(true);
+			}
+			else
+				SIMON->SpawnSubWeapon(false);
+
 			if (SIMON->GetState() == SIMON_STATE_SIT)
 			{
 				SIMON->SetState(SIMON_STATE_FIGHT_SIT);
@@ -475,7 +486,6 @@ void PlayScene::KeyState(BYTE* states)
 		SIMON->ResetFightAnimation();
 		SIMON->ResetFightTime();
 	}
-
 
 
 	if (SIMON->GetState() == SIMON_STATE_FIGHT_SIT) return;

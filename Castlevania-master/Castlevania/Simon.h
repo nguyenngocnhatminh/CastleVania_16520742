@@ -2,7 +2,6 @@
 #include "GameObject.h"
 #include"Whip.h"
 #include "HiddenObject.h"
-#include"knife.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f
@@ -59,6 +58,10 @@ class CSIMON : public CGameObject
 	Whip* whip;
 	bool isSitting;
 	DWORD upgrade_start;
+	int currenSubWeapon = 0;
+	bool spawnSubweapon=false;
+	bool isSpawnSubweapon = false;
+	bool isUpStair = false;
 public: 
 	CSIMON() : CGameObject()
 	{
@@ -100,6 +103,8 @@ public:
 	
 	}
 
+	bool getIsUpstair() { return this->isUpStair; }
+
 	DWORD GetUpgrageTime() { return this->upgrade_start; }
 	void ResetUpgrageTime() { this->upgrade_start = 0; }
 
@@ -108,6 +113,14 @@ public:
 	}
 	void SetLevel(int l) { level = l; }
 	void StartUntouchable() { untouchable = 1; untouchable_start = GetTickCount(); }
+
+	void ResetSpawnSubWeapon() { this->isSpawnSubweapon = false; }
+	bool IsSpawnSubWeapon() {
+		return spawnSubweapon;
+	};
+	void SpawnSubWeapon(bool flag) { this->spawnSubweapon = flag; };
+
+	int getCurrentSubweapon() { return this->currenSubWeapon; }
 
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 };
