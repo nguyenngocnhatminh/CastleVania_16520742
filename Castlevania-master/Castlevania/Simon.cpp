@@ -13,7 +13,7 @@
 #include"SubWeaponCollection.h"
 #include"SubWeapon.h"
 #include"Entrance.h"
-
+#include"define.h"
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
@@ -39,6 +39,21 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		untouchable = 0;
 	}
 
+	if (dynamic_cast<PlayScene*>(scene))
+	{
+		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+		D3DXVECTOR2 cam = pScene->GetCamera();
+
+		if (x<cam.x)
+		{
+			x=cam.x;
+		}
+		else if (x > cam.x + SCREENSIZE::WIDTH - SIMON_BBOX_WIDTH)
+		{
+			x = cam.x + SCREENSIZE::WIDTH - SIMON_BBOX_WIDTH;
+		}
+	}
+
 	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
 	{
@@ -54,9 +69,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		// block 
 		x += min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
 		y += min_ty * dy + ny * 0.4f;
-
-		if (nx != 0) vx = 0;
-		if (ny != 0) vy = 0;
 
 		// Collision logic with Goombas
 		for (UINT i = 0; i < coEventsResult.size(); i++)
