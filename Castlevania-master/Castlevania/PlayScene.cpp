@@ -245,12 +245,9 @@ void PlayScene::OnCreate()
 
 
 	//file here
-	gameMap = new Map();
-	//load map
-	xml_node<>* mapNode = rootNode->first_node("map");
-	const std::string& path = std::string(mapNode->first_attribute("path")->value());
-	gameMap->BuildMap(path);
+	gameMap = new Map(TexID, id);
 
+	gameMap->BuildMap(FilePath);
 
 
 
@@ -258,6 +255,7 @@ void PlayScene::OnCreate()
 	SIMON = new CSIMON();
 
 	objects.push_back(SIMON);
+	
 	auto objectLayer = gameMap->GetObjectLayer();
 	for (auto const& x : objectLayer)
 	{
@@ -267,6 +265,7 @@ void PlayScene::OnCreate()
 		case OPlayer:
 			for (auto const& y : x.second->GetObjectGroup())
 			{
+
 				SIMON->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 			}
 
@@ -318,6 +317,7 @@ void PlayScene::OnCreate()
 				Entrance* entrance = new Entrance();
 				entrance->SetSize(y.second->GetWidth(), y.second->GetHeight());
 				entrance->SetPosition(y.second->GetX(), y.second->GetY());
+				entrance->setNextMapId(y.second->GetProperty("Map_ID"));
 				objects.push_back(entrance);
 			}
 			break;
@@ -361,15 +361,17 @@ void PlayScene::OnCreate()
 
 	}
 	CGame::GetInstance()->SetCamPos(0, 0);
-}
+	}
 
 // dọn rác
 void PlayScene::OnDestroy()
 {
-	for (auto& x : objects)
-	{
-		delete x;
-	}
+	for (int i = 0; i < objects.size(); i++)
+		delete objects[i];
+
+	objects.clear();
+	SIMON = NULL;
+
 }
 
 void PlayScene::Update(DWORD dt)
@@ -397,7 +399,10 @@ void PlayScene::Update(DWORD dt)
 		objects[i]->Update(dt, this, &coObjects);
 	}
 
-
+	if (SIMON==NULL)
+	{
+		return;
+	}
 	// Update camera to follow SIMON
 	float cx, cy;
 	SIMON->GetPosition(cx, cy);

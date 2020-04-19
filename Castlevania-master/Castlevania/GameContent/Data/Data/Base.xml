@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <!-- Lưu toàn bộ các thông tin game như sprite tex, map -->
 <Base> 
@@ -8,6 +8,7 @@
 		<tex ID ="0" name = "SIMON" path="GameContent\\Data\\GameObject\\Simon\\SIMON.png" red="255" green="255" blue ="255"/>
 		<tex ID ="-100" name = "BBOX" path="textures\\bbox.png" red="255" green="255" blue ="255"/>
 		<tex ID ="-500" name = "Courtyard_bank" path="GameContent\\Data\\Map\\Courtyard_bank.png" red="255" green="255" blue ="255"/>
+		<tex ID ="-600" name = "dungeon_bank" path="GameContent\\Data\\Map\\dungeon_bank.png" red="255" green="255" blue ="255"/>
 		<tex ID ="1" name = "WHIP" path="GameContent\\Data\\GameObject\\Weapons\\WHIPedip.png" red="255" green="255" blue ="255"/>
 		<tex ID ="2" name = "GroundPack" path="GameContent\\Data\\GameObject\\Ground\\groundObject.png" red="255" green="0" blue ="255"/>
 		<tex ID ="3" name = "ITEMPACK" path="GameContent\\Data\\GameObject\\Items\\ITEM_PACK.png" red="255" green="0" blue ="255"/>
@@ -32,9 +33,6 @@
 		<objectani name="subWeapon" path="GameContent\\Data\\GameObject\\SubWeapon\\SubWeapon_ani.xml"/>
 		<objectani name="effect" path="GameContent\\Data\\GameObject\\Effect\\Effect_ani.xml"/>
 	</animations>
-
-
-	<map path="GameContent\\Data\\Map\\Courtyard_map.tmx"/>
-
+	
 
 </Base>

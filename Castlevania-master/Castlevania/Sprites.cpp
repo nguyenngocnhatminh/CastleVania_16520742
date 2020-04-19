@@ -89,3 +89,25 @@ LPANIMATION CAnimations::Get(string id)
 {
 	return animations[id];
 }
+
+void CSprites::Clear()
+{
+	for (auto x : sprites)
+	{
+		LPSPRITE s = x.second;
+		delete s;
+	}
+
+	sprites.clear();
+}
+
+void CAnimations::Clear()
+{
+	for (auto x : animations)
+	{
+		LPANIMATION ani = x.second;
+		delete ani;
+	}
+
+	animations.clear();
+}

@@ -2,10 +2,10 @@
 #include <Windows.h>
 #include <d3d9.h>
 #include <d3dx9.h>
-#include"SceneStateMachine.h"
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
 #include"PlayScene.h"
+#include"Textures.h"
 
 #define KEYBOARD_BUFFER_SIZE 1024
 /*
@@ -42,7 +42,10 @@ class CGame
 
 	float cam_x = 0.0f;
 	float cam_y = 0.0f;
-	SceneStateMachine sceneStateMachine;
+
+	unordered_map<int, Scene*> scenes;
+	int current_scene = 0;
+
 public:
 	void InitKeyboard(LPKEYEVENTHANDLER handler);
 	void Init(HWND hWnd);
@@ -52,6 +55,10 @@ public:
 	D3DXVECTOR2 GetCamera() { return D3DXVECTOR2(cam_x, cam_y); }
 	int IsKeyDown(int KeyCode);
 	void ProcessKeyboard();
+
+
+	Scene* GetCurrentScene() { return scenes[current_scene]; }
+	void SwitchScene(int scene_id);
 
 
 	/// ta thao tác update loadresouce, render thông qua lớp game

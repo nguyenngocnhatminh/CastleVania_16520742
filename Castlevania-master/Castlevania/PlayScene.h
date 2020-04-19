@@ -14,7 +14,9 @@ class PlayScene:public Scene
     // lưu những object vừa thêm vào ở lần upload hiện tại vào hàng đợi
     // sẽ thêm vào ds objects ở lần cập nhật tiếp theo
     std::queue<LPGAMEOBJECT> qObjects;
+
 public:
+    PlayScene(int id, std::string filepath,int TexId):Scene(id,filepath,TexId) {}
     D3DXVECTOR2 GetCamera();
     void SpawnObject(LPGAMEOBJECT obj) { this->qObjects.push(obj); }
     // overide nó dùng để kt xem mình truyền các parameter vào đúng kiểu

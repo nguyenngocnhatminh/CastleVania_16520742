@@ -1,104 +1,16 @@
-﻿  BigHeart.cpp
-  Brick.cpp
-  Dagger.cpp
-  DaggerItem.cpp
-  debug.cpp
-  Effect.cpp
-  EffectCollection.cpp
-  Entrance.cpp
-  flame.cpp
-  Game.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Game.cpp(82,38): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Game.cpp(346,26): warning C4305: '=': truncation from '__int64' to 'float'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Game.cpp(347,24): warning C4305: '=': truncation from '__int64' to 'float'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Game.cpp(357,26): warning C4305: '=': truncation from '__int64' to 'float'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Game.cpp(358,24): warning C4305: '=': truncation from '__int64' to 'float'
-  GameObject.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
-  Ground.cpp
-  Heart.cpp
-  HiddenItem.cpp
-  HiddenObject.cpp
-  Item.cpp
-  ItemCollection.cpp
-  Layer.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.cpp(34,79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.cpp(34,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  main.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
-  Map.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(152,28): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(154,29): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(187,29): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(187,18): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(188,29): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(188,18): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(189,33): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(189,22): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(190,34): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(190,23): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\packages\rapidxml.1.13\build\native\include\rapidxml\rapidxml_utils.hpp(40,25): warning C4244: 'initializing': conversion from 'std::streamoff' to 'size_t', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\packages\rapidxml.1.13\build\native\include\rapidxml\rapidxml_utils.hpp(28): message : while compiling class template member function 'rapidxml::file<char>::file(const char *)'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(16): message : see reference to function template instantiation 'rapidxml::file<char>::file(const char *)' being compiled
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Map.cpp(16): message : see reference to class template instantiation 'rapidxml::file<char>' being compiled
-  Generating Code...
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.cpp(22): warning C4715: 'ItemCollection::SpawnItem': not all control paths return a value
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\EffectCollection.cpp(15): warning C4715: 'EffectCollection::SpawnEffect': not all control paths return a value
-  Compiling...
-  MenuScene.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
-  MoneyBag.cpp
-  MoneyTrigger.cpp
-  ObjectLayer.cpp
-  PlayScene.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
+﻿  PlayScene.cpp
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(35,24): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(37,25): warning C4018: '<': signed/unsigned mismatch
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(331,44): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(332,43): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(333,48): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(334,49): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(389,20): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(395,20): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(427,20): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(369,20): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(391,20): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(397,20): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(432,20): warning C4018: '<': signed/unsigned mismatch
 D:\hoc\Game\CastleVania\Castlevania-master\packages\rapidxml.1.13\build\native\include\rapidxml\rapidxml_utils.hpp(40,25): warning C4244: 'initializing': conversion from 'std::streamoff' to 'size_t', possible loss of data
 D:\hoc\Game\CastleVania\Castlevania-master\packages\rapidxml.1.13\build\native\include\rapidxml\rapidxml_utils.hpp(28): message : while compiling class template member function 'rapidxml::file<char>::file(const char *)'
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(39): message : see reference to function template instantiation 'rapidxml::file<char>::file(const char *)' being compiled
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\PlayScene.cpp(39): message : see reference to class template instantiation 'rapidxml::file<char>' being compiled
-  SceneStateMachine.cpp
-  Simon.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.h(5,1): warning C4005: 'DAGGER': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(10): message : see previous definition of 'DAGGER'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(149,65): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(149,31): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(153,31): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Spark.cpp
-  Sprites.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
-  SubWeapon.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
-  SubWeaponCollection.cpp
-  Textures.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
-  Torch.cpp
-  Whip.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(36,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Layer.h(38,25): warning C4018: '<': signed/unsigned mismatch
-  WhipItem.cpp
-  Generating Code...
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.cpp(11): warning C4715: 'SubWeaponCollection::SpawnSubWeapon': not all control paths return a value
-  LINK : D:\hoc\Game\CastleVania\Castlevania-master\Debug\Castlevania.exe not found or not built by the last incremental link; performing full link
   Castlevania.vcxproj -> D:\hoc\Game\CastleVania\Castlevania-master\Debug\Castlevania.exe

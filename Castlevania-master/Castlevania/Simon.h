@@ -5,7 +5,7 @@
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f
-#define SIMON_JUMP_SPEED_Y		0.5f
+#define SIMON_JUMP_SPEED_Y		0.6f
 #define SIMON_JUMP_DEFLECT_SPEED 0.2f
 #define SIMON_GRAVITY			0.002f
 #define SIMON_DIE_DEFLECT_SPEED	 0.5f
@@ -37,7 +37,7 @@
 #define	SIMON_LEVEL_SMALL	1
 #define	SIMON_LEVEL_BIG		2
 
-#define SIMON_BBOX_WIDTH  55
+#define SIMON_BBOX_WIDTH  50
 #define SIMON_BBOX_HEIGHT 63
 
 #define SIMON_SMALL_BBOX_WIDTH  13
@@ -68,7 +68,7 @@ public:
 		isSitting = false;
 		level = SIMON_LEVEL_BIG;
 		untouchable = 0;
-		upgrade_start = 0;
+		this->upgrade_start = 0;
 		this->fight_start = 0;
 		state = SIMON_STATE_IDLE; // trạng thái ban đầu cần khai báo khi tạo object
 		whip = new Whip();

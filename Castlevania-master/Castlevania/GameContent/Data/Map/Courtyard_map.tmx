@@ -1049,7 +1049,11 @@
   </data>
  </layer>
  <objectgroup id="8" name="Entrance">
-  <object id="14" x="1386.5" y="279.333" width="7.5" height="4.16667"/>
+  <object id="14" x="1386.5" y="279.333" width="7.5" height="4.16667">
+  <properties>
+	<property name="Map_ID" type="int" value="1"/>
+  </properties>
+  </object>
  </objectgroup>
  <objectgroup id="2" name="Player">
   <object id="1" x="51.3333" y="270.667" width="60" height="64"/>

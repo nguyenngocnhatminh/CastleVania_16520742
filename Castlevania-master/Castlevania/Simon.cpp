@@ -121,8 +121,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				else if (dynamic_cast<Entrance*>(e->obj))
 				{
 					auto entrance = dynamic_cast<Entrance*>(e->obj);
-					entrance->Destroy();
-					this->SetState(SIMON_STATE_ENTERCASTLE);
+					CGame::GetInstance()->SwitchScene(entrance->GetNextMapId());				
 				}
 				else if (dynamic_cast<MoneyTrigger*>(e->obj))
 				{
@@ -136,7 +135,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					}
 
 				}
-								if (e->nx != 0) // va chạm chiều x
+				if (e->nx != 0) // va chạm chiều x
 					x += dx;
 				if (e->ny != 0)
 					y += dy;
@@ -234,7 +233,7 @@ void CSIMON::Render()
 
 	animations[ani]->Render(nx,x, y, alpha);
 
-	//RenderBoundingBox();
+	RenderBoundingBox();
 }
 
 void CSIMON::SetState(int state)

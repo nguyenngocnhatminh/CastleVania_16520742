@@ -1,15 +1,9 @@
 ﻿#include "Game.h"
 #include "debug.h"
-#include "MenuScene.h"
+
 
 CGame * CGame::__instance = NULL;
 
-/*
-	Initialize DirectX, create a Direct3D device for rendering within the window, initial Sprite library for 
-	rendering 2D images
-	- hInst: Application instance handle
-	- hWnd: Application window handle
-*/
 void CGame::Init(HWND hWnd)
 {
 	LPDIRECT3D9 d3d = Direct3DCreate9(D3D_SDK_VERSION);
@@ -59,8 +53,6 @@ void CGame::Init(HWND hWnd)
 void CGame::Draw(int nx,float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha)
 {
 
-//D3DXVECTOR3 p(floor(x), floor(y), 0); // https://docs.microsoft.com/vi-vn/windows/desktop/direct3d9/directly-mapping-texels-to-pixels
-// Try removing floor() to see blurry SIMON
 	D3DXVECTOR3 p(floor(x - cam_x), floor(y - cam_y), 0);
 	RECT r; 
 	r.left = left;
@@ -224,57 +216,78 @@ void CGame::ProcessKeyboard()
 void CGame::OnCreate()
 {
 
-	// tạo mới 1 playscene
-	std::shared_ptr<PlayScene> playscene =
-		std::make_shared<PlayScene>();
-	//tạo mới menu scene
-	//this->sceneStateMachine là parameter truyền vào
-	//MenuScene(SceneStateMachine& sceneStateMachine)
-	std::shared_ptr<MenuScene> menuScene =
-		std::make_shared<MenuScene>(this->sceneStateMachine);
+	const std::string filePath = "GameContent\\Data\\Data\\Scene.xml";
 
-	//thêm scene vào map của sceneStateMachine
-	// cực kỳ cẩn thận khúc này
-	// do viết hàm loadresource trong playscene nên bắt buộc
-	//playscene phải khởi tạo trước để load resource trước những scene khác
-	unsigned int playSceneID = sceneStateMachine.Add(playscene);
-	unsigned int menuSceneID = sceneStateMachine.Add(menuScene); // thêm menu scene vào ds scenes
-	
-	//=> menuscene sẽ chuyển qua playscene sau khi thực hiện xong logic
-	menuScene->SetSwitchToScene(playSceneID); //3
-																 //set scene hiện tại là scene nào
-	// trường hợp này là set để chạy từ scene ban đầu
-	//ta bắt đầu game từ scene nào thì truyền scene đó vào đây
-	sceneStateMachine.SwitchTo(playSceneID);
+	// cú pháp load file
+	// đọc vào file xml
+	char* fileLoc = new char[filePath.size() + 1]; // filepath lưu đường dẫn đến file XML đang đọc
+#
+	   //TODO: make multi format version of string copy
+	// phần này k quan tâm lắm dạng như cú pháp thôi
+#ifdef MACOS
+	strlcpy(fileLoc, file.c_str(), file.size() + 1);
+#else
+	strcpy_s(fileLoc, filePath.size() + 1, filePath.c_str());
+#endif 
 
+	//TODO: error checking - check file exists before attempting open.
+	rapidxml::file<> xmlFile(fileLoc);
+	rapidxml::xml_document<> doc;
+	doc.parse<0>(xmlFile.data());
 
+	xml_node<>* rootNode = doc.first_node("Base");
+	xml_node<>* mapNode = rootNode->first_node("maps");
+	for (xml_node<>* child = mapNode->first_node(); child; child = child->next_sibling())
+	{
+		const std::string& path = std::string(child->first_attribute("path")->value());
+		const int ID = atoi(child->first_attribute("ID")->value());
+		const int TexID = atoi(child->first_attribute("TexID")->value());
+		Scene* playscene = new PlayScene(ID,path,TexID);
+		scenes[ID] = playscene;
+	}
+	SwitchScene(current_scene);
 }
 
 void CGame::Update(DWORD deltaTime)
 {
-	// update scene hiện tại
-	sceneStateMachine.Update(deltaTime);
+	scenes.at(current_scene)->Update(deltaTime);
 }
 
 void CGame::Render()
 {
 
-	sceneStateMachine.Render();
+	scenes.at(current_scene)->Render();
 }
 
 void CGame::OnKeyDown(int KeyCode)
 {
-	sceneStateMachine.OnKeyDown(KeyCode);
+	scenes.at(current_scene)->OnKeyDown(KeyCode);
 }
 
 void CGame::OnKeyUp(int KeyCode)
 {
-	sceneStateMachine.OnKeyUp(KeyCode);
+	scenes.at(current_scene)->OnKeyUp(KeyCode);
 }
 
 void CGame::KeyState(BYTE* states)
 {
-	sceneStateMachine.KeyState(states);
+	scenes.at(current_scene)->KeyState(states);
+}
+
+
+
+void CGame::SwitchScene(int scene_id)
+{
+	DebugOut(L"[INFO] Switching to scene %d\n", scene_id);
+
+	scenes[current_scene]->OnDestroy();;
+
+	CTextures::GetInstance()->Clear();
+	CSprites::GetInstance()->Clear();
+	CAnimations::GetInstance()->Clear();
+	current_scene = scene_id;
+	Scene* s = scenes[scene_id];
+	s->OnCreate();
 }
 
 CGame::~CGame()

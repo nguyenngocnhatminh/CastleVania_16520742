@@ -41,7 +41,7 @@ void Map::BuildMapLayer(xml_node<>* rootNode)
 	// lập các node trong map lấy ra các node Layer
 	for (xml_node<>* child = rootNode->first_node("layer"); child; child = child->next_sibling()) //cú pháp lập
 	{
-		Layer* layer;
+		TileLayer* layer;
 
 		int width = 0, height = 0;
 		bool isVisible = true;
@@ -103,7 +103,7 @@ void Map::BuildMapLayer(xml_node<>* rootNode)
 
 
 
-		layer = new Layer(name, width, height, this->tileWidth, this->tileHeight, isVisible);
+		layer = new TileLayer(name, width, height, this->tileWidth, this->tileHeight, this->MapID);
 
 		// this->tileWidth, this->tileHeight vì chiều dài tile của layer dựa vào tileWidth,tileHeight của map
 
@@ -141,7 +141,7 @@ void Map::BuildTileSet(xml_node<>* node)
 	///DEMO
 	CTextures* textures = CTextures::GetInstance();
 
-	LPDIRECT3DTEXTURE9 objecttex = textures->Get(-500);
+	LPDIRECT3DTEXTURE9 objecttex = textures->Get(this->TexID);
 
 
 	// chú ý đánh số từ 1
@@ -153,7 +153,7 @@ void Map::BuildTileSet(xml_node<>* node)
 	{
 		for (std::size_t j = 0; j < tileSet.columns; j++)
 		{
-			CSprites::GetInstance()->Add("map_" + std::to_string(TileId), j * this->tileHeight, i * this->tileHeight, j * this->tileHeight + this->tileHeight, i * this->tileHeight + this->tileHeight, objecttex);
+			CSprites::GetInstance()->Add("map_" + std::to_string(MapID) + std::to_string(TileId), j * this->tileHeight, i * this->tileHeight, j * this->tileHeight + this->tileHeight, i * this->tileHeight + this->tileHeight, objecttex);
 			TileId++;
 		}
 	}
@@ -237,7 +237,7 @@ void Map::Render(D3DXVECTOR2 camera)
 
 }
 
-Layer* Map::GetLayer(std::string name)
+TileLayer* Map::GetLayer(std::string name)
 {
 	return this->layers.at(name);
 }
