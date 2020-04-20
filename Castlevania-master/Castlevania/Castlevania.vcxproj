@@ -163,6 +163,7 @@
     <ClInclude Include="HiddenObject.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemCollection.h" />
+    <ClInclude Include="Stair.h" />
     <ClInclude Include="TileLayer.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MoneyBag.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="HiddenObject.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemCollection.cpp" />
+    <ClCompile Include="Stair.cpp" />
     <ClCompile Include="TileLayer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />

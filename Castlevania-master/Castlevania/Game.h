@@ -44,7 +44,7 @@ class CGame
 	float cam_y = 0.0f;
 
 	unordered_map<int, Scene*> scenes;
-	int current_scene = 0;
+	int current_scene = 1;
 
 public:
 	void InitKeyboard(LPKEYEVENTHANDLER handler);

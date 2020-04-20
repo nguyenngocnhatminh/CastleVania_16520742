@@ -14,5 +14,5 @@ void Heart::Render()
 		return;
 	}
 	animations[0]->Render(nx, x, y);
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }

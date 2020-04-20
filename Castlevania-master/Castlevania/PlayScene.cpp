@@ -10,6 +10,7 @@
 #include"MoneyTrigger.h"
 #include"ItemCollection.h"
 #include "Entrance.h"
+#include"Stair.h"
 
 #include"TypeConverter.h"
 
@@ -40,42 +41,19 @@ void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 	rapidxml::xml_document<> doc;
 	doc.parse<0>(xmlFile.data());
 
-	// truy vấn node trong file dùng xml_node<>* 
-	xml_node<>* rootNode = doc.first_node("resource"); //rootnode là node đầu tiên ở đây là "gamedata"
-
-	////à ví dụ đọc vào node sprite đầu tiên
-	//xml_node<>* spriteNode = rootNode->first_node("sprite");
-
-	//// đọc ở đây man. đây hả um đọc node lên game thôi man code đọc node lên game ấy
-
-	//xml_node<>* frameNode = spriteNode->first_node("frame");
-
-	// cách đọc thuộc tính của node vd như thằng id của node sprite
-
-
-	//std::string Id = std::string(spriteNode->first_attribute("ID")->value()); // đọc attibute thì dùng node->first_attribute("name")
-
-	//// quăng ra debug luôn
-	//std::wstring cover = std::wstring(Id.begin(), Id.end()); 
-	//DebugOut(L"ID= %s", cover.c_str()); //%s truyền biến kiểu string, %d kiểu int, %f kiểu float
-
-
-
-
+	
+	xml_node<>* rootNode = doc.first_node("resource"); 
 	xml_node<>* spriteSheetNode = rootNode->first_node("spritesheet");
 
 	// lập toàn bộ các node con của node gamedata
 
-	for (xml_node<>* child = spriteSheetNode->first_node(); child; child = child->next_sibling()) //cú pháp lập
+	for (xml_node<>* child = spriteSheetNode->first_node(); child; child = child->next_sibling()) 
 	{
-		// lấy ra id của sprite
+	
 		const std::string& ID = std::string(child->first_attribute("ID")->value());
-		// truy vấn vào node frame
+
 		xml_node<>* frameNode = child->first_node("frame");
 
-		// std::string đọc lên kiểu string
-		//std::atoi đọc lên kiểu int
-		//std::atof đọc lên kiểu float
 
 
 		int x = std::atoi(frameNode->first_attribute("x")->value());
@@ -86,11 +64,6 @@ void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 		int r = x + w;
 		int b = y + h;
 
-		/*	std::wstring cover = std::wstring(ID.begin(), ID.end());
-
-
-			DebugOut(L" ID= %s, l=%d, t=%d , r=%d , b=%d \n", cover.c_str(),l,t,r,b);*/
-			//	DebugOut(L" ID= %d, l=%d, t=%d , r=%d , b=%d \n", ID, l, t, r, b);
 		sprites->Add(ID, x, y, r, b, objecttex);
 	}
 
@@ -103,24 +76,22 @@ void PlayScene::LoadAnimation(const string& filePath)
 	CAnimations* animations = CAnimations::GetInstance();
 	LPANIMATION ani;
 
-	char* fileLoc = new char[filePath.size() + 1]; // filepath lưu đường dẫn đến file XML đang đọc
+	char* fileLoc = new char[filePath.size() + 1]; 
 #
-	   //TODO: make multi format version of string copy
-	// phần này k quan tâm lắm dạng như cú pháp thôi
+	  
 #ifdef MACOS
 	strlcpy(fileLoc, file.c_str(), file.size() + 1);
 #else
 	strcpy_s(fileLoc, filePath.size() + 1, filePath.c_str());
 #endif 
 
-	//TODO: error checking - check file exists before attempting open.
+
 	rapidxml::file<> xmlFile(fileLoc);
 	rapidxml::xml_document<> doc;
 	doc.parse<0>(xmlFile.data());
 
-	// truy vấn node trong file dùng xml_node<>* 
-	xml_node<>* rootNode = doc.first_node("resource"); //rootnode là node đầu tiên ở đây là "gamedata"
-	xml_node<>* aniNode = rootNode->first_node("animations"); //rootnode là node đầu tiên ở đây là "gamedata"
+	xml_node<>* rootNode = doc.first_node("resource");
+	xml_node<>* aniNode = rootNode->first_node("animations"); 
 
 
 	for (xml_node<>* child = aniNode->first_node(); child; child = child->next_sibling())
@@ -128,13 +99,12 @@ void PlayScene::LoadAnimation(const string& filePath)
 
 		const std::string& ID = std::string(child->first_attribute("ID")->value());
 		int timeLoop = std::atoi(child->first_attribute("defaulttime")->value());
-		ani = new CAnimation(timeLoop);	// idle big right
-		for (xml_node<>* grand = child->first_node(); grand; grand = grand->next_sibling())// lập thêm lần nữa lấy hết sprite id
+		ani = new CAnimation(timeLoop);	
+		for (xml_node<>* grand = child->first_node(); grand; grand = grand->next_sibling())
 		{
 			const std::string& spriteID = std::string(grand->first_attribute("spriteID")->value());
 
 			ani->Add(spriteID);
-			//	DebugOut(L"ANI ID=%d sprite =%d \n", ID, spriteID);
 		}
 
 		animations->Add(ID, ani);
@@ -150,49 +120,33 @@ D3DXVECTOR2 PlayScene::GetCamera()
 }
 void PlayScene::OnCreate()
 {
-	// chút mình load tẽ từ file luôn
-	// thứ tự load : tex,sprite,ani , thay đổi=> lỗi
+	
 	CTextures* textures = CTextures::GetInstance();
-
-
-
-	//textures->Add(ID_TEX_SIMON, L"GameContent\\Resource\\Simon\\SIMON.png",D3DCOLOR_XRGB(255, 255, 255));
-	//textures->Add(ID_TEX_MISC, L"textures\\misc.png", D3DCOLOR_XRGB(176, 224, 248));
-	//textures->Add(ID_TEX_ENEMY, L"textures\\enemies.png", D3DCOLOR_XRGB(3, 26, 110));
-	//textures->Add(ID_TEX_BBOX, L"textures\\bbox.png", D3DCOLOR_XRGB(255, 255, 255));
-
-
 	CSprites* sprites = CSprites::GetInstance();
 	CAnimations* animations = CAnimations::GetInstance();
 
-	// load từ đây nha man, nữa tex mình cũng viết thêm hàm load như load sprite
-
+	
 
 	const std::string filePath = "GameContent\\Data\\Data\\Base.xml";
 
-	// cú pháp load file
-	// đọc vào file xml
-	char* fileLoc = new char[filePath.size() + 1]; // filepath lưu đường dẫn đến file XML đang đọc
-#
-	   //TODO: make multi format version of string copy
-	// phần này k quan tâm lắm dạng như cú pháp thôi
+	char* fileLoc = new char[filePath.size() + 1]; 
 #ifdef MACOS
 	strlcpy(fileLoc, file.c_str(), file.size() + 1);
 #else
 	strcpy_s(fileLoc, filePath.size() + 1, filePath.c_str());
 #endif 
 
-	//TODO: error checking - check file exists before attempting open.
+	
 	rapidxml::file<> xmlFile(fileLoc);
 	rapidxml::xml_document<> doc;
 	doc.parse<0>(xmlFile.data());
 
-	// truy vấn node trong file dùng xml_node<>* 
-	xml_node<>* rootNode = doc.first_node("Base"); //rootnode là node đầu tiên ở đây là "gamedata"
+	
+	xml_node<>* rootNode = doc.first_node("Base"); 
 
 	xml_node<>* texNode = rootNode->first_node("textures");
 
-	for (xml_node<>* child = texNode->first_node(); child; child = child->next_sibling()) //cú pháp lập
+	for (xml_node<>* child = texNode->first_node(); child; child = child->next_sibling()) 
 	{
 		int idTex;
 		int red;
@@ -206,15 +160,14 @@ void PlayScene::OnCreate()
 		green = std::atoi(child->first_attribute("green")->value());
 		blue = std::atoi(child->first_attribute("blue")->value());
 
-		// ép kiểu nó đòi lpcwstr
+
 		std::wstring cover = std::wstring(path.begin(), path.end());
 		textures->Add(idTex, cover.c_str(), D3DCOLOR_XRGB(red, green, blue));
 
 	}
 
 
-	xml_node<>* spriteNode = rootNode->first_node("sprites"); // tex voi ani chua dung man, dung trc sprite da
-//	xml_node<>* objNode = spriteNode->first_node("objectSprite");
+	xml_node<>* spriteNode = rootNode->first_node("sprites"); 
 	//load sprite
 	for (xml_node<>* child = spriteNode->first_node(); child; child = child->next_sibling()) //cú pháp lập
 	{
@@ -265,10 +218,9 @@ void PlayScene::OnCreate()
 		case OPlayer:
 			for (auto const& y : x.second->GetObjectGroup())
 			{
-
+				SIMON->setStartPoint(y.second->GetX());
 				SIMON->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 			}
-
 			break;
 		case OWall:
 			break;
@@ -329,15 +281,21 @@ void PlayScene::OnCreate()
 			for (auto const& y : x.second->GetObjectGroup())
 			{
 				this->cameraBoder.left = y.second->GetX();
-				this->cameraBoder.top = y.second->GetX();
+				this->cameraBoder.top = y.second->GetY();
 				this->cameraBoder.right = y.second->GetX() + y.second->GetWidth();
 				this->cameraBoder.bottom = y.second->GetY() + y.second->GetHeight();
-
 			}
 			break;
 		case OSpawner:
 			break;
 		case OStair:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				Stair* stair = new Stair();
+				stair->SetSize(y.second->GetWidth(), y.second->GetHeight());
+				stair->SetPosition(y.second->GetX(), y.second->GetY());
+				objects.push_back(stair);
+			}
 			break;
 		case OBirck:
 			break;
@@ -367,8 +325,9 @@ void PlayScene::OnCreate()
 void PlayScene::OnDestroy()
 {
 	for (int i = 0; i < objects.size(); i++)
+	{
 		delete objects[i];
-
+	}
 	objects.clear();
 	SIMON = NULL;
 
@@ -405,14 +364,27 @@ void PlayScene::Update(DWORD dt)
 	}
 	// Update camera to follow SIMON
 	float cx, cy;
+	float startpoint;
 	SIMON->GetPosition(cx, cy);
-
-	cx -= SCREEN_WIDTH / 2;
+	startpoint = SIMON->getStartPoint();
+	startpoint -= SCREEN_WIDTH / 2;
+	cx = cx- SCREEN_WIDTH / 2-SIMON_BBOX_WIDTH;
 	cy -= SCREEN_HEIGHT / 2;
-	if (cx > this->cameraBoder.left&& cx < this->cameraBoder.right - SCREENSIZE::WIDTH)
+	if (startpoint > this->cameraBoder.right - SCREENSIZE::WIDTH)
 	{
-		CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);
+		float test = cx - ((cx + SCREENSIZE::WIDTH) - this->cameraBoder.right);
+		CGame::GetInstance()->SetCamPos(test, this->cameraBoder.top);
+		SIMON->setStartPoint(0);
 	}
+	else if (cx > this->cameraBoder.left && cx < this->cameraBoder.right - SCREENSIZE::WIDTH)
+	{
+		CGame::GetInstance()->SetCamPos(cx, this->cameraBoder.top /*cy*/);
+	}
+	/*else if(cx>this->cameraBoder.right- SCREENSIZE::WIDTH)
+	{
+		float test = cx - ((cx + SCREENSIZE::WIDTH) - this->cameraBoder.right);
+		CGame::GetInstance()->SetCamPos(test, this->cameraBoder.top);
+	}*/
 
 	for (vector<LPGAMEOBJECT>::iterator it = objects.begin(); it != objects.end(); ) {
 
@@ -448,11 +420,10 @@ void PlayScene::OnKeyDown(int KeyCode)
 	{
 	case DIK_SPACE:
 		// ta cần kiểm tra
-		if (SIMON->GetState() != SIMON_STATE_JUMP
-			&& SIMON->GetState() != SIMON_STATE_SIT
-			&& !SIMON->GetFightTime()) { // ngooif thi k cho nhay
+		if (SIMON->GetState() != SIMON_STATE_JUMP && SIMON->GetState() != SIMON_STATE_SIT && !SIMON->GetFightTime())
+		{ // ngooif thi k cho nhay
 			SIMON->SetState(SIMON_STATE_JUMP);
-		}
+		}			
 		break;
 
 	case DIK_Z:

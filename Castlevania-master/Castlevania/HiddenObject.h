@@ -6,6 +6,8 @@ private:
 	float width;
 	float height;
 public:
+	HiddenObject(){}
+	~HiddenObject(){}
 	float GetWidth() { return width; };
 	float GetHeight() { return height; }
 	void SetSize(float width, float height) { this->height = height, this->width = width; }

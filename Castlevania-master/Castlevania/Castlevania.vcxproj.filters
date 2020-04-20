@@ -159,6 +159,9 @@
     <ClInclude Include="TileLayer.h">
       <Filter>Source Files\Framework\Map</Filter>
     </ClInclude>
+    <ClInclude Include="Stair.h">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -259,6 +262,9 @@
     </ClCompile>
     <ClCompile Include="TileLayer.cpp">
       <Filter>Source Files\Framework\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair.cpp">
+      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

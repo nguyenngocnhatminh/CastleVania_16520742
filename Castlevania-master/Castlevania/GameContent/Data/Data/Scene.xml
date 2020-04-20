@@ -4,6 +4,7 @@
 <Base> 
 	<maps>
 		<map ID="0" path="GameContent\\Data\\Map\\Courtyard_map.tmx" TexID="-500"/>
-		<map ID="1" path="GameContent\\Data\\Map\\map2_1.tmx" TexID="-600"/>	
+		<map ID="1" path="GameContent\\Data\\Map\\map2_1.tmx" TexID="-600"/>
+		<map ID="2" path="GameContent\\Data\\Map\\map2_2.tmx" TexID="-600"/>	
 	</maps>
 </Base>

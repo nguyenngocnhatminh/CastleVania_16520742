@@ -21,6 +21,18 @@
 #define SIMON_STATE_UPWHIP 8
 #define SIMON_STATE_ENTERCASTLE 9
 
+//len xuong cau thang
+#define SIMON_STATE_UPSTAIR_IDLE 10
+#define SIMON_STATE_UPSTAIR_RIGHT 11
+#define SIMON_STATE_UPSTAIR_LEFT 12
+#define SIMON_STATE_DOWNSTAIR_IDLE 13
+#define SIMON_STATE_DOWNSTAIR_RIGHT 14
+#define SIMON_STATE_DOWNSTAIR_LEFT 15
+#define SIMON_STATE_UPSTAIR_ATTACK 16
+#define SIMON_STATE_DOWNSTAIR_ATTACK 17
+
+
+
 #define SIMON_ANI_IDLE 0 
 #define SIMON_ANI_WALKING 1  
 #define SIMON_ANI_SIT 2 
@@ -30,6 +42,13 @@
 #define SIMON_ANI_DIE				8
 
 
+//len xuong cau thang
+#define SIMON_ANI_IDLE_UPSTAIR          9
+#define SIMON_ANI_STEP_UPSTAIR            10
+#define SIMON_ANI_IDLE_DOWNSTAIR         11
+#define SIMON_ANI_STEP_DOWNSTAIR            12
+#define SIMON_ANI_UPSTAIR_ATTACK            13
+#define SIMON_ANI_DOWNSTAIR_ATTACK         14
 
 
 
@@ -50,6 +69,7 @@
 
 class CSIMON : public CGameObject
 {
+	float startpoint;
 	int level;
 	int untouchable;
 	DWORD untouchable_start;
@@ -61,7 +81,17 @@ class CSIMON : public CGameObject
 	int currenSubWeapon = 0;
 	bool spawnSubweapon=false;
 	bool isSpawnSubweapon = false;
-	bool isUpStair = false;
+	//cau thang
+	bool isOnStair = false;
+	bool startOnStair = false;
+	bool isColliceWithStair = false;
+	bool isFirstStepOnStair = false;
+	ONSTAIRDIRECTION onStairDirection = ONSTAIRDIRECTION::DEFAULT;
+	D3DXVECTOR2 stairPos;
+	D3DXVECTOR2 LastStepOnStairPos;
+	void HandleFirstStepOnStair();
+	void HandlePerStepOnStair();
+
 public: 
 	CSIMON() : CGameObject()
 	{
@@ -86,7 +116,6 @@ public:
 		this->animations[SIMON_ANI_SIT_ATTACK]->ResetFrame();
 		this->fight_start = 0;
 	}
-
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT> *colliable_objects = NULL);
 	virtual void Render();
 	Whip* GetWhip() { return whip; };
@@ -102,8 +131,6 @@ public:
 		this->fight_start = 0;
 	
 	}
-
-	bool getIsUpstair() { return this->isUpStair; }
 
 	DWORD GetUpgrageTime() { return this->upgrade_start; }
 	void ResetUpgrageTime() { this->upgrade_start = 0; }
@@ -123,4 +150,41 @@ public:
 	int getCurrentSubweapon() { return this->currenSubWeapon; }
 
 	virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
+
+	void setStartPoint(float x) { this->startpoint = x; }
+	float getStartPoint() { return this->startpoint; }
+
+
+	//CAU THANG
+	void SetStepOnStairDirection(ONSTAIRDIRECTION dir) {
+		this->onStairDirection = dir;
+	}
+	ONSTAIRDIRECTION CheckStepOnStairDirection() {
+		return this->onStairDirection;
+	}
+	void StartOnStair(bool flag) {
+		this->startOnStair = flag;
+	}
+	bool CheckStairOnStair() {
+		return this->startOnStair;
+	}
+	bool CheckCanStepUp() {
+		if (this->onStairDirection == ONSTAIRDIRECTION::UPLEFT || this->onStairDirection == ONSTAIRDIRECTION::UPRIGHT)
+			return true;
+		return false;
+	}
+	bool CheckCanStepDown() {
+		if (this->onStairDirection == ONSTAIRDIRECTION::DOWNLEFT || this->onStairDirection == ONSTAIRDIRECTION::DOWNRIGHT)
+			return true;
+		return false;
+	}
+	bool CheckIsOnStair() {
+		return this->isOnStair;
+	}
+	bool CheckCollideWithStair() {
+		return this->isColliceWithStair;
+	}
+	void SetStartStepOnStair() {
+		this->startOnStair = true;
+	}
 };

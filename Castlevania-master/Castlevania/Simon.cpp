@@ -13,6 +13,7 @@
 #include"SubWeaponCollection.h"
 #include"SubWeapon.h"
 #include"Entrance.h"
+#include"Stair.h"
 #include"define.h"
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
@@ -39,20 +40,20 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		untouchable = 0;
 	}
 
-	if (dynamic_cast<PlayScene*>(scene))
-	{
-		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-		D3DXVECTOR2 cam = pScene->GetCamera();
+	//if (dynamic_cast<PlayScene*>(scene))
+	//{
+	//	PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+	//	D3DXVECTOR2 cam = pScene->GetCamera();
 
-		if (x<cam.x)
-		{
-			x=cam.x;
-		}
-		else if (x > cam.x + SCREENSIZE::WIDTH - SIMON_BBOX_WIDTH)
-		{
-			x = cam.x + SCREENSIZE::WIDTH - SIMON_BBOX_WIDTH;
-		}
-	}
+	//	if (x<cam.x)
+	//	{
+	//		x=cam.x;
+	//	}
+	//	else if (x > cam.x + SCREENSIZE::WIDTH - SIMON_BBOX_WIDTH)
+	//	{
+	//		x = cam.x + SCREENSIZE::WIDTH - SIMON_BBOX_WIDTH;
+	//	}
+	//}
 
 	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
@@ -233,7 +234,7 @@ void CSIMON::Render()
 
 	animations[ani]->Render(nx,x, y, alpha);
 
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 
 void CSIMON::SetState(int state)
