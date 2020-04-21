@@ -5,9 +5,10 @@
 
 #define SIMON_WALKING_SPEED		0.1f 
 //0.1f
-#define SIMON_JUMP_SPEED_Y		0.6f
+#define SIMON_JUMP_SPEED_Y		0.55f
 #define SIMON_JUMP_DEFLECT_SPEED 0.2f
 #define SIMON_GRAVITY			0.002f
+#define SIMON_FALLDOWN_VY 0.8f
 #define SIMON_DIE_DEFLECT_SPEED	 0.5f
 
 #define SIMON_STATE_IDLE 0
@@ -20,6 +21,7 @@
 #define SIMON_STATE_DIE 7
 #define SIMON_STATE_UPWHIP 8
 #define SIMON_STATE_ENTERCASTLE 9
+#define SIMON_STATE_FALLDOWN 10
 
 //len xuong cau thang
 #define SIMON_STATE_UPSTAIR_IDLE 10
@@ -57,7 +59,7 @@
 #define	SIMON_LEVEL_BIG		2
 
 #define SIMON_BBOX_WIDTH  50
-#define SIMON_BBOX_HEIGHT 63
+#define SIMON_BBOX_HEIGHT 64
 
 #define SIMON_SMALL_BBOX_WIDTH  13
 #define SIMON_SMALL_BBOX_HEIGHT 15
@@ -81,17 +83,6 @@ class CSIMON : public CGameObject
 	int currenSubWeapon = 0;
 	bool spawnSubweapon=false;
 	bool isSpawnSubweapon = false;
-	//cau thang
-	bool isOnStair = false;
-	bool startOnStair = false;
-	bool isColliceWithStair = false;
-	bool isFirstStepOnStair = false;
-	ONSTAIRDIRECTION onStairDirection = ONSTAIRDIRECTION::DEFAULT;
-	D3DXVECTOR2 stairPos;
-	D3DXVECTOR2 LastStepOnStairPos;
-	void HandleFirstStepOnStair();
-	void HandlePerStepOnStair();
-
 public: 
 	CSIMON() : CGameObject()
 	{
@@ -156,35 +147,5 @@ public:
 
 
 	//CAU THANG
-	void SetStepOnStairDirection(ONSTAIRDIRECTION dir) {
-		this->onStairDirection = dir;
-	}
-	ONSTAIRDIRECTION CheckStepOnStairDirection() {
-		return this->onStairDirection;
-	}
-	void StartOnStair(bool flag) {
-		this->startOnStair = flag;
-	}
-	bool CheckStairOnStair() {
-		return this->startOnStair;
-	}
-	bool CheckCanStepUp() {
-		if (this->onStairDirection == ONSTAIRDIRECTION::UPLEFT || this->onStairDirection == ONSTAIRDIRECTION::UPRIGHT)
-			return true;
-		return false;
-	}
-	bool CheckCanStepDown() {
-		if (this->onStairDirection == ONSTAIRDIRECTION::DOWNLEFT || this->onStairDirection == ONSTAIRDIRECTION::DOWNRIGHT)
-			return true;
-		return false;
-	}
-	bool CheckIsOnStair() {
-		return this->isOnStair;
-	}
-	bool CheckCollideWithStair() {
-		return this->isColliceWithStair;
-	}
-	void SetStartStepOnStair() {
-		this->startOnStair = true;
-	}
+	
 };

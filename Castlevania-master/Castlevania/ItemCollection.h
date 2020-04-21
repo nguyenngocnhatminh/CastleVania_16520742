@@ -11,6 +11,7 @@
 #define DAGGER 3
 #define WHIP 4
 #define MONEYBAG 5
+#define CROWN 6
 
 class ItemCollection
 {

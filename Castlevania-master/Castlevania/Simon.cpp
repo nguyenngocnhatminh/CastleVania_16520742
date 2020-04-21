@@ -40,20 +40,20 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		untouchable = 0;
 	}
 
-	//if (dynamic_cast<PlayScene*>(scene))
-	//{
-	//	PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-	//	D3DXVECTOR2 cam = pScene->GetCamera();
+	if (dynamic_cast<PlayScene*>(scene))
+	{
+		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+		D3DXVECTOR2 cam = pScene->GetCamera();
 
-	//	if (x<cam.x)
-	//	{
-	//		x=cam.x;
-	//	}
+		if (x<cam.x)
+		{
+			x=cam.x;
+		}
 	//	else if (x > cam.x + SCREENSIZE::WIDTH - SIMON_BBOX_WIDTH)
 	//	{
 	//		x = cam.x + SCREENSIZE::WIDTH - SIMON_BBOX_WIDTH;
 	//	}
-	//}
+	}
 
 	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
@@ -77,7 +77,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			LPCOLLISIONEVENT e = coEventsResult[i];
 			if (dynamic_cast<Ground*>(e->obj)) {
 				if (e->ny != 0) { // kiểm tra va chạm trục y có va chạm trục y nhảy vào đây
-					if (GetState() == SIMON_STATE_JUMP) {
+					if (GetState() == SIMON_STATE_JUMP && vy>=0) {
 						SetState(SIMON_STATE_IDLE);
 					}
 					if (this->state == SIMON_STATE_FIGHT_STAND)

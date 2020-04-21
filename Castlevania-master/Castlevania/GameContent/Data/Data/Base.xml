@@ -9,6 +9,9 @@
 		<tex ID ="-100" name = "BBOX" path="textures\\bbox.png" red="255" green="255" blue ="255"/>
 		<tex ID ="-500" name = "Courtyard_bank" path="GameContent\\Data\\Map\\Courtyard_bank.png" red="255" green="255" blue ="255"/>
 		<tex ID ="-600" name = "dungeon_bank" path="GameContent\\Data\\Map\\dungeon_bank.png" red="255" green="255" blue ="255"/>
+		<tex ID ="-700" name ="map3_1_bank" path="GameContent\\Data\\Map\\map3_1_bank.png" red="255" green="255" blue="255"/>
+		<tex ID ="-800" name ="map3_2_bank" path="GameContent\\Data\\Map\\map3_2_bank.png" red="255" green="255" blue="255"/>
+		<tex ID= "-900" name ="map4_bank" path="GameContent\\Data\\Map\\Great_Hall_bank.png" red="255" green="255" blue="255"/>
 		<tex ID ="1" name = "WHIP" path="GameContent\\Data\\GameObject\\Weapons\\WHIPedip.png" red="255" green="255" blue ="255"/>
 		<tex ID ="2" name = "GroundPack" path="GameContent\\Data\\GameObject\\Ground\\groundObject.png" red="255" green="0" blue ="255"/>
 		<tex ID ="3" name = "ITEMPACK" path="GameContent\\Data\\GameObject\\Items\\ITEM_PACK.png" red="255" green="0" blue ="255"/>

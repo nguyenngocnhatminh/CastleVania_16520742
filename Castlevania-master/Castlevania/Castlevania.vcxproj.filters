@@ -162,6 +162,18 @@
     <ClInclude Include="Stair.h">
       <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
     </ClInclude>
+    <ClInclude Include="Candle.h">
+      <Filter>Source Files\Object\StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="BreakWall.h">
+      <Filter>Source Files\Object\StaticObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Crown.h">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomerangItem.h">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -265,6 +277,18 @@
     </ClCompile>
     <ClCompile Include="Stair.cpp">
       <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle.cpp">
+      <Filter>Source Files\Object\StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="BreakWall.cpp">
+      <Filter>Source Files\Object\StaticObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Crown.cpp">
+      <Filter>Source Files\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomerangItem.cpp">
+      <Filter>Source Files\Object\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

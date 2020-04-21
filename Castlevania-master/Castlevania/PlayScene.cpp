@@ -11,7 +11,8 @@
 #include"ItemCollection.h"
 #include "Entrance.h"
 #include"Stair.h"
-
+#include"Candle.h"
+#include"BreakWall.h"
 #include"TypeConverter.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
@@ -246,6 +247,7 @@ void PlayScene::OnCreate()
 				{
 					ItemCollection* item = new ItemCollection();
 					Item *mnBag = item->SpawnItem(MONEYBAG);
+					mnBag->SetIsHidden(true);
 					mnBag->SetPosition(child.second->GetX(), child.second->GetY() - child.second->GetHeight());
 					trigger->SetItem(mnBag);
 				}
@@ -298,8 +300,22 @@ void PlayScene::OnCreate()
 			}
 			break;
 		case OBirck:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				BreakWall* breakwall = new BreakWall();
+				breakwall->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				breakwall->SetItem(y.second->GetProperty("item"));
+				objects.push_back(breakwall);
+			}
 			break;
 		case OCandle:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				Candle* candle = new Candle();
+				candle->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				candle->SetItem(y.second->GetProperty("item"));
+				objects.push_back(candle);
+			}
 			break;
 		case ODoor:
 			break;
@@ -455,9 +471,28 @@ void PlayScene::OnKeyDown(int KeyCode)
 		SIMON->SetPosition(50.0f, 0.0f);
 		SIMON->SetSpeed(0, 0);
 		break;
+	case DIK_1:
+		CGame::GetInstance()->SwitchScene(0);
+		break;
+	case DIK_2:
+		CGame::GetInstance()->SwitchScene(1);
+		break;
+	case DIK_3:
+		CGame::GetInstance()->SwitchScene(2);
+		break;
+	case DIK_4:
+		CGame::GetInstance()->SwitchScene(3);
+		break;
+	case DIK_5:
+		CGame::GetInstance()->SwitchScene(4);
+		break;
+	case DIK_6:
+		CGame::GetInstance()->SwitchScene(5);
+		break;
 
 		break;
 	}
+
 }
 
 void PlayScene::OnKeyUp(int KeyCode)

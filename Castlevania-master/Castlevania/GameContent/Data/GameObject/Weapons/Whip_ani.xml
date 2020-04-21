@@ -12,7 +12,7 @@
 			<frame spriteID="WHIP_CHAIN_02" />
 			<frame spriteID="WHIP_CHAIN_03" />
 		</animation>
-		<animation ID="WHIP_ANI_MORNINGSTAR" defaulttime="25">
+		<animation ID="WHIP_ANI_MORNINGSTAR" defaulttime="20">
 			<frame spriteID="WHIP_MORNINGSTAR_01" />
 			<frame spriteID="WHIP_MORNINGSTAR_02" />
 			<frame spriteID="WHIP_MORNINGSTAR_03" />

@@ -7,6 +7,8 @@
 #include"PlayScene.h"
 #include"ItemCollection.h"
 #include"EffectCollection.h"
+#include"Candle.h"
+#include"BreakWall.h"
 
 void Whip::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
@@ -52,10 +54,62 @@ void Whip::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* colliable_objects
 					torch->SetDestroy();
 				}
 			}
-
-	
 		}
+		else if (dynamic_cast<Candle*>(colliable_objects->at(i)))
+		{
+			Candle* candle = dynamic_cast<Candle*>(colliable_objects->at(i));
+			if (this->isColliding(candle))
+			{
+				ItemCollection* itemcollection = new ItemCollection();
+				Item* item = itemcollection->SpawnItem(candle->GetItem());
+				EffectCollection* effectcollection = new EffectCollection();
+				Effect* spark = effectcollection->SpawnEffect(1);	//1: id spark
+				Effect* flame = effectcollection->SpawnEffect(2);	//2: id flame
+				if (dynamic_cast<PlayScene*>(scene))
+				{
+					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+					DebugOut(L"Va cham voi nen \n");
+					float tx, ty;
+					candle->GetPosition(tx, ty);
+					spark->SetPosition(tx, ty + 8);
+					flame->SetPosition(tx + 5, ty + 10);
+					item->SetPosition(tx, ty);
+					pScene->SpawnObject(spark);
+					pScene->SpawnObject(flame);
+					pScene->SpawnObject(item);
+					candle->Destroy();
+				}
+			}
+		}
+		else if (dynamic_cast<BreakWall*>(colliable_objects->at(i)))
+		{
+			BreakWall* breakwall = dynamic_cast<BreakWall*>(colliable_objects->at(i));
+			if(this->isColliding(breakwall))
+			{
+				ItemCollection* itemcollection = new ItemCollection();
+				Item* item = itemcollection->SpawnItem(breakwall->GetItem());
+				if (dynamic_cast<PlayScene*>(scene))
+				{
+					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+					DebugOut(L"Va cham voi gach \n");
+					float tx, ty;
+					breakwall->GetPosition(tx, ty);
+					if (breakwall->GetItem() != 0)
+					{
+						item->SetPosition(tx, ty);
+						breakwall->SetState(BREAKWALL_STATE_BREAK);
+						breakwall->SetDestroy();
+						pScene->SpawnObject(item);
+					}
+					else
+					{
+						breakwall->SetState(BREAKWALL_STATE_BREAK);
+						breakwall->SetDestroy();
+					}
+				}
 
+			}
+		}
 	}
 }
 

@@ -7,7 +7,7 @@
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
 
-#define MAX_FRAME_RATE 120
+#define MAX_FRAME_RATE 150
 
 #define ID_TEX_SIMON 0
 #define ID_TEX_ENEMY 10
