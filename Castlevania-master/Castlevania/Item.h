@@ -15,8 +15,8 @@ class Item :public CGameObject
 {
 protected:
 	bool isHiddenObject;
-	DWORD life_time; // thời gian tồn tại của Item
-	DWORD wait_time;// có vài item chờ cho effect xong mới xuất hiện
+	DWORD life_time; 
+	DWORD wait_time;
 public:
 	Item() :CGameObject() {
 		wait_time = GetTickCount();

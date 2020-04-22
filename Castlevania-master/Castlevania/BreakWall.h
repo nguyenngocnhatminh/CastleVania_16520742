@@ -1,14 +1,15 @@
 #pragma once
 #include"GameObject.h"
 
-#define BREAKWALL_BBOX_WIDTH 32
-#define BREAKWALL_BBOX_HEIGHT 32
+#define BREAKWALL_BBOX_WIDTH 30
+#define BREAKWALL_BBOX_HEIGHT 30
 #define BREAKWALL_STATE_NORMAL 0
 #define BREAKWALL_STATE_BREAK 1
 
 #define BREAKWALL_ANI_NORMAL 0
 #define BREAKWALL_ANI_BREAK 1
 
+#define WALL_BROKEN_TIME 20
 class BreakWall:public CGameObject
 {
 	int state;

@@ -1,5 +1,6 @@
 #include "Dagger.h"
-
+#include"PlayScene.h"
+#include "define.h"
 void Dagger::Render()
 {
 	if (isDestroy)
@@ -24,6 +25,17 @@ void Dagger::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 		return;
 	}
 	vx = nx > 0 ? this->vx = DAGGER_VX : this->vx = -DAGGER_VX;
+
+	if (dynamic_cast<PlayScene*>(scene))
+	{
+		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+		D3DXVECTOR2 cam = pScene->GetCamera();
+
+		if (x<cam.x || x>cam.x + SCREENSIZE::WIDTH)
+		{
+			this->isDestroy = true;
+		}
+	}
 
 	SubWeapon::Update(dt, scene, colliable_objects);
 

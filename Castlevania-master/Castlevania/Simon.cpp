@@ -15,6 +15,8 @@
 #include"Portal.h"
 #include"Stair.h"
 #include"define.h"
+#include"BreakWall.h"
+#include"Boomerang.h"
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
@@ -49,10 +51,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		{
 			x=cam.x;
 		}
-	//	else if (x > cam.x + SCREENSIZE::WIDTH - SIMON_BBOX_WIDTH)
-	//	{
-	//		x = cam.x + SCREENSIZE::WIDTH - SIMON_BBOX_WIDTH;
-	//	}
 	}
 
 	// No collision occured, proceed normally
@@ -68,16 +66,38 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
 		// block 
-		x += min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
-		if (ny <= 0) // ny lớn hơn 0 simon overlap với ground trong trường hợp simon va chạm heart theo ny
+		x += min_tx * dx + nx * 0.4f;		
+		if (ny <= 0) 
 			y += min_ty * dy + ny * 0.4f;
 
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
 			if (dynamic_cast<Ground*>(e->obj)) {
-				if (e->ny != 0) { // kiểm tra va chạm trục y có va chạm trục y nhảy vào đây
+				if (e->ny != 0) { 
 					if (GetState() == SIMON_STATE_JUMP && vy>=0) {
+						SetState(SIMON_STATE_IDLE);
+					}
+					if (this->state == SIMON_STATE_FIGHT_STAND)
+					{
+						vx = 0;
+					}
+					if (ny != 0) vy = 0;
+					// cần xét kỹ phương va chạm
+					if (state != SIMON_STATE_ENTERCASTLE)
+					{
+						if (nx != 0) vx = 0;
+					}
+
+				}
+				if (state == SIMON_STATE_ENTERCASTLE)
+				{
+					break;
+				}
+			}
+			else if (dynamic_cast<BreakWall*>(e->obj)) {
+				if (e->ny != 0) { // kiểm tra va chạm trục y có va chạm trục y nhảy vào đây
+					if (GetState() == SIMON_STATE_JUMP && vy >= 0) {
 						SetState(SIMON_STATE_IDLE);
 					}
 					if (this->state == SIMON_STATE_FIGHT_STAND)
@@ -116,6 +136,10 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						{
 							currenSubWeapon = DAGGER;
 						}
+						if (dynamic_cast<BoomerangItem*>(e->obj))
+						{
+							currenSubWeapon = BOOMERANG;
+						}
 						item->Destroy();
 					}
 
@@ -144,8 +168,11 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						auto pScene = dynamic_cast<PlayScene*>(scene);
 						pScene->SpawnObject(trigger->GetItem());
 					}
-
-
+				}
+				else if (dynamic_cast<Boomerang*>(e->obj))
+				{
+					Boomerang* bom= dynamic_cast<Boomerang*>(e->obj);
+					bom->Destroy();
 				}
 				else
 				{
@@ -196,7 +223,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		{
 			SubWeaponCollection* sub = new SubWeaponCollection();
 			SubWeapon* subWeapon = sub->SpawnSubWeapon(currenSubWeapon);
-			subWeapon->SetPosition(this->x, this->y);
+			subWeapon->SetPosition(this->x, this->y +0.1*SIMON_BBOX_HEIGHT);
 			subWeapon->SetNx(this->nx);
 			if (dynamic_cast<PlayScene*>(scene))
 			{

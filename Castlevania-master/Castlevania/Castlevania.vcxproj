@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="AxeItem.h" />
     <ClInclude Include="BigHeart.h" />
+    <ClInclude Include="Boomerang.h" />
     <ClInclude Include="BoomerangItem.h" />
     <ClInclude Include="BreakWall.h" />
     <ClInclude Include="Brick.h" />
@@ -194,6 +195,7 @@
   <ItemGroup>
     <ClCompile Include="AxeItem.cpp" />
     <ClCompile Include="BigHeart.cpp" />
+    <ClCompile Include="Boomerang.cpp" />
     <ClCompile Include="BoomerangItem.cpp" />
     <ClCompile Include="BreakWall.cpp" />
     <ClCompile Include="Brick.cpp" />

@@ -1,14 +1,8 @@
-﻿  Simon.cpp
+﻿  SubWeapon.cpp
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,24): warning C4018: '<': signed/unsigned mismatch
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(33,25): warning C4018: '<': signed/unsigned mismatch
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(20,1): warning C4005: 'MONEYBAG': macro redefinition
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(11): message : see previous definition of 'MONEYBAG'
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(21,1): warning C4005: 'CROWN': macro redefinition
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(12): message : see previous definition of 'CROWN'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.h(5,1): warning C4005: 'DAGGER': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(10): message : see previous definition of 'DAGGER'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(174,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(174,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(178,64): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(186,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Castlevania.vcxproj -> D:\hoc\Game\CastleVania\Castlevania-master\Debug\Castlevania.exe

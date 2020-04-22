@@ -226,7 +226,7 @@ void PlayScene::Load()
 		case OGround:
 			for (auto const& y : x.second->GetObjectGroup())
 			{
-				HiddenObject* ground = new Ground();
+				Ground* ground = new Ground();
 				// với loại object vẽ bằng hình chữ nhật 
 				// không - y.second->GetHeight()
 				ground->SetPosition(y.second->GetX(), y.second->GetY());

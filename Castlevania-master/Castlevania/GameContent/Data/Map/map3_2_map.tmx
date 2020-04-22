@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="47" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="41">
+<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="47" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="43">
  <tileset firstgid="1" name="map3_2_bank.png" tilewidth="32" tileheight="32" tilecount="363" columns="33">
   <image source="map3_2_bank.png" width="1056" height="352"/>
  </tileset>
@@ -526,7 +526,7 @@
   </data>
  </layer>
  <objectgroup id="2" name="Player">
-  <object id="2" x="1403.33" y="134" width="38" height="48"/>
+  <object id="2" x="59.33" y="227.333" width="38" height="48"/>
  </objectgroup>
  <objectgroup id="3" name="Ground">
   <object id="4" x="2" y="0" width="34" height="348"/>
@@ -536,7 +536,7 @@
   <object id="8" x="300" y="292" width="320" height="26.6667"/>
   <object id="9" x="429.333" y="160" width="62.6667" height="32"/>
   <object id="10" x="686.667" y="290.667" width="61.3333" height="29.3333"/>
-  <object id="11" x="816" y="225.333" width="62.6667" height="32"/>
+  <object id="11" x="816" y="225.333" width="62.6667" height="26.6667"/>
   <object id="12" x="880" y="288" width="61.3333" height="30.6667"/>
   <object id="13" x="941.333" y="192" width="66.6667" height="32"/>
   <object id="14" x="944" y="320" width="124" height="29.3333"/>
@@ -550,21 +550,21 @@
   <object id="24" x="1492" y="124" width="13.3333" height="101.333"/>
  </objectgroup>
  <objectgroup id="4" name="Camera">
-  <object id="1" x="-4.26326e-14" y="-1.33333" width="1504" height="354"/>
+  <object id="1" x="2.66667" y="-2.66666" width="1504" height="354"/>
  </objectgroup>
  <objectgroup id="5" name="Candle">
   <object id="26" gid="364" x="289.333" y="133.333" width="16" height="32">
-    <properties>
+   <properties>
     <property name="item" type="int" value="1"/>
    </properties>
   </object>
   <object id="27" gid="364" x="418.667" y="258.667" width="16" height="32">
-    <properties>
+   <properties>
     <property name="item" type="int" value="2"/>
    </properties>
   </object>
   <object id="29" gid="364" x="541.333" y="261.333" width="16" height="32">
-    <properties>
+   <properties>
     <property name="item" type="int" value="2"/>
    </properties>
   </object>
@@ -572,36 +572,36 @@
    <properties>
     <property name="item" type="int" value="2"/>
    </properties>
-  </object> 
+  </object>
   <object id="34" gid="364" x="818.667" y="194.667" width="16" height="32">
    <properties>
     <property name="item" type="int" value="2"/>
    </properties>
-  </object> 
+  </object>
   <object id="35" gid="364" x="932" y="292" width="16" height="32">
    <properties>
     <property name="item" type="int" value="2"/>
    </properties>
-  </object> 
+  </object>
   <object id="37" gid="364" x="1060" y="292" width="16" height="32">
    <properties>
     <property name="item" type="int" value="2"/>
    </properties>
-  </object> 
+  </object>
   <object id="38" gid="364" x="1186.67" y="258.667" width="16" height="32">
    <properties>
     <property name="item" type="int" value="10"/>
    </properties>
-  </object> 
+  </object>
   <object id="39" gid="364" x="1320" y="260" width="16" height="32">
    <properties>
     <property name="item" type="int" value="2"/>
    </properties>
-  </object> 
+  </object>
   <object id="40" gid="364" x="1446.67" y="165.333" width="16" height="32">
    <properties>
     <property name="item" type="int" value="5"/>
    </properties>
-  </object> 
+  </object>
  </objectgroup>
 </map>

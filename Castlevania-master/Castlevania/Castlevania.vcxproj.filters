@@ -204,6 +204,9 @@
     <ClInclude Include="GoldPotion.h">
       <Filter>Source Files\Object\Item\Other</Filter>
     </ClInclude>
+    <ClInclude Include="Boomerang.h">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -337,6 +340,9 @@
     </ClCompile>
     <ClCompile Include="GoldPotion.cpp">
       <Filter>Source Files\Object\Item\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Boomerang.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

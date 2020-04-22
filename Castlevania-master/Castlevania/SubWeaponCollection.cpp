@@ -7,5 +7,7 @@ SubWeapon* SubWeaponCollection::SpawnSubWeapon(int id)
 		case DAGGER:
 			return new Dagger();
 			break;
+		case BOOMERANG:
+			return new Boomerang();
 	}
 }

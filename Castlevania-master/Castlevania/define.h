@@ -16,7 +16,7 @@
 
 const enum  SCREENSIZE
 {
-	WIDTH=520,
+	WIDTH=516,
 	HEIGHT=420
 };
 

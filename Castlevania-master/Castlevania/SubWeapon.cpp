@@ -8,6 +8,7 @@
 #include"ItemCollection.h"
 #include"EffectCollection.h"
 #include "define.h"
+#include"Candle.h"
 void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
 
@@ -16,16 +17,6 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		return;
 	}
 	CGameObject::Update(dt, scene);
-	if (dynamic_cast<PlayScene*>(scene))
-	{
-		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-		D3DXVECTOR2 cam = pScene->GetCamera();
-
-		if (x<cam.x || x>cam.x + SCREENSIZE::WIDTH)
-		{
-			this->isDestroy = true;
-		}
-	}
 
 
 	vector<LPCOLLISIONEVENT> coEvents;
@@ -77,8 +68,30 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					}
 				
 			}
+			else if (dynamic_cast<Candle*>(e->obj)) {
 
+				Candle* candle = dynamic_cast<Candle*>(e->obj);
+				ItemCollection* itemcollection = new ItemCollection();
+				Item* item = itemcollection->SpawnItem(candle->GetItem());
+				EffectCollection* effectcollection = new EffectCollection();
+				Effect* spark = effectcollection->SpawnEffect(1);	//1: id spark
+				Effect* flame = effectcollection->SpawnEffect(2);	//2: id flame
+				if (dynamic_cast<PlayScene*>(scene))
+				{
+					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+					DebugOut(L"Va cham voi torch \n");
+					float tx, ty;
+					candle->GetPosition(tx, ty);
+					spark->SetPosition(tx, ty + 8);
+					flame->SetPosition(tx + 5, ty + 10);
+					item->SetPosition(tx, ty);
+					pScene->SpawnObject(spark);
+					pScene->SpawnObject(flame);
+					pScene->SpawnObject(item);
+					candle->SetDestroy();
+				}
 
+			}
 			else {
 				if (nx != 0)
 					x += dx;
