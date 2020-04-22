@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<animations AtlasPath="Item2_sprite.xml">
+		<animation ID="CROWN_ITEM_COLOR" defaulttime="100">
+			<frame spriteID="CROWN_GOLD" />
+			<frame spriteID="CROWN_PURPLE" />
+			<frame spriteID="CROWN_BLUE" />
+			<frame spriteID="CROWN_RED" />
+		</animation>
+		<animation ID="CROWN_ITEM_GOLD" defaulttime="100">
+			<frame spriteID="CROWN_GOLD" />
+		</animation>
+		<animation ID="CROWN_ITEM_PURPLE" defaulttime="100">
+			<frame spriteID="CROWN_PURPLE" />
+		</animation>
+		<animation ID="CROWN_ITEM_BLUE" defaulttime="100">
+			<frame spriteID="CROWN_BLUE" />
+		</animation>
+		<animation ID="CROWN_ITEM_GOLD" defaulttime="100">
+			<frame spriteID="CROWN_RED" />
+		</animation>
+		<animation ID="BOOMERANG_ITEM_ANI" defaulttime="100">
+			<frame spriteID="BOOMERANG_ITEM" />
+		</animation>
+	</animations>
+</resource>

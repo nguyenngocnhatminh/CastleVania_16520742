@@ -6,7 +6,7 @@ class Crown :public Item
 public:
 	Crown() :Item()
 	{
-	//	AddAnimation("Crown_ANI_COLOR");
+		AddAnimation("CROWN_ITEM_COLOR");
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

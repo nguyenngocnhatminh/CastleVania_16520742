@@ -1096,7 +1096,11 @@
   <object id="20" x="2.66301" y="-5.69148" width="1503.03" height="357.576"/>
  </objectgroup>
  <objectgroup id="9" name="MoneyBagTrigger">
-  <object id="17" x="1407.5" y="274" width="75.5" height="10"/>
+  <object id="17" x="1407.5" y="274" width="75.5" height="10">
+	<properties>
+		<property name="item" type="int" value="5"/>
+    </properties>
+  </object>
  </objectgroup>
  <objectgroup id="10" name="MoneyBag">
   <object id="18" gid="155" x="1237.5" y="317" width="31" height="30"/>

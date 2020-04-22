@@ -18,9 +18,9 @@ public:
 		this->TexID = TexId;
 	}
 	//dùng thay thế cho controctor mấy lớp kế  thừa
-	virtual void OnCreate() = 0;
+	virtual void Load() = 0;
 	//dùng thay thế cho distractor mấy lớp kế  thừa
-	virtual void OnDestroy() = 0;
+	virtual void UnLoad() = 0;
 
 
 	virtual void Update(DWORD deltaTime) = 0;

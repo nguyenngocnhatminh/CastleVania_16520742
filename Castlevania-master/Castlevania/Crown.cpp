@@ -9,7 +9,7 @@ void Crown::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
 	l = x;
 	t = y;
-	r = x + 32;
+	r = x + 30;
 	b = y + 30;
 }
 

@@ -208,6 +208,7 @@
     <ClCompile Include="HiddenObject.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemCollection.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Stair.cpp" />
     <ClCompile Include="TileLayer.cpp" />
     <ClCompile Include="main.cpp" />

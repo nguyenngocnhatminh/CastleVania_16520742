@@ -21,9 +21,9 @@ public:
     void SpawnObject(LPGAMEOBJECT obj) { this->qObjects.push(obj); }
     // overide nó dùng để kt xem mình truyền các parameter vào đúng kiểu
     // của hàm kế thừa k
-    //oncreate ta dùng load resource
-    void OnCreate() override;
-    void OnDestroy() override;
+    //Load ta dùng load resource
+    void Load() override;
+    void UnLoad() override;
     
     // như hàm update ở đây phải đúng kiểu ưord
     void Update(DWORD deltaTime) override;

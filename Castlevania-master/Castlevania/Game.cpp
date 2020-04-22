@@ -213,7 +213,7 @@ void CGame::ProcessKeyboard()
 	}
 }
 
-void CGame::OnCreate()
+void CGame::Load()
 {
 
 	const std::string filePath = "GameContent\\Data\\Data\\Scene.xml";
@@ -280,14 +280,14 @@ void CGame::SwitchScene(int scene_id)
 {
 	DebugOut(L"[INFO] Switching to scene %d\n", scene_id);
 
-	scenes[current_scene]->OnDestroy();;
+	scenes[current_scene]->UnLoad();;
 
 	CTextures::GetInstance()->Clear();
 	CSprites::GetInstance()->Clear();
 	CAnimations::GetInstance()->Clear();
 	current_scene = scene_id;
 	Scene* s = scenes[scene_id];
-	s->OnCreate();
+	s->Load();
 }
 
 CGame::~CGame()

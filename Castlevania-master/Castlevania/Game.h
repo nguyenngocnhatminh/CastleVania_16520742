@@ -64,7 +64,7 @@ public:
 	/// ta thao tác update loadresouce, render thông qua lớp game
 
 	// load toàn bộ scene lưu vào scenestagemachine
-	void OnCreate();
+	void Load();
 	void Update(DWORD deltaTime);
 	void Render();
 

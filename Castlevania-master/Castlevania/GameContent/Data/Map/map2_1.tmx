@@ -202,13 +202,7 @@
    <tile gid="16"/>
   </data>
  </layer>
- <objectgroup id="8" name="Entrance">
-  <object id="17" x="416.813" y="337.464" width="29.4056" height="16.3365">
-   <properties>
-    <property name="Map_ID" type="int" value="2"/>
-   </properties>
-  </object>
- </objectgroup>
+ <objectgroup id="8" name="Entrance"/>
  <objectgroup id="12" name="Brick">
   <object id="72" gid="98" x="447" y="193" width="32" height="32">
    <properties>
@@ -222,20 +216,24 @@
   </object>
  </objectgroup>
  <objectgroup id="7" name="Camera">
-  <object id="22" x="-1" y="2" width="514.667" height="384"/>
+  <object id="22" x="-4" y="2" width="514.667" height="384"/>
  </objectgroup>
  <objectgroup id="10" name="MoneyBagTrigger">
-  <object id="76" x="448" y="217" width="29" height="9"/>
+  <object id="76" x="448" y="217" width="29" height="9">
+   <properties>
+    <property name="item" type="int" value="6"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="13" name="Candle">
-  <object id="64" gid="96" x="304" y="46" width="16" height="32">
+  <object id="64" gid="96" x="287" y="63" width="16" height="32">
    <properties>
     <property name="item" type="int" value="5"/>
    </properties>
   </object>
   <object id="78" gid="96" x="149" y="268" width="16" height="32">
    <properties>
-    <property name="item" type="int" value="1"/>
+    <property name="item" type="int" value="7"/>
    </properties>
   </object>
   <object id="79" gid="96" x="409" y="266" width="16" height="32">
@@ -256,10 +254,10 @@
   <object id="74" x="478" y="161" width="34" height="189"/>
  </objectgroup>
  <objectgroup id="11" name="MoneyBag">
-  <object id="77" gid="99" x="192" y="384" width="31" height="30"/>
+  <object id="77" gid="99" x="256" y="384" width="31" height="30"/>
  </objectgroup>
  <objectgroup id="2" name="Player">
-  <object id="13" x="77.667" y="275.333" width="25.3333" height="70.6667"/>
+  <object id="13" x="390.667" y="147.333" width="25.3333" height="70.6667"/>
  </objectgroup>
  <objectgroup id="11" name="Stair">
   <object id="14" x="222.5" y="338" width="16.5" height="15"/>

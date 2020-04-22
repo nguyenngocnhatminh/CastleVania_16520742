@@ -119,7 +119,7 @@ D3DXVECTOR2 PlayScene::GetCamera()
 {
 	return CGame::GetInstance()->GetCamera();
 }
-void PlayScene::OnCreate()
+void PlayScene::Load()
 {
 	
 	CTextures* textures = CTextures::GetInstance();
@@ -246,7 +246,7 @@ void PlayScene::OnCreate()
 				for (auto const& child : moneyBagLayer->GetObjectGroup())
 				{
 					ItemCollection* item = new ItemCollection();
-					Item *mnBag = item->SpawnItem(MONEYBAG);
+					Item *mnBag = item->SpawnItem(y.second->GetProperty("item"));
 					mnBag->SetIsHidden(true);
 					mnBag->SetPosition(child.second->GetX(), child.second->GetY() - child.second->GetHeight());
 					trigger->SetItem(mnBag);
@@ -338,7 +338,7 @@ void PlayScene::OnCreate()
 	}
 
 // dọn rác
-void PlayScene::OnDestroy()
+void PlayScene::UnLoad()
 {
 	for (int i = 0; i < objects.size(); i++)
 	{

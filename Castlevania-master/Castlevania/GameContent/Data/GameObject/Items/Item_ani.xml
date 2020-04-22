@@ -56,7 +56,7 @@
 		</animation>
 		
 		
-			<animation ID="CRYSTALL_ITEM_ANI" defaulttime="100">
+		<animation ID="CRYSTALL_ITEM_ANI" defaulttime="100">
 			<frame spriteID="CRYSTALL_ITEM_01" />
 		</animation>
 	</animations>

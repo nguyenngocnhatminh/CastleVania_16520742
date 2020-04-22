@@ -17,6 +17,7 @@
 		<tex ID ="3" name = "ITEMPACK" path="GameContent\\Data\\GameObject\\Items\\ITEM_PACK.png" red="255" green="0" blue ="255"/>
 		<tex ID ="4" name = "SubWeaponPack" path="GameContent\\Data\\GameObject\\SubWeapon\\subweapon_pack.png" red="255" green="0" blue ="255"/>
 		<tex ID ="5" name = "EFFECTPACK" path="GameContent\\Data\\GameObject\\Effect\\EFFECT_PACK.png" red="255" green="0" blue ="255"/>
+		<tex ID="6" name="Item_Pack2" path="GameContent\\Data\\GameObject\\Items\\Item_Pack2.png" red="116" green="116" blue="116"/>
 	</textures>
 
 	<sprites>
@@ -26,6 +27,7 @@
 		<objectSprite idTex="3" name="ITEM" path="GameContent\\Data\\GameObject\\Items\\Item_sprite.xml"/>
 		<objectSprite idTex="4" name="SubWeapon" path="GameContent\\Data\\GameObject\\SubWeapon\\SubWeapon_sprite.xml"/>
 		<objectSprite idTex="5" name="EFFECT" path="GameContent\\Data\\GameObject\\Effect\\Effect_sprite.xml"/>
+		<objectSprite idTex="6" nme="ITEM2" path="GameContent\\Data\\GameObject\\Items\\Item2_sprite.xml"/>
 	</sprites>
 
 	<animations>
@@ -35,6 +37,7 @@
 		<objectani name="item" path="GameContent\\Data\\GameObject\\Items\\Item_ani.xml"/>
 		<objectani name="subWeapon" path="GameContent\\Data\\GameObject\\SubWeapon\\SubWeapon_ani.xml"/>
 		<objectani name="effect" path="GameContent\\Data\\GameObject\\Effect\\Effect_ani.xml"/>
+		<objectani name="item2" path="GameContent\\Data\\GameObject\\Items\\Item2_ani.xml"/>
 	</animations>
 	
 

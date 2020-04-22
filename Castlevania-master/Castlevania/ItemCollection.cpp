@@ -18,5 +18,12 @@ Item* ItemCollection::SpawnItem(int id)
 			break;
 		case MONEYBAG:
 			return new MoneyBag();
+			break;
+		case CROWN:
+			return new Crown();
+			break;
+		case BOOMERANG:
+			return new BoomerangItem();
+			break;
 	}
 }

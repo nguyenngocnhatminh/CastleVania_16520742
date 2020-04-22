@@ -69,9 +69,9 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 		// block 
 		x += min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
-		y += min_ty * dy + ny * 0.4f;
+		if (ny <= 0) // ny lớn hơn 0 simon overlap với ground trong trường hợp simon va chạm heart theo ny
+			y += min_ty * dy + ny * 0.4f;
 
-		// Collision logic with Goombas
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
@@ -98,7 +98,8 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				}
 				// cần xét kỹ phương va chạm
 			}
-			else {
+			else
+			{
 				if (dynamic_cast<Item*>(e->obj))
 				{
 					Item* item = dynamic_cast<Item*>(e->obj);
@@ -121,11 +122,20 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				}
 				else if (dynamic_cast<Entrance*>(e->obj))
 				{
+					if (e->nx != 0) // va chạm chiều x
+						x += dx;
+					if (e->ny != 0)
+						y += dy;
 					auto entrance = dynamic_cast<Entrance*>(e->obj);
-					CGame::GetInstance()->SwitchScene(entrance->GetNextMapId());				
+					CGame::GetInstance()->SwitchScene(entrance->GetNextMapId());
+
 				}
 				else if (dynamic_cast<MoneyTrigger*>(e->obj))
 				{
+					if (e->nx != 0) // va chạm chiều x
+						x += dx;
+					if (e->ny != 0)
+						y += dy;
 					auto trigger = dynamic_cast<MoneyTrigger*>(e->obj);
 					trigger->SetDestroy();
 
@@ -135,15 +145,16 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						pScene->SpawnObject(trigger->GetItem());
 					}
 
-				}
-				if (e->nx != 0) // va chạm chiều x
-					x += dx;
-				if (e->ny != 0)
-					y += dy;
-			
-			}
-			 
 
+				}
+				else
+				{
+					if (e->nx != 0) // va chạm chiều x
+						x += dx;
+					if (e->ny != 0)
+						y += dy;
+				}
+			}
 		}
 	}
 
