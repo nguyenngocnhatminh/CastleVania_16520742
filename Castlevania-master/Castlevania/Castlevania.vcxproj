@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AxeItem.h" />
     <ClInclude Include="BigHeart.h" />
     <ClInclude Include="BoomerangItem.h" />
     <ClInclude Include="BreakWall.h" />
@@ -155,9 +156,12 @@
     <ClInclude Include="DaggerItem.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="define.h" />
+    <ClInclude Include="DoubleShot.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectCollection.h" />
-    <ClInclude Include="Entrance.h" />
+    <ClInclude Include="Food.h" />
+    <ClInclude Include="GoldPotion.h" />
+    <ClInclude Include="Portal.h" />
     <ClInclude Include="flame.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
@@ -165,6 +169,7 @@
     <ClInclude Include="Heart.h" />
     <ClInclude Include="HiddenItem.h" />
     <ClInclude Include="HiddenObject.h" />
+    <ClInclude Include="HolyWaterItem.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemCollection.h" />
     <ClInclude Include="Stair.h" />
@@ -187,6 +192,7 @@
     <ClInclude Include="WhipItem.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AxeItem.cpp" />
     <ClCompile Include="BigHeart.cpp" />
     <ClCompile Include="BoomerangItem.cpp" />
     <ClCompile Include="BreakWall.cpp" />
@@ -196,9 +202,12 @@
     <ClCompile Include="Dagger.cpp" />
     <ClCompile Include="DaggerItem.cpp" />
     <ClCompile Include="debug.cpp" />
+    <ClCompile Include="DoubleShot.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectCollection.cpp" />
-    <ClCompile Include="Entrance.cpp" />
+    <ClCompile Include="Food.cpp" />
+    <ClCompile Include="GoldPotion.cpp" />
+    <ClCompile Include="Portal.cpp" />
     <ClCompile Include="flame.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -206,6 +215,7 @@
     <ClCompile Include="Heart.cpp" />
     <ClCompile Include="HiddenItem.cpp" />
     <ClCompile Include="HiddenObject.cpp" />
+    <ClCompile Include="HolyWaterItem.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemCollection.cpp" />
     <ClCompile Include="Scene.cpp" />

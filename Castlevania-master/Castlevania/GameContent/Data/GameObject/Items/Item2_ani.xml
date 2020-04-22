@@ -22,5 +22,11 @@
 		<animation ID="BOOMERANG_ITEM_ANI" defaulttime="100">
 			<frame spriteID="BOOMERANG_ITEM" />
 		</animation>
+		<animation ID="FOOD_ANI" defaulttime="100">
+			<frame spriteID="FOOD_ITEM"/>
+		</animation>
+		<animation ID="GOLD_POTION_ANI" defaulttime="100">
+			<frame spriteID="GOLD_POTION_ITEM"/>
+		</animation>
 	</animations>
 </resource>

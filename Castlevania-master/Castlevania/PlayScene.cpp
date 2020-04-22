@@ -9,7 +9,7 @@
 #include"Torch.h"
 #include"MoneyTrigger.h"
 #include"ItemCollection.h"
-#include "Entrance.h"
+#include"Portal.h"
 #include"Stair.h"
 #include"Candle.h"
 #include"BreakWall.h"
@@ -125,8 +125,6 @@ void PlayScene::Load()
 	CTextures* textures = CTextures::GetInstance();
 	CSprites* sprites = CSprites::GetInstance();
 	CAnimations* animations = CAnimations::GetInstance();
-
-	
 
 	const std::string filePath = "GameContent\\Data\\Data\\Base.xml";
 
@@ -265,14 +263,14 @@ void PlayScene::Load()
 			break;
 		case ONextmap:
 			break;
-		case OEntrance:
+		case OPortal:
 			for (auto const& y : x.second->GetObjectGroup())
 			{
-				Entrance* entrance = new Entrance();
-				entrance->SetSize(y.second->GetWidth(), y.second->GetHeight());
-				entrance->SetPosition(y.second->GetX(), y.second->GetY());
-				entrance->setNextMapId(y.second->GetProperty("Map_ID"));
-				objects.push_back(entrance);
+				Portal* portal = new Portal();
+				portal->SetSize(y.second->GetWidth(), y.second->GetHeight());
+				portal->SetPosition(y.second->GetX(), y.second->GetY());
+				portal->setNextMapId(y.second->GetProperty("Map_ID"));
+				objects.push_back(portal);
 			}
 			break;
 		case OMoneyBag:

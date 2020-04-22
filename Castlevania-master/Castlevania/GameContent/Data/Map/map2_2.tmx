@@ -397,7 +397,7 @@
  <objectgroup id="7" name="Brick">
   <object id="50" gid="170" x="703" y="191" width="32" height="32">
   <properties>
-  <property name="item" type="int" value="0"/>
+  <property name="item" type="int" value="8"/>
   </properties>
   </object>
  </objectgroup>

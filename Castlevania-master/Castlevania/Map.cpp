@@ -4,15 +4,13 @@
 #include"Sprites.h"
 void Map::BuildMap(const std::string path)
 {
-	char* fileLoc = new char[path.size() + 1]; // filepath lưu đường dẫn đến file XML đang đọc
-
+	char* fileLoc = new char[path.size() + 1]; 
 #ifdef MACOS
 	strlcpy(fileLoc, file.c_str(), file.size() + 1);
 #else
 	strcpy_s(fileLoc, path.size() + 1, path.c_str());
 #endif 
 
-	//TODO: error checking - check file exists before attempting open.
 	rapidxml::file<> xmlFile(fileLoc);
 	rapidxml::xml_document<> doc;
 	doc.parse<0>(xmlFile.data());

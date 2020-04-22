@@ -5,27 +5,22 @@
 #include<queue>
 class PlayScene:public Scene
 {
-    RECT cameraBoder;// giới hạn vùng hiển thị cam
+    RECT cameraBoder;
     CSIMON* SIMON;
     vector<LPGAMEOBJECT> objects;
     Map* gameMap;
     void LoadSprite(const std::string& filePath, const int tex);
     void LoadAnimation(const string& filePath);
-    // lưu những object vừa thêm vào ở lần upload hiện tại vào hàng đợi
-    // sẽ thêm vào ds objects ở lần cập nhật tiếp theo
+
     std::queue<LPGAMEOBJECT> qObjects;
 
 public:
     PlayScene(int id, std::string filepath,int TexId):Scene(id,filepath,TexId) {}
     D3DXVECTOR2 GetCamera();
     void SpawnObject(LPGAMEOBJECT obj) { this->qObjects.push(obj); }
-    // overide nó dùng để kt xem mình truyền các parameter vào đúng kiểu
-    // của hàm kế thừa k
-    //Load ta dùng load resource
     void Load() override;
     void UnLoad() override;
     
-    // như hàm update ở đây phải đúng kiểu ưord
     void Update(DWORD deltaTime) override;
     void Render() override;
 

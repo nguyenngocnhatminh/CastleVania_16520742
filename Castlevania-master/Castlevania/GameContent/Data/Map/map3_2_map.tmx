@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="47" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="26">
+<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="47" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="41">
  <tileset firstgid="1" name="map3_2_bank.png" tilewidth="32" tileheight="32" tilecount="363" columns="33">
   <image source="map3_2_bank.png" width="1056" height="352"/>
  </tileset>
+ <tileset firstgid="364" source="Candle.tsx"/>
  <layer id="1" name="ShoeBox Tile Grab" width="47" height="11">
   <data>
    <tile gid="1"/>
@@ -550,5 +551,57 @@
  </objectgroup>
  <objectgroup id="4" name="Camera">
   <object id="1" x="-4.26326e-14" y="-1.33333" width="1504" height="354"/>
+ </objectgroup>
+ <objectgroup id="5" name="Candle">
+  <object id="26" gid="364" x="289.333" y="133.333" width="16" height="32">
+    <properties>
+    <property name="item" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="27" gid="364" x="418.667" y="258.667" width="16" height="32">
+    <properties>
+    <property name="item" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="29" gid="364" x="541.333" y="261.333" width="16" height="32">
+    <properties>
+    <property name="item" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="30" gid="364" x="674.667" y="260" width="16" height="32">
+   <properties>
+    <property name="item" type="int" value="2"/>
+   </properties>
+  </object> 
+  <object id="34" gid="364" x="818.667" y="194.667" width="16" height="32">
+   <properties>
+    <property name="item" type="int" value="2"/>
+   </properties>
+  </object> 
+  <object id="35" gid="364" x="932" y="292" width="16" height="32">
+   <properties>
+    <property name="item" type="int" value="2"/>
+   </properties>
+  </object> 
+  <object id="37" gid="364" x="1060" y="292" width="16" height="32">
+   <properties>
+    <property name="item" type="int" value="2"/>
+   </properties>
+  </object> 
+  <object id="38" gid="364" x="1186.67" y="258.667" width="16" height="32">
+   <properties>
+    <property name="item" type="int" value="10"/>
+   </properties>
+  </object> 
+  <object id="39" gid="364" x="1320" y="260" width="16" height="32">
+   <properties>
+    <property name="item" type="int" value="2"/>
+   </properties>
+  </object> 
+  <object id="40" gid="364" x="1446.67" y="165.333" width="16" height="32">
+   <properties>
+    <property name="item" type="int" value="5"/>
+   </properties>
+  </object> 
  </objectgroup>
 </map>

@@ -16,5 +16,11 @@
 		<sprite ID="BOOMERANG_ITEM">
 			<frame x="173" y="37" width="30" height="30" />
 		</sprite>
+		<sprite ID="FOOD_ITEM">
+			<frame x="3" y="71" width="30" height ="30"/>
+		</sprite>
+		<sprite ID="GOLD_POTION_ITEM">
+			<frame x="38" y="71" width="30" height="30"/>
+		</sprite>
 	</spritesheet>
 </resource>

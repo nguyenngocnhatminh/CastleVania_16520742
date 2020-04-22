@@ -12,7 +12,7 @@
 #include"DaggerItem.h"
 #include"SubWeaponCollection.h"
 #include"SubWeapon.h"
-#include"Entrance.h"
+#include"Portal.h"
 #include"Stair.h"
 #include"define.h"
 
@@ -120,14 +120,14 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					}
 
 				}
-				else if (dynamic_cast<Entrance*>(e->obj))
+				else if (dynamic_cast<Portal*>(e->obj))
 				{
 					if (e->nx != 0) // va chạm chiều x
 						x += dx;
 					if (e->ny != 0)
 						y += dy;
-					auto entrance = dynamic_cast<Entrance*>(e->obj);
-					CGame::GetInstance()->SwitchScene(entrance->GetNextMapId());
+					auto portal = dynamic_cast<Portal*>(e->obj);
+					CGame::GetInstance()->SwitchScene(portal->GetNextMapId());
 
 				}
 				else if (dynamic_cast<MoneyTrigger*>(e->obj))
@@ -169,11 +169,24 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		{
 			if (this->state == SIMON_STATE_FIGHT_SIT)
 			{
-				whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y + 0.25 * SIMON_BBOX_HEIGHT);
+				if (nx > 0)
+				{
+					whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y + 0.25 * SIMON_BBOX_HEIGHT);
+				}
+				else
+				{
+					whip->SetPosition(this->x - 2 * SIMON_BBOX_WIDTH, this->y + 0.25 * SIMON_BBOX_HEIGHT);
+				}
+				
 			}
 			else
 			{
-				whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y);
+				if (nx > 0)
+				{
+					whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y);
+				}
+				else
+					whip->SetPosition(this->x - 2*SIMON_BBOX_WIDTH, this->y);
 			}
 
 			whip->SetNxDirection(this->nx);

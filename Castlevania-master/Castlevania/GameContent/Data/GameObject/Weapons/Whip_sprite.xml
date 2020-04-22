@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resource>
-	<spritesheet TextureAtlas="Simon.png">
+	<spritesheet TextureAtlas="WHIPedip.png">
 		<sprite ID="WHIP_LV1_01">
 			<frame x="480" y="0" width="240" height="66" />
 		</sprite>

@@ -7,6 +7,11 @@
 #include"MoneyBag.h"
 #include "Crown.h"
 #include"BoomerangItem.h"
+#include"DoubleShot.h"
+#include"HolyWaterItem.h"
+#include"AxeItem.h"
+#include"Food.h"
+#include"GoldPotion.h"
 
 #define BIGHEART 1
 #define SMALLHEART 2
@@ -15,6 +20,11 @@
 #define MONEYBAG 5
 #define CROWN 6
 #define BOOMERANG 7
+#define DOUBLESHOT 8
+#define HOLYWATER 9
+#define AXE 10
+#define FOOD 11
+#define GOLDPOTION 12
 
 class ItemCollection
 {

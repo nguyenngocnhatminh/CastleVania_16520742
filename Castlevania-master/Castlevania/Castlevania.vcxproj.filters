@@ -31,9 +31,6 @@
     <Filter Include="Source Files\Object\StaticObjects">
       <UniqueIdentifier>{275cc7ad-810f-43cc-a9a8-02f482289eae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Object\StaticObjects\Hidden">
-      <UniqueIdentifier>{be8497c8-ed58-4b00-8422-666ff77929fc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Object\PlayerAndWeapon">
       <UniqueIdentifier>{b7a250e7-9a88-4ef1-893c-e07e8b229efc}</UniqueIdentifier>
     </Filter>
@@ -49,25 +46,40 @@
     <Filter Include="Source Files\Object\Item">
       <UniqueIdentifier>{5aec96d1-4b32-4830-8979-41a0ccd63d1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Framework\Map">
+    <Filter Include="Source Files\Map">
       <UniqueIdentifier>{dec049cb-316c-4a6d-8fca-ecad14691fb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item\Weapon &amp; Subweapon">
+      <UniqueIdentifier>{b105a649-04ee-474a-b5e9-cacb9adc6077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item\Heart">
+      <UniqueIdentifier>{f0cab1fc-6561-4625-8380-c364eb1e21e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item\Point">
+      <UniqueIdentifier>{77e4e231-8f38-46d1-ab25-bb1b9de40504}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item\Other">
+      <UniqueIdentifier>{281151fa-7b8a-49e6-9f56-93c049d851f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\StaticObjects\HiddenObjects">
+      <UniqueIdentifier>{be8497c8-ed58-4b00-8422-666ff77929fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\StaticObjects\Objects">
+      <UniqueIdentifier>{888239e5-585e-4855-a86e-26328bb68f6b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Map.h">
-      <Filter>Source Files\Framework\Map</Filter>
+      <Filter>Source Files\Map</Filter>
     </ClInclude>
     <ClInclude Include="ObjectLayer.h">
-      <Filter>Source Files\Framework\Map</Filter>
+      <Filter>Source Files\Map</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Source Files\Scene</Filter>
     </ClInclude>
     <ClInclude Include="PlayScene.h">
       <Filter>Source Files\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>Source Files\Object\StaticObjects</Filter>
     </ClInclude>
     <ClInclude Include="Simon.h">
       <Filter>Source Files\Object\PlayerAndWeapon</Filter>
@@ -79,10 +91,10 @@
       <Filter>Source Files\Framework</Filter>
     </ClInclude>
     <ClInclude Include="HiddenObject.h">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClInclude>
     <ClInclude Include="Ground.h">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClInclude>
     <ClInclude Include="TypeConverter.h">
       <Filter>Source Files\Utility</Filter>
@@ -99,9 +111,6 @@
     <ClInclude Include="Whip.h">
       <Filter>Source Files\Object\PlayerAndWeapon\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="Torch.h">
-      <Filter>Source Files\Object\StaticObjects</Filter>
-    </ClInclude>
     <ClInclude Include="SubWeapon.h">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClInclude>
@@ -117,22 +126,10 @@
     <ClInclude Include="Spark.h">
       <Filter>Source Files\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="Heart.h">
-      <Filter>Source Files\Object\Item</Filter>
-    </ClInclude>
     <ClInclude Include="ItemCollection.h">
       <Filter>Source Files\Object\Item</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
-      <Filter>Source Files\Object\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="BigHeart.h">
-      <Filter>Source Files\Object\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="WhipItem.h">
-      <Filter>Source Files\Object\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="DaggerItem.h">
       <Filter>Source Files\Object\Item</Filter>
     </ClInclude>
     <ClInclude Include="EffectCollection.h">
@@ -144,35 +141,68 @@
     <ClInclude Include="SubWeaponCollection.h">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClInclude>
-    <ClInclude Include="MoneyBag.h">
-      <Filter>Source Files\Object\Item</Filter>
-    </ClInclude>
     <ClInclude Include="HiddenItem.h">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
-    </ClInclude>
-    <ClInclude Include="Entrance.h">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClInclude>
     <ClInclude Include="MoneyTrigger.h">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClInclude>
     <ClInclude Include="TileLayer.h">
-      <Filter>Source Files\Framework\Map</Filter>
+      <Filter>Source Files\Map</Filter>
     </ClInclude>
     <ClInclude Include="Stair.h">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Candle.h">
-      <Filter>Source Files\Object\StaticObjects</Filter>
+    <ClInclude Include="Portal.h">
+      <Filter>Source Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="BreakWall.h">
-      <Filter>Source Files\Object\StaticObjects</Filter>
+    <ClInclude Include="AxeItem.h">
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
     </ClInclude>
-    <ClInclude Include="Crown.h">
-      <Filter>Source Files\Object\Item</Filter>
+    <ClInclude Include="WhipItem.h">
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
+    </ClInclude>
+    <ClInclude Include="HolyWaterItem.h">
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
     </ClInclude>
     <ClInclude Include="BoomerangItem.h">
-      <Filter>Source Files\Object\Item</Filter>
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
+    </ClInclude>
+    <ClInclude Include="BigHeart.h">
+      <Filter>Source Files\Object\Item\Heart</Filter>
+    </ClInclude>
+    <ClInclude Include="Heart.h">
+      <Filter>Source Files\Object\Item\Heart</Filter>
+    </ClInclude>
+    <ClInclude Include="Crown.h">
+      <Filter>Source Files\Object\Item\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="DaggerItem.h">
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
+    </ClInclude>
+    <ClInclude Include="MoneyBag.h">
+      <Filter>Source Files\Object\Item\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleShot.h">
+      <Filter>Source Files\Object\Item\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Food.h">
+      <Filter>Source Files\Object\Item\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="BreakWall.h">
+      <Filter>Source Files\Object\StaticObjects\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Source Files\Object\StaticObjects\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Candle.h">
+      <Filter>Source Files\Object\StaticObjects\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch.h">
+      <Filter>Source Files\Object\StaticObjects\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GoldPotion.h">
+      <Filter>Source Files\Object\Item\Other</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -180,16 +210,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>Source Files\Framework\Map</Filter>
+      <Filter>Source Files\Map</Filter>
     </ClCompile>
     <ClCompile Include="ObjectLayer.cpp">
-      <Filter>Source Files\Framework\Map</Filter>
+      <Filter>Source Files\Map</Filter>
     </ClCompile>
     <ClCompile Include="PlayScene.cpp">
       <Filter>Source Files\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>Source Files\Object\StaticObjects</Filter>
     </ClCompile>
     <ClCompile Include="Simon.cpp">
       <Filter>Source Files\Object\PlayerAndWeapon</Filter>
@@ -207,16 +234,13 @@
       <Filter>Source Files\Framework</Filter>
     </ClCompile>
     <ClCompile Include="HiddenObject.cpp">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClCompile>
     <ClCompile Include="Ground.cpp">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClCompile>
     <ClCompile Include="Whip.cpp">
       <Filter>Source Files\Object\PlayerAndWeapon\Weapon</Filter>
-    </ClCompile>
-    <ClCompile Include="Torch.cpp">
-      <Filter>Source Files\Object\StaticObjects</Filter>
     </ClCompile>
     <ClCompile Include="SubWeapon.cpp">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
@@ -233,22 +257,10 @@
     <ClCompile Include="Spark.cpp">
       <Filter>Source Files\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="Heart.cpp">
-      <Filter>Source Files\Object\Item</Filter>
-    </ClCompile>
     <ClCompile Include="ItemCollection.cpp">
       <Filter>Source Files\Object\Item</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
-      <Filter>Source Files\Object\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="WhipItem.cpp">
-      <Filter>Source Files\Object\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="BigHeart.cpp">
-      <Filter>Source Files\Object\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="DaggerItem.cpp">
       <Filter>Source Files\Object\Item</Filter>
     </ClCompile>
     <ClCompile Include="EffectCollection.cpp">
@@ -260,38 +272,71 @@
     <ClCompile Include="SubWeaponCollection.cpp">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClCompile>
-    <ClCompile Include="MoneyBag.cpp">
-      <Filter>Source Files\Object\Item</Filter>
-    </ClCompile>
     <ClCompile Include="HiddenItem.cpp">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
-    </ClCompile>
-    <ClCompile Include="Entrance.cpp">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClCompile>
     <ClCompile Include="MoneyTrigger.cpp">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClCompile>
     <ClCompile Include="TileLayer.cpp">
-      <Filter>Source Files\Framework\Map</Filter>
+      <Filter>Source Files\Map</Filter>
     </ClCompile>
     <ClCompile Include="Stair.cpp">
-      <Filter>Source Files\Object\StaticObjects\Hidden</Filter>
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Candle.cpp">
-      <Filter>Source Files\Object\StaticObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="BreakWall.cpp">
-      <Filter>Source Files\Object\StaticObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Crown.cpp">
-      <Filter>Source Files\Object\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="BoomerangItem.cpp">
-      <Filter>Source Files\Object\Item</Filter>
+    <ClCompile Include="Portal.cpp">
+      <Filter>Source Files\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="AxeItem.cpp">
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
+    </ClCompile>
+    <ClCompile Include="WhipItem.cpp">
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
+    </ClCompile>
+    <ClCompile Include="HolyWaterItem.cpp">
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomerangItem.cpp">
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
+    </ClCompile>
+    <ClCompile Include="BigHeart.cpp">
+      <Filter>Source Files\Object\Item\Heart</Filter>
+    </ClCompile>
+    <ClCompile Include="Heart.cpp">
+      <Filter>Source Files\Object\Item\Heart</Filter>
+    </ClCompile>
+    <ClCompile Include="Crown.cpp">
+      <Filter>Source Files\Object\Item\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="DaggerItem.cpp">
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
+    </ClCompile>
+    <ClCompile Include="MoneyBag.cpp">
+      <Filter>Source Files\Object\Item\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="DoubleShot.cpp">
+      <Filter>Source Files\Object\Item\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>Source Files\Object\Item\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="BreakWall.cpp">
+      <Filter>Source Files\Object\StaticObjects\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Source Files\Object\StaticObjects\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Candle.cpp">
+      <Filter>Source Files\Object\StaticObjects\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch.cpp">
+      <Filter>Source Files\Object\StaticObjects\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GoldPotion.cpp">
+      <Filter>Source Files\Object\Item\Other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

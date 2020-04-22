@@ -25,5 +25,20 @@ Item* ItemCollection::SpawnItem(int id)
 		case BOOMERANG:
 			return new BoomerangItem();
 			break;
+		case DOUBLESHOT:
+			return new DoubleShot();
+			break;
+		case HOLYWATER:
+			return new HolyWaterItem();
+			break;
+		case AXE:
+			return new AxeItem();
+			break;
+		case FOOD:
+			return new Food();
+			break;
+		case GOLDPOTION:
+			return new GoldPotion();
+			break;
 	}
 }

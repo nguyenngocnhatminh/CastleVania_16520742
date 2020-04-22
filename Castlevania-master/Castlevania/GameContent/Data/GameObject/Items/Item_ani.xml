@@ -19,7 +19,7 @@
 			<frame spriteID="HEART_SMALL" />
 		</animation>
 
-		<animation ID="IHOLY_WATER_ANI_JAV" defaulttime="100">
+		<animation ID="HOLYWATER_ITEM_ANI" defaulttime="100">
 			<frame spriteID="HOLYWATER_ITEM_01" />
 		</animation>
 
