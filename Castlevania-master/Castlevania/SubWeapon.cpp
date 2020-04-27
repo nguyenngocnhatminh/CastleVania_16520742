@@ -9,6 +9,8 @@
 #include"EffectCollection.h"
 #include "define.h"
 #include"Candle.h"
+#include"Ground.h"
+
 void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
 
@@ -33,6 +35,7 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	if (coEvents.size() == 0)
 	{
 		x += dx;
+		y += dy;
 	}
 	else
 	{
@@ -44,8 +47,17 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
-			if (dynamic_cast<Torch*>(e->obj)) {
-
+			if (dynamic_cast<Ground*>(e->obj))
+			{
+				if (vy > 0)	// vy  0 la nhung vu khi roi duoc xuong dat
+					this->is_touchable_ground=true;
+				else
+				{
+					x += dx;
+					y += dy;
+				}
+			}
+			else if (dynamic_cast<Torch*>(e->obj)) {
 				Torch* torch = dynamic_cast<Torch*>(e->obj);
 					ItemCollection* itemcollection = new ItemCollection();
 					Item* item = itemcollection->SpawnItem(torch->GetItem());
@@ -74,8 +86,8 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				ItemCollection* itemcollection = new ItemCollection();
 				Item* item = itemcollection->SpawnItem(candle->GetItem());
 				EffectCollection* effectcollection = new EffectCollection();
-				Effect* spark = effectcollection->SpawnEffect(1);	//1: id spark
-				Effect* flame = effectcollection->SpawnEffect(2);	//2: id flame
+				Effect* spark = effectcollection->SpawnEffect(SPARK);	//1: id spark
+				Effect* flame = effectcollection->SpawnEffect(FLAME);	//2: id flame
 				if (dynamic_cast<PlayScene*>(scene))
 				{
 					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
@@ -90,6 +102,8 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					pScene->SpawnObject(item);
 					candle->SetDestroy();
 				}
+				x += dx;
+				y += dy;
 
 			}
 			else {

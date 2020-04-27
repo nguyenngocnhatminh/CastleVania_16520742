@@ -40,5 +40,8 @@ Item* ItemCollection::SpawnItem(int id)
 		case GOLDPOTION:
 			return new GoldPotion();
 			break;
+		case TRIPLESHOT:
+			return new TripleShot();
+			break;
 	}
 }

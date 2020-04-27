@@ -9,5 +9,12 @@ SubWeapon* SubWeaponCollection::SpawnSubWeapon(int id)
 			break;
 		case BOOMERANG:
 			return new Boomerang();
+			break;
+		case HOLYWATER:
+			return new HolyWater();
+			break;
+		case AXE:
+			return new Axe();
+			break;
 	}
 }

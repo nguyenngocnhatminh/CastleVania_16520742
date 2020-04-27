@@ -12,6 +12,7 @@
 #include"AxeItem.h"
 #include"Food.h"
 #include"GoldPotion.h"
+#include"TripleShot.h"
 
 #define BIGHEART 1
 #define SMALLHEART 2
@@ -25,7 +26,7 @@
 #define AXE 10
 #define FOOD 11
 #define GOLDPOTION 12
-
+#define TRIPLESHOT 13
 class ItemCollection
 {
 	int idItem;

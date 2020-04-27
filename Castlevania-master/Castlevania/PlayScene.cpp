@@ -14,6 +14,7 @@
 #include"Candle.h"
 #include"BreakWall.h"
 #include"TypeConverter.h"
+#include "Bridge.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 {
@@ -227,8 +228,6 @@ void PlayScene::Load()
 			for (auto const& y : x.second->GetObjectGroup())
 			{
 				Ground* ground = new Ground();
-				// với loại object vẽ bằng hình chữ nhật 
-				// không - y.second->GetHeight()
 				ground->SetPosition(y.second->GetX(), y.second->GetY());
 				ground->SetSize(y.second->GetWidth(), y.second->GetHeight());
 				objects.push_back(ground);
@@ -315,6 +314,13 @@ void PlayScene::Load()
 				objects.push_back(candle);
 			}
 			break;
+		case OBridge:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				Bridge* bridge = new Bridge();
+				bridge->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				objects.push_back(bridge);
+			}
 		case ODoor:
 			break;
 		case OBoss:
@@ -394,11 +400,6 @@ void PlayScene::Update(DWORD dt)
 	{
 		CGame::GetInstance()->SetCamPos(cx, this->cameraBoder.top /*cy*/);
 	}
-	/*else if(cx>this->cameraBoder.right- SCREENSIZE::WIDTH)
-	{
-		float test = cx - ((cx + SCREENSIZE::WIDTH) - this->cameraBoder.right);
-		CGame::GetInstance()->SetCamPos(test, this->cameraBoder.top);
-	}*/
 
 	for (vector<LPGAMEOBJECT>::iterator it = objects.begin(); it != objects.end(); ) {
 
@@ -486,6 +487,12 @@ void PlayScene::OnKeyDown(int KeyCode)
 		break;
 	case DIK_6:
 		CGame::GetInstance()->SwitchScene(5);
+		break;
+	case DIK_Q:
+		SIMON->y -= 200;
+		break;
+	case DIK_E:
+		SIMON->y += 50;
 		break;
 
 		break;

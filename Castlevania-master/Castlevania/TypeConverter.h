@@ -23,6 +23,7 @@ const enum ObjectID
 	OBossBorder,
 	OBossTrigger,
 	OWater,
+	OBridge
 };
 
 // Map objectlayer voi ten trong tiled map editor
@@ -47,5 +48,6 @@ const auto string2EntityType = std::unordered_map<std::string, ObjectID>
 	{ "Stair", ObjectID::OStair },
 	{ "Candle", ObjectID::OCandle },
 	{ "Water", ObjectID::OWater },
+	{"Bridge",ObjectID::OBridge}
 };
 

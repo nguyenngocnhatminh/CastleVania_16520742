@@ -6,7 +6,7 @@ void Torch::Render()
 	{
 		animations[0]->Render(0, x, y);
 	}
-	//RenderBoundingBox();
+	RenderBoundingBox();
 }
 
 void Torch::GetBoundingBox(float& l, float& t, float& r, float& b)

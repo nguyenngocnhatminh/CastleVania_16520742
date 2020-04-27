@@ -16,14 +16,14 @@
 
 		</animation>
 
-		<animation ID="SWHOLYWATER_ANI_JAR" defaulttime="100">
+		<animation ID="HOLYWATER_ANI_JAR" defaulttime="100">
 
 			<frame spriteID="HOLYWATER_JAR_01" />
 
 		</animation>
 
 
-		<animation ID="SWHOLYWATER_ANI_BURNING" defaulttime="100">
+		<animation ID="HOLYWATER_ANI_BURNING" defaulttime="100">
 
 			<frame spriteID="HOLYWATER_BURNING_01" />
 

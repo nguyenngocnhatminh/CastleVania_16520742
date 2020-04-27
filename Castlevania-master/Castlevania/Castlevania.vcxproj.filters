@@ -43,11 +43,17 @@
     <Filter Include="Source Files\Effect">
       <UniqueIdentifier>{dcbc8c3c-1f01-4277-bb9f-a13d18c119b2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Object\Item">
-      <UniqueIdentifier>{5aec96d1-4b32-4830-8979-41a0ccd63d1d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Map">
       <UniqueIdentifier>{dec049cb-316c-4a6d-8fca-ecad14691fb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\StaticObjects\HiddenObjects">
+      <UniqueIdentifier>{be8497c8-ed58-4b00-8422-666ff77929fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\StaticObjects\Objects">
+      <UniqueIdentifier>{888239e5-585e-4855-a86e-26328bb68f6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\Item">
+      <UniqueIdentifier>{5aec96d1-4b32-4830-8979-41a0ccd63d1d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Object\Item\Weapon &amp; Subweapon">
       <UniqueIdentifier>{b105a649-04ee-474a-b5e9-cacb9adc6077}</UniqueIdentifier>
@@ -60,12 +66,6 @@
     </Filter>
     <Filter Include="Source Files\Object\Item\Other">
       <UniqueIdentifier>{281151fa-7b8a-49e6-9f56-93c049d851f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object\StaticObjects\HiddenObjects">
-      <UniqueIdentifier>{be8497c8-ed58-4b00-8422-666ff77929fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object\StaticObjects\Objects">
-      <UniqueIdentifier>{888239e5-585e-4855-a86e-26328bb68f6b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +207,18 @@
     <ClInclude Include="Boomerang.h">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClInclude>
+    <ClInclude Include="Bridge.h">
+      <Filter>Source Files\Object\StaticObjects\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="HolyWater.h">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClInclude>
+    <ClInclude Include="TripleShot.h">
+      <Filter>Source Files\Object\Item\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe.h">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -342,6 +354,18 @@
       <Filter>Source Files\Object\Item\Other</Filter>
     </ClCompile>
     <ClCompile Include="Boomerang.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Bridge.cpp">
+      <Filter>Source Files\Object\StaticObjects\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="HolyWater.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClCompile>
+    <ClCompile Include="TripleShot.cpp">
+      <Filter>Source Files\Object\Item\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe.cpp">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClCompile>
   </ItemGroup>

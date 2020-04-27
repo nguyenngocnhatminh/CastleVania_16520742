@@ -71,6 +71,7 @@
 
 class CSIMON : public CGameObject
 {
+	bool isInBridge;
 	float startpoint;
 	int level;
 	int untouchable;
@@ -80,12 +81,14 @@ class CSIMON : public CGameObject
 	Whip* whip;
 	bool isSitting;
 	DWORD upgrade_start;
-	int currenSubWeapon = 0;
+	int currenSubWeapon;
 	bool spawnSubweapon=false;
 	bool isSpawnSubweapon = false;
 public: 
 	CSIMON() : CGameObject()
 	{
+		currenSubWeapon = 4;
+		isInBridge = false;
 		isSitting = false;
 		level = SIMON_LEVEL_BIG;
 		untouchable = 0;
@@ -145,7 +148,7 @@ public:
 	void setStartPoint(float x) { this->startpoint = x; }
 	float getStartPoint() { return this->startpoint; }
 
-
+	void SetInBridge();
 	//CAU THANG
 	
 };

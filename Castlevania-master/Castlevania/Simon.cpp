@@ -17,6 +17,8 @@
 #include"define.h"
 #include"BreakWall.h"
 #include"Boomerang.h"
+#include"Bridge.h"
+#include"HolyWaterItem.h"
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
@@ -73,6 +75,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
+		
 			if (dynamic_cast<Ground*>(e->obj)) {
 				if (e->ny != 0) { 
 					if (GetState() == SIMON_STATE_JUMP && vy>=0) {
@@ -83,16 +86,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						vx = 0;
 					}
 					if (ny != 0) vy = 0;
-					// cần xét kỹ phương va chạm
-					if (state != SIMON_STATE_ENTERCASTLE)
-					{
-						if (nx != 0) vx = 0;
-					}
-
-				}
-				if (state == SIMON_STATE_ENTERCASTLE)
-				{
-					break;
 				}
 			}
 			else if (dynamic_cast<BreakWall*>(e->obj)) {
@@ -118,6 +111,23 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				}
 				// cần xét kỹ phương va chạm
 			}
+			else if (dynamic_cast<Bridge*>(e->obj))
+			{
+				Bridge* bridge = dynamic_cast<Bridge*>(e->obj);
+				if (e->ny != 0) { // kiểm tra va chạm trục y có va chạm trục y nhảy vào đây
+					if (GetState() == SIMON_STATE_JUMP && vy >= 0) {
+						SetState(SIMON_STATE_IDLE);
+					}
+					if (this->state == SIMON_STATE_FIGHT_STAND)
+					{
+						vx = 0;
+					}
+					if (ny != 0) vy = 0;
+					this->x += bridge->dx * 2;
+
+
+				}
+			}
 			else
 			{
 				if (dynamic_cast<Item*>(e->obj))
@@ -139,6 +149,10 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						if (dynamic_cast<BoomerangItem*>(e->obj))
 						{
 							currenSubWeapon = BOOMERANG;
+						}
+						if (dynamic_cast<HolyWaterItem*>(e->obj))
+						{
+							currenSubWeapon = HOLYWATER;
 						}
 						item->Destroy();
 					}
@@ -223,7 +237,14 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		{
 			SubWeaponCollection* sub = new SubWeaponCollection();
 			SubWeapon* subWeapon = sub->SpawnSubWeapon(currenSubWeapon);
-			subWeapon->SetPosition(this->x, this->y +0.1*SIMON_BBOX_HEIGHT);
+			if (nx > 0)
+			{
+				subWeapon->SetPosition(this->x + 0.15 * SIMON_BBOX_WIDTH, this->y + 0.1 * SIMON_BBOX_HEIGHT);
+			}
+			else
+			{
+				subWeapon->SetPosition(this->x + 0.3 * SIMON_BBOX_WIDTH, this->y + 0.1 * SIMON_BBOX_HEIGHT);
+			}
 			subWeapon->SetNx(this->nx);
 			if (dynamic_cast<PlayScene*>(scene))
 			{
@@ -285,7 +306,7 @@ void CSIMON::Render()
 
 	animations[ani]->Render(nx,x, y, alpha);
 
-	//RenderBoundingBox();
+	RenderBoundingBox();
 }
 
 void CSIMON::SetState(int state)

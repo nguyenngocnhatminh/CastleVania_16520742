@@ -5,8 +5,6 @@
 class TileLayer
 {
 private:
-
-
 	int width; 
 	int height;
 	int tileWidth;

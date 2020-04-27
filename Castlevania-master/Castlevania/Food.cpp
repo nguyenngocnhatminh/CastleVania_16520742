@@ -12,7 +12,7 @@ void Food::Render()
 		return;
 	}
 	animations[0]->Render(nx, x, y);
-	//RenderBoundingBox();
+	RenderBoundingBox();
 }
 
 void Food::GetBoundingBox(float& l, float& t, float& r, float& b)

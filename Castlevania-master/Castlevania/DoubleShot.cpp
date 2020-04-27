@@ -12,7 +12,7 @@ void DoubleShot::Render()
 		return;
 	}
 	animations[0]->Render(nx, x, y);
-	//RenderBoundingBox();
+	RenderBoundingBox();
 }
 
 void DoubleShot::GetBoundingBox(float& l, float& t, float& r, float& b)

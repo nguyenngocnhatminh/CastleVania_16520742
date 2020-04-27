@@ -25,12 +25,13 @@
 			<frame spriteID="DOOR_CLOSE" />
 		</animation>
 
-	<animation ID="TORCH_ANI" defaulttime="100">
+		<animation ID="TORCH_ANI" defaulttime="100">
 			<frame spriteID="TORCH_BURNING_01" />
 			<frame spriteID="TORCH_BURNING_02" />
 		</animation>
-		
-
+		<animation ID="BRIDGE_ANI" defaulttime="100">
+			<frame spriteID="BRIDGE" />
+		</animation>
 	</animations>
 
 </resource>

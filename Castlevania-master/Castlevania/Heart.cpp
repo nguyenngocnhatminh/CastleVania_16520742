@@ -14,7 +14,7 @@ void Heart::Render()
 		return;
 	}
 	animations[0]->Render(nx, x, y);
-	//RenderBoundingBox();
+	RenderBoundingBox();
 }
 
 //void Heart::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliableobject)

@@ -137,7 +137,7 @@ void Whip::Render()
 	int ani = getCurrentAni();
 	
 	animations[ani]->Render(nx,x,y);
-	//RenderBoundingBox();
+	RenderBoundingBox();
 }
 
 void Whip::GetBoundingBox(float& l, float& t, float& r, float& b)

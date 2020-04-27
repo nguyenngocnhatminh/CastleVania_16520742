@@ -59,8 +59,9 @@
 			<frame x="163" y="1" width="28" height="28" />
 		</sprite>
 		
-		
-		
+		<sprite ID="TRIPLESHOT_ITEM">
+			<frame x="190" y="1" width="28" height="28"/>
+		</sprite>
 
 		<sprite ID="CRYSTALL_ITEM_01">
 			<frame x="265" y="31" width="28" height="32" />

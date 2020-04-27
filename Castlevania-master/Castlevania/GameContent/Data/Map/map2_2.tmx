@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="32" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="51">
+<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="32" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="56">
  <tileset firstgid="1" name="dungeon_bank.png" tilewidth="32" tileheight="32" tilecount="95" columns="5">
   <image source="dungeon_bank.png" width="160" height="608"/>
  </tileset>
  <tileset firstgid="96" source="SIMON.tsx"/>
  <tileset firstgid="168" source="Candle.tsx"/>
  <tileset firstgid="170" source="ground.tsx"/>
+ <tileset firstgid="171" source="9.tsx"/>
  <layer id="1" name="Tile Layer 1" width="32" height="12">
   <data>
    <tile gid="1"/>
@@ -396,9 +397,9 @@
  </layer>
  <objectgroup id="7" name="Brick">
   <object id="50" gid="170" x="703" y="191" width="32" height="32">
-  <properties>
-  <property name="item" type="int" value="8"/>
-  </properties>
+   <properties>
+    <property name="item" type="int" value="8"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="6" name="Candle">
@@ -438,6 +439,9 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="8" name="Bridge">
+  <object id="51" gid="171" x="64" y="182" width="64" height="16"/>
+ </objectgroup>
  <objectgroup id="3" name="Ground">
   <object id="3" x="928.791" y="224.05" width="62.4625" height="28.5155"/>
   <object id="4" x="960.306" y="1.35788" width="32.3049" height="381.565"/>
@@ -457,5 +461,12 @@
  </objectgroup>
  <objectgroup id="4" name="Camera">
   <object id="20" x="0" y="2.333" width="1024" height="384"/>
+ </objectgroup>
+ <objectgroup id="10" name="Portal">
+  <object id="55" x="10" y="60" width="20" height="102">
+     <properties>
+    <property name="Map_ID" type="int" value="3"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

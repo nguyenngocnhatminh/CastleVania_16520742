@@ -1,8 +1,30 @@
-﻿  SubWeapon.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(33,25): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(20,1): warning C4005: 'MONEYBAG': macro redefinition
+﻿  Axe.cpp
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
+  Simon.cpp
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(21,1): warning C4005: 'MONEYBAG': macro redefinition
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(11): message : see previous definition of 'MONEYBAG'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(21,1): warning C4005: 'CROWN': macro redefinition
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(22,1): warning C4005: 'CROWN': macro redefinition
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(12): message : see previous definition of 'CROWN'
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.h(8,1): warning C4005: 'DAGGER': macro redefinition
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(10): message : see previous definition of 'DAGGER'
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.h(9,1): warning C4005: 'BOOMERANG': macro redefinition
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(23): message : see previous definition of 'BOOMERANG'
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.h(10,1): warning C4005: 'HOLYWATER': macro redefinition
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(25): message : see previous definition of 'HOLYWATER'
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.h(11,1): warning C4005: 'AXE': macro redefinition
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(26): message : see previous definition of 'AXE'
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(215,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(215,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(219,64): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(227,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(242,71): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(242,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(246,70): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(246,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  SubWeaponCollection.cpp
+  Generating Code...
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.cpp(20): warning C4715: 'SubWeaponCollection::SpawnSubWeapon': not all control paths return a value
   Castlevania.vcxproj -> D:\hoc\Game\CastleVania\Castlevania-master\Debug\Castlevania.exe
