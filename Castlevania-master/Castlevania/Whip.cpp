@@ -10,6 +10,24 @@
 #include"Candle.h"
 #include"BreakWall.h"
 
+bool Whip::CheckLastFrame()
+{
+	int ani = getCurrentAni();
+	if (ani < 2) 
+	{
+		if (animations[ani]->GetCurrentFrame() < animations[ani]->GetlastFrame())
+		{
+			return false;
+		}
+	}
+	else {
+		if (animations[ani]->GetCurrentFrame() < 8) 
+		{
+			return false;
+		}
+	}
+	return true;
+}
 void Whip::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
 	int ani = getCurrentAni();

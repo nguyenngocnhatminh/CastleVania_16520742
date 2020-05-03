@@ -293,6 +293,7 @@ void PlayScene::Load()
 				Stair* stair = new Stair();
 				stair->SetSize(y.second->GetWidth(), y.second->GetHeight());
 				stair->SetPosition(y.second->GetX(), y.second->GetY());
+				stair->SetDirection(y.second->GetProperty("direction"));
 				objects.push_back(stair);
 			}
 			break;
@@ -435,32 +436,44 @@ void PlayScene::OnKeyDown(int KeyCode)
 	{
 	case DIK_SPACE:
 		// ta cần kiểm tra
-		if (SIMON->GetState() != SIMON_STATE_JUMP && SIMON->GetState() != SIMON_STATE_SIT && !SIMON->GetFightTime())
+		if (SIMON->GetState() != SIMON_STATE_JUMP && SIMON->GetState() != SIMON_STATE_SIT && !SIMON->GetFightTime()&&!SIMON->CheckIsOnStair())
 		{ // ngooif thi k cho nhay
 			SIMON->SetState(SIMON_STATE_JUMP);
 		}			
 		break;
 
 	case DIK_Z:
-		// ta cần kiểm tra
 		if (!SIMON->GetFightTime())
 		{
 			SIMON->ResetSpawnSubWeapon();
-			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->getCurrentSubweapon()!=0&& !SIMON->IsSpawnSubWeapon())
+			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->getCurrentSubweapon()!=0&& !SIMON->IsSpawnSubWeapon()&&!SIMON->CheckIsOnStair())
 			{
 				if (CGame::GetInstance()->IsKeyDown(DIK_DOWN))
 					SIMON->SetState(SIMON_STATE_IDLE);
 				SIMON->SpawnSubWeapon(true);
 			}
 			else
+			{
 				SIMON->SpawnSubWeapon(false);
+			}
 
 			if (SIMON->GetState() == SIMON_STATE_SIT)
 			{
 				SIMON->SetState(SIMON_STATE_FIGHT_SIT);
 			}
+			else if (SIMON->GetState()==SIMON_STATE_DOWNSTAIR_IDLE)
+			{
+				SIMON->SetState(SIMON_STATE_DOWNSTAIR_ATTACK);
+			}
+			else if (SIMON->GetState() == SIMON_STATE_UPSTAIR_IDLE)
+			{
+				SIMON->SetState(SIMON_STATE_UPSTAIR_ATTACK);
+			}
 			else
-				SIMON->SetState(SIMON_STATE_FIGHT_STAND);
+			{
+				if(!SIMON->CheckIsOnStair())
+					SIMON->SetState(SIMON_STATE_FIGHT_STAND);
+			}
 
 		}
 		break;
@@ -536,6 +549,62 @@ void PlayScene::KeyState(BYTE* states)
 	if (SIMON->GetState() == SIMON_STATE_FIGHT_SIT) return;
 	if (SIMON->GetState() == SIMON_STATE_FIGHT_STAND) return;
 	// nhay thi khong cho bam gi luon
+
+	if (game->IsKeyDown(DIK_UP))
+	{
+
+		if (SIMON->GetState() == SIMON_STATE_DOWNSTAIR_IDLE) {
+
+
+			if (SIMON->CheckStepOnStairDirection() == STAIR_TOP_LEFT)
+				SIMON->SetStepOnStairDirection(STAIR_BOTTOM_RIGHT);
+			else if (SIMON->CheckStepOnStairDirection() == STAIR_TOP_RIGHT)
+				SIMON->SetStepOnStairDirection(STAIR_BOTTOM_LEFT);
+			SIMON->SetStartStepOnStair();
+			DebugOut(L"Simon up to down \n");
+			return;
+		}
+
+		else if (SIMON->CheckCanStepUp()) {
+			if (!SIMON->CheckIsOnStair() && SIMON->CheckCollideWithStair()) {
+				SIMON->SetStartStepOnStair();
+			}
+			else if (SIMON->GetState() == SIMON_STATE_UPSTAIR_IDLE) {
+
+				SIMON->SetStartStepOnStair();
+			}
+			return;
+		}
+
+	}
+	else if (game->IsKeyDown(DIK_DOWN))
+	{
+
+		if (SIMON->GetState() == SIMON_STATE_UPSTAIR_IDLE) {
+			if (SIMON->CheckStepOnStairDirection() == STAIR_BOTTOM_RIGHT)
+				SIMON->SetStepOnStairDirection(STAIR_TOP_LEFT);
+			else if (SIMON->CheckStepOnStairDirection() == STAIR_BOTTOM_LEFT) {
+				SIMON->SetStepOnStairDirection(STAIR_TOP_RIGHT);
+			}
+			SIMON->SetStartStepOnStair();
+			DebugOut(L"Simon up to down \n");
+			return;
+		}
+		if (SIMON->CheckCanStepDown()) {
+			if (!SIMON->CheckIsOnStair() && SIMON->CheckCollideWithStair()) {
+				SIMON->SetStartStepOnStair();
+			}
+			else if (SIMON->GetState() == SIMON_STATE_DOWNSTAIR_IDLE) {
+				SIMON->SetStartStepOnStair();
+			}
+			return;
+		}
+
+	}
+	if (SIMON->CheckIsOnStair() || SIMON->CheckStairOnStair()) {
+		return;
+	}
+
 	if (game->IsKeyDown(DIK_RIGHT)) // bắt phím mũi tên phải
 	{
 		SIMON->SetState(SIMON_STATE_WALKING_RIGHT); //đi phải

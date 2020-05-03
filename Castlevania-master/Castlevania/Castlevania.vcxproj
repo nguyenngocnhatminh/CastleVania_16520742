@@ -162,6 +162,7 @@
     <ClInclude Include="DoubleShot.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectCollection.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Food.h" />
     <ClInclude Include="GoldPotion.h" />
     <ClInclude Include="HolyWater.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="DoubleShot.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectCollection.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="GoldPotion.cpp" />
     <ClCompile Include="HolyWater.cpp" />

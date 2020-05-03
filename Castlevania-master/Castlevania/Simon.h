@@ -2,8 +2,11 @@
 #include "GameObject.h"
 #include"Whip.h"
 #include "HiddenObject.h"
+#include"Stair.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
+#define SIMON_AUTOWALKING_SPEED	0.05f 
+#define SIMON_UPSTAIR_VELOCITY 0.04f
 //0.1f
 #define SIMON_JUMP_SPEED_Y		0.55f
 #define SIMON_JUMP_DEFLECT_SPEED 0.2f
@@ -41,24 +44,32 @@
 #define SIMON_ANI_STAND_ATTACK				3
 #define SIMON_ANI_SIT_ATTACK				4
 #define SIMON_ANI_UPWHIP 5 
-#define SIMON_ANI_DIE				8
+#define SIMON_ANI_DIE				6
 
 
 //len xuong cau thang
-#define SIMON_ANI_IDLE_UPSTAIR          9
-#define SIMON_ANI_STEP_UPSTAIR            10
-#define SIMON_ANI_IDLE_DOWNSTAIR         11
-#define SIMON_ANI_STEP_DOWNSTAIR            12
-#define SIMON_ANI_UPSTAIR_ATTACK            13
-#define SIMON_ANI_DOWNSTAIR_ATTACK         14
+#define SIMON_ANI_IDLE_UPSTAIR          7
+#define SIMON_ANI_STEP_UPSTAIR            8
+#define SIMON_ANI_IDLE_DOWNSTAIR         9
+#define SIMON_ANI_STEP_DOWNSTAIR            10
+#define SIMON_ANI_UPSTAIR_ATTACK            11
+#define SIMON_ANI_DOWNSTAIR_ATTACK         12
 
 
+#define SIMON_ONSTAIR_DISTANCE_X 16 // quãng đường theo trục x mỗi lần lên xuống 1 bậc cầu thang
+#define SIMON_ONSTAIR_DISTANCE_Y 16 // quãng đường theo trục y mỗi lần lên xuống 1 bậc cầu thang
 
+
+// Hiệu số vị trí của stair trigger và vị trí simon khi bắt đầu bước lên
+#define SIMON_UPSTAIR_RIGHT_OFFSET  12
+#define SIMON_UPSTAIR_LEFT_OFFSET 12 // da giam 3px
+#define SIMON_DOWNSTAIR_LEFT_OFFSET 10
+#define SIMON_DOWNSTAIR_RIGHT_OFFET 18
 
 #define	SIMON_LEVEL_SMALL	1
 #define	SIMON_LEVEL_BIG		2
 
-#define SIMON_BBOX_WIDTH  50
+#define SIMON_BBOX_WIDTH  48
 #define SIMON_BBOX_HEIGHT 63
 
 #define SIMON_SMALL_BBOX_WIDTH  13
@@ -84,10 +95,23 @@ class CSIMON : public CGameObject
 	int currenSubWeapon;
 	bool spawnSubweapon=false;
 	bool isSpawnSubweapon = false;
+
+	//cau thang
+	int lastState = -1;
+	bool isAutoWalk = false;
+	bool isOnStair =false;
+	int StairDirection =-1; 
+	bool startOnStair =false;
+	bool isColliceWithStair =false;
+	bool isFirstStepOnStair =false;
+	D3DXVECTOR2 stairPos;
+	D3DXVECTOR2 LastStepOnStairPos;
+	void HandleFirstStepOnStair();
+	void HandlePerStepOnStair();
 public: 
 	CSIMON() : CGameObject()
 	{
-		currenSubWeapon = 4;
+		currenSubWeapon = 0;
 		isInBridge = false;
 		isSitting = false;
 		level = SIMON_LEVEL_BIG;
@@ -96,12 +120,19 @@ public:
 		this->fight_start = 0;
 		state = SIMON_STATE_IDLE; // trạng thái ban đầu cần khai báo khi tạo object
 		whip = new Whip();
-		AddAnimation("SIMON_ANI_IDLE");		
-		AddAnimation("SIMON_ANI_WALKING");	
-		AddAnimation("SIMON_ANI_SIT");
-		AddAnimation("SIMON_ANI_STAND_ATTACK");
-		AddAnimation("SIMON_ANI_SIT_ATTACK");
-		AddAnimation("SIMON_ANI_IDLE_UPWHIP");
+		this->AddAnimation("SIMON_ANI_IDLE");		
+		this->AddAnimation("SIMON_ANI_WALKING");	
+		this->AddAnimation("SIMON_ANI_SIT");
+		this->AddAnimation("SIMON_ANI_STAND_ATTACK");
+		this->AddAnimation("SIMON_ANI_SIT_ATTACK");
+		this->AddAnimation("SIMON_ANI_IDLE_UPWHIP");
+		this->AddAnimation("SIMON_ANI_DIE");
+		this->AddAnimation("SIMON_ANI_IDLE_UPSTAIR");    //7
+		this->AddAnimation("SIMON_ANI_STEP_UPSTAIR");    //8
+		this->AddAnimation("SIMON_ANI_IDLE_DOWNSTAIR");    //9
+		this->AddAnimation("SIMON_ANI_STEP_DOWNSTAIR");    //10
+		this->AddAnimation("SIMON_ANI_UPSTAIR_ATTACK");    //11
+		this->AddAnimation("SIMON_ANI_DOWNSTAIR_ATTACK"); //12
 	}
 	~CSIMON() { delete whip; }
 	void ResetFightAnimation()
@@ -148,7 +179,45 @@ public:
 	void setStartPoint(float x) { this->startpoint = x; }
 	float getStartPoint() { return this->startpoint; }
 
-	void SetInBridge();
 	//CAU THANG
-	
+	void StartOnStair(bool flag) {
+		this->startOnStair = flag;
+	}
+	bool CheckStairOnStair() {
+		return this->startOnStair;
+	}
+	void SetAutoWalk(bool flag) {
+		this->isAutoWalk = flag;
+	}
+	bool CheckCanStepUp() {
+		if (this->StairDirection == STAIR_BOTTOM_LEFT || this->StairDirection == STAIR_BOTTOM_RIGHT)
+			return true;
+		return false;
+	}
+	bool CheckCanStepDown() {
+		if (this->StairDirection == STAIR_TOP_RIGHT || this->StairDirection == STAIR_TOP_LEFT)
+			return true;
+		return false;
+	}
+	bool CheckIsOnStair() {
+		return this->isOnStair;
+	}
+	bool CheckCollideWithStair() {
+		return this->isColliceWithStair;
+	}
+	void SetStartStepOnStair() {
+		this->startOnStair = true;
+	}
+	bool CheckAutoWalk() {
+		return this->isAutoWalk;
+	}
+	void SetLastState(int state) {
+		this->lastState = state;
+	}
+	int CheckStepOnStairDirection() {
+		return this->StairDirection;
+	}
+	void SetStepOnStairDirection(int dir) {
+		this->StairDirection = dir;
+	}
 };

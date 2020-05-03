@@ -44,6 +44,7 @@ public:
 	}
 	int getCurrentAni();
 	void UpLevel();
-
+	bool CheckLastFrame();
+	
 };
 

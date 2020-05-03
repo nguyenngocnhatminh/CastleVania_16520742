@@ -219,6 +219,9 @@
     <ClInclude Include="Axe.h">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Source Files\Object\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -367,6 +370,9 @@
     </ClCompile>
     <ClCompile Include="Axe.cpp">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Object\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

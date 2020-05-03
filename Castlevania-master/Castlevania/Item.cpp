@@ -21,7 +21,6 @@ void Item::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		return;
 	}
 	CGameObject::Update(dt, scene);
-
 	vy += ITEM_GRAVITY * dt;
 
 	vector<LPCOLLISIONEVENT> coEvents;
