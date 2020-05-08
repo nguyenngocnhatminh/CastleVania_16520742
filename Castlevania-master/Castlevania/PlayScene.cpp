@@ -16,6 +16,7 @@
 #include"TypeConverter.h"
 #include "Bridge.h"
 #include"SpearGuard.h"
+#include"Bat.h"
 #include"EnemyTrigger.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
@@ -339,6 +340,14 @@ void PlayScene::Load()
 				objects.push_back(enemy);
 			}
 			break;
+		case OBat:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				Bat* enemy = new Bat();
+				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				enemy->SetStartY(y.second->GetY() - y.second->GetHeight());
+				objects.push_back(enemy);
+			}
 		case ODoor:
 			break;
 		case OBoss:
