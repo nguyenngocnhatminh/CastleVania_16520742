@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="32" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="57">
+<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="32" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="59">
  <tileset firstgid="1" name="dungeon_bank.png" tilewidth="32" tileheight="32" tilecount="95" columns="5">
   <image source="dungeon_bank.png" width="160" height="608"/>
  </tileset>
@@ -7,6 +7,7 @@
  <tileset firstgid="168" source="Candle.tsx"/>
  <tileset firstgid="170" source="ground.tsx"/>
  <tileset firstgid="171" source="9.tsx"/>
+ <tileset firstgid="172" source="SPEAR_GUARD.tsx"/>
  <layer id="1" name="Tile Layer 1" width="32" height="12">
   <data>
    <tile gid="1"/>
@@ -395,6 +396,22 @@
    <tile gid="16"/>
   </data>
  </layer>
+ <objectgroup id="12" name="SpearGuard">
+  <object id="57" gid="175" x="640.035" y="289.32" width="32" height="64">
+   <properties>
+    <property name="Direction" value="1"/>
+    <property name="Range" value="60"/>
+    <property name="Type" value="1"/>
+   </properties>
+  </object>
+  <object id="58" gid="175" x="286.988" y="162.856" width="32" height="64">
+   <properties>
+    <property name="Direction" value="-1"/>
+    <property name="Range" value="126"/>
+    <property name="Type" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="7" name="Brick">
   <object id="50" gid="170" x="703" y="191" width="32" height="32">
    <properties>
@@ -460,7 +477,7 @@
   <object id="19" x="862.124" y="93.156" width="27.1576" height="65.1783"/>
  </objectgroup>
  <objectgroup id="4" name="Camera">
-  <object id="20" x="0" y="2.333" width="1024" height="384"/>
+  <object id="20" x="1.5785e-07" y="0.576544" width="1024" height="384"/>
  </objectgroup>
  <objectgroup id="10" name="Portal">
   <object id="55" x="10" y="60" width="20" height="102">

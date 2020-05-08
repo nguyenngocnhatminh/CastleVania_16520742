@@ -52,6 +52,9 @@ public:
 	vector<LPANIMATION> animations;
 	bool isDestroy = false;
 	bool setDestroy = false;
+
+	bool isEnemy;
+	int EnemyID;
 public: 
 	void Destroy() { this->isDestroy = true; }
 	bool IsDestroy() { return isDestroy; }
@@ -62,6 +65,8 @@ public:
 	void SetDestroy() {
 		this->setDestroy = true;
 	}
+	void SetIsEnemy() { this->isEnemy = true; }
+	bool IsEnemy() { return this->isEnemy; }
 	//int GetState() { return this->state; }
 
 	void RenderBoundingBox();

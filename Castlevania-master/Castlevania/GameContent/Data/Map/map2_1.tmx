@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="88">
+<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="17" nextobjectid="102">
  <tileset firstgid="1" name="dungeon_bank.png" tilewidth="32" tileheight="32" tilecount="95" columns="5">
   <image source="dungeon_bank.png" width="160" height="608"/>
  </tileset>
  <tileset firstgid="96" source="Candle.tsx"/>
  <tileset firstgid="98" source="ground.tsx"/>
  <tileset firstgid="99" source="Money_Bag.tsx"/>
+ <tileset firstgid="102" source="SPEAR_GUARD.tsx"/>
  <layer id="1" name="Tile Layer 1" width="16" height="12">
   <data>
    <tile gid="1"/>
@@ -222,7 +223,7 @@
   </object>
  </objectgroup>
  <objectgroup id="7" name="Camera">
-  <object id="22" x="3" y="-3" width="509.667" height="384"/>
+  <object id="22" x="-2" y="1" width="509.667" height="384"/>
  </objectgroup>
  <objectgroup id="10" name="MoneyBagTrigger">
   <object id="76" x="448" y="217" width="29" height="9">
@@ -250,9 +251,9 @@
  </objectgroup>
  <objectgroup id="3" name="Ground">
   <object id="4" x="-1.33333" y="253.333" width="32" height="100"/>
-  <object id="6" x="66.6667" y="158.667" width="250.667" height="32"/>
+  <object id="6" x="66.6667" y="163.667" width="250.667" height="27"/>
   <object id="7" x="29.3333" y="130.667" width="34.6667" height="120"/>
-  <object id="8" x="-1.33333" y="2.66667" width="33.3333" height="254.667"/>
+  <object id="8" x="-0.33333" y="0.66667" width="33.3333" height="254.667"/>
   <object id="20" x="0" y="353" width="480" height="16"/>
   <object id="41" x="448" y="1" width="31" height="157"/>
   <object id="42" x="448" y="225" width="31" height="126"/>
@@ -263,7 +264,7 @@
   <object id="77" gid="99" x="256" y="384" width="31" height="30"/>
  </objectgroup>
  <objectgroup id="2" name="Player">
-  <object id="13" x="121.667" y="276.333" width="25.3333" height="70.6667"/>
+  <object id="13" x="45.667" y="278.333" width="25.3333" height="70.6667"/>
  </objectgroup>
  <objectgroup id="11" name="Stair">
   <object id="14" x="210.5" y="339" width="11.5" height="10">
@@ -279,6 +280,15 @@
   <object id="86" x="142" y="146" width="15" height="10">
    <properties>
     <property name="direction" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="13" name="SpearGuard">
+  <object id="88" gid="102" x="68" y="160" width="32" height="64">
+   <properties>
+    <property name="Direction" value="1"/>
+    <property name="Range" value="250"/>
+    <property name="Type" value="2"/>
    </properties>
   </object>
  </objectgroup>

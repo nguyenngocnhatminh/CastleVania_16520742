@@ -222,6 +222,12 @@
     <ClInclude Include="Enemy.h">
       <Filter>Source Files\Object\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="SpearGuard.h">
+      <Filter>Source Files\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyTrigger.h">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -373,6 +379,12 @@
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SpearGuard.cpp">
+      <Filter>Source Files\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyTrigger.cpp">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

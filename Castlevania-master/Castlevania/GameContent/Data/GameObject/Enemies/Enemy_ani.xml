@@ -36,7 +36,12 @@
 			<frame spriteID="PANTHER_SPRITE_RUN_01" />
 			<frame spriteID="PANTHER_SPRITE_RUN_02" />
 		</animation>
-		
+		<animation ID="SPEAR_GUARD_ANI" defaulttime="200">
+			<frame spriteID="SPREAR_GUARD_1"/>
+			<frame spriteID="SPREAR_GUARD_2"/>
+			<frame spriteID="SPREAR_GUARD_3"/>
+			<frame spriteID="SPREAR_GUARD_4"/>
+		</animation>
 	</animations>
 
 </resource>

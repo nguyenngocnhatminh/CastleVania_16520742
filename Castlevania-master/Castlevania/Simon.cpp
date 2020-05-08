@@ -19,7 +19,7 @@
 #include"Boomerang.h"
 #include"Bridge.h"
 #include"HolyWaterItem.h"
-
+#include"Enemy.h"
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
@@ -347,6 +347,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	{
 		if (!isFirstStepOnStair && !isOnStair
 			&& this->state != SIMON_STATE_JUMP
+			&& this->state != SIMON_STATE_FIGHT_STAND
 			&& this->state != SIMON_STATE_DIE) {
 			SetState(SIMON_STATE_IDLE);
 

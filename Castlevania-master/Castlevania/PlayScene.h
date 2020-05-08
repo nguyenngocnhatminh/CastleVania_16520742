@@ -11,7 +11,7 @@ class PlayScene:public Scene
     Map* gameMap;
     void LoadSprite(const std::string& filePath, const int tex);
     void LoadAnimation(const string& filePath);
-
+    
     std::queue<LPGAMEOBJECT> qObjects;
 
 public:
@@ -28,5 +28,9 @@ public:
      void OnKeyUp(int KeyCode) override;
      void KeyState(BYTE* states) override;
     
+     CSIMON* GetSimon()
+     {
+         return this->SIMON;
+     }
 };
 

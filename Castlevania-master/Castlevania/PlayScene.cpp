@@ -15,6 +15,8 @@
 #include"BreakWall.h"
 #include"TypeConverter.h"
 #include "Bridge.h"
+#include"SpearGuard.h"
+#include"EnemyTrigger.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 {
@@ -285,6 +287,7 @@ void PlayScene::Load()
 				this->cameraBoder.bottom = y.second->GetY() + y.second->GetHeight();
 			}
 			break;
+
 		case OSpawner:
 			break;
 		case OStair:
@@ -322,6 +325,20 @@ void PlayScene::Load()
 				bridge->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				objects.push_back(bridge);
 			}
+			break;
+		case OEnemyTrigger:
+		case OSpearGuard:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				SpearGuard* enemy = new SpearGuard();
+				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				enemy->SetStarDirection(y.second->GetProperty("Direction"));
+				enemy->SetRange(y.second->GetProperty("Range"));
+				enemy->SetZone(y.second->GetProperty("Range"), y.second->GetX());
+				enemy->SetType(y.second->GetProperty("Type"));
+				objects.push_back(enemy);
+			}
+			break;
 		case ODoor:
 			break;
 		case OBoss:
