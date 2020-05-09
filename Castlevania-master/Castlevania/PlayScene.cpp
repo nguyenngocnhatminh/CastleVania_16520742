@@ -18,6 +18,8 @@
 #include"SpearGuard.h"
 #include"Bat.h"
 #include"EnemyTrigger.h"
+#include"Ghost.h"
+#include"Monkey.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 {
@@ -346,6 +348,24 @@ void PlayScene::Load()
 				Bat* enemy = new Bat();
 				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				enemy->SetStartY(y.second->GetY() - y.second->GetHeight());
+				objects.push_back(enemy);
+			}
+			break;
+		case OGhost:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				Ghost* enemy = new Ghost();
+				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				enemy->SetStartDirection(y.second->GetProperty("Direction"));
+				objects.push_back(enemy);
+			}
+			break;
+		case OMonkey:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				Monkey* enemy = new Monkey();
+				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				enemy->SetStartDirection(y.second->GetProperty("Direction"));
 				objects.push_back(enemy);
 			}
 		case ODoor:

@@ -1,4 +1,5 @@
 #include "Bat.h"
+#include "define.h"
 void Bat::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
 	l = x;
@@ -58,6 +59,8 @@ void Bat::SetState(int state)
 
 void Bat::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
+	if (this->IsDestroy())
+		return;
 	CGameObject::Update(dt, scene);
 
 	vector<LPCOLLISIONEVENT> coEvents;
@@ -75,6 +78,18 @@ void Bat::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects
 			this->SetIsAttack(true);
 		}
 
+	}
+
+	if (dynamic_cast<PlayScene*>(scene))
+	{
+		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+		D3DXVECTOR2 cam = pScene->GetCamera();
+
+		if (x<cam.x || x>cam.x + SCREENSIZE::WIDTH)
+		{
+			if(this->IsAttack())
+				this->Destroy();
+		}
 	}
 
 	if(this->IsAttack())

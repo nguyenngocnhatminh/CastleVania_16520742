@@ -12,7 +12,7 @@
 			<frame spriteID="WHIP_CHAIN_02" />
 			<frame spriteID="WHIP_CHAIN_03" />
 		</animation>
-		<animation ID="WHIP_ANI_MORNINGSTAR" defaulttime="20">
+		<animation ID="WHIP_ANI_MORNINGSTAR" defaulttime="25">
 			<frame spriteID="WHIP_MORNINGSTAR_01" />
 			<frame spriteID="WHIP_MORNINGSTAR_02" />
 			<frame spriteID="WHIP_MORNINGSTAR_03" />
@@ -21,10 +21,10 @@
 			<frame spriteID="WHIP_MORNINGSTAR_06" />
 			<frame spriteID="WHIP_MORNINGSTAR_07" />
 			<frame spriteID="WHIP_MORNINGSTAR_08" />
-			<frame spriteID="WHIP_MORNINGSTAR_09" />
-			<frame spriteID="WHIP_MORNINGSTAR_10" />
+			<frame spriteID="WHIP_MORNINGSTAR_09" /> 
+			<frame spriteID="WHIP_MORNINGSTAR_10" /> 
 			<frame spriteID="WHIP_MORNINGSTAR_11" />
-			<frame spriteID="WHIP_MORNINGSTAR_12" />
-		</animation>	
+			<frame spriteID="WHIP_MORNINGSTAR_12" /> 
+		</animation>
 	</animations>
 </resource>

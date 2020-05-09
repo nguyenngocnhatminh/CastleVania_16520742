@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<spritesheet TextureAtlas="enemy_pack2.png">
+		<sprite ID="MONKEY_SPRITE_01">
+			<frame x="515" y="150" width="32" height="32" />
+		</sprite>
+		<sprite ID="MONKEY_SPRITE_02">
+			<frame x="482" y="150" width="32" height="32"/>
+		</sprite>
+	</spritesheet>
+</resource>	

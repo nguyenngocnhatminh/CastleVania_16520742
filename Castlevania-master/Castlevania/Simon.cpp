@@ -201,7 +201,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					if (ny != 0) vy = 0;
 					this->x += bridge->dx * 2;
 
-
 				}
 			}
 			else
@@ -364,7 +363,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			{
 				if (nx > 0)
 				{
-					whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y + 0.25 * SIMON_BBOX_HEIGHT);
+					whip->SetPosition(this->x - 1.65 * SIMON_BBOX_WIDTH, this->y + 0.25 * SIMON_BBOX_HEIGHT);
 				}
 				else
 				{
@@ -376,7 +375,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			{
 				if (nx > 0)
 				{
-					whip->SetPosition(this->x - 1.5 * SIMON_BBOX_WIDTH, this->y);
+					whip->SetPosition(this->x - 1.65 * SIMON_BBOX_WIDTH, this->y);
 				}
 				else
 					whip->SetPosition(this->x - 2*SIMON_BBOX_WIDTH, this->y);
@@ -689,7 +688,7 @@ void CSIMON::SetState(int state)
 		}
 		nx = -1;
 		break;
-	case SIMON_STATE_JUMP: // nhảy rồi thì chắc ăn k chạm đất
+	case SIMON_STATE_JUMP: 
 		vy = -SIMON_JUMP_SPEED_Y;
 		isSitting = true;
 		break;

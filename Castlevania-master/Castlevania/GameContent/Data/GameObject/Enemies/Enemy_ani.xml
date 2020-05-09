@@ -42,6 +42,10 @@
 			<frame spriteID="SPREAR_GUARD_3"/>
 			<frame spriteID="SPREAR_GUARD_4"/>
 		</animation>
+		<animation ID="GHOST_ANI" defaulttime="100">
+			<frame spriteID="GHOST_1"/>
+			<frame spriteID="GHOST_2"/>
+		</animation>
 	</animations>
 
 </resource>

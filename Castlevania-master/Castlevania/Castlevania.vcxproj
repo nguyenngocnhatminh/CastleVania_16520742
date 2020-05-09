@@ -166,8 +166,10 @@
     <ClInclude Include="EnemyTrigger.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Food.h" />
+    <ClInclude Include="Ghost.h" />
     <ClInclude Include="GoldPotion.h" />
     <ClInclude Include="HolyWater.h" />
+    <ClInclude Include="Monkey.h" />
     <ClInclude Include="Portal.h" />
     <ClInclude Include="flame.h" />
     <ClInclude Include="Game.h" />
@@ -221,8 +223,10 @@
     <ClCompile Include="EnemyTrigger.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Food.cpp" />
+    <ClCompile Include="Ghost.cpp" />
     <ClCompile Include="GoldPotion.cpp" />
     <ClCompile Include="HolyWater.cpp" />
+    <ClCompile Include="Monkey.cpp" />
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="flame.cpp" />
     <ClCompile Include="Game.cpp" />

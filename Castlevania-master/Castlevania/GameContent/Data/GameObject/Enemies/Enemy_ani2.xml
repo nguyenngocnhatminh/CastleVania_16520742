@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<animations AtlasPath="Enemy_sprite2.xml">
+		<animation ID="MONKEY_ANI_IDLE" defaulttime="100">
+			<frame spriteID="MONKEY_SPRITE_01" />
+		</animation>
+		<animation ID="MONKEY_ANI_PREPARE_JUMP" defaulttime="100">
+			<frame spriteID="MONKEY_SPRITE_01" />
+			<frame spriteID="MONKEY_SPRITE_02"/>
+		</animation>
+		<animation ID="MONKEY_ANI_JUMP" defaulttime="100">
+			<frame spriteID="MONKEY_SPRITE_02" />	
+		</animation>
+	</animations>
+</resource>	
