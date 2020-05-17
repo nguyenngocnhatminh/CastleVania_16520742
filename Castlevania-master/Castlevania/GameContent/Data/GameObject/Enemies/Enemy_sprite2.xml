@@ -7,5 +7,32 @@
 		<sprite ID="MONKEY_SPRITE_02">
 			<frame x="482" y="150" width="32" height="32"/>
 		</sprite>
+		<sprite ID="SKELETON_SPRITE_01">
+			<frame x="184" y="150" width="32" height="64"/>
+		</sprite>
+		<sprite ID="SKELETON_SPRITE_02">
+			<frame x="218" y="150" width="32" height="64"/>
+		</sprite>
+		<sprite ID="SKELETON_WEAPON_SPRITE_01">
+			<frame x="98" y="150" width="32" height="32"/>
+		</sprite>
+		<sprite ID="SKELETON_WEAPON_SPRITE_02">
+			<frame x="132" y="150" width="32" height="32"/>
+		</sprite>
+		<sprite ID="SKELETON_WEAPON_SPRITE_03">
+			<frame x="166" y="150" width="15" height="32"/>
+		</sprite>
+		<sprite ID="RAVEN_SPRITE_01">
+			<frame x="260" y="150" width="32" height="32"/>
+		</sprite>
+		<sprite ID="RAVEN_SPRITE_02">
+			<frame x="295" y="150" width="32" height="32"/>
+		</sprite>
+		<sprite ID="RAVEN_SPRITE_03">
+			<frame x="330" y="150" width="32" height="32"/>
+		</sprite>
+		<sprite ID="RAVEN_SPRITE_04">
+			<frame x="365" y="150" width="32" height="32"/>
+		</sprite>
 	</spritesheet>
 </resource>	

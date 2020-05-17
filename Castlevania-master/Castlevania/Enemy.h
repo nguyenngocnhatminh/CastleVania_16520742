@@ -5,10 +5,10 @@
 #include"Debug.h"
 class Enemy:public CGameObject
 {
+protected:
 	int hp;
 	DWORD start_point;
 	bool isAttack = false;
-	int ID;
 public:
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) {}
@@ -18,9 +18,23 @@ public:
 	}
 	void SetIsAttack(bool x);
 	bool IsAttack();
-	void SetID(int id);
-	int GetID();
+	void SubtractHP(unsigned int point)
+	{
+		this->hp = this->hp - point;
+		if (this->hp < 0)
+			this->hp = 0;
+	}
+	unsigned int GetHP()
+	{
+		return this->hp;
+	}
 
+	void SetHP(int hp)
+	{
+		this->hp = hp;
+	}
 
+	Enemy() :CGameObject() {
+	}
 };
 

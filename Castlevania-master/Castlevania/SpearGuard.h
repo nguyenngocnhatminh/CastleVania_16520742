@@ -14,6 +14,8 @@
 #define ZONE_1 1
 #define ZONE_2 2
 #define ZONE_3 3
+
+#define SPEAR_GUARD_HP 2
 class SpearGuard:public Enemy
 {
 	int Type;
@@ -24,9 +26,10 @@ class SpearGuard:public Enemy
 	float range;
 	bool first_meet=false; // laan dau cham mat simon
 public:
-	SpearGuard()
+	SpearGuard():Enemy()
 	{
 		this->AddAnimation("SPEAR_GUARD_ANI");
+		this->SetHP(SPEAR_GUARD_HP);
 	}
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL);

@@ -102,8 +102,10 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					pScene->SpawnObject(item);
 					candle->SetDestroy();
 				}
-				x += dx;
-				y += dy;
+				if (nx != 0)
+					x += dx;
+				else if (nx != 0)
+					y += dy;
 
 			}
 			else {

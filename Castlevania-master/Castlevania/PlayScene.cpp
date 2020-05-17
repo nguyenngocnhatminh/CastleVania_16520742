@@ -17,9 +17,10 @@
 #include "Bridge.h"
 #include"SpearGuard.h"
 #include"Bat.h"
-#include"EnemyTrigger.h"
 #include"Ghost.h"
 #include"Monkey.h"
+#include"Skeleton.h"
+#include "SkeletonTrigger.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 {
@@ -277,6 +278,15 @@ void PlayScene::Load()
 				objects.push_back(portal);
 			}
 			break;
+		case OSkeletonTrigger:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				SkeletonTrigger* trigger = new SkeletonTrigger();
+				trigger->SetSize(y.second->GetWidth(), y.second->GetHeight());
+				trigger->SetPosition(y.second->GetX(), y.second->GetY());
+				trigger->SetDirection(y.second->GetProperty("Direction"));
+				objects.push_back(trigger);
+			}
 		case OMoneyBag:
 			break;
 		case OCastle:
@@ -289,9 +299,6 @@ void PlayScene::Load()
 				this->cameraBoder.right = y.second->GetX() + y.second->GetWidth();
 				this->cameraBoder.bottom = y.second->GetY() + y.second->GetHeight();
 			}
-			break;
-
-		case OSpawner:
 			break;
 		case OStair:
 			for (auto const& y : x.second->GetObjectGroup())
@@ -368,15 +375,21 @@ void PlayScene::Load()
 				enemy->SetStartDirection(y.second->GetProperty("Direction"));
 				objects.push_back(enemy);
 			}
-		case ODoor:
+			break;
+		case OSkeleton:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				Skeleton* enemy = new Skeleton();
+				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				enemy->SetStartDirection(y.second->GetProperty("Direction"));
+				objects.push_back(enemy);
+			}
 			break;
 		case OBoss:
 			break;
 		case OBossBorder:
 			break;
 		case OBossTrigger:
-			break;
-		case OWater:
 			break;
 		default:
 			break;

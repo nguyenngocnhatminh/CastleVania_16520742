@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -163,7 +163,6 @@
     <ClInclude Include="DoubleShot.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectCollection.h" />
-    <ClInclude Include="EnemyTrigger.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Food.h" />
     <ClInclude Include="Ghost.h" />
@@ -181,6 +180,10 @@
     <ClInclude Include="HolyWaterItem.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemCollection.h" />
+    <ClInclude Include="Raven.h" />
+    <ClInclude Include="Skeleton.h" />
+    <ClInclude Include="SkeletonTrigger.h" />
+    <ClInclude Include="SkeletonWeapon.h" />
     <ClInclude Include="SpearGuard.h" />
     <ClInclude Include="Stair.h" />
     <ClInclude Include="TileLayer.h" />
@@ -220,7 +223,6 @@
     <ClCompile Include="DoubleShot.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectCollection.cpp" />
-    <ClCompile Include="EnemyTrigger.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="Ghost.cpp" />
@@ -238,7 +240,11 @@
     <ClCompile Include="HolyWaterItem.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemCollection.cpp" />
+    <ClCompile Include="Raven.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
+    <ClCompile Include="SkeletonTrigger.cpp" />
+    <ClCompile Include="SkeletonWeapon.cpp" />
     <ClCompile Include="SpearGuard.cpp" />
     <ClCompile Include="Stair.cpp" />
     <ClCompile Include="TileLayer.cpp" />

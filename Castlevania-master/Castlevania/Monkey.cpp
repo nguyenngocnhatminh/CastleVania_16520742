@@ -65,7 +65,7 @@ void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 					this->isPrepare = true;
 				}
 			}
-			else
+			else if(this->nx==MONKEY_JUMP_LEFT)
 			{
 				if (this->x - pScene->GetSimon()->x - MONKEY_BBOX_WIDTH < RANGE_FROM_SIMON)
 				{
@@ -75,23 +75,25 @@ void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 		}
 		else
 		{
-			
-			if (this->nx == MONKEY_JUMP_RIGHT)
+			if (this->GetState() != MONKEY_STATE_JUMP)
 			{
-				if (this->x - pScene->GetSimon()->x - MONKEY_BBOX_WIDTH > RANGE_FROM_SIMON)
+				if (this->nx == MONKEY_JUMP_RIGHT)
 				{
-					this->nx = MONKEY_JUMP_LEFT;
+					if (this->x - pScene->GetSimon()->x - MONKEY_BBOX_WIDTH > RANGE_FROM_SIMON)
+					{
+						this->nx = MONKEY_JUMP_LEFT;
+					}
+				}
+				else if (this->nx == MONKEY_JUMP_LEFT)
+				{
+					if (pScene->GetSimon()->x - this->x > RANGE_FROM_SIMON)
+					{
+						this->nx = MONKEY_JUMP_RIGHT;
+					}
 				}
 			}
-			else if (this->nx == MONKEY_JUMP_LEFT)
-			{
-				if (pScene->GetSimon()->x - this->x > RANGE_FROM_SIMON)
-			{
-				this->nx = MONKEY_JUMP_RIGHT;
-			}
 		}
 			
-		}
 	}
 
 	if (isPrepare)
@@ -189,16 +191,24 @@ void Monkey::SetState(int state)
 		vx = 0;
 		break;
 	case MONKEY_STATE_JUMP:
-		vx = MONKEY_SPEED_X;
 		if (isPrepare == true)
 		{
 			vy = -MONKEY_SPEED_Y_LOW;
+			vx = MONKEY_SPEED_X;
 		}
 		else
 		{
 			if ((rand() % 2) + 1 == 2)
+			{
 				vy = -MONKEY_SPEED_Y_LOW;
-			else vy = -MONKEY_SPEED_Y_HIGH;
+				vx = MONKEY_SPEED_X_LOW;
+			}
+			else
+			{
+				vy = -MONKEY_SPEED_Y_HIGH;
+				vx = MONKEY_SPEED_X;
+			}
+			
 		}
 		break;
 	}

@@ -9,6 +9,7 @@
 #include"EffectCollection.h"
 #include"Candle.h"
 #include"BreakWall.h"
+#include "Enemy.h"
 
 bool Whip::CheckLastFrame()
 {
@@ -28,106 +29,272 @@ bool Whip::CheckLastFrame()
 	}
 	return true;
 }
-void Whip::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
+void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
 	int ani = getCurrentAni();
 	if (ani < 2)
 	{
 		if (animations[ani]->GetCurrentFrame() < animations[ani]->GetlastFrame())
 		{
+			hitObject = false;
 			return;
 		}
 	}
 	else {
-		if(animations[ani]->GetCurrentFrame()<8)
+		if (animations[ani]->GetCurrentFrame() < 8)
 		{
+			hitObject = false;
 			return;
 		}
 	}
 
-	for (size_t i = 0; i < colliable_objects->size(); i++)
+	CGameObject::Update(dt, scene);
+
+	if (!collideOneTime)
 	{
-		if (dynamic_cast<Torch*>(colliable_objects->at(i)))
+		for (size_t i = 0; i < colliable_objects->size(); i++)
 		{
-			Torch* torch = dynamic_cast<Torch*>(colliable_objects->at(i));
-			if (this->isColliding(torch))
+			LPGAMEOBJECT e = colliable_objects->at(i);
+			if (CGameObject::isColliding(e))
 			{
-				ItemCollection* itemcollection = new ItemCollection();
-				Item* item = itemcollection->SpawnItem(torch->GetItem());
-				EffectCollection* effectcollection = new EffectCollection();
-				Effect* spark = effectcollection->SpawnEffect(1);	//1: id spark
-				Effect* flame = effectcollection->SpawnEffect(2);	//2: id flame
-				if (dynamic_cast<PlayScene*>(scene)) 
+				if (dynamic_cast<Torch*>(e))
 				{
-					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-					DebugOut(L"Va cham voi torch \n");
-					float tx, ty;
-					torch->GetPosition(tx, ty);
-					spark->SetPosition(tx, ty+8);
-					flame->SetPosition(tx + 5, ty + 10);
-					item->SetPosition(tx, ty);
-					pScene->SpawnObject(spark);
-					pScene->SpawnObject(flame);
-					pScene->SpawnObject(item);
-					torch->SetDestroy();
-				}
-			}
-		}
-		else if (dynamic_cast<Candle*>(colliable_objects->at(i)))
-		{
-			Candle* candle = dynamic_cast<Candle*>(colliable_objects->at(i));
-			if (this->isColliding(candle))
-			{
-				ItemCollection* itemcollection = new ItemCollection();
-				Item* item = itemcollection->SpawnItem(candle->GetItem());
-				EffectCollection* effectcollection = new EffectCollection();
-				Effect* spark = effectcollection->SpawnEffect(1);	//1: id spark
-				Effect* flame = effectcollection->SpawnEffect(2);	//2: id flame
-				if (dynamic_cast<PlayScene*>(scene))
-				{
-					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-					DebugOut(L"Va cham voi nen \n");
-					float tx, ty;
-					candle->GetPosition(tx, ty);
-					spark->SetPosition(tx, ty + 8);
-					flame->SetPosition(tx + 5, ty + 10);
-					item->SetPosition(tx, ty);
-					pScene->SpawnObject(spark);
-					pScene->SpawnObject(flame);
-					pScene->SpawnObject(item);
-					candle->Destroy();
-				}
-			}
-		}
-		else if (dynamic_cast<BreakWall*>(colliable_objects->at(i)))
-		{
-			BreakWall* breakwall = dynamic_cast<BreakWall*>(colliable_objects->at(i));
-			if(this->isColliding(breakwall))
-			{
-				ItemCollection* itemcollection = new ItemCollection();
-				Item* item = itemcollection->SpawnItem(breakwall->GetItem());
-				if (dynamic_cast<PlayScene*>(scene))
-				{
-					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-					DebugOut(L"Va cham voi gach \n");
-					float tx, ty;
-					breakwall->GetPosition(tx, ty);
-					if (breakwall->GetItem() != 0)
+					Torch* torch = dynamic_cast<Torch*>(e);
+					hitObject = true;
+					if (this->isColliding(torch))
 					{
-						item->SetPosition(tx, ty);
-						breakwall->SetState(BREAKWALL_STATE_BREAK);
-						breakwall->SetDestroy();
-						pScene->SpawnObject(item);
+						ItemCollection* itemcollection = new ItemCollection();
+						Item* item = itemcollection->SpawnItem(torch->GetItem());
+						EffectCollection* effectcollection = new EffectCollection();
+						Effect* spark = effectcollection->SpawnEffect(SPARK);	//1: id spark
+						Effect* flame = effectcollection->SpawnEffect(FLAME);	//2: id flame
+						if (dynamic_cast<PlayScene*>(scene))
+						{
+							PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+							DebugOut(L"Va cham voi torch \n");
+							float tx, ty;
+							torch->GetPosition(tx, ty);
+							spark->SetPosition(tx, ty + 8);
+							flame->SetPosition(tx + 5, ty + 10);
+							item->SetPosition(tx, ty);
+							pScene->SpawnObject(spark);
+							pScene->SpawnObject(flame);
+							pScene->SpawnObject(item);
+							torch->SetDestroy();
+						}
 					}
-					else
+				}
+				else if (dynamic_cast<Candle*>(e))
+				{
+					Candle* candle = dynamic_cast<Candle*>(e);
+					hitObject = true;
+					if (this->isColliding(candle))
 					{
-						breakwall->SetState(BREAKWALL_STATE_BREAK);
-						breakwall->SetDestroy();
+						ItemCollection* itemcollection = new ItemCollection();
+						Item* item = itemcollection->SpawnItem(candle->GetItem());
+						EffectCollection* effectcollection = new EffectCollection();
+						Effect* spark = effectcollection->SpawnEffect(1);	//1: id spark
+						Effect* flame = effectcollection->SpawnEffect(2);	//2: id flame
+						if (dynamic_cast<PlayScene*>(scene))
+						{
+							PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+							DebugOut(L"Va cham voi nen \n");
+							float tx, ty;
+							candle->GetPosition(tx, ty);
+							spark->SetPosition(tx, ty + 8);
+							flame->SetPosition(tx + 5, ty + 10);
+							item->SetPosition(tx, ty);
+							pScene->SpawnObject(spark);
+							pScene->SpawnObject(flame);
+							pScene->SpawnObject(item);
+							candle->Destroy();
+						}
+					}
+				}
+				else if (dynamic_cast<BreakWall*>(e))
+				{
+					BreakWall* breakwall = dynamic_cast<BreakWall*>(e);
+					hitObject = true;
+					if (this->isColliding(breakwall))
+					{
+						ItemCollection* itemcollection = new ItemCollection();
+						Item* item = itemcollection->SpawnItem(breakwall->GetItem());
+						if (dynamic_cast<PlayScene*>(scene))
+						{
+							PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+							DebugOut(L"Va cham voi gach \n");
+							float tx, ty;
+							breakwall->GetPosition(tx, ty);
+							if (breakwall->GetItem() != 0)
+							{
+								item->SetPosition(tx, ty);
+								breakwall->SetState(BREAKWALL_STATE_BREAK);
+								breakwall->SetDestroy();
+								pScene->SpawnObject(item);
+							}
+							else
+							{
+								breakwall->SetState(BREAKWALL_STATE_BREAK);
+								breakwall->SetDestroy();
+							}
+						}
+
+					}
+				}
+				else if (dynamic_cast<Enemy*>(e)) {
+					Enemy* f = dynamic_cast<Enemy*> (e);
+					hitObject = true;
+					EffectCollection* effectcollection = new EffectCollection();
+					Effect* spark = effectcollection->SpawnEffect(1);
+					if (!f->IsDestroy())
+					{
+						f->SubtractHP(this->damage);
+						if (f->GetHP() == 0)
+						{
+
+							f->Destroy();;
+						}
+
+					}
+					this->Destroy();
+				}
+			}
+		}
+		this->collideOneTime = true;
+
+		vector<LPCOLLISIONEVENT> coEvents;
+		vector<LPCOLLISIONEVENT> coEventsResult;
+
+		coEvents.clear();
+
+		// turn off collision when die 
+
+		CalcPotentialCollisions(colliable_objects, coEvents);
+
+
+		// No collision occured, proceed normally
+		if (coEvents.size() == 0)
+		{
+			x += dx;
+			y += dy;
+		}
+		else
+		{
+
+
+			DebugOut(L"Swept aabb \n");
+			float min_tx, min_ty, nx = 0, ny;
+
+			FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+
+
+			for (UINT i = 0; i < coEvents.size(); i++)
+			{
+				LPCOLLISIONEVENT e = coEvents[i];
+				if (dynamic_cast<Torch*>(e->obj)) {
+					Torch* torch = dynamic_cast<Torch*>(e->obj);
+					if (this->isColliding(torch))
+					{
+						ItemCollection* itemcollection = new ItemCollection();
+						Item* item = itemcollection->SpawnItem(torch->GetItem());
+						EffectCollection* effectcollection = new EffectCollection();
+						Effect* spark = effectcollection->SpawnEffect(SPARK);	//1: id spark
+						Effect* flame = effectcollection->SpawnEffect(FLAME);	//2: id flame
+						if (dynamic_cast<PlayScene*>(scene))
+						{
+							PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+							DebugOut(L"Va cham voi torch \n");
+							float tx, ty;
+							torch->GetPosition(tx, ty);
+							spark->SetPosition(tx, ty + 8);
+							flame->SetPosition(tx + 5, ty + 10);
+							item->SetPosition(tx, ty);
+							pScene->SpawnObject(spark);
+							pScene->SpawnObject(flame);
+							pScene->SpawnObject(item);
+							torch->SetDestroy();
+						}
+					}
+				}
+				else if (dynamic_cast<BreakWall*>(e->obj))
+				{
+					BreakWall* breakwall = dynamic_cast<BreakWall*>(e->obj);
+					if (this->isColliding(breakwall))
+					{
+						ItemCollection* itemcollection = new ItemCollection();
+						Item* item = itemcollection->SpawnItem(breakwall->GetItem());
+						if (dynamic_cast<PlayScene*>(scene))
+						{
+							PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+							DebugOut(L"Va cham voi gach \n");
+							float tx, ty;
+							breakwall->GetPosition(tx, ty);
+							if (breakwall->GetItem() != 0)
+							{
+								item->SetPosition(tx, ty);
+								breakwall->SetState(BREAKWALL_STATE_BREAK);
+								breakwall->SetDestroy();
+								pScene->SpawnObject(item);
+							}
+							else
+							{
+								breakwall->SetState(BREAKWALL_STATE_BREAK);
+								breakwall->SetDestroy();
+							}
+						}
+
 					}
 				}
 
+				else if (dynamic_cast<Candle*>(e->obj))
+				{
+					Candle* candle = dynamic_cast<Candle*>(colliable_objects->at(i));
+					if (this->isColliding(candle))
+					{
+						ItemCollection* itemcollection = new ItemCollection();
+						Item* item = itemcollection->SpawnItem(candle->GetItem());
+						EffectCollection* effectcollection = new EffectCollection();
+						Effect* spark = effectcollection->SpawnEffect(SPARK);	//1: id spark
+						Effect* flame = effectcollection->SpawnEffect(FLAME);	//2: id flame
+						if (dynamic_cast<PlayScene*>(scene))
+						{
+							PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+							DebugOut(L"Va cham voi nen \n");
+							float tx, ty;
+							candle->GetPosition(tx, ty);
+							spark->SetPosition(tx, ty + 8);
+							flame->SetPosition(tx + 5, ty + 10);
+							item->SetPosition(tx, ty);
+							pScene->SpawnObject(spark);
+							pScene->SpawnObject(flame);
+							pScene->SpawnObject(item);
+							candle->Destroy();
+						}
+					}
+				}
+				else if (dynamic_cast<Enemy*>(e->obj)) {
+					Enemy* f = dynamic_cast<Enemy*> (e->obj);
+					hitObject = true;
+					EffectCollection* effectcollection = new EffectCollection();
+					Effect* spark = effectcollection->SpawnEffect(SPARK);
+					if (!f->IsDestroy())
+					{
+						f->SubtractHP(this->damage);
+						if (f->GetHP() == 0)
+						{
+
+							f->Destroy();;
+						}
+
+					}
+				}
+				else {
+					x += dx;
+					y += dy;
+				}
 			}
 		}
+		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 	}
 }
 

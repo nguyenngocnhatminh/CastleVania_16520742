@@ -106,6 +106,8 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		}
 	}
 
+
+
 	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
 	{
@@ -117,7 +119,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		float min_tx, min_ty, nx = 0, ny;
 
 		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-
+	
 		// block 
 		x += min_tx * dx + nx * 0.4f;		
 		if (ny <= 0) 
@@ -309,7 +311,21 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 			}
 		}
-		if (dynamic_cast<Stair*>(e))
+		if (dynamic_cast<Item*>(e))
+		{
+
+			Item* f = dynamic_cast<Item*> (e);
+
+			if (!f->GetIsHidden())
+			{
+				if (CGameObject::isColliding(f))
+				{
+				}
+			}
+
+
+		}
+		else if (dynamic_cast<Stair*>(e))
 		{
 			Stair* f = dynamic_cast<Stair*> (e);
 
@@ -337,6 +353,14 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				this->isColliceWithStair = false;
 				if (!this->isOnStair)
 					this->StairDirection = -1;
+			}
+		}
+		else if (dynamic_cast<Enemy*>(e))
+		{
+			Enemy* f = dynamic_cast<Enemy*>(e);
+			if (CGameObject::isColliding(f))
+			{
+			
 			}
 		}
 	}
@@ -700,12 +724,14 @@ void CSIMON::SetState(int state)
 		isSitting = true;
 		this->fight_start = GetTickCount();
 		whip->ResetWhip();
+		whip->StartCalculatorCollice();
 		break;
 	case SIMON_STATE_FIGHT_STAND:
 		vx = this->state == SIMON_STATE_IDLE || this->state == SIMON_STATE_WALKING_LEFT
 			|| this->state == SIMON_STATE_WALKING_RIGHT ? 0:vx;
 		this->fight_start = GetTickCount();
 		whip->ResetWhip();
+		whip->StartCalculatorCollice();
 		break;
 	case SIMON_STATE_DIE:
 		vy = -SIMON_DIE_DEFLECT_SPEED;
@@ -811,6 +837,7 @@ void CSIMON::SetState(int state)
 		this->vy = 0;
 		this->fight_start = GetTickCount();
 		whip->ResetWhip();
+		whip->StartCalculatorCollice();
 		break;
 	}
 	case SIMON_STATE_DOWNSTAIR_ATTACK: {
@@ -820,6 +847,7 @@ void CSIMON::SetState(int state)
 		this->vy = 0;
 		this->fight_start = GetTickCount();
 		whip->ResetWhip();
+		whip->StartCalculatorCollice();
 		break;
 	}
 	}

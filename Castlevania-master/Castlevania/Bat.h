@@ -18,6 +18,8 @@
 
 #define RANGE_FROM_SIMON_X 150
 #define RANGE_FROM_SIMON_Y 100
+
+#define BAT_HP 1
 class Bat:public Enemy
 {
 	float start_y;
@@ -28,6 +30,7 @@ public:
 		this->AddAnimation("BAT_ANI_IDLE");
 		this->AddAnimation("BAT_ANI_FLYING");
 		state = BAT_STATE_IDLE;
+		this->SetHP(BAT_HP);
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

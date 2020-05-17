@@ -19,9 +19,11 @@
 #define WHIP_BBOX_MORNINGSTAR_WIDTH 85
 #define WHIP_BBOX_MORNINGSTAR_HEIGHT 15
 
+
 class Whip:public CGameObject
 {
 private:
+	UINT  damage = 1;
 	int state = 0;
 	unsigned int damege;
 	bool collideOneTime = false;
@@ -36,6 +38,13 @@ public:
 	}
 	void ResetWhip();
 	
+	void StartCalculatorCollice() {
+		this->collideOneTime = false;
+	}
+
+	void SetDamage(int damage) { this->damage = damage; }
+	UINT GetDamage() { return damage; }
+
 	virtual void Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL);
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

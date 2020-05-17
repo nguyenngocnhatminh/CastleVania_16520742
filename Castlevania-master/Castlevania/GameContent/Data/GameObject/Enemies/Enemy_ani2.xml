@@ -11,5 +11,29 @@
 		<animation ID="MONKEY_ANI_JUMP" defaulttime="100">
 			<frame spriteID="MONKEY_SPRITE_02" />	
 		</animation>
+		<animation ID="SKELETON_ANI_JUMP" defaulttime="100">
+			<frame spriteID="SKELETON_SPRITE_01"/>
+			<frame spriteID="SKELETON_SPRITE_02"/>
+		</animation>
+		<animation ID="SKELETON_ANI_WALK" defaulttime="100">
+			<frame spriteID="SKELETON_SPRITE_01"/>
+			<frame spriteID="SKELETON_SPRITE_02"/>
+		</animation>
+		<animation ID="SKELETON_WEAPON_ANI" defaulttime="100">
+			<frame spriteID="SKELETON_WEAPON_SPRITE_01"/>
+			<frame spriteID="SKELETON_WEAPON_SPRITE_02"/>
+			<frame spriteID="SKELETON_WEAPON_SPRITE_03"/>
+		</animation>
+		<animation ID="RAVEN_ANI_IDLE">
+			<frame spriteID="RAVEN_SPRITE_04"/>			
+		</animation>
+		<animation ID="RAVEN_ANI_FLY">
+			<frame spriteID="RAVEN_SPRITE_03"/>
+			<frame spriteID="RAVEN_SPRITE_02"/>
+		</animation>
+		<animation ID="RAVEN_ANI_FLAP">
+			<frame spriteID="RAVEN_SPRITE_02"/>
+			<frame spriteID="RAVEN_SPRITE_01"/>
+		</animation>
 	</animations>
 </resource>	

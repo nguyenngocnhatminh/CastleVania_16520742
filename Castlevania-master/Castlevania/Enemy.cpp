@@ -13,11 +13,3 @@ bool Enemy::IsAttack()
 {
 	return this->isAttack;
 }
-void Enemy::SetID(int id)
-{
-	this->ID = id;
-}
-int Enemy::GetID()
-{
-	return this->ID;
-}

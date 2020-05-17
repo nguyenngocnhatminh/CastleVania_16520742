@@ -225,9 +225,6 @@
     <ClInclude Include="SpearGuard.h">
       <Filter>Source Files\Object\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyTrigger.h">
-      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Bat.h">
       <Filter>Source Files\Object\Enemy</Filter>
     </ClInclude>
@@ -236,6 +233,18 @@
     </ClInclude>
     <ClInclude Include="Monkey.h">
       <Filter>Source Files\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Source Files\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeletonWeapon.h">
+      <Filter>Source Files\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeletonTrigger.h">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Raven.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -392,9 +401,6 @@
     <ClCompile Include="SpearGuard.cpp">
       <Filter>Source Files\Object\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyTrigger.cpp">
-      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
-    </ClCompile>
     <ClCompile Include="Bat.cpp">
       <Filter>Source Files\Object\Enemy</Filter>
     </ClCompile>
@@ -403,6 +409,18 @@
     </ClCompile>
     <ClCompile Include="Monkey.cpp">
       <Filter>Source Files\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Source Files\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletonTrigger.cpp">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletonWeapon.cpp">
+      <Filter>Source Files\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Raven.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

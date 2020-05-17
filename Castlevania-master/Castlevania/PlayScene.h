@@ -3,6 +3,7 @@
 #include"Simon.h"
 #include"Map.h"
 #include<queue>
+#include "SkeletonTrigger.h"
 class PlayScene:public Scene
 {
     RECT cameraBoder;
