@@ -22,6 +22,7 @@
 #include"Skeleton.h"
 #include "SkeletonTrigger.h"
 #include "Raven.h"
+#include "Zombie.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 {
@@ -391,6 +392,14 @@ void PlayScene::Load()
 				objects.push_back(enemy);
 			}
 			break;
+		case OZombie:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				Zombie* enemy = new Zombie();
+				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				enemy->SetNx(y.second->GetProperty("Direction"));
+				objects.push_back(enemy);
+			}
 		case OBoss:
 			break;
 		case OBossBorder:

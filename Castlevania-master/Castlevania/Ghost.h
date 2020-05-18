@@ -19,7 +19,7 @@ class Ghost:public Enemy
 	bool isHidden;
 	int start_direction;
 public:
-	Ghost()
+	Ghost():Enemy()
 	{
 		isHidden = true;
 		this->AddAnimation("GHOST_ANI");

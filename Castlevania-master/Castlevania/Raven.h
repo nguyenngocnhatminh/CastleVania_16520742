@@ -26,18 +26,21 @@
 
 #define RAVEN_DIRECTION_RIGHT 1
 #define RAVEN_DIRECTION_LEFT -1
+
+#define RAVEN_HP 1
 class Raven:public Enemy
 {
 	int state;
 	float start_y;
 	DWORD time_flap;
 public:
-	Raven()
+	Raven():Enemy()
 	{
 		this->AddAnimation("RAVEN_ANI_IDLE");
 		this->AddAnimation("RAVEN_ANI_FLY");
 		this->AddAnimation("RAVEN_ANI_FLAP");
 		this->SetState(RAVEN_STATE_IDLE);
+		this->SetHP(RAVEN_HP);
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

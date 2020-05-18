@@ -11,12 +11,15 @@
 #define SKELETON_WEAPON_VX_03 0.3f
 
 #define GRAVITY 0.002f
+
+#define SKELETON_WEAPON_HP 1
 class SkeletonWeapon:public Enemy
 {
 public:
-	SkeletonWeapon()
+	SkeletonWeapon():Enemy()
 	{
 		this->AddAnimation("SKELETON_WEAPON_ANI");
+		this->SetHP(SKELETON_WEAPON_HP);
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

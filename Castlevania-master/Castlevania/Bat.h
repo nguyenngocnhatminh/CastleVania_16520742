@@ -25,7 +25,7 @@ class Bat:public Enemy
 	float start_y;
 	int state;
 public:
-	Bat()
+	Bat():Enemy()
 	{
 		this->AddAnimation("BAT_ANI_IDLE");
 		this->AddAnimation("BAT_ANI_FLYING");

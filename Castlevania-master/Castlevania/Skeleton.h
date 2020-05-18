@@ -49,7 +49,7 @@ class Skeleton:public Enemy
 	bool spawnweapon;
 	DWORD timespawnWeapon;
 public:
-	Skeleton()
+	Skeleton():Enemy()
 	{
 		range_move = 0;
 		this->AddAnimation("SKELETON_ANI_WALK");
