@@ -204,6 +204,7 @@
     <ClInclude Include="TypeConverter.h" />
     <ClInclude Include="Whip.h" />
     <ClInclude Include="WhipItem.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Axe.cpp" />
@@ -264,6 +265,7 @@
     <ClCompile Include="TripleShot.cpp" />
     <ClCompile Include="Whip.cpp" />
     <ClCompile Include="WhipItem.cpp" />
+    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

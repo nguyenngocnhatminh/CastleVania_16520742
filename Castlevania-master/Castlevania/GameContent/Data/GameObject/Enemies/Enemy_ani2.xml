@@ -24,14 +24,14 @@
 			<frame spriteID="SKELETON_WEAPON_SPRITE_02"/>
 			<frame spriteID="SKELETON_WEAPON_SPRITE_03"/>
 		</animation>
-		<animation ID="RAVEN_ANI_IDLE">
+		<animation ID="RAVEN_ANI_IDLE" defaulttime="100">
 			<frame spriteID="RAVEN_SPRITE_04"/>			
 		</animation>
-		<animation ID="RAVEN_ANI_FLY">
+		<animation ID="RAVEN_ANI_FLY" defaulttime="100">
 			<frame spriteID="RAVEN_SPRITE_03"/>
 			<frame spriteID="RAVEN_SPRITE_02"/>
 		</animation>
-		<animation ID="RAVEN_ANI_FLAP">
+		<animation ID="RAVEN_ANI_FLAP" defaulttime="100">
 			<frame spriteID="RAVEN_SPRITE_02"/>
 			<frame spriteID="RAVEN_SPRITE_01"/>
 		</animation>

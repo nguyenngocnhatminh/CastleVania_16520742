@@ -244,7 +244,10 @@
       <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClInclude>
     <ClInclude Include="Raven.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Source Files\Object\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -420,7 +423,10 @@
       <Filter>Source Files\Object\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Raven.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Source Files\Object\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

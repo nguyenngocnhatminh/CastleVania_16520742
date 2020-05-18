@@ -21,6 +21,7 @@
 #include"Monkey.h"
 #include"Skeleton.h"
 #include "SkeletonTrigger.h"
+#include "Raven.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 {
@@ -188,12 +189,7 @@ void PlayScene::Load()
 		LoadSprite(path, idTex);
 
 	}
-	// h mình load file base lên rồi load node sprites trong base
-	//để lấy đường dẫn sprite của object rồi truyền vào hàm load sprite
-	// mục đính là dùng vòng lập load tâtts cả các sprite của object luôn
 
-
-	//load ani
 	xml_node<>* aniNode = rootNode->first_node("animations");
 	for (xml_node<>* child = aniNode->first_node(); child; child = child->next_sibling())
 	{
@@ -382,6 +378,16 @@ void PlayScene::Load()
 				Skeleton* enemy = new Skeleton();
 				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				enemy->SetStartDirection(y.second->GetProperty("Direction"));
+				objects.push_back(enemy);
+			}
+			break;
+		case ORaven:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				Raven* enemy = new Raven();
+				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				enemy->SetNx(y.second->GetProperty("Direction"));
+				enemy->SetStartY(y.second->GetY());
 				objects.push_back(enemy);
 			}
 			break;
