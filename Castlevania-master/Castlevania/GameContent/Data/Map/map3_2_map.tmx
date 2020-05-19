@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="47" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="81">
+<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="47" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="83">
  <tileset firstgid="1" name="map3_2_bank.png" tilewidth="32" tileheight="32" tilecount="363" columns="33">
   <image source="map3_2_bank.png" width="1056" height="352"/>
  </tileset>
  <tileset firstgid="364" source="Candle.tsx"/>
  <tileset firstgid="366" source="SKELETON.tsx"/>
  <tileset firstgid="369" source="Raven.tsx"/>
+ <tileset firstgid="369" source="Money_Bag.tsx"/>
  <layer id="1" name="ShoeBox Tile Grab" width="47" height="11">
   <data>
    <tile gid="1"/>
@@ -528,7 +529,7 @@
   </data>
  </layer>
  <objectgroup id="2" name="Player">
-  <object id="2" x="963.33" y="141.333" width="38" height="48"/>
+  <object id="2" x="450.739" y="237.444" width="38" height="48"/>
  </objectgroup>
  <objectgroup id="3" name="Ground">
   <object id="4" x="2" y="0" width="34" height="348"/>
@@ -541,7 +542,7 @@
   <object id="11" x="816" y="225.333" width="62.6667" height="26.6667"/>
   <object id="12" x="880" y="288" width="61.3333" height="30.6667"/>
   <object id="13" x="941.333" y="192" width="66.6667" height="32"/>
-  <object id="14" x="944" y="320" width="124" height="29.3333"/>
+  <object id="14" x="944" y="320" width="127.333" height="29.3333"/>
   <object id="15" x="1072" y="161.333" width="65.3333" height="29.3333"/>
   <object id="16" x="1201.33" y="289.333" width="126.667" height="32"/>
   <object id="17" x="1330.67" y="256" width="61.3333" height="32"/>
@@ -552,7 +553,17 @@
   <object id="24" x="1492" y="124" width="13.3333" height="101.333"/>
  </objectgroup>
  <objectgroup id="4" name="Camera">
-  <object id="1" x="1.95077" y="-2.00153" width="1504" height="354"/>
+  <object id="1" x="0.61436" y="-2.6682" width="1504" height="354"/>
+ </objectgroup>
+ <objectgroup id="12" name="SitTrigger">
+  <object id="81" x="1043.33" y="308" width="24.6667" height="10">
+   <properties>
+    <property name="item" value="5"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="13" name="MoneyBag">
+  <object id="82" gid="371" x="847.666" y="251.667" width="31" height="30"/>
  </objectgroup>
  <objectgroup id="11" name="Raven">
   <object id="71" x="808.667" y="131.333" width="21.3333" height="10">
@@ -583,7 +594,7 @@
     <property name="Direction" value="-1"/>
    </properties>
   </object>
-  <object id="80" gid="368" x="1275.67" y="286" width="35" height="64">
+  <object id="80" gid="368" x="1293.67" y="287.333" width="35" height="64">
    <properties>
     <property name="Direction" value="-1"/>
    </properties>

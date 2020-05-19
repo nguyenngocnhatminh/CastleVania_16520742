@@ -108,9 +108,12 @@ class CSIMON : public CGameObject
 	D3DXVECTOR2 LastStepOnStairPos;
 	void HandleFirstStepOnStair();
 	void HandlePerStepOnStair();
+
+	int Switch_scene;
 public: 
 	CSIMON() : CGameObject()
 	{
+		Switch_scene = -1;
 		currenSubWeapon = 0;
 		isInBridge = false;
 		isSitting = false;
@@ -155,6 +158,16 @@ public:
 	{
 		this->fight_start = 0;
 	
+	}
+
+	int GetSwitchScene()
+	{
+		return this->Switch_scene;
+	}
+
+	void SetSwitchScene(int id)
+	{
+		this->Switch_scene = id;
 	}
 
 	DWORD GetUpgrageTime() { return this->upgrade_start; }

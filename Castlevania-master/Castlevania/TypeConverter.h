@@ -32,7 +32,8 @@ const enum ObjectID
 	OSkeleton,
 	OSkeletonTrigger,
 	ORaven,
-	OZombie
+	OZombie,
+	OSitTrigger
 };
 
 // Map objectlayer voi ten trong tiled map editor
@@ -66,6 +67,7 @@ const auto string2EntityType = std::unordered_map<std::string, ObjectID>
 	{"Skeleton",ObjectID::OSkeleton},
 	{"SkeletonTrigger",ObjectID::OSkeletonTrigger},
 	{"Raven",ObjectID::ORaven},
-	{"Zombie",ObjectID::OZombie}
+	{"Zombie",ObjectID::OZombie},
+	{"SitTrigger",ObjectID::OSitTrigger}
 };
 

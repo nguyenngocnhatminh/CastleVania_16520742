@@ -23,6 +23,7 @@
 #include "SkeletonTrigger.h"
 #include "Raven.h"
 #include "Zombie.h"
+#include "SitTrigger.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 {
@@ -254,6 +255,24 @@ void PlayScene::Load()
 				objects.push_back(trigger);
 			}
 			break;
+		case OSitTrigger:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				SitTrigger* trigger = new SitTrigger();
+				trigger->SetPosition(y.second->GetX(), y.second->GetY());
+				trigger->SetSize(y.second->GetWidth(), y.second->GetHeight());
+				auto moneyBagLayer = objectLayer.at("MoneyBag");
+				for (auto const& child : moneyBagLayer->GetObjectGroup())
+				{
+					ItemCollection* item = new ItemCollection();
+					Item* mnBag = item->SpawnItem(y.second->GetProperty("item"));
+					mnBag->SetIsHidden(true);
+					mnBag->SetPosition(child.second->GetX(), child.second->GetY() - child.second->GetHeight());
+					trigger->SetItem(mnBag);
+				}
+				objects.push_back(trigger);
+			}
+			break;
 		case OTorch:
 			for (auto const& y : x.second->GetObjectGroup())
 			{
@@ -419,13 +438,12 @@ void PlayScene::Load()
 // dọn rác
 void PlayScene::UnLoad()
 {
+	SIMON = NULL;
 	for (int i = 0; i < objects.size(); i++)
 	{
 		delete objects[i];
 	}
 	objects.clear();
-	SIMON = NULL;
-
 }
 
 void PlayScene::Update(DWORD dt)
@@ -483,7 +501,11 @@ void PlayScene::Update(DWORD dt)
 		}
 		else ++it;
 	}
-
+	
+	if (this->SIMON->GetSwitchScene() >= 0)
+	{
+		CGame::GetInstance()->SwitchScene(SIMON->GetSwitchScene());
+	}
 }
 
 void PlayScene::Render()

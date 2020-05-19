@@ -249,6 +249,9 @@
     <ClInclude Include="Zombie.h">
       <Filter>Source Files\Object\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="SitTrigger.h">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -427,6 +430,9 @@
     </ClCompile>
     <ClCompile Include="Zombie.cpp">
       <Filter>Source Files\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SitTrigger.cpp">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

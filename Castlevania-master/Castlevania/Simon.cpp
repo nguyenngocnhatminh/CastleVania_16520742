@@ -20,6 +20,8 @@
 #include"Bridge.h"
 #include"HolyWaterItem.h"
 #include"Enemy.h"
+#include "Bat.h"
+#include "SitTrigger.h"
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
@@ -156,6 +158,11 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					}
 				}
 			}
+			else if (dynamic_cast<Portal*>(e->obj))
+			{
+				auto portal = dynamic_cast<Portal*>(e->obj);
+				this->Switch_scene = portal->GetNextMapId();
+			}
 			else if (dynamic_cast<BreakWall*>(e->obj)) {
 				if (e->ny != 0) { // kiểm tra va chạm trục y có va chạm trục y nhảy vào đây
 					if (GetState() == SIMON_STATE_JUMP && vy >= 0) {
@@ -235,17 +242,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					}
 
 				}
-				else if (dynamic_cast<Portal*>(e->obj))
-				{
-					if (e->nx != 0) // va chạm chiều x
-						x += dx;
-					if (e->ny != 0)
-						y += dy;
-					auto portal = dynamic_cast<Portal*>(e->obj);
-					CGame::GetInstance()->SwitchScene(portal->GetNextMapId());
-		
 
-				}
 				else if (dynamic_cast<MoneyTrigger*>(e->obj))
 				{
 					if (e->nx != 0) // va chạm chiều x
@@ -261,10 +258,44 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						pScene->SpawnObject(trigger->GetItem());
 					}
 				}
+				else if (dynamic_cast<SitTrigger*>(e->obj))
+				{
+					if (this->nx != 0)
+						x += dx;
+					if (e->ny != 0)
+						y += dy;
+
+					if (dynamic_cast<PlayScene*>(scene))
+					{
+						auto pScene = dynamic_cast<PlayScene*>(scene);
+						if (this->GetState() == SIMON_STATE_SIT)
+						{
+							auto trigger = dynamic_cast<SitTrigger*>(e->obj);
+							trigger->SetDestroy();
+							pScene->SpawnObject(trigger->GetItem());
+						}
+					}
+				}
 				else if (dynamic_cast<Boomerang*>(e->obj))
 				{
 					Boomerang* bom= dynamic_cast<Boomerang*>(e->obj);
 					bom->Destroy();
+				}
+				else if (dynamic_cast<Enemy*>(e->obj))
+				{
+					Enemy* enemy = dynamic_cast<Enemy*>(e->obj);
+					if (dynamic_cast<Bat*>(e->obj))
+					{
+						Bat* bat = dynamic_cast<Bat*>(e->obj);
+						bat->SubtractHP(1);
+						if (bat->GetHP() == 0)
+						{
+							bat->Destroy();
+						}
+					}
+					if (untouchable_start == 0)
+					{
+					}
 				}
 				else
 				{
@@ -297,6 +328,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				flagOnGround = true;
 			}
 		}
+
 		if (dynamic_cast<BreakWall*>(e) && !flagOnGround) // BUG khi đứng lên brick
 		{
 			BreakWall* f = dynamic_cast<BreakWall*> (e);
@@ -322,8 +354,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				{
 				}
 			}
-
-
 		}
 		else if (dynamic_cast<Stair*>(e))
 		{
@@ -360,9 +390,30 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			Enemy* f = dynamic_cast<Enemy*>(e);
 			if (CGameObject::isColliding(f))
 			{
-			
+				
 			}
 		}
+		else if (dynamic_cast<SitTrigger*>(e))
+		{
+			SitTrigger* trigger = dynamic_cast<SitTrigger*>(e);
+			if (CGameObject::isColliding(trigger))
+			{
+				if (this->GetState() == SIMON_STATE_SIT)
+				{
+					if (dynamic_cast<PlayScene*>(scene))
+					{
+						auto pScene = dynamic_cast<PlayScene*>(scene);
+						if (this->GetState() == SIMON_STATE_SIT)
+						{
+							auto trigger = dynamic_cast<SitTrigger*>(e);
+							trigger->SetDestroy();
+							pScene->SpawnObject(trigger->GetItem());
+						}
+					}
+				}
+			}
+		}
+
 	}
 
 
