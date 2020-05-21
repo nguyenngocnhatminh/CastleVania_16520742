@@ -64,7 +64,7 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 					if (this->isColliding(torch))
 					{
 						ItemCollection* itemcollection = new ItemCollection();
-						Item* item = itemcollection->SpawnItem(torch->GetItem());
+						Item* item = itemcollection->SpawnItem(torch->GetItem(),e->x);
 						EffectCollection* effectcollection = new EffectCollection();
 						Effect* spark = effectcollection->SpawnEffect(SPARK);	//1: id spark
 						Effect* flame = effectcollection->SpawnEffect(FLAME);	//2: id flame
@@ -91,7 +91,7 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 					if (this->isColliding(candle))
 					{
 						ItemCollection* itemcollection = new ItemCollection();
-						Item* item = itemcollection->SpawnItem(candle->GetItem());
+						Item* item = itemcollection->SpawnItem(candle->GetItem(),e->x);
 						EffectCollection* effectcollection = new EffectCollection();
 						Effect* spark = effectcollection->SpawnEffect(1);	//1: id spark
 						Effect* flame = effectcollection->SpawnEffect(2);	//2: id flame
@@ -118,7 +118,7 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 					if (this->isColliding(breakwall))
 					{
 						ItemCollection* itemcollection = new ItemCollection();
-						Item* item = itemcollection->SpawnItem(breakwall->GetItem());
+						Item* item = itemcollection->SpawnItem(breakwall->GetItem(),e->x);
 						if (dynamic_cast<PlayScene*>(scene))
 						{
 							PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
@@ -196,7 +196,7 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 					if (this->isColliding(torch))
 					{
 						ItemCollection* itemcollection = new ItemCollection();
-						Item* item = itemcollection->SpawnItem(torch->GetItem());
+						Item* item = itemcollection->SpawnItem(torch->GetItem(),torch->x);
 						EffectCollection* effectcollection = new EffectCollection();
 						Effect* spark = effectcollection->SpawnEffect(SPARK);	//1: id spark
 						Effect* flame = effectcollection->SpawnEffect(FLAME);	//2: id flame
@@ -222,7 +222,7 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 					if (this->isColliding(breakwall))
 					{
 						ItemCollection* itemcollection = new ItemCollection();
-						Item* item = itemcollection->SpawnItem(breakwall->GetItem());
+						Item* item = itemcollection->SpawnItem(breakwall->GetItem(),breakwall->x);
 						if (dynamic_cast<PlayScene*>(scene))
 						{
 							PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
@@ -252,7 +252,7 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 					if (this->isColliding(candle))
 					{
 						ItemCollection* itemcollection = new ItemCollection();
-						Item* item = itemcollection->SpawnItem(candle->GetItem());
+						Item* item = itemcollection->SpawnItem(candle->GetItem(),candle->x);
 						EffectCollection* effectcollection = new EffectCollection();
 						Effect* spark = effectcollection->SpawnEffect(SPARK);	//1: id spark
 						Effect* flame = effectcollection->SpawnEffect(FLAME);	//2: id flame

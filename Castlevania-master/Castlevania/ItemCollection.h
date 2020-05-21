@@ -31,6 +31,6 @@ class ItemCollection
 {
 	int idItem;
 public:
-	Item* SpawnItem(int id);
+	Item* SpawnItem(int id,int x);
 };
 

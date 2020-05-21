@@ -247,7 +247,7 @@ void PlayScene::Load()
 				for (auto const& child : moneyBagLayer->GetObjectGroup())
 				{
 					ItemCollection* item = new ItemCollection();
-					Item *mnBag = item->SpawnItem(y.second->GetProperty("item"));
+					Item *mnBag = item->SpawnItem(y.second->GetProperty("item"),child.second->GetX());
 					mnBag->SetIsHidden(true);
 					mnBag->SetPosition(child.second->GetX(), child.second->GetY() - child.second->GetHeight());
 					trigger->SetItem(mnBag);
@@ -265,7 +265,7 @@ void PlayScene::Load()
 				for (auto const& child : moneyBagLayer->GetObjectGroup())
 				{
 					ItemCollection* item = new ItemCollection();
-					Item* mnBag = item->SpawnItem(y.second->GetProperty("item"));
+					Item* mnBag = item->SpawnItem(y.second->GetProperty("item"),child.second->GetX());
 					mnBag->SetIsHidden(true);
 					mnBag->SetPosition(child.second->GetX(), child.second->GetY() - child.second->GetHeight());
 					trigger->SetItem(mnBag);
@@ -516,12 +516,6 @@ void PlayScene::Render()
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
 	SIMON->Render();
-	if (SIMON->GetState() == SIMON_STATE_ENTERCASTLE)
-	{
-		gameMap->GetLayer("Mid")->Render(cam);
-	}
-
-
 }
 void PlayScene::OnKeyDown(int KeyCode)
 {

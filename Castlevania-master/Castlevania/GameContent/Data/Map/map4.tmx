@@ -615,7 +615,7 @@
     <property name="direction" value="2"/>
    </properties>
   </object>
-  <object id="26" x="285.333" y="155.333" width="20" height="4.66667">
+  <object id="26" x="268" y="151.333" width="37.3333" height="8.66667">
    <properties>
     <property name="direction" value="1"/>
    </properties>

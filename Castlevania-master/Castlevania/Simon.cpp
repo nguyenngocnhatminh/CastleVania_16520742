@@ -238,6 +238,10 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						{
 							currenSubWeapon = HOLYWATER;
 						}
+						if (dynamic_cast<AxeItem*>(e->obj))
+						{
+							currenSubWeapon = AXE;
+						}
 						item->Destroy();
 					}
 

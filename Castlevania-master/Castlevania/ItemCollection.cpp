@@ -1,6 +1,6 @@
 #include "ItemCollection.h"
 
-Item* ItemCollection::SpawnItem(int id)
+Item* ItemCollection::SpawnItem(int id,int x)
 {
 	switch (id)
 	{
@@ -8,7 +8,7 @@ Item* ItemCollection::SpawnItem(int id)
 			return new BigHeart();
 			break;
 		case SMALLHEART:
-			return new Heart();
+			return new Heart(x);
 			break;
 		case DAGGER:
 			return new DaggerItem();
