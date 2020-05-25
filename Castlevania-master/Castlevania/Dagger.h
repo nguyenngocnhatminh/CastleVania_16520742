@@ -6,11 +6,13 @@
 
 #define DAGGER_VX 0.5f
 
+#define DAGGER_HEART_COST 1
 class Dagger :public SubWeapon
 {
 public:
 	Dagger() :SubWeapon() {
 		AddAnimation("DAGGER_ITEM_ANI");
+		this->SetHeartCost(DAGGER_HEART_COST);
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

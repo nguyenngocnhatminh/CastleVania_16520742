@@ -8,6 +8,7 @@
 #define AXE_BBOX_WIDTH 30
 #define AXE_BBOX_HEIGHT 28
 
+#define AXE_HEART_COST 1
 
 class Axe :public SubWeapon
 {
@@ -17,6 +18,7 @@ public:
 		AddAnimation("AXE_SUBWEAPON_ANI");
 		this->vx = AXE_SPEED_VX;
 		this->vy = -AXE_SPEED_VY;
+		this->SetHeartCost(AXE_HEART_COST);
 	}
 	~Axe();
 	virtual void Render();

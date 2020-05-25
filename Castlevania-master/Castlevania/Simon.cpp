@@ -219,8 +219,13 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					Item* item = dynamic_cast<Item*>(e->obj);
 					if (!item->IsDestroy())
 					{
+						if (dynamic_cast<Heart*>(e->obj))
+						{
+							this->heart += SMALLHEART;
+						}
 						if (dynamic_cast<BigHeart*>(e->obj))
 						{
+							this->heart += BIG_HEART;
 						}
 						if (dynamic_cast<WhipItem*>(e->obj))
 						{
@@ -299,6 +304,15 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					}
 					if (untouchable_start == 0)
 					{
+						if (!this->isOnStair)
+						{
+							this->SetState(SIMON_STATE_HURT);
+							x += dx;
+							y += dy;
+						}
+						if (untouchable != 1) {
+							StartUntouchable();
+						}
 					}
 				}
 				else
@@ -344,7 +358,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			if (CGameObject::AABB(l, t, r, b, el, et, er, eb))
 			{
 				flagOnGround = true;
-
 			}
 		}
 		if (dynamic_cast<Item*>(e))
@@ -394,7 +407,28 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			Enemy* f = dynamic_cast<Enemy*>(e);
 			if (CGameObject::isColliding(f))
 			{
-				
+				Enemy* enemy = dynamic_cast<Enemy*>(e);
+				if (dynamic_cast<Bat*>(e))
+				{
+					Bat* bat = dynamic_cast<Bat*>(e);
+					bat->SubtractHP(1);
+					if (bat->GetHP() == 0)
+					{
+						bat->Destroy();
+					}
+				}
+				if (untouchable_start == 0)
+				{
+					if (!this->isOnStair)
+					{
+						this->SetState(SIMON_STATE_HURT);
+						x += dx;
+						y += dy;
+					}
+					if (untouchable != 1) {
+						StartUntouchable();
+					}
+				}
 			}
 		}
 		else if (dynamic_cast<SitTrigger*>(e))
@@ -417,7 +451,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				}
 			}
 		}
-
 	}
 
 
@@ -426,13 +459,13 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		if (!isFirstStepOnStair && !isOnStair
 			&& this->state != SIMON_STATE_JUMP
 			&& this->state != SIMON_STATE_FIGHT_STAND
-			&& this->state != SIMON_STATE_DIE) {
+			&& this->state != SIMON_STATE_DIE
+			&& this->state != SIMON_STATE_HURT) {
 			SetState(SIMON_STATE_IDLE);
 
 		}
 
 	}
-
 
 	if (this->fight_start!=0)
 	{
@@ -467,24 +500,29 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		{
 			SubWeaponCollection* sub = new SubWeaponCollection();
 			SubWeapon* subWeapon = sub->SpawnSubWeapon(currenSubWeapon);
-			if (nx > 0)
+			if (this->heart - subWeapon->GetHeartCotst() >= 0)
 			{
-				subWeapon->SetPosition(this->x + 0.15 * SIMON_BBOX_WIDTH, this->y + 0.1 * SIMON_BBOX_HEIGHT);
+				if (nx > 0)
+				{
+					subWeapon->SetPosition(this->x + 0.15 * SIMON_BBOX_WIDTH, this->y + 0.1 * SIMON_BBOX_HEIGHT);
+				}
+				else
+				{
+					subWeapon->SetPosition(this->x + 0.3 * SIMON_BBOX_WIDTH, this->y + 0.1 * SIMON_BBOX_HEIGHT);
+				}
+				subWeapon->SetNx(this->nx);
+				if (dynamic_cast<PlayScene*>(scene))
+				{
+					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+					pScene->SpawnObject(subWeapon);
+				}
+				if (!subWeapon->isDestroy)
+				{
+					this->isSpawnSubweapon = true;
+				}
+				this->heart -= subWeapon->GetHeartCotst();
 			}
-			else
-			{
-				subWeapon->SetPosition(this->x + 0.3 * SIMON_BBOX_WIDTH, this->y + 0.1 * SIMON_BBOX_HEIGHT);
-			}
-			subWeapon->SetNx(this->nx);
-			if (dynamic_cast<PlayScene*>(scene))
-			{
-				PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-				pScene->SpawnObject(subWeapon);
-			}
-			if (!subWeapon->isDestroy)
-			{
-				this->isSpawnSubweapon = true;
-			}
+			else spawnSubweapon = false;
 		}
 	}
 
@@ -511,6 +549,9 @@ void CSIMON::Render()
 		break;
 	case SIMON_STATE_JUMP:
 		ani = SIMON_ANI_SIT;
+		break;
+	case SIMON_STATE_HURT:
+		ani = SIMON_ANI_HURT;
 		break;
 	case SIMON_STATE_FIGHT_STAND:
 		ani = SIMON_ANI_STAND_ATTACK;
@@ -773,6 +814,21 @@ void CSIMON::SetState(int state)
 		break;
 	case SIMON_STATE_IDLE:
 		vx = 0;
+		break;
+	case SIMON_STATE_HURT:
+		if (this->fight_start>0)
+		{
+			ResetFightTime();
+		}
+		this->vy = -SIMON_HURT_SPEED_Y;
+		if (nx > 0)
+		{
+			this->vx = -SIMON_HURT_SPEED_X;
+		}
+		else
+		{
+			this->vx = SIMON_HURT_SPEED_X;
+		}
 		break;
 	case SIMON_STATE_FIGHT_SIT:
 		vx = 0;

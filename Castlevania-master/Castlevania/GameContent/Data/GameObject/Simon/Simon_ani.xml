@@ -24,8 +24,8 @@
 			<frame spriteID="SIMON_SITTING_ATTACK_03" />
 		</animation>
 
-		<animation ID="SIMON_ANI_DEFLECT" defaulttime="100">
-			<frame spriteID="SIMON_STAND_DEFLECT" />
+		<animation ID="SIMON_ANI_HURT" defaulttime="100">
+			<frame spriteID="SIMON_STAND_HURT" />
 		</animation>
 
 		<animation ID="SIMON_ANI_IDLE_UPWHIP" defaulttime="100">

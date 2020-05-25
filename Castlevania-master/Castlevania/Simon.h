@@ -13,6 +13,8 @@
 #define SIMON_GRAVITY			0.002f
 #define SIMON_FALLDOWN_VY 0.8f
 #define SIMON_DIE_DEFLECT_SPEED	 0.5f
+#define SIMON_HURT_SPEED_Y 0.35f
+#define SIMON_HURT_SPEED_X 0.2f
 
 #define SIMON_STATE_IDLE 0
 #define SIMON_STATE_WALKING_RIGHT 1
@@ -35,6 +37,7 @@
 #define SIMON_STATE_DOWNSTAIR_LEFT 15
 #define SIMON_STATE_UPSTAIR_ATTACK 16
 #define SIMON_STATE_DOWNSTAIR_ATTACK 17
+#define SIMON_STATE_HURT 18
 
 
 
@@ -45,6 +48,7 @@
 #define SIMON_ANI_SIT_ATTACK				4
 #define SIMON_ANI_UPWHIP 5 
 #define SIMON_ANI_DIE				6
+#define SIMON_ANI_HURT 13
 
 
 //len xuong cau thang
@@ -52,7 +56,7 @@
 #define SIMON_ANI_STEP_UPSTAIR            8
 #define SIMON_ANI_IDLE_DOWNSTAIR         9
 #define SIMON_ANI_STEP_DOWNSTAIR            10
-#define SIMON_ANI_UPSTAIR_ATTACK            11
+#define SIMON_ANI_UPSTAIR_ATTACK           11
 #define SIMON_ANI_DOWNSTAIR_ATTACK         12
 
 
@@ -79,6 +83,8 @@
 
 #define Time_UpWhip 500
 
+#define BIG_HEART 5
+#define SMALL_HEART 1
 
 class CSIMON : public CGameObject
 {
@@ -110,6 +116,11 @@ class CSIMON : public CGameObject
 	void HandlePerStepOnStair();
 
 	int Switch_scene;
+
+	//properties
+	int heart;
+	int hp;
+	int score;
 public: 
 	CSIMON() : CGameObject()
 	{
@@ -123,6 +134,7 @@ public:
 		this->fight_start = 0;
 		state = SIMON_STATE_IDLE; // trạng thái ban đầu cần khai báo khi tạo object
 		whip = new Whip();
+		heart = 0;
 		this->AddAnimation("SIMON_ANI_IDLE");		
 		this->AddAnimation("SIMON_ANI_WALKING");	
 		this->AddAnimation("SIMON_ANI_SIT");
@@ -136,6 +148,7 @@ public:
 		this->AddAnimation("SIMON_ANI_STEP_DOWNSTAIR");    //10
 		this->AddAnimation("SIMON_ANI_UPSTAIR_ATTACK");    //11
 		this->AddAnimation("SIMON_ANI_DOWNSTAIR_ATTACK"); //12
+		this->AddAnimation("SIMON_ANI_HURT");
 	}
 	~CSIMON() { delete whip; }
 	void ResetFightAnimation()
@@ -157,7 +170,6 @@ public:
 	void ResetFightTime()
 	{
 		this->fight_start = 0;
-	
 	}
 
 	int GetSwitchScene()

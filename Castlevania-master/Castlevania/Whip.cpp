@@ -93,8 +93,8 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 						ItemCollection* itemcollection = new ItemCollection();
 						Item* item = itemcollection->SpawnItem(candle->GetItem(),e->x);
 						EffectCollection* effectcollection = new EffectCollection();
-						Effect* spark = effectcollection->SpawnEffect(1);	//1: id spark
-						Effect* flame = effectcollection->SpawnEffect(2);	//2: id flame
+						Effect* spark = effectcollection->SpawnEffect(SPARK);	//1: id spark
+						Effect* flame = effectcollection->SpawnEffect(FLAME);	//2: id flame
 						if (dynamic_cast<PlayScene*>(scene))
 						{
 							PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
@@ -145,13 +145,12 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 					Enemy* f = dynamic_cast<Enemy*> (e);
 					hitObject = true;
 					EffectCollection* effectcollection = new EffectCollection();
-					Effect* spark = effectcollection->SpawnEffect(1);
+					Effect* spark = effectcollection->SpawnEffect(SPARK);
 					if (!f->IsDestroy())
 					{
 						f->SubtractHP(this->damage);
 						if (f->GetHP() == 0)
 						{
-
 							f->Destroy();;
 						}
 

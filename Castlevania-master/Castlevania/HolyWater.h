@@ -17,6 +17,8 @@
 
 #define HOLYWATER_BBOX_WIDTH 32
 #define HOLYWATER_BBOX_HEIGHT 28
+
+#define HOLYWATER_HEART_COST 1
 class HolyWater:public SubWeapon
 {
 	int state;
@@ -28,6 +30,7 @@ class HolyWater:public SubWeapon
 		AddAnimation("HOLYWATER_ANI_JAR");
 		AddAnimation("HOLYWATER_ANI_BURNING");
 		this->SetState(HOLYWATER_STATE_JAR);
+		this->SetHeartCost(HOLYWATER_HEART_COST);
 	}
 	virtual void Render();
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coOjects = NULL);

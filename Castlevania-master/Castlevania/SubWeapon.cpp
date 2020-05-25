@@ -73,8 +73,8 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					ItemCollection* itemcollection = new ItemCollection();
 					Item* item = itemcollection->SpawnItem(torch->GetItem(),torch->x);
 					EffectCollection* effectcollection = new EffectCollection();
-					Effect* spark = effectcollection->SpawnEffect(1);	//1: id spark
-					Effect* flame = effectcollection->SpawnEffect(2);	//2: id flame
+					Effect* spark = effectcollection->SpawnEffect(SPARK);	//1: id spark
+					Effect* flame = effectcollection->SpawnEffect(FLAME);	//2: id flame
 					if (dynamic_cast<PlayScene*>(scene))
 					{
 						PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
@@ -133,4 +133,14 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 	}
 
+}
+
+void SubWeapon::SetHeartCost(int x)
+{
+	this->heart_cost = x;
+}
+
+int SubWeapon::GetHeartCotst()
+{
+	return this->heart_cost;
 }

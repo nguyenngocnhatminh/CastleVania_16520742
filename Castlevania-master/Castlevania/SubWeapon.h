@@ -8,6 +8,7 @@ protected:
 	float height;
 	float width;
 	bool is_touchable_ground;
+	int heart_cost;
 public:
 
 	virtual void Render() {};
@@ -18,7 +19,8 @@ public:
 	float GetWidth() { return this->width; }
 	virtual void SetHeight() {};
 	virtual void SetWidth() {};
-
+	void SetHeartCost(int x);
+	int GetHeartCotst();
 
 };
 

@@ -61,7 +61,7 @@
 		<sprite ID="SIMON_STAND_ATTACK_03">
 			<frame x="420" y="66" width="60" height="66" />
 		</sprite>
-		<sprite ID="SIMON_STAND_DEFLECT">
+		<sprite ID="SIMON_STAND_HURT">
 			<frame x="0" y="132" width="60" height="66" />
 		</sprite>
 

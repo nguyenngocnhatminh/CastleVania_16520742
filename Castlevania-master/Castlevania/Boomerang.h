@@ -6,12 +6,15 @@
 
 #define BOOMERANG_VX 0.35f
 
+#define BOOMERANG_HEART_COST 1
+
 class Boomerang :public SubWeapon
 {
 	int boomerang_range = 50;
 public:
 	Boomerang() :SubWeapon() {
 		AddAnimation("BOOMERANG_ANI");
+		this->SetHeartCost(BOOMERANG_HEART_COST);
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
