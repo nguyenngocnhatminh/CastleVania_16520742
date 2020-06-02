@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<animations AtlasPath="Zombie_sprite.xml">
+		<animation ID="ZOMBIE_ANI_WALKING" defaulttime="100">
+			<frame spriteID="ZOMBIE_WALKING_01" />
+			<frame spriteID="ZOMBIE_WALKING_02" />
+		</animation>
+	</animations>
+
+</resource>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Lưu toàn bộ các thông tin game như sprite tex, map -->
+<Base> 
+	<textures>		
+	</textures>
+	<sprites>
+		<objectSprite idTex="7" name="Enemy" path="GameContent\\Data\\GameObject\\Enemies\\enemy_22_sprite.xml"/>	
+	</sprites>
+	<animations>
+		<objectani name="enemy" path="GameContent\\Data\\GameObject\\Enemies\\enemy_22_ani.xml"/>	
+	</animations>
+</Base>

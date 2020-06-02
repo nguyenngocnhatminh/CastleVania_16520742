@@ -148,6 +148,12 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 					Effect* spark = effectcollection->SpawnEffect(SPARK);
 					if (!f->IsDestroy())
 					{
+						if (dynamic_cast<PlayScene*>(scene))
+						{
+							spark->SetPosition(f->x, f->y);
+							PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+							pScene->SpawnObject(spark);
+						}
 						f->SubtractHP(this->damage);
 						if (f->GetHP() == 0)
 						{

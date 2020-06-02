@@ -20,4 +20,5 @@ public:
 
 	static CTextures * GetInstance();
 	void Clear();
+
 };

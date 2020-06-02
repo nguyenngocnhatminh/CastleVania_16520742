@@ -68,6 +68,7 @@ public:
 	void Update(DWORD deltaTime);
 	void Render();
 
+
 	 // vẫn chạy thông qua class game debug để xem luồng rõ hơn
 	void OnKeyDown(int KeyCode);
 	void OnKeyUp(int KeyCode);

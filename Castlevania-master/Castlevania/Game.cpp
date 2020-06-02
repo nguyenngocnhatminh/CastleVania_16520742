@@ -213,9 +213,10 @@ void CGame::ProcessKeyboard()
 	}
 }
 
+
+
 void CGame::Load()
 {
-
 	const std::string filePath = "GameContent\\Data\\Data\\Scene.xml";
 
 	// cú pháp load file
@@ -242,7 +243,8 @@ void CGame::Load()
 		const std::string& path = std::string(child->first_attribute("path")->value());
 		const int ID = atoi(child->first_attribute("ID")->value());
 		const int TexID = atoi(child->first_attribute("TexID")->value());
-		Scene* playscene = new PlayScene(ID,path,TexID);
+		const string Map = std::string(child->first_attribute("Map")->value());
+		Scene* playscene = new PlayScene(ID,path,TexID,Map);
 		scenes[ID] = playscene;
 	}
 	SwitchScene(current_scene);

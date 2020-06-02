@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<animations AtlasPath="Zombie_sprite.xml">
+		<animation ID="SPEAR_GUARD_ANI" defaulttime="200">
+			<frame spriteID="SPREAR_GUARD_1"/>
+			<frame spriteID="SPREAR_GUARD_2"/>
+			<frame spriteID="SPREAR_GUARD_3"/>
+			<frame spriteID="SPREAR_GUARD_4"/>
+		</animation>
+		<animation ID="BAT_ANI_IDLE" defaulttime="100">
+			<frame spriteID="BAT_SPRITE_IDLE" />
+		</animation>
+		<animation ID="BAT_ANI_FLYING" defaulttime="100">
+			<frame spriteID="BAT_SPITE_FLYING_01" />
+			<frame spriteID="BAT_SPITE_FLYING_02" />
+			<frame spriteID="BAT_SPITE_FLYING_03" />
+		</animation>		
+	</animations>
+
+</resource>

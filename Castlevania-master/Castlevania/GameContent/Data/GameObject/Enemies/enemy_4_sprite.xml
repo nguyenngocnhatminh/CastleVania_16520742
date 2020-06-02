@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<spritesheet TextureAtlas="enemy_pack.png">
+		<sprite ID="ZOMBIE_WALKING_01">
+			<frame x="459" y="23" width="32" height="64" />
+		</sprite>
+		<sprite ID="ZOMBIE_WALKING_02">
+			<frame x="491" y="23" width="32" height="64" />
+		</sprite>
+	</spritesheet>
+</resource>

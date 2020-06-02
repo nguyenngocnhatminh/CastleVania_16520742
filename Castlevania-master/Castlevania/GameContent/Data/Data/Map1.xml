@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Lưu toàn bộ các thông tin game như sprite tex, map -->
+<Base> 
+	<textures>	
+		<tex ID ="-500" name = "Courtyard_bank" path="GameContent\\Data\\Map\\Courtyard_bank.png" red="255" green="255" blue ="255"/>
+	</textures>
+	<sprites>
+		<objectSprite idTex="6" name="ITEM2" path="GameContent\\Data\\GameObject\\Items\\Item2_sprite.xml"/>	
+	</sprites>
+	<animations>
+		<objectani name="item2" path="GameContent\\Data\\GameObject\\Items\\Item2_ani.xml"/>	
+	</animations>
+</Base>

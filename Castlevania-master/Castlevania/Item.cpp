@@ -81,7 +81,10 @@ void Item::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			f->GetBoundingBox(el, et, er, eb);
 			if (CGameObject::AABB(l, t, r, b, el, et, er, eb))
 			{
-				vy = 0;
+				if ( this->y <= e->y) 
+				{
+					vy = 0;
+				}
 			}
 		}
 	}

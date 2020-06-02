@@ -8,12 +8,14 @@ protected:
 	int id;
 	int TexID;
 	int MapID;
+	std::string MapPath;
 public:
-	Scene(int id, std::string FilePath,int TexId)
+	Scene(int id, std::string FilePath,int TexId,std::string Map)
 	{
 		this->FilePath = FilePath;
 		this->id = id;
 		this->TexID = TexId;
+		this->MapPath = Map;
 	}
 	virtual void Load() = 0;
 	virtual void UnLoad() = 0;

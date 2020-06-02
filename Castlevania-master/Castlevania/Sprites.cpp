@@ -97,7 +97,6 @@ void CSprites::Clear()
 		LPSPRITE s = x.second;
 		delete s;
 	}
-
 	sprites.clear();
 }
 
@@ -108,6 +107,6 @@ void CAnimations::Clear()
 		LPANIMATION ani = x.second;
 		delete ani;
 	}
-
 	animations.clear();
+	
 }

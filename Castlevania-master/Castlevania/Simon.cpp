@@ -165,7 +165,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			}
 			else if (dynamic_cast<BreakWall*>(e->obj)) {
 				if (e->ny != 0) { // kiểm tra va chạm trục y có va chạm trục y nhảy vào đây
-					if (GetState() == SIMON_STATE_JUMP && vy >= 0) {
+					if (GetState() == SIMON_STATE_JUMP) {
 						SetState(SIMON_STATE_IDLE);
 					}
 					if (this->state == SIMON_STATE_FIGHT_STAND)

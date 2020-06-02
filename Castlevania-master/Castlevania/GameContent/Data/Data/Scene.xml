@@ -3,11 +3,11 @@
 <!-- Lưu toàn bộ các thông tin game như sprite tex, map -->
 <Base> 
 	<maps>
-		<map ID="0" path="GameContent\\Data\\Map\\Courtyard_map.tmx" TexID="-500"/>
-		<map ID="1" path="GameContent\\Data\\Map\\map2_1.tmx" TexID="-600"/>
-		<map ID="2" path="GameContent\\Data\\Map\\map2_2.tmx" TexID="-600"/>
-		<map ID="3" path="GameContent\\Data\\Map\\map3_1.tmx" TexID="-700"/>	
-		<map ID="4" path="GameContent\\Data\\Map\\map3_2_map.tmx" TexID="-800"/> 
-		<map ID="5" path="GameContent\\Data\\Map\\map4.tmx" TexID="-900"/>
+		<map ID="0" path="GameContent\\Data\\Map\\Courtyard_map.tmx" TexID="-500" Map="GameContent\\Data\\Data\\Map1.xml"/>
+		<map ID="1" path="GameContent\\Data\\Map\\map2_1.tmx" TexID="-600" Map="GameContent\\Data\\Data\\Map21.xml"/>
+		<map ID="2" path="GameContent\\Data\\Map\\map2_2.tmx" TexID="-600" Map="GameContent\\Data\\Data\\Map22.xml"/>
+		<map ID="3" path="GameContent\\Data\\Map\\map3_1.tmx" TexID="-700" Map="GameContent\\Data\\Data\\Map31.xml"/>	
+		<map ID="4" path="GameContent\\Data\\Map\\map3_2_map.tmx" TexID="-800" Map="GameContent\\Data\\Data\\Map32.xml"/> 
+		<map ID="5" path="GameContent\\Data\\Map\\map4.tmx" TexID="-900" Map="GameContent\\Data\\Data\\Map4.xml"/>
 	</maps>
 </Base>

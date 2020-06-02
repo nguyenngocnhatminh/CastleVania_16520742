@@ -14,11 +14,23 @@ class CSprite
 	int right;
 	int bottom;
 
+	bool isDefault = false;
+
 	LPDIRECT3DTEXTURE9 texture;
 public: 
 	CSprite(string id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex);
 
 	void Draw(float x, float y, int alpha = 255,int nx=0);
+
+	void SetIsDefault(bool df)
+	{
+		this->isDefault = df;
+	}
+
+	bool GetIsDefault()
+	{
+		return this->isDefault;
+	}
 };
 
 typedef CSprite * LPSPRITE;
@@ -38,6 +50,7 @@ public:
 	LPSPRITE &operator[](string id) {return sprites[id];}
 	void Clear();
 	static CSprites * GetInstance();
+
 };
 
 /*
@@ -63,6 +76,7 @@ class CAnimation
 	int defaultTime;
 	int currentFrame;
 	vector<LPANIMATION_FRAME> frames;
+	bool isDefault = false;
 public:
 	CAnimation(int defaultTime) { this->defaultTime = defaultTime; lastFrameTime = -1; currentFrame = -1; }
 	void Add(string spriteId, DWORD time = 0);
@@ -70,6 +84,14 @@ public:
 	int GetCurrentFrame() { return this->currentFrame; }
 	void Render(int nx,float x, float y, int alpha=255);
 	int GetlastFrame() { return frames.size() - 1; }
+	void SetIsDefault(bool df)
+	{
+		this->isDefault = df;
+	}
+	bool GetIsDefault()
+	{
+		return this->isDefault;
+	}
 };
 
 typedef CAnimation *LPANIMATION;
@@ -77,7 +99,7 @@ typedef CAnimation *LPANIMATION;
 class CAnimations
 {
 	static CAnimations * __instance;
-
+	
 	unordered_map<string, LPANIMATION> animations;
 
 public:
@@ -85,5 +107,6 @@ public:
 	LPANIMATION Get(string id);
 	void Clear();
 	static CAnimations * GetInstance();
+
 };
 

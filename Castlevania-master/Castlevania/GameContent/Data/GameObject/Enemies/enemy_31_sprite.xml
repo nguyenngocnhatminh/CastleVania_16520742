@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resource>
+	<spritesheet TextureAtlas="enemy_pack2.png">
+		<sprite ID="MONKEY_SPRITE_01">
+			<frame x="515" y="150" width="32" height="32" />
+		</sprite>
+		<sprite ID="MONKEY_SPRITE_02">
+			<frame x="482" y="150" width="32" height="32"/>
+		</sprite>
+		<sprite ID="SKELETON_SPRITE_01">
+			<frame x="184" y="150" width="32" height="64"/>
+		</sprite>
+		<sprite ID="SKELETON_SPRITE_02">
+			<frame x="218" y="150" width="32" height="64"/>
+		</sprite>
+		<sprite ID="SKELETON_WEAPON_SPRITE_01">
+			<frame x="98" y="150" width="32" height="32"/>
+		</sprite>
+		<sprite ID="SKELETON_WEAPON_SPRITE_02">
+			<frame x="132" y="150" width="32" height="32"/>
+		</sprite>
+		<sprite ID="SKELETON_WEAPON_SPRITE_03">
+			<frame x="166" y="150" width="15" height="32"/>
+		</sprite>
+		<sprite ID="GHOST_1">
+			<frame x="880" y="150" width="32" height="28"/>
+		</sprite>
+		<sprite ID="GHOST_2">
+			<frame x="915" y="150" width="32" height="28"/>
+		</sprite>
+	</spritesheet>
+</resource>	

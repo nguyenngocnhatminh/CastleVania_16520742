@@ -131,12 +131,12 @@ D3DXVECTOR2 PlayScene::GetCamera()
 }
 void PlayScene::Load()
 {
-	
+	this->LoadDefault();
 	CTextures* textures = CTextures::GetInstance();
 	CSprites* sprites = CSprites::GetInstance();
 	CAnimations* animations = CAnimations::GetInstance();
 
-	const std::string filePath = "GameContent\\Data\\Data\\Base.xml";
+	const std::string filePath = this->MapPath;
 
 	char* fileLoc = new char[filePath.size() + 1]; 
 #ifdef MACOS
@@ -711,6 +711,176 @@ void PlayScene::KeyState(BYTE* states)
 	else
 	{
 		SIMON->SetState(SIMON_STATE_IDLE);
+	}
+
+}
+
+void PlayScene::LoadDefault()
+{
+
+	CTextures* textures = CTextures::GetInstance();
+	CSprites* sprites = CSprites::GetInstance();
+	CAnimations* animations = CAnimations::GetInstance();
+
+	const std::string filePath = "GameContent\\Data\\Data\\common.xml";
+
+	char* fileLoc = new char[filePath.size() + 1];
+#ifdef MACOS
+	strlcpy(fileLoc, file.c_str(), file.size() + 1);
+#else
+	strcpy_s(fileLoc, filePath.size() + 1, filePath.c_str());
+#endif 
+
+
+	rapidxml::file<> xmlFile(fileLoc);
+	rapidxml::xml_document<> doc;
+	doc.parse<0>(xmlFile.data());
+
+
+	xml_node<>* rootNode = doc.first_node("Base");
+
+	xml_node<>* texNode = rootNode->first_node("textures");
+
+	for (xml_node<>* child = texNode->first_node(); child; child = child->next_sibling())
+	{
+		int idTex;
+		int red;
+		int green;
+		int blue;
+
+		const std::string& path = std::string(child->first_attribute("path")->value());
+		idTex = std::atoi(child->first_attribute("ID")->value());
+
+		red = std::atoi(child->first_attribute("red")->value());
+		green = std::atoi(child->first_attribute("green")->value());
+		blue = std::atoi(child->first_attribute("blue")->value());
+
+
+		std::wstring cover = std::wstring(path.begin(), path.end());
+		textures->Add(idTex, cover.c_str(), D3DCOLOR_XRGB(red, green, blue));
+	}
+
+
+	xml_node<>* spriteNode = rootNode->first_node("sprites");
+	//load sprite
+	for (xml_node<>* child = spriteNode->first_node(); child; child = child->next_sibling()) //cú pháp lập
+	{
+		// duyệtt	
+		//mình load từ file lên mà man. 
+		// load path và idtex lên truyền vào loadsprite
+		int idTex;
+		// nhớ ép kiểu
+		const std::string& path = std::string(child->first_attribute("path")->value());
+		idTex = std::atoi(child->first_attribute("idTex")->value());
+
+		LoadSpriteDefault(path, idTex);
+
+	}
+
+	xml_node<>* aniNode = rootNode->first_node("animations");
+	for (xml_node<>* child = aniNode->first_node(); child; child = child->next_sibling())
+	{
+		const std::string& path = std::string(child->first_attribute("path")->value());
+		LoadAnimationDefault(path);
+
+	}
+
+}
+
+void PlayScene::LoadSpriteDefault(const std::string& filePath, const int tex)
+{
+	// ở đây mình truyền vào man
+	CTextures* textures = CTextures::GetInstance();
+	CSprites* sprites = CSprites::GetInstance();
+
+
+	LPDIRECT3DTEXTURE9 objecttex = textures->Get(tex);
+	// đọc vào file xml
+	char* fileLoc = new char[filePath.size() + 1]; // filepath lưu đường dẫn đến file XML đang đọc
+#
+
+
+
+	   //TODO: make multi format version of string copy
+	// phần này k quan tâm lắm dạng như cú pháp thôi
+#ifdef MACOS
+	strlcpy(fileLoc, file.c_str(), file.size() + 1);
+#else
+	strcpy_s(fileLoc, filePath.size() + 1, filePath.c_str());
+#endif 
+
+	//TODO: error checking - check file exists before attempting open.
+	rapidxml::file<> xmlFile(fileLoc);
+	rapidxml::xml_document<> doc;
+	doc.parse<0>(xmlFile.data());
+
+
+	xml_node<>* rootNode = doc.first_node("resource");
+	xml_node<>* spriteSheetNode = rootNode->first_node("spritesheet");
+
+	// lập toàn bộ các node con của node gamedata
+
+	for (xml_node<>* child = spriteSheetNode->first_node(); child; child = child->next_sibling())
+	{
+
+		const std::string& ID = std::string(child->first_attribute("ID")->value());
+
+		xml_node<>* frameNode = child->first_node("frame");
+
+
+
+		int x = std::atoi(frameNode->first_attribute("x")->value());
+		int y = std::atoi(frameNode->first_attribute("y")->value());
+		int w = std::atoi(frameNode->first_attribute("width")->value());
+		int h = std::atoi(frameNode->first_attribute("height")->value());
+
+		int r = x + w;
+		int b = y + h;
+
+		sprites->Add(ID, x, y, r, b, objecttex);
+		sprites->Get(ID)->SetIsDefault(true);
+	}
+
+
+
+
+}
+void PlayScene::LoadAnimationDefault(const string& filePath)
+{
+	CAnimations* animations = CAnimations::GetInstance();
+	LPANIMATION ani;
+
+	char* fileLoc = new char[filePath.size() + 1];
+#
+
+#ifdef MACOS
+	strlcpy(fileLoc, file.c_str(), file.size() + 1);
+#else
+	strcpy_s(fileLoc, filePath.size() + 1, filePath.c_str());
+#endif 
+
+
+	rapidxml::file<> xmlFile(fileLoc);
+	rapidxml::xml_document<> doc;
+	doc.parse<0>(xmlFile.data());
+
+	xml_node<>* rootNode = doc.first_node("resource");
+	xml_node<>* aniNode = rootNode->first_node("animations");
+
+
+	for (xml_node<>* child = aniNode->first_node(); child; child = child->next_sibling())
+	{
+
+		const std::string& ID = std::string(child->first_attribute("ID")->value());
+		int timeLoop = std::atoi(child->first_attribute("defaulttime")->value());
+		ani = new CAnimation(timeLoop);
+		for (xml_node<>* grand = child->first_node(); grand; grand = grand->next_sibling())
+		{
+			const std::string& spriteID = std::string(grand->first_attribute("spriteID")->value());
+			ani->Add(spriteID);
+		}
+		ani->SetIsDefault(true);
+		animations->Add(ID, ani);
 	}
 
 }

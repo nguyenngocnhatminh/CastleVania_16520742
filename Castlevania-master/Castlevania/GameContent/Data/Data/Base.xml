@@ -45,6 +45,5 @@
 		<objectani name="enemy" path="GameContent\\Data\\GameObject\\Enemies\\Enemy_ani.xml"/>		
 		<objectani name="enemy2" path="GameContent\\Data\\GameObject\\Enemies\\Enemy_ani2.xml"/>	
 	</animations>
-	
 
 </Base>

@@ -16,12 +16,16 @@ class PlayScene:public Scene
     std::queue<LPGAMEOBJECT> qObjects;
 
 public:
-    PlayScene(int id, std::string filepath,int TexId):Scene(id,filepath,TexId) {}
+    PlayScene(int id, std::string filepath,int TexId,std::string Map):Scene(id,filepath,TexId,Map) {}
     D3DXVECTOR2 GetCamera();
     void SpawnObject(LPGAMEOBJECT obj) { this->qObjects.push(obj); }
     void Load() override;
     void UnLoad() override;
     
+    void LoadDefault();
+    void LoadSpriteDefault(const std::string& filePath, const int tex);
+    void LoadAnimationDefault(const string& filePath);
+
     void Update(DWORD deltaTime) override;
     void Render() override;
 
