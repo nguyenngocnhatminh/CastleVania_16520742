@@ -67,6 +67,9 @@
     <Filter Include="Source Files\Object\Item\Other">
       <UniqueIdentifier>{281151fa-7b8a-49e6-9f56-93c049d851f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Hub">
+      <UniqueIdentifier>{9e8dc400-5d64-4d12-bc69-a2c329284b83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Map.h">
@@ -252,6 +255,9 @@
     <ClInclude Include="SitTrigger.h">
       <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Hub.h">
+      <Filter>Source Files\Hub</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -433,6 +439,9 @@
     </ClCompile>
     <ClCompile Include="SitTrigger.cpp">
       <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Hub.cpp">
+      <Filter>Source Files\Hub</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

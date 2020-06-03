@@ -135,6 +135,7 @@ public:
 		state = SIMON_STATE_IDLE; // trạng thái ban đầu cần khai báo khi tạo object
 		whip = new Whip();
 		heart = 0;
+		score = 0;
 		this->AddAnimation("SIMON_ANI_IDLE");		
 		this->AddAnimation("SIMON_ANI_WALKING");	
 		this->AddAnimation("SIMON_ANI_SIT");
@@ -244,5 +245,14 @@ public:
 	}
 	void SetStepOnStairDirection(int dir) {
 		this->StairDirection = dir;
+	}
+
+	int GetScore()
+	{
+		return this->score;
+	}
+	void SetScore(int x)
+	{
+		this->score = x;
 	}
 };

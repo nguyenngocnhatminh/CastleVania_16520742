@@ -144,3 +144,13 @@ int SubWeapon::GetHeartCotst()
 {
 	return this->heart_cost;
 }
+
+void SubWeapon::SetDame(int x)
+{
+	this->dame = x;
+}
+
+int SubWeapon::GetDame()
+{
+	return this->dame;
+}

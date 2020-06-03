@@ -29,6 +29,7 @@
 #define MONKEY_OY_HEIGHT 30
 
 #define MONKEY_HP 1
+#define MONKEY_SCORE 500
 class Monkey:public Enemy
 {
 	int state;
@@ -45,6 +46,7 @@ public:
 		this->SetState(MONKEY_STATE_IDLE);
 		isPrepare = false;
 		this->SetHP(MONKEY_HP);
+		this->SetScore(MONKEY_SCORE);
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

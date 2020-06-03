@@ -14,6 +14,7 @@
 
 #define RANGE_FROM_SIMON 100
 #define GHOST_HP 2
+#define GHOST_SCORE 300
 class Ghost:public Enemy
 {
 	bool isHidden;
@@ -24,6 +25,7 @@ public:
 		isHidden = true;
 		this->AddAnimation("GHOST_ANI");
 		this->SetHP(GHOST_HP);
+		this->SetScore(GHOST_SCORE);
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

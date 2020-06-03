@@ -157,7 +157,12 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 						f->SubtractHP(this->damage);
 						if (f->GetHP() == 0)
 						{
-							f->Destroy();;
+							if (dynamic_cast<PlayScene*>(scene))
+							{
+								PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+								pScene->GetSimon()->SetScore(pScene->GetSimon()->GetScore() + f->GetScore());
+							}
+							f->Destroy();
 						}
 
 					}
@@ -287,7 +292,11 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 						f->SubtractHP(this->damage);
 						if (f->GetHP() == 0)
 						{
-
+							if (dynamic_cast<PlayScene*>(scene))
+							{
+								PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+								pScene->GetSimon()->SetScore(pScene->GetSimon()->GetScore() + f->GetScore());
+							}
 							f->Destroy();;
 						}
 

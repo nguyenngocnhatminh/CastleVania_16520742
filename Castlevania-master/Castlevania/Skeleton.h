@@ -27,6 +27,7 @@
 #define RANGE_SKELETON_MOVE	64
 
 #define SKELETON_HP 1
+#define SKELETON_SCORE 300
 
 #define TIME_SPAWN_WEAPON 1500
 
@@ -56,6 +57,7 @@ public:
 		this->AddAnimation("SKELETON_ANI_JUMP");
 		this->SetState(SKELETON_STATE_WALK);
 		this->SetHP(SKELETON_HP);
+		this->SetScore(SKELETON_SCORE);
 
 	}
 	virtual void Render();

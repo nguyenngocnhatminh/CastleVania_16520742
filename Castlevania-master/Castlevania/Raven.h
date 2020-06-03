@@ -28,6 +28,7 @@
 #define RAVEN_DIRECTION_LEFT -1
 
 #define RAVEN_HP 1
+#define RAVEN_SCORE 200
 class Raven:public Enemy
 {
 	int state;
@@ -41,6 +42,7 @@ public:
 		this->AddAnimation("RAVEN_ANI_FLAP");
 		this->SetState(RAVEN_STATE_IDLE);
 		this->SetHP(RAVEN_HP);
+		this->SetScore(RAVEN_SCORE);
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

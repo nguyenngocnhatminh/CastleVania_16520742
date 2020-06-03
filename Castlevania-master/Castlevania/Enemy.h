@@ -9,6 +9,7 @@ protected:
 	int hp;
 	DWORD start_point;
 	bool isAttack = false;
+	int score;
 public:
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) {}
@@ -32,6 +33,16 @@ public:
 	void SetHP(int hp)
 	{
 		this->hp = hp;
+	}
+
+	int GetScore()
+	{
+		return this->score;
+	}
+
+	void SetScore(int score)
+	{
+		this->score = score;
 	}
 
 	Enemy() :CGameObject() {

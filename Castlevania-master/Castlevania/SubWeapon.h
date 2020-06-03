@@ -9,6 +9,7 @@ protected:
 	float width;
 	bool is_touchable_ground;
 	int heart_cost;
+	int dame;
 public:
 
 	virtual void Render() {};
@@ -21,6 +22,8 @@ public:
 	virtual void SetWidth() {};
 	void SetHeartCost(int x);
 	int GetHeartCotst();
+	void SetDame(int x);
+	int GetDame();
 
 };
 

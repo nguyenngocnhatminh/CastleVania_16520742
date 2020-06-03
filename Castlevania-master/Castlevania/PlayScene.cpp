@@ -145,7 +145,7 @@ void PlayScene::Load()
 	strcpy_s(fileLoc, filePath.size() + 1, filePath.c_str());
 #endif 
 
-	
+
 	rapidxml::file<> xmlFile(fileLoc);
 	rapidxml::xml_document<> doc;
 	doc.parse<0>(xmlFile.data());

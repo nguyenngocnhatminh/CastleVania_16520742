@@ -16,6 +16,7 @@
 #define ZONE_3 3
 
 #define SPEAR_GUARD_HP 2
+#define SPEAR_GUARD_SCORE 400
 class SpearGuard:public Enemy
 {
 	int Type;
@@ -30,6 +31,7 @@ public:
 	{
 		this->AddAnimation("SPEAR_GUARD_ANI");
 		this->SetHP(SPEAR_GUARD_HP);
+		this->SetScore(SPEAR_GUARD_SCORE);
 	}
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL);

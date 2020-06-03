@@ -13,6 +13,7 @@
 #define GRAVITY 0.002f
 
 #define SKELETON_WEAPON_HP 1
+#define SKELETON_WEAPON_SCORE 100
 class SkeletonWeapon:public Enemy
 {
 public:
@@ -20,6 +21,7 @@ public:
 	{
 		this->AddAnimation("SKELETON_WEAPON_ANI");
 		this->SetHP(SKELETON_WEAPON_HP);
+		this->SetScore(SKELETON_WEAPON_SCORE);
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
