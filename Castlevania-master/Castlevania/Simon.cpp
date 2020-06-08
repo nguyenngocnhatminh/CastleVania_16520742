@@ -124,7 +124,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	
 		// block 
 		x += min_tx * dx + nx * 0.4f;		
-		if (ny <= 0) 
+		if (ny < 0) 
 			y += min_ty * dy + ny * 0.4f;
 
 		for (UINT i = 0; i < coEventsResult.size(); i++)
@@ -307,8 +307,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						if (!this->isOnStair)
 						{
 							this->SetState(SIMON_STATE_HURT);
-							x += dx;
-							y += dy;
 						}
 						if (untouchable != 1) {
 							StartUntouchable();
@@ -422,8 +420,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					if (!this->isOnStair)
 					{
 						this->SetState(SIMON_STATE_HURT);
-						x += dx;
-						y += dy;
 					}
 					if (untouchable != 1) {
 						StartUntouchable();
@@ -452,8 +448,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			}
 		}
 	}
-
-
 	if (!flagOnGround)
 	{
 		if (!isFirstStepOnStair && !isOnStair

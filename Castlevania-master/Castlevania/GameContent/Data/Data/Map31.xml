@@ -5,7 +5,7 @@
 	<textures>	
 	</textures>
 	<sprites>
-		<objectSprite idTex="7" name="Enemy" path="GameContent\\Data\\GameObject\\Enemies\\enemy_31_sprite.xml"/>	
+		<objectSprite idTex="8" name="Enemy" path="GameContent\\Data\\GameObject\\Enemies\\enemy_31_sprite.xml"/>	
 	</sprites>
 	<animations>
 		<objectani name="enemy" path="GameContent\\Data\\GameObject\\Enemies\\enemy_31_ani.xml"/>	

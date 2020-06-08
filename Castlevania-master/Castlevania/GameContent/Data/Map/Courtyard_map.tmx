@@ -1103,6 +1103,10 @@
   </object>
  </objectgroup>
  <objectgroup id="10" name="MoneyBag">
-  <object id="18" gid="155" x="1237.5" y="317" width="31" height="30"/>
+  <object id="18" gid="155" x="1237.5" y="317" width="31" height="30">
+   <properties>
+    <property name="state" value="3"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

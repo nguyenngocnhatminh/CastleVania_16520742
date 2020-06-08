@@ -7,6 +7,7 @@
 #include "Game.h"
 #include "GameObject.h"
 #include "Sprites.h"
+#include"Animations.h"
 
 CGameObject::CGameObject()
 {

@@ -6,6 +6,7 @@
 #include <dinput.h>
 #include"PlayScene.h"
 #include"Textures.h"
+#include"Animations.h"
 
 #define KEYBOARD_BUFFER_SIZE 1024
 /*

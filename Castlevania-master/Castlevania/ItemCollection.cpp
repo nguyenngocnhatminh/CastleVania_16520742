@@ -45,3 +45,51 @@ Item* ItemCollection::SpawnItem(int id,int x)
 			break;
 	}
 }
+
+Item* ItemCollection::SpawnRandomItem(int x)
+{
+	int rank = 0 + rand() % (300 + 1 - 0);
+	if (rank < 100)
+	{
+		return new Heart(x);
+	}
+	else if (rank < 150)
+	{
+		return new BigHeart();
+	}
+	else if (rank < 180)
+	{	
+		MoneyBag* item = new MoneyBag();
+		item->SetState(MONEYBAG_RED);
+		return item;
+
+	}
+	else if (rank < 190)
+	{
+		MoneyBag* item = new MoneyBag();
+		item->SetState(MONEYBAG_BLUE);
+		return item;
+	}
+	else if (rank < 200)
+	{
+		MoneyBag* item = new MoneyBag();
+		item->SetState(MONEYBAG_WHITE);
+		return item;
+	}
+	else if (rank < 240)
+	{
+		return new AxeItem();
+	}
+	else if (rank < 280)
+	{
+		// stopwatch
+	}
+	else if (rank < 290)
+	{
+		return new HolyWaterItem();
+	}
+	else {
+		return new BoomerangItem();
+	}
+
+}

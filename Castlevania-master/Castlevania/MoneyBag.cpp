@@ -2,7 +2,23 @@
 #include"Ground.h"
 void MoneyBag::Render()
 {
-	animations[0]->Render(0, x, y);
+	int ani = 0;
+	switch (state)
+	{
+	case MONEYBAG_RED:
+		ani = MONEYBAG_RED;
+		break;
+	case MONEYBAG_BLUE:
+		ani = MONEYBAG_BLUE;
+		break;
+	case MONEYBAG_WHITE:
+		ani = MONEYBAG_WHITE;
+		break;
+	case MONEYBAG_COLORFUL:
+		ani = MONEYBAG_COLORFUL;
+		break;
+	}
+	animations[ani]->Render(0, x, y);
 }
 
 void MoneyBag::GetBoundingBox(float& l, float& t, float& r, float& b)
@@ -44,4 +60,29 @@ void MoneyBag::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	}
 	else
 		Item::Update(dt, scene, coObjects);
+}
+
+void MoneyBag::SetState(int state)
+{
+	this->state = state;
+	switch (this->state)
+	{
+	case MONEYBAG_RED:
+		this->SetScore(MONEYBAG_RED_SCORE);
+		break;
+	case MONEYBAG_BLUE:
+		this->SetScore(MONEYBAG_BLUE_SCORE);
+		break;
+	case MONEYBAG_WHITE:
+		this->SetScore(MONEYBAG_WHITE_SCORE);
+		break;
+	case MONEYBAG_COLORFUL:
+		this->SetScore(MONEYBAG_COLOR_SCORE);
+		break;
+	}
+}
+
+int MoneyBag::GetState()
+{
+	return this->state;
 }

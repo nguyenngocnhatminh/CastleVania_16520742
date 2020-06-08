@@ -32,5 +32,6 @@ class ItemCollection
 	int idItem;
 public:
 	Item* SpawnItem(int id,int x);
+	Item* SpawnRandomItem(int x);
 };
 

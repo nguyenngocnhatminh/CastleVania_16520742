@@ -90,3 +90,13 @@ void Item::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	}
 
 }
+
+void Item::SetScore(int score)
+{
+	this->score = score;
+}
+
+int Item::GetScore()
+{
+	return this->score;
+}

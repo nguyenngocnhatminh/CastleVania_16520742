@@ -19,6 +19,9 @@ public:
 	}
 	void SetIsAttack(bool x);
 	bool IsAttack();
+
+	void SpawnItem();
+
 	void SubtractHP(unsigned int point)
 	{
 		this->hp = this->hp - point;

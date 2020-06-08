@@ -226,8 +226,6 @@ void PlayScene::Load()
 				SIMON->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 			}
 			break;
-		case OWall:
-			break;
 		case OGround:
 			for (auto const& y : x.second->GetObjectGroup())
 			{

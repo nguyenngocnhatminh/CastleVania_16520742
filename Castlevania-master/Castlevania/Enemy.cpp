@@ -13,3 +13,10 @@ bool Enemy::IsAttack()
 {
 	return this->isAttack;
 }
+
+void Enemy::SpawnItem()
+{
+	if (this->setDestroy) {
+
+	}
+}

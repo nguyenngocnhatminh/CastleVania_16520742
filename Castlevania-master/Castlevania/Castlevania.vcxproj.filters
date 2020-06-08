@@ -258,6 +258,9 @@
     <ClInclude Include="Hub.h">
       <Filter>Source Files\Hub</Filter>
     </ClInclude>
+    <ClInclude Include="Animations.h">
+      <Filter>Source Files\Framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -442,6 +445,9 @@
     </ClCompile>
     <ClCompile Include="Hub.cpp">
       <Filter>Source Files\Hub</Filter>
+    </ClCompile>
+    <ClCompile Include="Animations.cpp">
+      <Filter>Source Files\Framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
