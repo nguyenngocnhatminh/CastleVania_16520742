@@ -206,12 +206,10 @@ void PlayScene::Load()
 
 	gameMap->BuildMap(FilePath);
 
-
-
-
-	SIMON = new CSIMON();
+	SIMON = new CSIMON();	
 
 	objects.push_back(SIMON);
+
 	
 	auto objectLayer = gameMap->GetObjectLayer();
 	for (auto const& x : objectLayer)
@@ -436,7 +434,6 @@ void PlayScene::Load()
 // dọn rác
 void PlayScene::UnLoad()
 {
-	SIMON = NULL;
 	for (int i = 0; i < objects.size(); i++)
 	{
 		delete objects[i];
@@ -517,6 +514,9 @@ void PlayScene::Render()
 }
 void PlayScene::OnKeyDown(int KeyCode)
 {
+	ItemCollection* itemcollection = new ItemCollection();
+	Item* item = new Item();
+
 	DebugOut(L"[INFO] PRESS KEY DOWN: %d\n", KeyCode);
 	if (SIMON->GetState() == SIMON_STATE_UPWHIP) return;
 	if (SIMON->GetState() == SIMON_STATE_ENTERCASTLE) return;
@@ -595,7 +595,25 @@ void PlayScene::OnKeyDown(int KeyCode)
 	case DIK_E:
 		SIMON->y += 50;
 		break;
-
+	case DIK_U:
+		item = itemcollection->SpawnItem(AXE, this->GetSimon()->x + 100);
+		item->SetPosition(this->GetSimon()->x + 100, this->GetSimon()->y - 100);
+		this->SpawnObject(item);
+		break;
+	case DIK_I:
+		item = itemcollection->SpawnItem(DAGGER, this->GetSimon()->x + 100);
+		item->SetPosition(this->GetSimon()->x + 100, this->GetSimon()->y - 100);
+		this->SpawnObject(item);
+		break;
+	case DIK_O:
+		item = itemcollection->SpawnItem(HOLYWATER, this->GetSimon()->x + 100);
+		item->SetPosition(this->GetSimon()->x + 100, this->GetSimon()->y - 100);
+		this->SpawnObject(item);
+		break;
+	case DIK_P:
+		item = itemcollection->SpawnItem(BOOMERANG, this->GetSimon()->x + 100);
+		item->SetPosition(this->GetSimon()->x + 100, this->GetSimon()->y - 100);
+		this->SpawnObject(item);
 		break;
 	}
 

@@ -621,7 +621,7 @@
   </object>
  </objectgroup>
  <objectgroup id="7" name="Portal">
-  <object id="40" x="154.667" y="-0.000333333" width="22.6667" height="13.3333">
+  <object id="40" x="133.614" y="-11.6962" width="22.6667" height="13.3333">
    <properties>
     <property name="Map_ID" type="int" value="4"/>
    </properties>

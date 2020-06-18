@@ -10,16 +10,22 @@
 #define GHOST_DIRECTION_RIGHT 1
 #define GHOST_DIRECTION_LEFT -1
 
-#define GHOST_SPEED_VX 0.15f
+#define GHOST_SPEED_VX 0.1f
 
 #define RANGE_FROM_SIMON 100
 #define GHOST_HP 2
 #define GHOST_SCORE 300
+
+#define PI 3.14159265359
 class Ghost:public Enemy
 {
 	bool isHidden;
 	int start_direction;
+	float minTime = 0;
+	D3DXVECTOR2 targer;
 public:
+	int angle = 45;
+	DWORD start_attack = 0;
 	Ghost():Enemy()
 	{
 		isHidden = true;

@@ -70,6 +70,9 @@
     <Filter Include="Source Files\Hub">
       <UniqueIdentifier>{9e8dc400-5d64-4d12-bc69-a2c329284b83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Grid">
+      <UniqueIdentifier>{74e3deb8-4e74-4447-8620-f1b21022b6eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Map.h">
@@ -261,6 +264,9 @@
     <ClInclude Include="Animations.h">
       <Filter>Source Files\Framework</Filter>
     </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Source Files\Grid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -448,6 +454,9 @@
     </ClCompile>
     <ClCompile Include="Animations.cpp">
       <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files\Grid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

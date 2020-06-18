@@ -208,7 +208,7 @@
   <object id="102" gid="109" x="96" y="64" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="8" name="Portal">
-  <object id="84" x="37" y="119" width="16" height="7">
+  <object id="84" x="301" y="-10" width="16" height="7">
    <properties>
     <property name="Map_ID" type="int" value="2"/>
    </properties>
@@ -227,7 +227,7 @@
   </object>
  </objectgroup>
  <objectgroup id="7" name="Camera">
-  <object id="22" x="-2" y="-2" width="509.667" height="384"/>
+  <object id="22" x="2" y="1" width="509.667" height="384"/>
  </objectgroup>
  <objectgroup id="10" name="MoneyBagTrigger">
   <object id="76" x="448" y="217" width="29" height="9">

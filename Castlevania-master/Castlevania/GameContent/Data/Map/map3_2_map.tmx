@@ -606,7 +606,7 @@
   </object>
  </objectgroup>
  <objectgroup id="6" name="Portal">
-  <object id="44" x="1485.33" y="128" width="17.3333" height="96">
+  <object id="44" x="1489.33" y="128" width="13.3333" height="96">
    <properties>
     <property name="Map_ID" type="int" value="5"/>
    </properties>

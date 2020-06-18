@@ -155,6 +155,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					}
 					else {
 						if (ny != 0) vy = 0;
+
 					}
 				}
 			}
@@ -174,15 +175,16 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					}
 					if (ny != 0) vy = 0;
 					// cần xét kỹ phương va chạm
-					if (state != SIMON_STATE_ENTERCASTLE)
-					{
-						if (nx != 0) vx = 0;
-					}
+					if (nx != 0) vx = 0;
+
 
 				}
 				else if (e->ny > 0 && this->vy < 0) {
 					y += dy;
-					if (nx != 0) vx = 0;
+					if (this->GetState() != SIMON_STATE_JUMP)
+					{
+						if (nx != 0) vx = 0;
+					}
 				}
 				else if (e->nx != 0) {
 					if (this->startOnStair || this->isOnStair)
@@ -292,6 +294,8 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				}
 				else if (dynamic_cast<Enemy*>(e->obj))
 				{
+					if (e->ny < 0)
+						y += dy;
 					Enemy* enemy = dynamic_cast<Enemy*>(e->obj);
 					if (dynamic_cast<Bat*>(e->obj))
 					{
@@ -306,7 +310,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					{
 						if (!this->isOnStair)
 						{
-							this->SetState(SIMON_STATE_HURT);
+							//this->SetState(SIMON_STATE_HURT);
 						}
 						if (untouchable != 1) {
 							StartUntouchable();

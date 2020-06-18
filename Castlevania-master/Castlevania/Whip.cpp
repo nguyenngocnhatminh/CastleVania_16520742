@@ -169,7 +169,6 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 							if (dynamic_cast<PlayScene*>(scene))
 							{
 								PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-								DebugOut(L"Va cham voi nen \n");
 								float tx, ty;
 								f->GetPosition(tx, ty);
 								item->SetPosition(tx, ty);
@@ -310,6 +309,17 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 								PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
 								pScene->GetSimon()->SetScore(pScene->GetSimon()->GetScore() + f->GetScore());
 							}
+							ItemCollection* itemcollection = new ItemCollection();
+							Item* item = itemcollection->SpawnRandomItem(f->x);
+							if (dynamic_cast<PlayScene*>(scene))
+							{
+								PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+								float tx, ty;
+								f->GetPosition(tx, ty);
+								item->SetPosition(tx, ty);
+								pScene->SpawnObject(item);
+							}
+
 							f->Destroy();;
 						}
 

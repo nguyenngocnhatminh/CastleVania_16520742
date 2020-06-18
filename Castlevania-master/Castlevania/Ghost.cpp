@@ -1,4 +1,4 @@
-#include "Ghost.h"
+﻿#include "Ghost.h"
 #include "define.h"
 
 void Ghost::GetBoundingBox(float& l, float& t, float& r, float& b)
@@ -34,8 +34,6 @@ void Ghost::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objec
 {
 	if (this->IsDestroy())
 		return;
-	CGameObject::Update(dt, scene);
-
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
 
@@ -70,61 +68,104 @@ void Ghost::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objec
 		}
 	}
 
+	float velocity = GHOST_SPEED_VX;
+
 	if (!this->isHidden)
 	{
-		if (nx == GHOST_DIRECTION_LEFT)
+		CGameObject::Update(dt, scene);
+		if (dynamic_cast<PlayScene*>(scene))
 		{
-			if (dynamic_cast<PlayScene*>(scene))
+			if (!start_attack)
 			{
-				PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-				if (pScene->GetSimon()->x - this->x > RANGE_FROM_SIMON
-					&& pScene->GetSimon()->x-this->x>0)
+
+				auto pScene = dynamic_cast<PlayScene*>(scene);
+				float l, t, r, b;
+				float ml, mt, mr, mb;
+				this->GetBoundingBox(ml, mt, mr, mb);
+
+				pScene->GetSimon()->GetBoundingBox(l, t, r, b);
+				D3DXVECTOR2 simonPos;
+
+				simonPos.x = l + (r - l) / 2;
+				simonPos.y = t + (b - t) / 2;
+
+
+
+				D3DXVECTOR2 bPos;
+
+				bPos.x = ml + (mr - ml) / 2;
+				bPos.y = mt + (mb - mt) / 2;
+
+
+				if (bPos.x > simonPos.x)
 				{
-					nx = GHOST_DIRECTION_RIGHT;
+					nx = -1;
+					int min = l - 60;
+					int max = l;
+					vx = -velocity;
+					targer.x = rand() % (max + 1 - min) + min;
+				}
+				else
+				{
+					nx = 1;
+					int min = r;
+					int max = r + 60;
+					targer.x = rand() % (max + 1 - min) + min;
+					vx = velocity;
+				}
+
+
+				if (bPos.y > simonPos.y)
+				{
+					int min = t;
+					int max = t + 60;
+					vy = -velocity;
+					targer.x = rand() % (max + 1 - min) + min;
+				}
+				else
+				{
+					int min = b;
+					int max = b + 60;
+					targer.y = rand() % (max + 1 - min) + min;
+					vy = velocity;
+				}
+
+
+
+				auto tx = abs(targer.x - bPos.x) / velocity;
+				auto ty = abs(targer.y - bPos.y) / velocity;
+
+				minTime = tx < ty ? tx : ty;
+
+				auto sinValue = abs(targer.y - bPos.y) / sqrt(pow(abs(bPos.x - targer.x), 2) + pow(abs(targer.y - bPos.y), 2));
+				if (sinValue > 1)
+				{
+					sinValue = 1;
+				}
+				auto angle = asin(sinValue);
+				this->angle = angle / PI * 180;
+				start_attack = GetTickCount();
+				DebugOut(L"Start \n");
+
+			}
+
+			if (start_attack != 0)
+			{
+				if (GetTickCount() - start_attack > minTime)
+				{
+					this->start_attack = 0;
+					DebugOut(L"Stop\n");
+				}
+				else
+				{
+					x += dx * cos(this->angle * PI / 180);
+					y += dy * sin(this->angle * PI / 180);
 				}
 
 			}
 		}
-		if (nx == GHOST_DIRECTION_RIGHT)
-		{
-			if (dynamic_cast<PlayScene*>(scene))
-			{
-				PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-				if (this->x - pScene->GetSimon()->x - GHOST_BBOX_WIDTH > RANGE_FROM_SIMON
-					&& this->x- pScene->GetSimon()->x >0)
-				{
-					nx = GHOST_DIRECTION_LEFT;
-				}
-
-			}
-		}
-		vx = nx * GHOST_SPEED_VX;
 	}
 
-	if (coEvents.size() == 0)
-	{
-		x += dx;
-		y += dy;
-	}
-	else {
-		float min_tx, min_ty, nx = 0, ny;
-
-		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-
-		// block 
-		x += min_tx * dx + nx * 0.4f;		// nx*0.4f : need to push out a bit to avoid overlapping next frame
-		if (ny <= 0)
-			y += min_ty * dy + ny * 0.4f;
-		for (UINT i = 0; i < coEventsResult.size(); i++)
-		{
-			LPCOLLISIONEVENT e = coEventsResult[i];
-			if (e->nx != 0)
-				x += dx;
-			else if (e->ny < 0)
-				y += dy;
-		}
-
-
-	}
-	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 }
+
+	
