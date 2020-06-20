@@ -4,6 +4,7 @@
 #include"Map.h"
 #include<queue>
 #include "SkeletonTrigger.h"
+#include "SimonProperties.h"
 class PlayScene:public Scene
 {
     RECT cameraBoder;
@@ -15,8 +16,13 @@ class PlayScene:public Scene
     
     std::queue<LPGAMEOBJECT> qObjects;
 
+    SimonProperties* simon_properties;
+
 public:
-    PlayScene(int id, std::string filepath,int TexId,std::string Map):Scene(id,filepath,TexId,Map) {}
+    PlayScene(int id, std::string filepath,int TexId,std::string Map):Scene(id,filepath,TexId,Map)
+    {
+        simon_properties = NULL;
+    }
     D3DXVECTOR2 GetCamera();
     void SpawnObject(LPGAMEOBJECT obj) { this->qObjects.push(obj); }
     void Load() override;

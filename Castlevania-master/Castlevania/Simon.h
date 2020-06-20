@@ -3,6 +3,7 @@
 #include"Whip.h"
 #include "HiddenObject.h"
 #include"Stair.h"
+#include"SimonProperties.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
 #define SIMON_AUTOWALKING_SPEED	0.05f 
@@ -83,6 +84,8 @@
 
 #define Time_UpWhip 500
 
+#define SIMON_HP 10
+
 #define BIG_HEART 5
 #define SMALL_HEART 1
 
@@ -121,6 +124,7 @@ class CSIMON : public CGameObject
 	int heart;
 	int hp;
 	int score;
+
 public: 
 	CSIMON() : CGameObject()
 	{
@@ -255,4 +259,27 @@ public:
 	{
 		this->score = x;
 	}
+
+	bool GetIsOnStair()
+	{
+		return this->isOnStair;
+	}
+
+	void SetIsOnStair(bool flag)
+	{
+		this->isOnStair = flag;
+	}
+
+	int GetHeart()
+	{
+		return this->heart;
+	}
+
+	int GetHp()
+	{
+		return this->hp;
+	}
+
+	void SetlastState(SimonProperties* prop);
+
 };

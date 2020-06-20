@@ -1056,7 +1056,11 @@
   </object>
  </objectgroup>
  <objectgroup id="2" name="Player">
-  <object id="24" gid="82" x="39.6592" y="286.33" width="60" height="66"/>
+  <object id="24" gid="82" x="39.6592" y="286.33" width="60" height="66">
+   <properties>
+    <property name="state" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="3" name="Ground">
   <object id="9" name="Ground" x="0" y="291" width="1503" height="26"/>
@@ -1093,7 +1097,7 @@
   <object id="8" x="1" y="-1" width="1503.33" height="351"/>
  </objectgroup>
  <objectgroup id="11" name="Camera">
-  <object id="20" x="1.32968" y="-4.35815" width="1503.03" height="357.576"/>
+  <object id="20" x="-1.33699" y="-4.35815" width="1503.03" height="357.576"/>
  </objectgroup>
  <objectgroup id="9" name="MoneyBagTrigger">
   <object id="17" x="1407.5" y="274" width="75.5" height="10">

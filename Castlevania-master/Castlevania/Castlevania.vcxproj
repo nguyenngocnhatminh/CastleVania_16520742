@@ -184,6 +184,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemCollection.h" />
     <ClInclude Include="Raven.h" />
+    <ClInclude Include="SimonProperties.h" />
     <ClInclude Include="SitTrigger.h" />
     <ClInclude Include="Skeleton.h" />
     <ClInclude Include="SkeletonTrigger.h" />
@@ -250,6 +251,7 @@
     <ClCompile Include="ItemCollection.cpp" />
     <ClCompile Include="Raven.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SimonProperties.cpp" />
     <ClCompile Include="SitTrigger.cpp" />
     <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="SkeletonTrigger.cpp" />

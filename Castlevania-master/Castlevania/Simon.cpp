@@ -986,5 +986,14 @@ void CSIMON::GetBoundingBox(float &left, float &top, float &right, float &bottom
 
 }
 
-
+void CSIMON::SetlastState(SimonProperties* prop)
+{
+	this->state = prop->GetState();
+	this->whip = prop->GetWhip();
+	this->currenSubWeapon = prop->GetCurrentSub();
+	this->isOnStair = prop->GetisOnStair();
+	this->heart = prop->GetHeart();
+	this->hp = prop->GetHp();
+	this->score = prop->GetScore();
+}
 

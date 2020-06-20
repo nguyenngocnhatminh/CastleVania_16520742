@@ -267,6 +267,9 @@
     <ClInclude Include="Grid.h">
       <Filter>Source Files\Grid</Filter>
     </ClInclude>
+    <ClInclude Include="SimonProperties.h">
+      <Filter>Source Files\Object\PlayerAndWeapon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -457,6 +460,9 @@
     </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>Source Files\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="SimonProperties.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

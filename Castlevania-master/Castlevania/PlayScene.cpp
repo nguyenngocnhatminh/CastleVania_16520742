@@ -207,7 +207,6 @@ void PlayScene::Load()
 	gameMap->BuildMap(FilePath);
 
 	SIMON = new CSIMON();	
-
 	objects.push_back(SIMON);
 
 	
@@ -222,6 +221,19 @@ void PlayScene::Load()
 			{
 				SIMON->setStartPoint(y.second->GetX());
 				SIMON->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				try
+				{
+					SIMON->SetDirection(y.second->GetProperty("nx"));
+					SIMON->SetState(y.second->GetProperty("state"));
+					if (SIMON->GetState() >= 10 && SIMON->GetState() <= 17)
+					{
+						SIMON->SetIsOnStair(true);
+					}
+				}
+				catch (exception ex)
+				{
+					SIMON->SetState(SIMON_STATE_IDLE);
+				}
 			}
 			break;
 		case OGround:
@@ -439,6 +451,7 @@ void PlayScene::UnLoad()
 		delete objects[i];
 	}
 	objects.clear();
+
 }
 
 void PlayScene::Update(DWORD dt)
