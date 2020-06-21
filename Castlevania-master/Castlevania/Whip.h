@@ -41,7 +41,15 @@ public:
 	void StartCalculatorCollice() {
 		this->collideOneTime = false;
 	}
+	int GetState()
+	{
+		return this->state;
+	}
 
+	void SetState(int state)
+	{
+		this->state = state;
+	}
 	void SetDamage(int damage) { this->damage = damage; }
 	UINT GetDamage() { return damage; }
 
@@ -54,6 +62,6 @@ public:
 	int getCurrentAni();
 	void UpLevel();
 	bool CheckLastFrame();
-	
+
 };
 

@@ -207,6 +207,11 @@ void PlayScene::Load()
 	gameMap->BuildMap(FilePath);
 
 	SIMON = new CSIMON();	
+
+	SIMON->SetlastState(CGame::GetInstance()->GetSimonProp());
+
+	CGame::GetInstance()->SetSimonProp(new SimonProperties());
+
 	objects.push_back(SIMON);
 
 	
@@ -446,12 +451,18 @@ void PlayScene::Load()
 // dọn rác
 void PlayScene::UnLoad()
 {
+	if (SIMON != NULL)
+	{
+		SimonProperties* prop = new SimonProperties();
+		prop->SetProperties(SIMON->GetWhip()->GetState(), SIMON->getCurrentSubweapon(), SIMON->GetHeart(), SIMON->GetHp(), SIMON->GetScore());
+		CGame::GetInstance()->SetSimonProp(prop);
+	}
 	for (int i = 0; i < objects.size(); i++)
 	{
 		delete objects[i];
 	}
 	objects.clear();
-
+	
 }
 
 void PlayScene::Update(DWORD dt)
@@ -601,6 +612,12 @@ void PlayScene::OnKeyDown(int KeyCode)
 		break;
 	case DIK_6:
 		CGame::GetInstance()->SwitchScene(5);
+		break;
+	case DIK_7:
+		CGame::GetInstance()->SwitchScene(6);
+		break;
+	case DIK_8:
+		CGame::GetInstance()->SwitchScene(7);
 		break;
 	case DIK_Q:
 		SIMON->y -= 200;

@@ -7,6 +7,7 @@
 #include"PlayScene.h"
 #include"Textures.h"
 #include"Animations.h"
+#include"SimonProperties.h"
 
 #define KEYBOARD_BUFFER_SIZE 1024
 /*
@@ -47,6 +48,7 @@ class CGame
 	unordered_map<int, Scene*> scenes;
 	int current_scene = 0;
 
+	SimonProperties* player = new SimonProperties();
 public:
 	void InitKeyboard(LPKEYEVENTHANDLER handler);
 	void Init(HWND hWnd);
@@ -99,6 +101,16 @@ public:
 	static CGame * GetInstance();
 
 	~CGame();
+
+	void SetSimonProp(SimonProperties* prop)
+	{
+		this->player = prop;
+	}
+
+	SimonProperties* GetSimonProp()
+	{
+		return this->player;
+	}
 };
 
 
