@@ -359,7 +359,20 @@ void Whip::Render()
 	int ani = getCurrentAni();
 	
 	animations[ani]->Render(nx,x,y);
-	RenderBoundingBox();
+	if (ani < 2)
+	{
+		if (animations[ani]->GetCurrentFrame() >= animations[ani]->GetlastFrame())
+		{
+			RenderBoundingBox();
+		}
+	}
+	else {
+		if (animations[ani]->GetCurrentFrame() >= 8)
+		{
+			RenderBoundingBox();
+		}
+	}
+
 }
 
 void Whip::GetBoundingBox(float& l, float& t, float& r, float& b)

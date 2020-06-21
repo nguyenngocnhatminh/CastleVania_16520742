@@ -124,7 +124,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	
 		// block 
 		x += min_tx * dx + nx * 0.4f;		
-		if (ny < 0) 
+		if (ny <= 0) 
 			y += min_ty * dy + ny * 0.4f;
 
 		for (UINT i = 0; i < coEventsResult.size(); i++)
@@ -134,7 +134,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			if (dynamic_cast<Ground*>(e->obj)) {
 				if (e->ny != 0)
 				{ 
-					if (GetState() == SIMON_STATE_JUMP && vy>=0) {
+					if (GetState() == SIMON_STATE_JUMP) {
 						SetState(SIMON_STATE_IDLE);
 					}
 					if (this->state == SIMON_STATE_FIGHT_STAND)
@@ -155,7 +155,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					}
 					else {
 						if (ny != 0) vy = 0;
-
 					}
 				}
 			}

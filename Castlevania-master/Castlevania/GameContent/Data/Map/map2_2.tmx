@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="32" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="62">
+<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="32" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="63">
  <tileset firstgid="1" name="dungeon_bank.png" tilewidth="32" tileheight="32" tilecount="95" columns="5">
   <image source="dungeon_bank.png" width="160" height="608"/>
  </tileset>
@@ -493,6 +493,11 @@
   <object id="55" x="10" y="60" width="20" height="102">
    <properties>
     <property name="Map_ID" type="int" value="3"/>
+   </properties>
+  </object>
+  <object id="62" x="745" y="369" width="15" height="9">
+   <properties>
+    <property name="Map_ID" value="6"/>
    </properties>
   </object>
  </objectgroup>
