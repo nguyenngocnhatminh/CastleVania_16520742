@@ -5,10 +5,13 @@
 #include<queue>
 #include "SkeletonTrigger.h"
 #include "SimonProperties.h"
+#include "Hub.h"
+class Hub;
 class PlayScene:public Scene
 {
     RECT cameraBoder;
     CSIMON* SIMON;
+    Hub* hub;
     vector<LPGAMEOBJECT> objects;
     Map* gameMap;
     void LoadSprite(const std::string& filePath, const int tex);
@@ -18,10 +21,15 @@ class PlayScene:public Scene
 
     SimonProperties* simon_properties;
 
+    unsigned int stateTime;
+    void GameTimeCounter();
+    
+    DWORD timeCounter_start = 0;
 public:
     PlayScene(int id, std::string filepath,int TexId,std::string Map):Scene(id,filepath,TexId,Map)
     {
         simon_properties = NULL;
+
     }
     D3DXVECTOR2 GetCamera();
     void SpawnObject(LPGAMEOBJECT obj) { this->qObjects.push(obj); }
@@ -42,6 +50,10 @@ public:
      CSIMON* GetSimon()
      {
          return this->SIMON;
+     }
+
+     unsigned int GetTime() {
+         return this->stateTime;
      }
 };
 

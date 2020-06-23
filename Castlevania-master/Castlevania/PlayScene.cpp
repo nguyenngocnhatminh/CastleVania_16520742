@@ -210,6 +210,7 @@ void PlayScene::Load()
 
 	SIMON->SetlastState(CGame::GetInstance()->GetSimonProp());
 
+	hub = new Hub(this);
 	CGame::GetInstance()->SetSimonProp(new SimonProperties());
 
 	objects.push_back(SIMON);
@@ -465,8 +466,26 @@ void PlayScene::UnLoad()
 	
 }
 
+void PlayScene::GameTimeCounter()
+{
+	if (this->timeCounter_start == 0)
+	{
+		timeCounter_start = GetTickCount();
+	}
+	else if (GetTickCount() - this->timeCounter_start >= 1000)
+	{
+		if (this->stateTime > 0)
+		{
+			this->stateTime--;
+		}
+
+		this->timeCounter_start = 0;
+	}
+}
+
 void PlayScene::Update(DWORD dt)
 {
+	GameTimeCounter();
 	// We know that SIMON is the first object in the list hence we won't add him into the colliable object list
 	// TO-DO: This is a "dirty" way, need a more organized way 
 
@@ -525,6 +544,7 @@ void PlayScene::Update(DWORD dt)
 	{
 		CGame::GetInstance()->SwitchScene(SIMON->GetSwitchScene());
 	}
+	hub->Update();
 }
 
 void PlayScene::Render()
@@ -535,6 +555,7 @@ void PlayScene::Render()
 	for (int i = 0; i < objects.size(); i++)
 		objects[i]->Render();
 	SIMON->Render();
+	hub->Render();
 }
 void PlayScene::OnKeyDown(int KeyCode)
 {

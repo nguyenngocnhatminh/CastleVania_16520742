@@ -39,6 +39,9 @@
 		<sprite ID="AXE_UI_SPRITE">
 			<frame x="65" y="1" width="30" height="28" />
 		</sprite>
-
+		
+		<sprite ID="BOOMERANG_UI_SPRITE">
+			<frame x="95" y="1" width="30" height="30" />
+		</sprite>
 	</spritesheet>
 </resource>

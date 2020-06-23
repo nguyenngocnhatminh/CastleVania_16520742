@@ -468,4 +468,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="GameContent\Data\prstart.ttf" />
+  </ItemGroup>
 </Project>

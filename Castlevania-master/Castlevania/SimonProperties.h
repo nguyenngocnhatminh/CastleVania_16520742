@@ -14,7 +14,7 @@ public:
 		this->whipLevel = 0;
 		this->currentSubWeapon = 0;
 		this->heart = 0;
-		this->hp = 10;
+		this->hp = 16;
 		this->score = 0;
 	};
 	void SetProperties(int whip, int currentSub, int heart, int hp, int score)

@@ -84,7 +84,7 @@
 
 #define Time_UpWhip 500
 
-#define SIMON_HP 10
+#define SIMON_HP 16
 
 #define BIG_HEART 5
 #define SMALL_HEART 1
@@ -140,6 +140,7 @@ public:
 		whip = new Whip();
 		heart = 0;
 		score = 0;
+		hp = 16;
 		this->AddAnimation("SIMON_ANI_IDLE");		
 		this->AddAnimation("SIMON_ANI_WALKING");	
 		this->AddAnimation("SIMON_ANI_SIT");

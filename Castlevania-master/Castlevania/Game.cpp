@@ -44,6 +44,28 @@ void CGame::Init(HWND hWnd)
 	// Initialize sprite helper from Direct3DX helper library
 	D3DXCreateSprite(d3ddv, &spriteHandler);
 
+	this->font = NULL;
+	HRESULT h = AddFontResourceEx(FONT_PATH, FR_PRIVATE, NULL);
+	if (h != DI_OK)
+	{
+
+	}
+	HRESULT hr = D3DXCreateFont(
+		GetDirect3DDevice(), 16, 0, FW_NORMAL, 1, false,
+		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,
+		ANTIALIASED_QUALITY, FF_DONTCARE, L"Press Start", &font);
+
+	if (hr != DI_OK)
+	{
+		DebugOut(L"[ERROR] Load font failed\n");
+		return;
+	}
+	else
+	{
+		DebugOut(L"[INFO] Load font done\n");
+	}
+
+
 	OutputDebugString(L"[INFO] InitGame done;\n");
 }
 
@@ -405,4 +427,10 @@ CGame *CGame::GetInstance()
 {
 	if (__instance == NULL) __instance = new CGame();
 	return __instance;
+}
+
+void CGame::DrawUIText(std::string text, RECT bound, bool followCam)
+{
+	if (this->font != NULL)
+		this->GetFont()->DrawTextA(NULL, text.c_str(), -1, &bound, DT_LEFT, D3DCOLOR_XRGB(255, 255, 255));
 }

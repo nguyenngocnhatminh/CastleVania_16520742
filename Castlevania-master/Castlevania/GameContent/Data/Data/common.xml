@@ -18,6 +18,7 @@
 		<tex ID="6" name="Item_Pack2" path="GameContent\\Data\\GameObject\\Items\\Item_Pack2.png" red="116" green="116" blue="116"/>
 		<tex ID="7" name="Enemy_pack" path="GameContent\\Data\\GameObject\\Enemies\\enemy_pack.png" red="255" green="0" blue="255"/>
 		<tex ID="8" name="Enemy_pack2" path="GameContent\\Data\\GameObject\\Enemies\\enemy_pack2.png" red="116" green="116" blue="116"/>
+		<tex ID="9" name="UI_pack" path="GameContent\\Data\\UI\\UIpack.png" red="255" green="0" blue="255"/>
 	</textures>
 	
 	<sprites>
@@ -28,6 +29,7 @@
 		<objectSprite idTex="4" name="SubWeapon" path="GameContent\\Data\\GameObject\\SubWeapon\\SubWeapon_sprite.xml"/>
 		<objectSprite idTex="5" name="EFFECT" path="GameContent\\Data\\GameObject\\Effect\\Effect_sprite.xml"/>
 		<objectSprite idTex="6" name="ITEM2" path="GameContent\\Data\\GameObject\\Items\\Item2_sprite.xml"/>	
+		<objectSprite idTex="9" name="UI_sprite" path="GameContent\\Data\\UI\\UI_sprite.xml"/>	
 	</sprites>
 	
 	<animations>

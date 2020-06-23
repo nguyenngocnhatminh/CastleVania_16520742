@@ -10,6 +10,10 @@
 #include"SimonProperties.h"
 
 #define KEYBOARD_BUFFER_SIZE 1024
+
+
+#define FONT_PATH L"GameContent\\Data\\prstart.ttf"
+
 /*
 Abstract class to define keyboard event handlers
 */
@@ -42,6 +46,8 @@ class CGame
 
 	LPKEYEVENTHANDLER keyHandler;
 
+	ID3DXFont* font;
+
 	float cam_x = 0.0f;
 	float cam_y = 0.0f;
 
@@ -59,6 +65,9 @@ public:
 	int IsKeyDown(int KeyCode);
 	void ProcessKeyboard();
 
+	ID3DXFont* GetFont() {
+		return this->font;
+	}
 
 	Scene* GetCurrentScene() { return scenes[current_scene]; }
 	void SwitchScene(int scene_id);
@@ -111,6 +120,9 @@ public:
 	{
 		return this->player;
 	}
+
+	void DrawUIText(std::string text, RECT bound, bool followCam=false);
+
 };
 
 
