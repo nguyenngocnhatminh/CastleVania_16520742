@@ -43,7 +43,7 @@ void Hub::Update()
 
 void Hub::Render()
 {
-	CSprites::GetInstance()->Get("BLACKBOARD_UI_SPRITE")->Draw(290, 32, 255, 0);
+	CSprites::GetInstance()->Get("BLACKBOARD_UI_SPRITE")->DrawUI(0, 290, 32, 255, false);
 	string SubWeapon;
 	switch (scene->GetSimon()->getCurrentSubweapon())
 	{
@@ -62,30 +62,30 @@ void Hub::Render()
 	}
 	if (SubWeapon != "")
 	{
-		CSprites::GetInstance()->Get(SubWeapon)->Draw(305, 35, 255, 0);
+		CSprites::GetInstance()->Get(SubWeapon)->DrawUI(0, 300, 40, 255, false);
 	}
-	Game->DrawUIText(this->_UIinfo, bound);
+	Game->DrawUIText(this->_UIinfo, bound,Game->GetCamera());
 	for (size_t i = 0; i < this->playerHP; i++)
 	{
-		CSprites::GetInstance()->Get("PLAYER_HP_SPRITE")->Draw(105 + i * 9, 32, 255, 0);
+		CSprites::GetInstance()->Get("PLAYER_HP_SPRITE")->DrawUI(0, 105 + i * 9, 32, 255, false);
 
 	}
 	for (size_t i = 0; i < BossHP; i++)
 	{
-		CSprites::GetInstance()->Get("BOSS_HP_SPRITE")->Draw(105 + i * 9, 50, 255, 0);
+		CSprites::GetInstance()->Get("BOSS_HP_SPRITE")->DrawUI(0, 105 + i * 9, 50, 255, false);
 	}
 	for (size_t i = this->playerHP; i < 16; i++)
 	{
-		CSprites::GetInstance()->Get("NOHP_UI_SPRITE")->Draw( 105 + i * 9, 32, 255, 0);
+		CSprites::GetInstance()->Get("NOHP_UI_SPRITE")->DrawUI(0, 105 + i * 9, 32, 255, false);
 	}
 	for (size_t i = this->BossHP; i < 16; i++)
 	{
-		CSprites::GetInstance()->Get("NOHP_UI_SPRITE")->Draw( 105 + i * 9, 50, 255, 0);
+		CSprites::GetInstance()->Get("NOHP_UI_SPRITE")->DrawUI(0, 105 + i * 9, 32, 255, false);
 	}
 
 	/*if (scene->GetSimon()->GetShotState() == ShotState::DOUBLESHOT)
 	{
-		CSprites::GetInstance()->Get("DOUBLESHOT_ITEM_01")->Draw(440, 40, 255, 0);
+		CSprites::GetInstance()->Get("DOUBLESHOT_ITEM_01")->DrawUI(440, 40, 255, 0);
 	}*/
 
 }

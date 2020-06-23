@@ -48,3 +48,8 @@ void CSprites::Clear()
 	sprites.clear();
 }
 
+void CSprite::DrawUI(int nx, float x, float y, int alpha, bool followCam)
+{
+	CGame* game = CGame::GetInstance();
+	game->DrawUI(followCam, nx, x, y, texture, left, top, right, bottom, alpha);
+}

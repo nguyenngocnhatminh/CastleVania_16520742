@@ -60,8 +60,15 @@ public:
 	void Init(HWND hWnd);
 	void Draw(int nx, float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha = 255);
 
+	void DrawUI(bool followCam, int nx, float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha = 255);
+
 	//lấy ra toạ độ cam
 	D3DXVECTOR2 GetCamera() { return D3DXVECTOR2(cam_x, cam_y); }
+	void GetCameraUI(float& x, float& y)
+	{ 
+		x = this->cam_x;
+		y = this->cam_y;
+	}
 	int IsKeyDown(int KeyCode);
 	void ProcessKeyboard();
 

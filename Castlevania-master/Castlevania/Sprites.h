@@ -22,6 +22,8 @@ public:
 
 	void Draw(float x, float y, int alpha = 255,int nx=0);
 
+	void DrawUI(int nx, float x, float y, int alpha = 255, bool followCam = true);
+
 	void SetIsDefault(bool df)
 	{
 		this->isDefault = df;

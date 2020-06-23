@@ -75,15 +75,15 @@ void CGame::Init(HWND hWnd)
 void CGame::Draw(int nx,float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha)
 {
 
-	D3DXVECTOR3 p(floor(x - cam_x), floor(y - cam_y), 0);
+	D3DXVECTOR3 p(floor(x - cam_x), floor(y - cam_y)+80, 0);
+
+
+
 	RECT r; 
 	r.left = left;
 	r.top = top;
 	r.right = right;
 	r.bottom = bottom;
-	
-
-
 
 	D3DXMATRIX oldTransform;
 	D3DXMATRIX newTransform;
@@ -106,6 +106,51 @@ void CGame::Draw(int nx,float x, float y, LPDIRECT3DTEXTURE9 texture, int left, 
 
 	spriteHandler->SetTransform(&oldTransform);
 
+
+
+}
+
+
+void CGame::DrawUI(bool followCam, int nx, float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, int alpha)
+{
+	D3DXVECTOR3 p;
+	float camx, camy;
+	CGame::GetInstance()->GetCameraUI(camx, camy);
+	if (followCam)
+	{
+		p = { (float)floor(x - camx), (float)floor(y - camy)+80, 0 };
+
+	}
+	else
+	{
+		p = { x, y, 0 };
+	}
+
+	RECT r;
+	r.left = left;
+	r.top = top;
+	r.right = right;
+	r.bottom = bottom;
+
+
+	D3DXMATRIX oldTransform;
+	D3DXMATRIX newTransform;
+
+	spriteHandler->GetTransform(&oldTransform);
+
+	D3DXVECTOR2 center = D3DXVECTOR2(p.x + (right - left) / 2, p.y + (bottom - top) / 2);
+	D3DXVECTOR2 rotate = D3DXVECTOR2(nx == -1 ? -1 : 1, 1);
+
+	// Xây dựng một ma trận 2D lưu thông tin biến đổi (scale, rotate)
+	D3DXMatrixTransformation2D(&newTransform, &center, 0.0f, &rotate, NULL, 0.0f, NULL);
+
+	// Cần nhân với ma trận cũ để tính ma trận biến đổi cuối cùng
+	D3DXMATRIX finalTransform = newTransform * oldTransform;
+	spriteHandler->SetTransform(&finalTransform);
+
+	spriteHandler->Draw(texture, &r, NULL, &p, D3DCOLOR_ARGB(alpha, 255, 255, 255));
+
+	spriteHandler->SetTransform(&oldTransform);
 
 
 }

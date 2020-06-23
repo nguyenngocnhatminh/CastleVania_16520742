@@ -17,7 +17,7 @@
 const enum  SCREENSIZE
 {
 	WIDTH=516,
-	HEIGHT=420
+	HEIGHT=500
 };
 
 const enum ONSTAIRDIRECTION
