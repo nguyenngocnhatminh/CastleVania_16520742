@@ -28,9 +28,6 @@
     <Filter Include="Source Files\Object\Enemy">
       <UniqueIdentifier>{b48c7994-ac98-49f5-aa32-94e00ceb3ac9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Object\StaticObjects">
-      <UniqueIdentifier>{275cc7ad-810f-43cc-a9a8-02f482289eae}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Object\PlayerAndWeapon">
       <UniqueIdentifier>{b7a250e7-9a88-4ef1-893c-e07e8b229efc}</UniqueIdentifier>
     </Filter>
@@ -45,12 +42,6 @@
     </Filter>
     <Filter Include="Source Files\Map">
       <UniqueIdentifier>{dec049cb-316c-4a6d-8fca-ecad14691fb9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object\StaticObjects\HiddenObjects">
-      <UniqueIdentifier>{be8497c8-ed58-4b00-8422-666ff77929fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Object\StaticObjects\Objects">
-      <UniqueIdentifier>{888239e5-585e-4855-a86e-26328bb68f6b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Object\Item">
       <UniqueIdentifier>{5aec96d1-4b32-4830-8979-41a0ccd63d1d}</UniqueIdentifier>
@@ -73,6 +64,18 @@
     <Filter Include="Source Files\Grid">
       <UniqueIdentifier>{74e3deb8-4e74-4447-8620-f1b21022b6eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Object\PlayerAndWeapon\Player">
+      <UniqueIdentifier>{73d32afa-46d4-4316-8a0f-8573d73a2cfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\StaticObjects">
+      <UniqueIdentifier>{275cc7ad-810f-43cc-a9a8-02f482289eae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\StaticObjects\HiddenObjects">
+      <UniqueIdentifier>{be8497c8-ed58-4b00-8422-666ff77929fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object\StaticObjects\Objects">
+      <UniqueIdentifier>{888239e5-585e-4855-a86e-26328bb68f6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Map.h">
@@ -86,9 +89,6 @@
     </ClInclude>
     <ClInclude Include="PlayScene.h">
       <Filter>Source Files\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Simon.h">
-      <Filter>Source Files\Object\PlayerAndWeapon</Filter>
     </ClInclude>
     <ClInclude Include="Sprites.h">
       <Filter>Source Files\Framework</Filter>
@@ -267,8 +267,14 @@
     <ClInclude Include="Grid.h">
       <Filter>Source Files\Grid</Filter>
     </ClInclude>
+    <ClInclude Include="BossTrigger.h">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Simon.h">
+      <Filter>Source Files\Object\PlayerAndWeapon\Player</Filter>
+    </ClInclude>
     <ClInclude Include="SimonProperties.h">
-      <Filter>Source Files\Object\PlayerAndWeapon</Filter>
+      <Filter>Source Files\Object\PlayerAndWeapon\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -283,9 +289,6 @@
     </ClCompile>
     <ClCompile Include="PlayScene.cpp">
       <Filter>Source Files\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Simon.cpp">
-      <Filter>Source Files\Object\PlayerAndWeapon</Filter>
     </ClCompile>
     <ClCompile Include="debug.cpp">
       <Filter>Source Files\Utility</Filter>
@@ -461,8 +464,14 @@
     <ClCompile Include="Grid.cpp">
       <Filter>Source Files\Grid</Filter>
     </ClCompile>
+    <ClCompile Include="BossTrigger.cpp">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Simon.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon\Player</Filter>
+    </ClCompile>
     <ClCompile Include="SimonProperties.cpp">
-      <Filter>Source Files\Object\PlayerAndWeapon</Filter>
+      <Filter>Source Files\Object\PlayerAndWeapon\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

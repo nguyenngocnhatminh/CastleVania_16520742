@@ -12,6 +12,7 @@ class TripleShot : public Item
 public:
 	TripleShot() :Item() {
 		AddAnimation("TRIPLESHOT_ITEM_ANI");
+		this->SetScore(ZERO_POINT);
 	}
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL);
 	virtual void Render();

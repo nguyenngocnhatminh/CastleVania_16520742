@@ -6,6 +6,7 @@ public:
 	WhipItem() :Item()
 	{
 		AddAnimation("MORNING_STAR_ANI");
+		this->SetScore(ZERO_POINT);
 	};
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

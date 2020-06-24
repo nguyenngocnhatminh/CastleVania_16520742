@@ -11,6 +11,7 @@ class Food : public Item
 public:
 	Food() :Item() {
 		AddAnimation("FOOD_ANI");
+		this->SetScore(ZERO_POINT);
 	}
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL);
 	virtual void Render();

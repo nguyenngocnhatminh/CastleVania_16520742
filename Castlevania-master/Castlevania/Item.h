@@ -11,6 +11,8 @@
 #define MONEYBAG 4
 #define CROWN 5
 
+#define ZERO_POINT 0
+
 class Item :public CGameObject
 {
 protected:
@@ -21,7 +23,6 @@ protected:
 public:
 	Item() :CGameObject() {
 		wait_time = GetTickCount();
-		score = 0;
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) {};

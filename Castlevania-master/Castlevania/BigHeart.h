@@ -12,6 +12,7 @@ class BigHeart : public Item
 public:
 	BigHeart() :Item() {
 		AddAnimation("HEART_ANI_BIG");
+		this->SetScore(ZERO_POINT);
 	}
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL);
 	virtual void Render();

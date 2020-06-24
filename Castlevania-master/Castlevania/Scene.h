@@ -9,13 +9,15 @@ protected:
 	int TexID;
 	int MapID;
 	std::string MapPath;
+	int StageID;
 public:
-	Scene(int id, std::string FilePath,int TexId,std::string Map)
+	Scene(int id, std::string FilePath,int TexId,std::string Map,int StageID)
 	{
 		this->FilePath = FilePath;
 		this->id = id;
 		this->TexID = TexId;
 		this->MapPath = Map;
+		this->StageID = StageID;
 	}
 	virtual void Load() = 0;
 	virtual void UnLoad() = 0;

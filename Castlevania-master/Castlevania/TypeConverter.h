@@ -21,7 +21,6 @@ const enum ObjectID
 	ODoor,
 	OBoss,
 	OBossBorder,
-	OBossTrigger,
 	OWater,
 	OBridge,
 	OSpearGuard,
@@ -33,7 +32,9 @@ const enum ObjectID
 	OSkeletonTrigger,
 	ORaven,
 	OZombie,
-	OSitTrigger
+	OSitTrigger,
+	OBossTrigger,
+	OBossCamera,
 };
 
 // Map objectlayer voi ten trong tiled map editor
@@ -49,7 +50,6 @@ const auto string2EntityType = std::unordered_map<std::string, ObjectID>
 	{ "Portal", ObjectID::OPortal },
 	{ "MoneyBag", ObjectID::OMoneyBag },
 	{ "Castle", ObjectID::OCastle},
-	{ "BossTrigger", ObjectID::OBossTrigger },
 	{ "BossBorder", ObjectID::OBossBorder },
 	{ "BOSS", ObjectID::OBoss },
 	{ "Door", ObjectID::ODoor },
@@ -68,6 +68,8 @@ const auto string2EntityType = std::unordered_map<std::string, ObjectID>
 	{"SkeletonTrigger",ObjectID::OSkeletonTrigger},
 	{"Raven",ObjectID::ORaven},
 	{"Zombie",ObjectID::OZombie},
-	{"SitTrigger",ObjectID::OSitTrigger}
+	{"SitTrigger",ObjectID::OSitTrigger},
+	{"BossTrigger",ObjectID::OBossTrigger},
+	{"BossCamera",ObjectID::OBossCamera}
 };
 

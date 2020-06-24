@@ -89,6 +89,9 @@
 #define BIG_HEART 5
 #define SMALL_HEART 1
 
+#define DOUBLE_SHOT_STATE 0
+#define TRIPLE_SHOT_STATE 1
+
 class CSIMON : public CGameObject
 {
 	bool isInBridge;
@@ -125,6 +128,10 @@ class CSIMON : public CGameObject
 	int hp;
 	int score;
 
+	int ShootState;
+
+	bool isFightWithBoss;
+
 public: 
 	CSIMON() : CGameObject()
 	{
@@ -141,6 +148,8 @@ public:
 		heart = 0;
 		score = 0;
 		hp = 16;
+		ShootState = -1;
+		isFightWithBoss = false;
 		this->AddAnimation("SIMON_ANI_IDLE");		
 		this->AddAnimation("SIMON_ANI_WALKING");	
 		this->AddAnimation("SIMON_ANI_SIT");
@@ -283,4 +292,23 @@ public:
 
 	void SetlastState(SimonProperties* prop);
 
+	int GetShootState()
+	{
+		return this->ShootState;
+	}
+
+	void SetShootState(int state)
+	{
+		this->ShootState = state;
+	}
+
+	bool GetIsFightWithBoss()
+	{
+		return this->isFightWithBoss;
+	}
+
+	void SetIsFightWithBoss(int flag)
+	{
+		this->isFightWithBoss = flag;
+	}
 };

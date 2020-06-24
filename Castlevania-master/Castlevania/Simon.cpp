@@ -22,6 +22,7 @@
 #include"Enemy.h"
 #include "Bat.h"
 #include "SitTrigger.h"
+#include "BossTrigger.h"
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
@@ -248,6 +249,15 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						{
 							currenSubWeapon = AXE;
 						}
+						if (dynamic_cast<DoubleShot*>(e->obj))
+						{
+							this->SetShootState(DOUBLE_SHOT_STATE);
+						}
+						if (dynamic_cast<TripleShot*>(e->obj))
+						{
+							this->SetShootState(TRIPLE_SHOT_STATE);
+						}
+						this->score += item->GetScore();
 						item->Destroy();
 					}
 
@@ -267,6 +277,12 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						auto pScene = dynamic_cast<PlayScene*>(scene);
 						pScene->SpawnObject(trigger->GetItem());
 					}
+				}
+				else if (dynamic_cast<BossTrigger*>(e->obj))
+				{
+					auto trigger = dynamic_cast<BossTrigger*>(e->obj);
+					trigger->Destroy();
+					this->isFightWithBoss = true;
 				}
 				else if (dynamic_cast<SitTrigger*>(e->obj))
 				{
@@ -302,6 +318,8 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						bat->SubtractHP(1);
 						if (bat->GetHP() == 0)
 						{
+							this->score += bat->GetScore();
+							bat->SpawnItem();
 							bat->Destroy();
 						}
 					}

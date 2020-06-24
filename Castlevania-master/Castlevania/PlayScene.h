@@ -21,12 +21,14 @@ class PlayScene:public Scene
 
     SimonProperties* simon_properties;
 
-    unsigned int stateTime;
+    unsigned int stateTime = 300;
     void GameTimeCounter();
     
     DWORD timeCounter_start = 0;
+
+    RECT BossCamera;
 public:
-    PlayScene(int id, std::string filepath,int TexId,std::string Map):Scene(id,filepath,TexId,Map)
+    PlayScene(int id, std::string filepath,int TexId,std::string Map,int StageID):Scene(id,filepath,TexId,Map,StageID)
     {
         simon_properties = NULL;
 
@@ -54,6 +56,11 @@ public:
 
      unsigned int GetTime() {
          return this->stateTime;
+     }
+
+     int GetStageID()
+     {
+         return this->StageID;
      }
 };
 

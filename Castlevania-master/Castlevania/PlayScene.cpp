@@ -24,6 +24,7 @@
 #include "Raven.h"
 #include "Zombie.h"
 #include "SitTrigger.h"
+#include "BossTrigger.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 {
@@ -251,6 +252,15 @@ void PlayScene::Load()
 				objects.push_back(ground);
 			}
 			break;
+		case OBossTrigger:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				BossTrigger* trigger = new BossTrigger();
+				trigger->SetPosition(y.second->GetX(), y.second->GetY());
+				trigger->SetSize(y.second->GetWidth(), y.second->GetHeight());
+				objects.push_back(trigger);
+			}
+			break;
 		case OMoneyBagTrigger:
 			for (auto const& y : x.second->GetObjectGroup())
 			{
@@ -328,6 +338,18 @@ void PlayScene::Load()
 				this->cameraBoder.top = y.second->GetY();
 				this->cameraBoder.right = y.second->GetX() + y.second->GetWidth();
 				this->cameraBoder.bottom = y.second->GetY() + y.second->GetHeight();
+			}
+			break;
+		case OBossCamera:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				RECT boder;
+				boder.left = y.second->GetX();
+				boder.top = y.second->GetY();
+				boder.right = y.second->GetX() + y.second->GetWidth();
+				boder.bottom = y.second->GetY() + y.second->GetHeight();
+
+				this->BossCamera = boder;
 			}
 			break;
 		case OStair:
@@ -437,8 +459,6 @@ void PlayScene::Load()
 			break;
 		case OBossBorder:
 			break;
-		case OBossTrigger:
-			break;
 		default:
 			break;
 		}
@@ -544,8 +564,14 @@ void PlayScene::Update(DWORD dt)
 	{
 		CGame::GetInstance()->SwitchScene(SIMON->GetSwitchScene());
 	}
+
+	if (this->SIMON->GetIsFightWithBoss() == true)
+	{
+		CGame::GetInstance()->SetCamPos(this->BossCamera.left, this->BossCamera.top);
+	}
 	hub->Update();
 }
+
 
 void PlayScene::Render()
 {

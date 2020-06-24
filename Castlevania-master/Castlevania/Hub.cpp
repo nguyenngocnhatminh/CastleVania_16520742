@@ -36,7 +36,7 @@ void Hub::Update()
 	}
 
 
-	_UIinfo = "SCORE-" + score + " TIME 0" + std::to_string(scene->GetTime()) + " STAGE 0" + std::to_string(this->state) + "\n";
+	_UIinfo = "SCORE-" + score + " TIME 0" + std::to_string(scene->GetTime()) + " STAGE 0" + std::to_string(this->scene->GetStageID()) + "\n";
 	_UIinfo = _UIinfo + "PLAYER                  -" + heart_ + "\n";
 	_UIinfo += "ENEMY                   -02\n";
 }
@@ -83,10 +83,14 @@ void Hub::Render()
 		CSprites::GetInstance()->Get("NOHP_UI_SPRITE")->DrawUI(0, 105 + i * 9, 32, 255, false);
 	}
 
-	/*if (scene->GetSimon()->GetShotState() == ShotState::DOUBLESHOT)
+	if (scene->GetSimon()->GetShootState() == DOUBLE_SHOT_STATE)
 	{
-		CSprites::GetInstance()->Get("DOUBLESHOT_ITEM_01")->DrawUI(440, 40, 255, 0);
-	}*/
+		CSprites::GetInstance()->Get("DOUBLE_SHOOT_UI_SPRITE")->DrawUI(0, 440, 30, 255, false);
+	}
+	if (scene->GetSimon()->GetShootState() == TRIPLE_SHOT_STATE)
+	{
+		CSprites::GetInstance()->Get("TRIPLE_SHOOT_UI_SPRITE")->DrawUI(0, 440, 30, 255, false);
+	}
 
 }
 

@@ -16,6 +16,7 @@ public:
 	Heart(float x) : Item()
 	{
 		AddAnimation("HEART_ANI_SMALL");
+		this->SetScore(ZERO_POINT);
 		this->ox = x;
 	}
 

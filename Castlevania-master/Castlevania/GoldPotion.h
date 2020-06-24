@@ -12,6 +12,7 @@ class GoldPotion : public Item
 public:
 	GoldPotion() :Item() {
 		AddAnimation("GOLD_POTION_ANI");
+		this->SetScore(ZERO_POINT);
 	}
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL);
 	virtual void Render();

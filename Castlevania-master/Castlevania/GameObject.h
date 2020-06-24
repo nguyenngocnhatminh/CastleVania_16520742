@@ -11,12 +11,20 @@
 using namespace std;
 
 #define ID_TEX_BBOX -100		// special texture to draw object bounding box
+#define ID_TEX_SPRITE_BBOX -101
 
 class CGameObject; 
 typedef CGameObject * LPGAMEOBJECT;
 
 struct CCollisionEvent;
 typedef CCollisionEvent * LPCOLLISIONEVENT;
+
+struct CellIndex {
+	int x;
+	int y;
+	CellIndex(int x, int y) :x(x), y(y) {};
+};
+
 struct CCollisionEvent
 {
 	LPGAMEOBJECT obj;
@@ -56,6 +64,10 @@ public:
 
 	bool isEnemy;
 	int EnemyID;
+
+	CellIndex cellIndex = { -1,-1 };
+	bool isActiveObject;	//active trong grid
+
 public: 
 	void Destroy() { this->isDestroy = true; }
 	bool IsDestroy() { return isDestroy; }
@@ -69,6 +81,32 @@ public:
 	void SetIsEnemy() { this->isEnemy = true; }
 	bool IsEnemy() { return this->isEnemy; }
 	//int GetState() { return this->state; }
+
+	void SetCellIndex(CellIndex index)
+	{
+		this->cellIndex = index;
+	}
+
+	void SetCellIndex(int cellX, int cellY)
+	{
+		CellIndex index = { cellX,cellY };
+		this->cellIndex = index;
+	}
+
+	CellIndex GetCellIndex()
+	{
+		return this->cellIndex;
+	}
+
+	void SetActive()
+	{
+		this->isActiveObject = true;
+	}
+
+	bool CheckActive()
+	{
+		return this->isActiveObject;
+	}
 
 	void RenderBoundingBox();
 

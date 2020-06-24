@@ -311,7 +311,8 @@ void CGame::Load()
 		const int ID = atoi(child->first_attribute("ID")->value());
 		const int TexID = atoi(child->first_attribute("TexID")->value());
 		const string Map = std::string(child->first_attribute("Map")->value());
-		Scene* playscene = new PlayScene(ID,path,TexID,Map);
+		const int StageID = atoi(child->first_attribute("stage_ID")->value());
+		Scene* playscene = new PlayScene(ID,path,TexID,Map,StageID);
 		scenes[ID] = playscene;
 	}
 	SwitchScene(current_scene);
