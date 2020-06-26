@@ -7,8 +7,10 @@
 	</textures>
 	<sprites>
 		<objectSprite idTex="7" name="Enemy" path="GameContent\\Data\\GameObject\\Enemies\\enemy_4_sprite.xml"/>	
+		<objectSprite idTex="10" name="Boss" path="GameContent\\Data\\GameObject\\Bosses\\VampireBat_sprite.xml"/>
 	</sprites>
 	<animations>
-		<objectani name="enemy" path="GameContent\\Data\\GameObject\\Enemies\\enemy_4_ani.xml"/>		
+		<objectani name="enemy" path="GameContent\\Data\\GameObject\\Enemies\\enemy_4_ani.xml"/>
+		<objectani name="boss" path="GameContent\\Data\\GameObject\\Bosses\\VampireBat_ani.xml"/>
 	</animations>
 </Base>

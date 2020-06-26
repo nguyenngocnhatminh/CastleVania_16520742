@@ -62,5 +62,15 @@ public:
      {
          return this->StageID;
      }
+
+     RECT GetBossCamera()
+     {
+         return this->BossCamera;
+     }
+
+     Hub* GetHub()
+     {
+         return this->hub;
+     }
 };
 

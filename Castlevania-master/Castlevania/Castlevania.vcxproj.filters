@@ -76,6 +76,9 @@
     <Filter Include="Source Files\Object\StaticObjects\Objects">
       <UniqueIdentifier>{888239e5-585e-4855-a86e-26328bb68f6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Object\Enemy\Boss">
+      <UniqueIdentifier>{70d5153c-0d0a-4439-95b0-a96068563516}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Map.h">
@@ -276,6 +279,9 @@
     <ClInclude Include="SimonProperties.h">
       <Filter>Source Files\Object\PlayerAndWeapon\Player</Filter>
     </ClInclude>
+    <ClInclude Include="PhantomBat.h">
+      <Filter>Source Files\Object\Enemy\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -472,6 +478,9 @@
     </ClCompile>
     <ClCompile Include="SimonProperties.cpp">
       <Filter>Source Files\Object\PlayerAndWeapon\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PhantomBat.cpp">
+      <Filter>Source Files\Object\Enemy\Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

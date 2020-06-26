@@ -80,7 +80,7 @@ void Hub::Render()
 	}
 	for (size_t i = this->BossHP; i < 16; i++)
 	{
-		CSprites::GetInstance()->Get("NOHP_UI_SPRITE")->DrawUI(0, 105 + i * 9, 32, 255, false);
+		CSprites::GetInstance()->Get("NOHP_UI_SPRITE")->DrawUI(0, 105 + i * 9, 50, 255, false);
 	}
 
 	if (scene->GetSimon()->GetShootState() == DOUBLE_SHOT_STATE)

@@ -110,6 +110,8 @@ public:
 
 	void RenderBoundingBox();
 
+	void RenderBoundingBox(RECT rectX);
+
 	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT coO);
 	void CalcPotentialCollisions(vector<LPGAMEOBJECT> *coObjects, vector<LPCOLLISIONEVENT> &coEvents);
 	void FilterCollision(

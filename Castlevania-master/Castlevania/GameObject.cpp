@@ -132,6 +132,27 @@ void CGameObject::RenderBoundingBox()
 	CGame::GetInstance()->Draw(0,l, t, bbox, rect.left, rect.top, rect.right, rect.bottom, 80);//128 alpa độ trong của hình
 }
 
+void CGameObject::RenderBoundingBox(RECT rectX)
+{
+	float l, t, r, b;
+	l = rectX.left;
+	t = rectX.top;
+	r = rectX.right;
+	b = rectX.bottom;
+	D3DXVECTOR3 p(l, t, 0);
+	RECT rect;
+
+	LPDIRECT3DTEXTURE9 bbox = CTextures::GetInstance()->Get(ID_TEX_BBOX);
+
+	rect.left = 0;
+	rect.top = 0;
+	rect.right = (int)r - (int)l;
+	rect.bottom = (int)b - (int)t;
+
+	CGame::GetInstance()->Draw(0, l, t, bbox, rect.left, rect.top, rect.right, rect.bottom, 128);//128 alpa độ trong của hình
+}
+
+
 bool CGameObject::isColliding(LPGAMEOBJECT a)
 {
 	float top, left, right, button;

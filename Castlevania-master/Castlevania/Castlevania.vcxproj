@@ -173,6 +173,7 @@
     <ClInclude Include="HolyWater.h" />
     <ClInclude Include="Hub.h" />
     <ClInclude Include="Monkey.h" />
+    <ClInclude Include="PhantomBat.h" />
     <ClInclude Include="Portal.h" />
     <ClInclude Include="flame.h" />
     <ClInclude Include="Game.h" />
@@ -240,6 +241,7 @@
     <ClCompile Include="HolyWater.cpp" />
     <ClCompile Include="Hub.cpp" />
     <ClCompile Include="Monkey.cpp" />
+    <ClCompile Include="PhantomBat.cpp" />
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="flame.cpp" />
     <ClCompile Include="Game.cpp" />

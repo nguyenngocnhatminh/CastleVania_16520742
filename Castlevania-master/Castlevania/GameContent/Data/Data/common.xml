@@ -19,6 +19,8 @@
 		<tex ID="7" name="Enemy_pack" path="GameContent\\Data\\GameObject\\Enemies\\enemy_pack.png" red="255" green="0" blue="255"/>
 		<tex ID="8" name="Enemy_pack2" path="GameContent\\Data\\GameObject\\Enemies\\enemy_pack2.png" red="116" green="116" blue="116"/>
 		<tex ID="9" name="UI_pack" path="GameContent\\Data\\UI\\UIpack.png" red="255" green="0" blue="255"/>
+		<tex ID="10" name="Boss" path="GameContent\\Data\\GameObject\\Bosses\\VAMPIRE_BAT.png" red="255" green="0" blue="255"/>
+
 	</textures>
 	
 	<sprites>

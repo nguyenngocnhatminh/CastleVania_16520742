@@ -25,6 +25,7 @@
 #include "Zombie.h"
 #include "SitTrigger.h"
 #include "BossTrigger.h"
+#include "PhantomBat.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 {
@@ -455,7 +456,14 @@ void PlayScene::Load()
 				enemy->SetNx(y.second->GetProperty("Direction"));
 				objects.push_back(enemy);
 			}
+			break;
 		case OBoss:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				PhantomBat* boss = new PhantomBat();
+				boss->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
+				objects.push_back(boss);
+			}
 			break;
 		case OBossBorder:
 			break;

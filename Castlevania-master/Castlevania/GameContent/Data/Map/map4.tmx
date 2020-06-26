@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="47" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="38">
+<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="47" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="46">
  <tileset firstgid="1" name="Great_Hall_bank.png" tilewidth="32" tileheight="32" tilecount="132" columns="12">
   <image source="Great_Hall_bank.png" width="384" height="352"/>
  </tileset>
  <tileset firstgid="133" source="Candle.tsx"/>
  <tileset firstgid="135" source="ground.tsx"/>
  <tileset firstgid="136" source="ZOMBIE.tsx"/>
+ <tileset firstgid="138" source="VAMPIRE_BAT.tsx"/>
+ <objectgroup id="12" name="BOSS">
+  <object id="45" gid="138" x="1183" y="110" width="100" height="46"/>
+ </objectgroup>
  <layer id="1" name="ShoeBox Tile Grab" width="47" height="11">
   <data>
    <tile gid="1"/>

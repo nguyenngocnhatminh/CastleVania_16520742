@@ -64,6 +64,7 @@ public:
 
 	//lấy ra toạ độ cam
 	D3DXVECTOR2 GetCamera() { return D3DXVECTOR2(cam_x, cam_y); }
+
 	void GetCameraUI(float& x, float& y)
 	{ 
 		x = this->cam_x;
