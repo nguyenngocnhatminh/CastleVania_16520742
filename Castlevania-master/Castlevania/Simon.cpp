@@ -397,6 +397,34 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 			if (CGameObject::isColliding(f))
 			{
+				if (f->GetDirection() == STAIR_BOTTOM_RIGHT && f->GetSpecial() == 1)
+				{
+					if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_UPSTAIR_LEFT)
+					{
+						return;
+					}
+				}
+				if (f->GetDirection() == STAIR_BOTTOM_LEFT && f->GetSpecial() == 1)
+				{
+					if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_UPSTAIR_RIGHT)
+					{
+						return;
+					}
+				}
+				if (f->GetDirection() == STAIR_TOP_RIGHT && f->GetSpecial() == 1)
+				{
+					if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_DOWNSTAIR_LEFT)
+					{
+						return;
+					}
+				}
+				if (f->GetDirection() == STAIR_TOP_LEFT && f->GetSpecial() == 1)
+				{
+					if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_DOWNSTAIR_RIGHT)
+					{
+						return;
+					}
+				}
 				if (!this->isColliceWithStair) {
 					if (this->isOnStair) {
 
