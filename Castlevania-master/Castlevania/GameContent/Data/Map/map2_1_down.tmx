@@ -285,6 +285,7 @@
   <object id="16" x="336" y="140.5" width="29" height="22.5">
    <properties>
     <property name="direction" value="3"/>
+    <property name="isSpecial" value="0"/>
    </properties>
   </object>
   <object id="86" x="142" y="146" width="15" height="10">

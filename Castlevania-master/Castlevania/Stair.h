@@ -11,7 +11,7 @@ class Stair:public HiddenObject
 {
 	int direction;
 	bool isActive = false;
-	int isSpecial;
+	int isSpecial = 0;
 public:
 	virtual void Render();
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL) {}
@@ -34,7 +34,7 @@ public:
 
 	void SetSpecial(int x)
 	{
-		this->isSpecial = STAIR_SPECIAL;
+		this->isSpecial = x;
 	}
 
 	int GetSpecial()

@@ -360,7 +360,8 @@ void PlayScene::Load()
 				stair->SetSize(y.second->GetWidth(), y.second->GetHeight());
 				stair->SetPosition(y.second->GetX(), y.second->GetY());
 				stair->SetDirection(y.second->GetProperty("direction"));
-				stair->SetSpecial(y.second->GetProperty("isSpecial"));
+				int x = y.second->GetProperty("isSpecial");
+				stair->SetSpecial(x);
 				objects.push_back(stair);
 			}
 			break;
