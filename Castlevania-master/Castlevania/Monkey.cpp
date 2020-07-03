@@ -59,7 +59,7 @@ void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 		{
 			if (this->nx == MONKEY_JUMP_RIGHT)
 			{
-				if (pScene->GetSimon()->x - this->x < RANGE_FROM_SIMON)
+				if (pScene->GetSimon()->x - this->x < this->range)
 				{
 
 					this->isPrepare = true;
@@ -67,7 +67,7 @@ void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 			}
 			else if(this->nx==MONKEY_JUMP_LEFT)
 			{
-				if (this->x - pScene->GetSimon()->x - MONKEY_BBOX_WIDTH < RANGE_FROM_SIMON)
+				if (this->x - pScene->GetSimon()->x - MONKEY_BBOX_WIDTH < this->range)
 				{
 					this->isPrepare = true;
 				}
@@ -79,14 +79,14 @@ void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 			{
 				if (this->nx == MONKEY_JUMP_RIGHT)
 				{
-					if (this->x - pScene->GetSimon()->x - MONKEY_BBOX_WIDTH > RANGE_FROM_SIMON)
+					if (this->x - pScene->GetSimon()->x - MONKEY_BBOX_WIDTH > this->range)
 					{
 						this->nx = MONKEY_JUMP_LEFT;
 					}
 				}
 				else if (this->nx == MONKEY_JUMP_LEFT)
 				{
-					if (pScene->GetSimon()->x - this->x > RANGE_FROM_SIMON)
+					if (pScene->GetSimon()->x - this->x > this->range)
 					{
 						this->nx = MONKEY_JUMP_RIGHT;
 					}
@@ -112,6 +112,8 @@ void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 		this->time_prepare = 0;
 		this->SetIsAttack(true);
 		this->SetState(MONKEY_STATE_JUMP);
+		if (this->range == RANGE_FIRST_JUMP)
+			this->range = RANGE_FROM_SIMON;
 	}
 
 

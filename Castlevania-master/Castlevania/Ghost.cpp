@@ -120,7 +120,7 @@ void Ghost::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objec
 					int min = t;
 					int max = t + 60;
 					vy = -velocity;
-					targer.x = rand() % (max + 1 - min) + min;
+					targer.y = rand() % (max + 1 - min) + min;
 				}
 				else
 				{

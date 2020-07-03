@@ -38,6 +38,7 @@ class Monkey:public Enemy
 	bool isPrepare;
 	DWORD time_prepare;
 	int start_direction;
+	int range;
 
 public:
 	Monkey()
@@ -49,6 +50,7 @@ public:
 		isPrepare = false;
 		this->SetHP(MONKEY_HP);
 		this->SetScore(MONKEY_SCORE);
+		this->range = RANGE_FIRST_JUMP;
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
