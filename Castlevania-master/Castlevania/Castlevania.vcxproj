@@ -160,6 +160,7 @@
     <ClInclude Include="Crown.h" />
     <ClInclude Include="Dagger.h" />
     <ClInclude Include="DaggerItem.h" />
+    <ClInclude Include="DeathZone.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="DoubleShot.h" />
@@ -229,6 +230,7 @@
     <ClCompile Include="Crown.cpp" />
     <ClCompile Include="Dagger.cpp" />
     <ClCompile Include="DaggerItem.cpp" />
+    <ClCompile Include="DeathZone.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="DoubleShot.cpp" />
     <ClCompile Include="Effect.cpp" />

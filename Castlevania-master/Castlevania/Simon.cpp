@@ -23,10 +23,14 @@
 #include "Bat.h"
 #include "SitTrigger.h"
 #include "BossTrigger.h"
+#include "DeathZone.h"
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, scene);
+
+	if (this->hp == 0)
+		this->SetState(SIMON_STATE_DIE);
 
 	if (this->fight_start!=0 && !this->isAutoWalk && this->isOnStair) {
 
@@ -213,6 +217,11 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					this->x += bridge->dx * 2;
 
 				}
+			}
+			else if (dynamic_cast<DeathZone*>(e->obj))
+			{
+				if (this->isOnStair == false && this->GetState()!= SIMON_STATE_DIE)
+					this->SetState(SIMON_STATE_DIE);
 			}
 			else
 			{
@@ -425,6 +434,8 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						return;
 					}
 				}
+
+
 				if (!this->isColliceWithStair) {
 					if (this->isOnStair) {
 
@@ -603,6 +614,7 @@ void CSIMON::Render()
 		ani = SIMON_ANI_SIT_ATTACK;
 		break;
 	case SIMON_STATE_DIE:
+		ani = SIMON_ANI_DIE;
 		break;
 	case SIMON_STATE_UPWHIP:
 		ani = SIMON_ANI_UPWHIP;
@@ -888,7 +900,7 @@ void CSIMON::SetState(int state)
 		whip->StartCalculatorCollice();
 		break;
 	case SIMON_STATE_DIE:
-		vy = -SIMON_DIE_DEFLECT_SPEED;
+		this->hp = 0;
 		break;
 	case SIMON_STATE_UPWHIP:
 		whip->UpLevel();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="32" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="63">
+<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="32" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="15" nextobjectid="66">
  <tileset firstgid="1" name="dungeon_bank.png" tilewidth="32" tileheight="32" tilecount="95" columns="5">
   <image source="dungeon_bank.png" width="160" height="608"/>
  </tileset>
@@ -510,5 +510,10 @@
     <property name="direction" value="3"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="14" name="DeathZone">
+  <object id="63" x="544.5" y="370.611" width="478.633" height="9.66048"/>
+  <object id="64" x="316.161" y="372.368" width="129.977" height="7.90403"/>
+  <object id="65" x="-0.878226" y="372.368" width="224.826" height="8.78226"/>
  </objectgroup>
 </map>

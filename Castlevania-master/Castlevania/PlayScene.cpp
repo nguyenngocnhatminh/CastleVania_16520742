@@ -26,6 +26,7 @@
 #include "SitTrigger.h"
 #include "BossTrigger.h"
 #include "PhantomBat.h"
+#include "DeathZone.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 {
@@ -248,6 +249,15 @@ void PlayScene::Load()
 			for (auto const& y : x.second->GetObjectGroup())
 			{
 				Ground* ground = new Ground();
+				ground->SetPosition(y.second->GetX(), y.second->GetY());
+				ground->SetSize(y.second->GetWidth(), y.second->GetHeight());
+				objects.push_back(ground);
+			}
+			break;
+		case ODeathZone:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				DeathZone* ground = new DeathZone();
 				ground->SetPosition(y.second->GetX(), y.second->GetY());
 				ground->SetSize(y.second->GetWidth(), y.second->GetHeight());
 				objects.push_back(ground);

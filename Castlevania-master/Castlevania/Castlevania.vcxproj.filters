@@ -282,6 +282,9 @@
     <ClInclude Include="PhantomBat.h">
       <Filter>Source Files\Object\Enemy\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="DeathZone.h">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -481,6 +484,9 @@
     </ClCompile>
     <ClCompile Include="PhantomBat.cpp">
       <Filter>Source Files\Object\Enemy\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathZone.cpp">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
