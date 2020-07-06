@@ -9,7 +9,10 @@ protected:
 	float width;
 	bool is_touchable_ground;
 	int heart_cost;
-	int dame;
+	int dame = 1;
+	bool collideOneTime = false;
+	bool hitObject = false;
+
 public:
 
 	virtual void Render() {};

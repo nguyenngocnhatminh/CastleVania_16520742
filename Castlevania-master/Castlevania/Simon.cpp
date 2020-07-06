@@ -29,6 +29,8 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, scene);
 
+	this->GetWhip()->SetDamage(this->ShootState);
+
 	if (this->hp == 0)
 		this->SetState(SIMON_STATE_DIE);
 
@@ -339,6 +341,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 							//this->SetState(SIMON_STATE_HURT);
 						}
 						if (untouchable != 1) {
+							this->hp--;
 							StartUntouchable();
 						}
 					}
@@ -482,6 +485,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						this->SetState(SIMON_STATE_HURT);
 					}
 					if (untouchable != 1) {
+						this->hp--;
 						StartUntouchable();
 					}
 				}

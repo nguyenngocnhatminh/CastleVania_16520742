@@ -89,8 +89,8 @@
 #define BIG_HEART 5
 #define SMALL_HEART 1
 
-#define DOUBLE_SHOT_STATE 0
-#define TRIPLE_SHOT_STATE 1
+#define DOUBLE_SHOT_STATE 2
+#define TRIPLE_SHOT_STATE 3
 
 class CSIMON : public CGameObject
 {
@@ -148,7 +148,7 @@ public:
 		heart = 0;
 		score = 0;
 		hp = 16;
-		ShootState = -1;
+		ShootState = 1;
 		isFightWithBoss = false;
 		this->AddAnimation("SIMON_ANI_IDLE");		
 		this->AddAnimation("SIMON_ANI_WALKING");	

@@ -68,7 +68,6 @@
 
 
 		<animation ID="SIMON_ANI_DIE" defaulttime="100">
-			<frame spriteID="SIMON_DIE_01" />
 			<frame spriteID="SIMON_DIE_02" />
 		</animation>
 

@@ -41,7 +41,8 @@ void Axe::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 	if (this->is_touchable_ground == true)
 	{
-		this->Destroy();
+		x += dx;
+		y += dy;
 	}
 	SubWeapon::Update(dt, scene, coObjects);
 
