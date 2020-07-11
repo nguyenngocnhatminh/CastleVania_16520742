@@ -41,7 +41,7 @@ void Boomerang::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_o
 		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
 		D3DXVECTOR2 cam = pScene->GetCamera();
 
-		if (x<cam.x || x>cam.x + SCREENSIZE::WIDTH - BOOMERANG_BBOX_WIDTH || boomerang_range <= 0)
+		if (x < cam.x+10 || x>cam.x + SCREENSIZE::WIDTH - BOOMERANG_BBOX_WIDTH || boomerang_range <= 0)
 		{
 			this->vx = -vx;
 		}

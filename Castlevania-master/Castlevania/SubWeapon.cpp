@@ -17,15 +17,31 @@
 void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
 
+	if (dynamic_cast<PlayScene*>(scene))
+	{
+		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+		D3DXVECTOR2 cam = pScene->GetCamera();
+
+		if (x<cam.x || x>cam.x + SCREENSIZE::WIDTH || y < cam.y || y > cam.y+ SCREENSIZE::HEIGHT)
+		{
+			this->isDestroy = true;
+		}
+		
+	}
+
 	if (isDestroy)
 	{
+		if (dynamic_cast<PlayScene*>(scene))
+		{
+			PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+			if (pScene->GetSimon()->EqualShot())
+			{
+				pScene->GetSimon()->UpCurrentShoot();
+			}
+		}
 		return;
 	}
 	CGameObject::Update(dt, scene);
-
-
-	
-
 
 	if (!collideOneTime)
 	{

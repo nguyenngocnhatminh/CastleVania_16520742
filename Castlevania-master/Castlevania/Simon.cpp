@@ -263,10 +263,13 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						if (dynamic_cast<DoubleShot*>(e->obj))
 						{
 							this->SetShootState(DOUBLE_SHOT_STATE);
+							this->CurrentShoot = this->ShootState;
 						}
 						if (dynamic_cast<TripleShot*>(e->obj))
 						{
 							this->SetShootState(TRIPLE_SHOT_STATE);
+							this->CurrentShoot = this->ShootState;
+
 						}
 						this->score += item->GetScore();
 						item->Destroy();
@@ -393,13 +396,56 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		}
 		if (dynamic_cast<Item*>(e))
 		{
-
 			Item* f = dynamic_cast<Item*> (e);
 
 			if (!f->GetIsHidden())
 			{
 				if (CGameObject::isColliding(f))
 				{
+					Item* item = dynamic_cast<Item*>(f);
+					if (!item->IsDestroy())
+					{
+						if (dynamic_cast<Heart*>(f))
+						{
+							this->heart += SMALLHEART;
+						}
+						if (dynamic_cast<BigHeart*>(f))
+						{
+							this->heart += BIG_HEART;
+						}
+						if (dynamic_cast<WhipItem*>(f))
+						{
+							this->SetState(SIMON_STATE_UPWHIP);
+						}
+						if (dynamic_cast<DaggerItem*>(f))
+						{
+							currenSubWeapon = DAGGER;
+						}
+						if (dynamic_cast<BoomerangItem*>(f))
+						{
+							currenSubWeapon = BOOMERANG;
+						}
+						if (dynamic_cast<HolyWaterItem*>(f))
+						{
+							currenSubWeapon = HOLYWATER;
+						}
+						if (dynamic_cast<AxeItem*>(f))
+						{
+							currenSubWeapon = AXE;
+						}
+						if (dynamic_cast<DoubleShot*>(f))
+						{
+							this->SetShootState(DOUBLE_SHOT_STATE);
+							this->CurrentShoot = this->ShootState;
+						}
+						if (dynamic_cast<TripleShot*>(f))
+						{
+							this->SetShootState(TRIPLE_SHOT_STATE);
+							this->CurrentShoot = this->ShootState;
+						}
+						this->score += item->GetScore();
+						item->Destroy();
+					}
 				}
 			}
 		}
@@ -437,8 +483,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						return;
 					}
 				}
-
-
 				if (!this->isColliceWithStair) {
 					if (this->isOnStair) {
 
@@ -518,14 +562,15 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			&& this->state != SIMON_STATE_JUMP
 			&& this->state != SIMON_STATE_FIGHT_STAND
 			&& this->state != SIMON_STATE_DIE
-			&& this->state != SIMON_STATE_HURT) {
+			&& this->state != SIMON_STATE_HURT
+			&& this->state != SIMON_STATE_UPWHIP) {
 			SetState(SIMON_STATE_IDLE);
 
 		}
 
 	}
 
-	if (this->fight_start!=0)
+	if (this->fight_start != 0)
 	{
 		if (!this->spawnSubweapon)
 		{
@@ -573,10 +618,16 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				{
 					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
 					pScene->SpawnObject(subWeapon);
+					this->fight_start = 0;
+					this->time_spawn_sub = GetTickCount();
+					this->CurrentShoot--;
 				}
-				if (!subWeapon->isDestroy)
+				if (this->CurrentShoot <= 0)
 				{
-					this->isSpawnSubweapon = true;
+					if (!subWeapon->isDestroy)
+					{
+						this->isSpawnSubweapon = true;
+					}
 				}
 				this->heart -= subWeapon->GetHeartCotst();
 			}

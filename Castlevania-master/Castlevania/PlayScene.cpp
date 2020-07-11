@@ -212,6 +212,11 @@ void PlayScene::Load()
 	SIMON = new CSIMON();	
 
 	SIMON->SetlastState(CGame::GetInstance()->GetSimonProp());
+	if (this->SIMON->GetState() == SIMON_STATE_DIE)
+	{
+		this->SIMON->SetHp(16);
+		this->SIMON->SetState(SIMON_STATE_IDLE);
+	}
 
 	hub = new Hub(this);
 	CGame::GetInstance()->SetSimonProp(new SimonProperties());
@@ -675,13 +680,13 @@ void PlayScene::OnKeyDown(int KeyCode)
 		CGame::GetInstance()->SwitchScene(3);
 		break;
 	case DIK_5:
+		this->SIMON->SetState(SIMON_STATE_IDLE);
 		CGame::GetInstance()->SwitchScene(4);
 		break;
 	case DIK_6:
 		CGame::GetInstance()->SwitchScene(5);
 		break;
 	case DIK_7:
-		CGame::GetInstance()->SwitchScene(6);
 		break;
 	case DIK_8:
 		CGame::GetInstance()->SwitchScene(7);
@@ -712,6 +717,19 @@ void PlayScene::OnKeyDown(int KeyCode)
 		item->SetPosition(this->GetSimon()->x + 100, this->GetSimon()->y - 100);
 		this->SpawnObject(item);
 		break;
+	case DIK_K:
+		item = itemcollection->SpawnItem(DOUBLESHOT, this->GetSimon()->x + 100);
+		item->SetPosition(this->GetSimon()->x + 100, this->GetSimon()->y - 100);
+		this->SpawnObject(item);
+		break;
+	case DIK_L:
+		item = itemcollection->SpawnItem(TRIPLESHOT, this->GetSimon()->x + 100);
+		item->SetPosition(this->GetSimon()->x + 100, this->GetSimon()->y - 100);
+		this->SpawnObject(item);
+		break;
+	case DIK_J:
+		this->SIMON->UpHeart();
+		break;
 	}
 
 }
@@ -732,7 +750,7 @@ void PlayScene::KeyState(BYTE* states)
 	if (SIMON->GetState() == SIMON_STATE_UPWHIP) return;
 	if (SIMON->GetState() == SIMON_STATE_JUMP) return;
 
-	if (SIMON->GetFightTime() && GetTickCount() - SIMON->GetFightTime() > 350)
+	if (SIMON->GetFightTime() && GetTickCount() - SIMON->GetFightTime() > 350 && !SIMON->GetTimeSpawnSub())
 	{
 		switch (SIMON->GetState())
 		{
@@ -748,6 +766,21 @@ void PlayScene::KeyState(BYTE* states)
 		SIMON->ResetFightTime();
 	}
 
+	if (SIMON->GetTimeSpawnSub() && GetTickCount() - SIMON->GetTimeSpawnSub() > 350)
+	{
+		switch (SIMON->GetState())
+		{
+		case SIMON_STATE_FIGHT_SIT:
+			SIMON->SetState(SIMON_STATE_SIT);
+			break;
+		case  SIMON_STATE_FIGHT_STAND:
+			SIMON->SetState(SIMON_STATE_IDLE);
+			break;
+
+		}
+		SIMON->ResetFightAnimation();
+		SIMON->ResetTimeSpawnSub();
+	}
 
 	if (SIMON->GetState() == SIMON_STATE_FIGHT_SIT) return;
 	if (SIMON->GetState() == SIMON_STATE_FIGHT_STAND) return;

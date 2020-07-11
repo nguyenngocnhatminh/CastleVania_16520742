@@ -129,9 +129,11 @@ class CSIMON : public CGameObject
 	int score;
 
 	int ShootState;
+	int CurrentShoot;
 
 	bool isFightWithBoss;
 
+	DWORD time_spawn_sub;  //thoi gian phong vu khi phu
 public: 
 	CSIMON() : CGameObject()
 	{
@@ -149,6 +151,8 @@ public:
 		score = 0;
 		hp = 16;
 		ShootState = 1;
+		CurrentShoot = 1;
+		time_spawn_sub = 0;
 		isFightWithBoss = false;
 		this->AddAnimation("SIMON_ANI_IDLE");		
 		this->AddAnimation("SIMON_ANI_WALKING");	
@@ -182,9 +186,19 @@ public:
 		return this->fight_start;	
 	}
 
+	DWORD GetTimeSpawnSub()
+	{
+		return this->time_spawn_sub;
+	}
+
 	void ResetFightTime()
 	{
 		this->fight_start = 0;
+	}
+
+	void ResetTimeSpawnSub()
+	{
+		this->time_spawn_sub = 0;
 	}
 
 	int GetSwitchScene()
@@ -290,6 +304,11 @@ public:
 		return this->hp;
 	}
 
+	void SetHp(int x)
+	{
+		this->hp = x;
+	}
+
 	void SetlastState(SimonProperties* prop);
 
 	int GetShootState()
@@ -300,6 +319,7 @@ public:
 	void SetShootState(int state)
 	{
 		this->ShootState = state;
+		this->CurrentShoot = state;
 	}
 
 	bool GetIsFightWithBoss()
@@ -310,5 +330,24 @@ public:
 	void SetIsFightWithBoss(int flag)
 	{
 		this->isFightWithBoss = flag;
+	}
+
+	void UpCurrentShoot()
+	{
+		this->CurrentShoot++;
+	}
+
+	void UpHeart()
+	{
+		this->heart += 10;
+	}
+
+	bool EqualShot()
+	{
+		if (this->CurrentShoot >= ShootState)
+		{
+			return false;
+		}
+		else return true;
 	}
 };

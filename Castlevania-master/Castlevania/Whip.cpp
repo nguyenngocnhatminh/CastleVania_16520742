@@ -202,8 +202,6 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 		}
 		else
 		{
-
-
 			DebugOut(L"Swept aabb \n");
 			float min_tx, min_ty, nx = 0, ny;
 
