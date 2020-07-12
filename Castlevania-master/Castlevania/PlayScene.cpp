@@ -629,12 +629,16 @@ void PlayScene::OnKeyDown(int KeyCode)
 	case DIK_Z:
 		if (!SIMON->GetFightTime())
 		{
-			SIMON->ResetSpawnSubWeapon();
+			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->GetCurrentShoot()>=1)
+			{
+				SIMON->ResetSpawnSubWeapon();
+			}
 			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->getCurrentSubweapon()!=0&& !SIMON->IsSpawnSubWeapon()&&!SIMON->CheckIsOnStair())
 			{
 				if (CGame::GetInstance()->IsKeyDown(DIK_DOWN))
 					SIMON->SetState(SIMON_STATE_IDLE);
 				SIMON->SpawnSubWeapon(true);
+				SIMON->SetTimeSpawnSub(GetTickCount());
 			}
 			else
 			{

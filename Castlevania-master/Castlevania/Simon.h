@@ -201,6 +201,11 @@ public:
 		this->time_spawn_sub = 0;
 	}
 
+	int GetCurrentShoot()
+	{
+		return this->CurrentShoot;
+	}
+
 	int GetSwitchScene()
 	{
 		return this->Switch_scene;
@@ -349,5 +354,10 @@ public:
 			return false;
 		}
 		else return true;
+	}
+
+	void SetTimeSpawnSub(DWORD flag)
+	{
+		this->time_spawn_sub = flag;
 	}
 };

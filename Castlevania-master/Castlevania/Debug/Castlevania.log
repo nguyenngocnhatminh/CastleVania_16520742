@@ -1,16 +1,4 @@
-﻿  Axe.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
-  Hub.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Hub.cpp(68,23): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Hub.cpp(70,67): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Hub.cpp(73,23): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Hub.cpp(75,65): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Hub.cpp(79,65): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Hub.cpp(83,65): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
-  Simon.cpp
+﻿  Simon.cpp
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Heart.h(20,14): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
@@ -30,27 +18,12 @@ D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Bat.h(19,1): warning C400
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SkeletonTrigger.h(3): message : see previous definition of 'RANGE_FROM_SIMON_X'
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Bat.h(20,1): warning C4005: 'RANGE_FROM_SIMON_Y': macro redefinition
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SkeletonTrigger.h(4): message : see previous definition of 'RANGE_FROM_SIMON_Y'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(581,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(581,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(585,64): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(593,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(610,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(610,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(614,71): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(614,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  SubWeapon.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Heart.h(20,14): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(21,1): warning C4005: 'MONEYBAG': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(11): message : see previous definition of 'MONEYBAG'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(22,1): warning C4005: 'CROWN': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(12): message : see previous definition of 'CROWN'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeapon.cpp(76,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeapon.cpp(152,68): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeapon.cpp(180,70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeapon.cpp(227,54): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  SubWeaponCollection.cpp
-  Generating Code...
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.cpp(20): warning C4715: 'SubWeaponCollection::SpawnSubWeapon': not all control paths return a value
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(585,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(585,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(589,64): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(597,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(616,73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(616,38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(620,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(620,38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Castlevania.vcxproj -> D:\hoc\Game\CastleVania\Castlevania-master\Debug\Castlevania.exe

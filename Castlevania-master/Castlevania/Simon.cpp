@@ -264,11 +264,13 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						{
 							this->SetShootState(DOUBLE_SHOT_STATE);
 							this->CurrentShoot = this->ShootState;
+							this->ResetSpawnSubWeapon();
 						}
 						if (dynamic_cast<TripleShot*>(e->obj))
 						{
 							this->SetShootState(TRIPLE_SHOT_STATE);
 							this->CurrentShoot = this->ShootState;
+							this->ResetSpawnSubWeapon();
 
 						}
 						this->score += item->GetScore();
@@ -437,11 +439,13 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						{
 							this->SetShootState(DOUBLE_SHOT_STATE);
 							this->CurrentShoot = this->ShootState;
+							this->ResetSpawnSubWeapon();
 						}
 						if (dynamic_cast<TripleShot*>(f))
 						{
 							this->SetShootState(TRIPLE_SHOT_STATE);
 							this->CurrentShoot = this->ShootState;
+							this->ResetSpawnSubWeapon();
 						}
 						this->score += item->GetScore();
 						item->Destroy();
@@ -601,42 +605,44 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		}
 		else if (!isSpawnSubweapon && this->currenSubWeapon!=0)
 		{
-			SubWeaponCollection* sub = new SubWeaponCollection();
-			SubWeapon* subWeapon = sub->SpawnSubWeapon(currenSubWeapon);
-			if (this->heart - subWeapon->GetHeartCotst() >= 0)
+			if (time_spawn_sub != 0)
 			{
-				if (nx > 0)
+				SubWeaponCollection* sub = new SubWeaponCollection();
+				SubWeapon* subWeapon = sub->SpawnSubWeapon(currenSubWeapon);
+				if (this->heart - subWeapon->GetHeartCotst() >= 0)
 				{
-					subWeapon->SetPosition(this->x + 0.15 * SIMON_BBOX_WIDTH, this->y + 0.1 * SIMON_BBOX_HEIGHT);
-				}
-				else
-				{
-					subWeapon->SetPosition(this->x + 0.3 * SIMON_BBOX_WIDTH, this->y + 0.1 * SIMON_BBOX_HEIGHT);
-				}
-				subWeapon->SetNx(this->nx);
-				if (dynamic_cast<PlayScene*>(scene))
-				{
-					PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-					pScene->SpawnObject(subWeapon);
-					this->fight_start = 0;
-					this->time_spawn_sub = GetTickCount();
-					this->CurrentShoot--;
-				}
-				if (this->CurrentShoot <= 0)
-				{
-					if (!subWeapon->isDestroy)
+					if (nx > 0)
 					{
-						this->isSpawnSubweapon = true;
+						subWeapon->SetPosition(this->x + 0.15 * SIMON_BBOX_WIDTH, this->y + 0.1 * SIMON_BBOX_HEIGHT);
 					}
+					else
+					{
+						subWeapon->SetPosition(this->x + 0.3 * SIMON_BBOX_WIDTH, this->y + 0.1 * SIMON_BBOX_HEIGHT);
+					}
+					subWeapon->SetNx(this->nx);
+					if (dynamic_cast<PlayScene*>(scene))
+					{
+						PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+						pScene->SpawnObject(subWeapon);
+						this->ResetTimeSpawnSub();
+						this->CurrentShoot--;
+					}
+					if (this->CurrentShoot <= 1)
+					{
+						if (!subWeapon->isDestroy)
+						{
+							this->isSpawnSubweapon = true;
+						}
+					}
+					this->heart -= subWeapon->GetHeartCotst();
 				}
-				this->heart -= subWeapon->GetHeartCotst();
 			}
-			else spawnSubweapon = false;
 		}
+		else spawnSubweapon = false;
 	}
-
-
 }
+
+
 
 void CSIMON::Render()
 {

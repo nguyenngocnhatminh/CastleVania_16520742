@@ -24,7 +24,6 @@ void Axe::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	}
 	if (this->setDestroy)
 	{
-
 		this->isDestroy = true;
 		return;
 	}
