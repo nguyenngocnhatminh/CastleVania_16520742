@@ -576,7 +576,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 	if (this->fight_start != 0)
 	{
-		if (!this->spawnSubweapon)
+		if (!this->spawnSubweapon && fight_start > 0)
 		{
 			if (this->state == SIMON_STATE_FIGHT_SIT)
 			{
@@ -605,7 +605,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		}
 		else if (!isSpawnSubweapon && this->currenSubWeapon!=0)
 		{
-			if (time_spawn_sub != 0)
+			if (time_spawn_sub != 0 )
 			{
 				SubWeaponCollection* sub = new SubWeaponCollection();
 				SubWeapon* subWeapon = sub->SpawnSubWeapon(currenSubWeapon);
@@ -624,7 +624,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					{
 						PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
 						pScene->SpawnObject(subWeapon);
-						this->ResetTimeSpawnSub();
+						this->fight_start = -1;
 						this->CurrentShoot--;
 					}
 					if (this->CurrentShoot <= 1)
@@ -708,7 +708,7 @@ void CSIMON::Render()
 		break;
 	}
 	
-	if (this->fight_start != 0 && !this->spawnSubweapon)
+	if (this->fight_start > 0 && !this->spawnSubweapon && this->isSpawnWhip) 
 	{
 		whip->Render();
 	}
@@ -949,14 +949,22 @@ void CSIMON::SetState(int state)
 	case SIMON_STATE_FIGHT_SIT:
 		vx = 0;
 		isSitting = true;
-		this->fight_start = GetTickCount();
+		if (!this->spawnSubweapon)
+		{
+			this->fight_start = GetTickCount();
+		}
+		else this->fight_start = -1;
 		whip->ResetWhip();
 		whip->StartCalculatorCollice();
 		break;
 	case SIMON_STATE_FIGHT_STAND:
 		vx = this->state == SIMON_STATE_IDLE || this->state == SIMON_STATE_WALKING_LEFT
 			|| this->state == SIMON_STATE_WALKING_RIGHT ? 0:vx;
-		this->fight_start = GetTickCount();
+		if (!this->spawnSubweapon)
+		{
+			this->fight_start = GetTickCount();
+		}
+		else this->fight_start = -1;
 		whip->ResetWhip();
 		whip->StartCalculatorCollice();
 		break;

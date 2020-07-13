@@ -639,20 +639,27 @@ void PlayScene::OnKeyDown(int KeyCode)
 	case DIK_Z:
 		if (!SIMON->GetFightTime())
 		{
-			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->GetCurrentShoot()>=1)
-			{
-				SIMON->ResetSpawnSubWeapon();
-			}
+
 			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->getCurrentSubweapon()!=0&& !SIMON->IsSpawnSubWeapon()&&!SIMON->CheckIsOnStair())
 			{
 				if (CGame::GetInstance()->IsKeyDown(DIK_DOWN))
 					SIMON->SetState(SIMON_STATE_IDLE);
 				SIMON->SpawnSubWeapon(true);
+				SIMON->SetIsSpawnWhip(false);
 				SIMON->SetTimeSpawnSub(GetTickCount());
 			}
 			else
 			{
 				SIMON->SpawnSubWeapon(false);
+			}
+
+			if (!CGame::GetInstance()->IsKeyDown(DIK_UP) || SIMON->GetCurrentShoot() < 1)
+			{
+				SIMON->ResetSpawnWhip();
+			}
+			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->GetCurrentShoot() >= 1)
+			{
+				SIMON->ResetSpawnSubWeapon();
 			}
 
 			if (SIMON->GetState() == SIMON_STATE_SIT)
@@ -764,7 +771,7 @@ void PlayScene::KeyState(BYTE* states)
 	if (SIMON->GetState() == SIMON_STATE_UPWHIP) return;
 	if (SIMON->GetState() == SIMON_STATE_JUMP) return;
 
-	if (SIMON->GetFightTime() && GetTickCount() - SIMON->GetFightTime() > 350 && !SIMON->GetTimeSpawnSub())
+	if (SIMON->GetFightTime() > 0 && GetTickCount() - SIMON->GetFightTime() > 350 && !SIMON->GetTimeSpawnSub())
 	{
 		switch (SIMON->GetState())
 		{
@@ -794,6 +801,7 @@ void PlayScene::KeyState(BYTE* states)
 		}
 		SIMON->ResetFightAnimation();
 		SIMON->ResetTimeSpawnSub();
+		SIMON->ResetFightTime();
 	}
 
 	if (SIMON->GetState() == SIMON_STATE_FIGHT_SIT) return;

@@ -107,6 +107,7 @@ class CSIMON : public CGameObject
 	int currenSubWeapon;
 	bool spawnSubweapon=false;
 	bool isSpawnSubweapon = false;
+	bool isSpawnWhip = true;
 
 	//cau thang
 	int lastState = -1;
@@ -226,10 +227,20 @@ public:
 	void StartUntouchable() { untouchable = 1; untouchable_start = GetTickCount(); }
 
 	void ResetSpawnSubWeapon() { this->isSpawnSubweapon = false; }
+
+	void ResetSpawnWhip() { this->isSpawnWhip = true; }
+
+	void SetIsSpawnWhip(bool flag)
+	{
+		this->isSpawnWhip = flag;
+	}
+
 	bool IsSpawnSubWeapon() {
 		return spawnSubweapon;
 	};
-	void SpawnSubWeapon(bool flag) { this->spawnSubweapon = flag; };
+	void SpawnSubWeapon(bool flag) { 
+		this->spawnSubweapon = flag;
+	};
 
 	int getCurrentSubweapon() { return this->currenSubWeapon; }
 

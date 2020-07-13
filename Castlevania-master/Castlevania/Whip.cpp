@@ -165,13 +165,12 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 							}
 
 							ItemCollection* itemcollection = new ItemCollection();
-							Item* item = itemcollection->SpawnRandomItem(f->x);
+							Item* item = new Item();
+							item = itemcollection->SpawnRandomItem(f->x);
 							if (dynamic_cast<PlayScene*>(scene))
 							{
 								PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-								float tx, ty;
-								f->GetPosition(tx, ty);
-								item->SetPosition(tx, ty);
+								item->SetPosition(f->x, f->y);
 								pScene->SpawnObject(item);
 							}
 							f->Destroy();

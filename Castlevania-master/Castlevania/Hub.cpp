@@ -68,7 +68,6 @@ void Hub::Render()
 	for (size_t i = 0; i < this->playerHP; i++)
 	{
 		CSprites::GetInstance()->Get("PLAYER_HP_SPRITE")->DrawUI(0, 105 + i * 9, 32, 255, false);
-
 	}
 	for (size_t i = 0; i < BossHP; i++)
 	{

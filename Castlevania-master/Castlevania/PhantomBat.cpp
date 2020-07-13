@@ -15,6 +15,7 @@ void PhantomBat::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 	if (this->IsDestroy())
 	{
+		this->hp = 0;
 		return;
 	}
 	if (this->setDestroy)
