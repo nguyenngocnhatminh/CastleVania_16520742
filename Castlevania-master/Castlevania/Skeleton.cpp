@@ -3,6 +3,7 @@
 #include "SkeletonTrigger.h"
 #include "define.h"
 #include "SkeletonWeapon.h"
+#include "SkeletonBlock.h"
 
 void Skeleton::Render()
 {
@@ -73,10 +74,16 @@ void Skeleton::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_ob
 
 	if (IsAttack())
 	{
+	
 		if (this->GetState() == SKELETON_STATE_WALK)
 		{
-			this->AutoWalk(zone);
+			if (isAutoWalk == false) // khong bi dung tuong
+			{
+				this->AutoWalk(zone);
+			}
+			else AutoWalkColliGround();
 		}
+
 	}
 
 
@@ -128,6 +135,19 @@ void Skeleton::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_ob
 							}
 
 					}
+				}
+				if (e->nx != 0)
+				{
+					this->vx = -vx;
+					this->isAutoWalk = true;
+				}
+			}
+			else if (dynamic_cast<SkeletonBlock*>(e->obj))
+			{
+				if (e->nx != 0)
+				{
+					this->vx = -vx;
+					this->isAutoWalk = true;
 				}
 			}
 			else
@@ -227,8 +247,8 @@ MoveZone Skeleton::CaculatorZoneMove(CSIMON* simon)
 MoveZone Skeleton::CacualatorGroundZone(Ground* ground)
 {
 	MoveZone groundzone{};
-	float minX = ground->x;
-	float maxX = ground->x + ground->GetWidth();
+	float minX = ground->x-5; //offset
+	float maxX = ground->x + ground->GetWidth()+5;
 	if (minX > maxX)
 	{
 		swap(minX, maxX);
@@ -254,6 +274,17 @@ void Skeleton::AutoWalk(MoveZone zone)
 			this->vx = SKELETON_SPEED_VX;
 		if (this->x >= zone.MaxX)
 			this->vx = -SKELETON_SPEED_VX;
+	}
+}
+
+void Skeleton::AutoWalkColliGround()
+{
+	this->rang_autowalk--;
+	if (rang_autowalk == 0)
+	{
+		this->isAutoWalk = false;
+		rang_autowalk = SKELETON_AUTOWALK_RANGE;
+		this->vx = -vx;
 	}
 }
 

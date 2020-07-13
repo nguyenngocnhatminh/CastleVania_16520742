@@ -27,6 +27,7 @@
 #include "BossTrigger.h"
 #include "PhantomBat.h"
 #include "DeathZone.h"
+#include "SkeletonBlock.h"
 
 void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 {
@@ -254,6 +255,15 @@ void PlayScene::Load()
 			for (auto const& y : x.second->GetObjectGroup())
 			{
 				Ground* ground = new Ground();
+				ground->SetPosition(y.second->GetX(), y.second->GetY());
+				ground->SetSize(y.second->GetWidth(), y.second->GetHeight());
+				objects.push_back(ground);
+			}
+			break;
+		case OSkeletonBlock:
+			for (auto const& y : x.second->GetObjectGroup())
+			{
+				SkeletonBlock* ground = new SkeletonBlock();
 				ground->SetPosition(y.second->GetX(), y.second->GetY());
 				ground->SetSize(y.second->GetWidth(), y.second->GetHeight());
 				objects.push_back(ground);

@@ -20,6 +20,8 @@
 #define SKELETON_JUMPBACK_VY 0.4f
 
 
+#define SKELETON_AUTOWALK_RANGE 40
+
 #define SKELETON_DIRECTION_RIGHT 1
 #define SKELETON_DIRECTION_LEFT -1
 
@@ -49,6 +51,8 @@ class Skeleton:public Enemy
 	bool isSpawnWeapon;
 	bool spawnweapon;
 	DWORD timespawnWeapon;
+	bool isAutoWalk;
+	int rang_autowalk = SKELETON_AUTOWALK_RANGE;
 public:
 	Skeleton():Enemy()
 	{
@@ -73,5 +77,6 @@ public:
 	void Jump(MoveZone groundzone);
 	bool EqualZone(MoveZone zone,MoveZone groundzone);
 	void SetisSpawnWeapon();
+	void AutoWalkColliGround(); // tu di sau khi dung tuong
 };
 

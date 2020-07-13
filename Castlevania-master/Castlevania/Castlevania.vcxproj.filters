@@ -285,6 +285,9 @@
     <ClInclude Include="DeathZone.h">
       <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClInclude>
+    <ClInclude Include="SkeletonBlock.h">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -486,6 +489,9 @@
       <Filter>Source Files\Object\Enemy\Boss</Filter>
     </ClCompile>
     <ClCompile Include="DeathZone.cpp">
+      <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletonBlock.cpp">
       <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClCompile>
   </ItemGroup>
