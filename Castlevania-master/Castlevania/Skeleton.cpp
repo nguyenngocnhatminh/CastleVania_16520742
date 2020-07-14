@@ -58,6 +58,18 @@ void Skeleton::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_ob
 				this->SetIsAttack(true);
 			}
 		}
+
+		if(this->x > pScene->GetSimon()->x 
+			&& this->nx == SKELETON_DIRECTION_RIGHT)
+		{
+			this->nx = SKELETON_DIRECTION_LEFT;
+		}
+
+		if (this->x < pScene->GetSimon()->x
+			&& this->nx == SKELETON_DIRECTION_LEFT)
+		{
+			this->nx = SKELETON_DIRECTION_RIGHT;
+		}
 	}
 	if (this->IsAttack())
 	{

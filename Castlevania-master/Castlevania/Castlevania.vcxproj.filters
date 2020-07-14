@@ -288,6 +288,9 @@
     <ClInclude Include="SkeletonBlock.h">
       <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
     </ClInclude>
+    <ClInclude Include="StopWatch.h">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -493,6 +496,9 @@
     </ClCompile>
     <ClCompile Include="SkeletonBlock.cpp">
       <Filter>Source Files\Object\StaticObjects\HiddenObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="StopWatch.cpp">
+      <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

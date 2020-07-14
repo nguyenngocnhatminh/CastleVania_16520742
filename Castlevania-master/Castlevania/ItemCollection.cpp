@@ -80,10 +80,10 @@ Item* ItemCollection::SpawnRandomItem(int x)
 	{
 		return new AxeItem();
 	}
-	else if (rank < 280)
-	{
-		// stopwatch
-	}
+	//else if (rank < 280)
+	//{
+	//	// stopwatch
+	//}
 	else if (rank < 290)
 	{
 		return new HolyWaterItem();

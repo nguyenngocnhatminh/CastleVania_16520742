@@ -141,7 +141,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			if (dynamic_cast<Ground*>(e->obj)) {
 				if (e->ny != 0)
 				{ 
-					if (GetState() == SIMON_STATE_JUMP) {
+					if (GetState() == SIMON_STATE_JUMP || GetState()==SIMON_STATE_HURT) {
 						SetState(SIMON_STATE_IDLE);
 					}
 					if (this->state == SIMON_STATE_FIGHT_STAND)
@@ -343,7 +343,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					{
 						if (!this->isOnStair)
 						{
-							//this->SetState(SIMON_STATE_HURT);
+							this->SetState(SIMON_STATE_HURT);
 						}
 						if (untouchable != 1) {
 							this->hp--;

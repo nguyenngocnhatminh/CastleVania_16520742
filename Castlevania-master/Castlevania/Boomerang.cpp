@@ -20,10 +20,6 @@ void Boomerang::GetBoundingBox(float& l, float& t, float& r, float& b)
 
 void Boomerang::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
-	if (isDestroy)
-	{
-		return;
-	}
 	if (vx = nx)
 	{
 		if (nx > 0)

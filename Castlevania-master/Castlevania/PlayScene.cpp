@@ -863,23 +863,29 @@ void PlayScene::KeyState(BYTE* states)
 		return;
 	}
 
-	if (game->IsKeyDown(DIK_RIGHT)) // bắt phím mũi tên phải
+	if (SIMON->GetState() != SIMON_STATE_HURT)
 	{
-		SIMON->SetState(SIMON_STATE_WALKING_RIGHT); //đi phải
+		if (game->IsKeyDown(DIK_RIGHT)) // bắt phím mũi tên phải
+		{
+			SIMON->SetState(SIMON_STATE_WALKING_RIGHT); //đi phải
 
+		}
+		else if (game->IsKeyDown(DIK_LEFT))
+		{
+			SIMON->SetState(SIMON_STATE_WALKING_LEFT);
+		}
+		else if (game->IsKeyDown(DIK_DOWN))
+		{
+			SIMON->SetState(SIMON_STATE_SIT);
+		}
+		else
+		{
+
+			SIMON->SetState(SIMON_STATE_IDLE);
+
+		}
 	}
-	else if (game->IsKeyDown(DIK_LEFT))
-	{
-		SIMON->SetState(SIMON_STATE_WALKING_LEFT);
-	}
-	else if (game->IsKeyDown(DIK_DOWN))
-	{
-		SIMON->SetState(SIMON_STATE_SIT);
-	}
-	else
-	{
-		SIMON->SetState(SIMON_STATE_IDLE);
-	}
+
 
 }
 

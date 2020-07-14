@@ -17,14 +17,9 @@ void HolyWater::Render()
 
 void HolyWater::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
-	if (this->IsDestroy())
-	{
-		return;
-	}
 	if (this->setDestroy)
 	{
 		this->isDestroy = true;
-		return;
 	}
 	if (state == HOLYWATER_STATE_JAR)
 	{
@@ -51,7 +46,6 @@ void HolyWater::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	else if (GetTickCount64() - burning_start > HOLYWATER_BURNING_TIME)
 	{
 		this->Destroy();
-		return;
 	}
 	if (this->is_touchable_ground == true)
 	{

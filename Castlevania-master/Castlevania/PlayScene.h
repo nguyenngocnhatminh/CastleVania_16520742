@@ -6,6 +6,7 @@
 #include "SkeletonTrigger.h"
 #include "SimonProperties.h"
 #include "Hub.h"
+#include "Grid.h"
 class Hub;
 class PlayScene:public Scene
 {
@@ -27,11 +28,12 @@ class PlayScene:public Scene
     DWORD timeCounter_start = 0;
 
     RECT BossCamera;
+
+    Grid* grid;
 public:
     PlayScene(int id, std::string filepath,int TexId,std::string Map,int StageID):Scene(id,filepath,TexId,Map,StageID)
     {
         simon_properties = NULL;
-
     }
     D3DXVECTOR2 GetCamera();
     void SpawnObject(LPGAMEOBJECT obj) { this->qObjects.push(obj); }

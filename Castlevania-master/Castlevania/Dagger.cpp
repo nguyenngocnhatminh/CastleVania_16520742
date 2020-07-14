@@ -20,10 +20,6 @@ void Dagger::GetBoundingBox(float& l, float& t, float& r, float& b)
 
 void Dagger::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
-	if (isDestroy)
-	{
-		return;
-	}
 	vx = nx > 0 ? this->vx = DAGGER_VX : this->vx = -DAGGER_VX;
 
 	if (dynamic_cast<PlayScene*>(scene))
