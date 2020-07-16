@@ -5,6 +5,8 @@
 	<textures>
 		<tex ID ="0" name = "SIMON" path="GameContent\\Data\\GameObject\\Simon\\SIMON.png" red="255" green="255" blue ="255"/>
 		<tex ID ="-100" name = "BBOX" path="textures\\bbox.png" red="0" green="255" blue ="255"/>
+		<tex ID=" -102" name="BBOX_BLUE" path="GameContent\\Data\\textures\\bbox.png" red="255" green="255" blue="255"/>
+		<tex ID=" -101" name="BBOX_RED" path="GameContent\\Data\\textures\\bbox1.png" red="255" green="255" blue="255"/>
 		<tex ID ="-500" name = "Courtyard_bank" path="GameContent\\Data\\Map\\Courtyard_bank.png" red="255" green="255" blue ="255"/>
 		<tex ID ="-600" name = "dungeon_bank" path="GameContent\\Data\\Map\\dungeon_bank.png" red="255" green="255" blue ="255"/>
 		<tex ID ="-700" name ="map3_1_bank" path="GameContent\\Data\\Map\\map3_1_bank.png" red="255" green="255" blue="255"/>

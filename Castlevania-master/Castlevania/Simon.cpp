@@ -588,7 +588,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				{
 					whip->SetPosition(this->x - 2 * SIMON_BBOX_WIDTH, this->y + 0.25 * SIMON_BBOX_HEIGHT);
 				}
-				
 			}
 			else
 			{

@@ -1063,8 +1063,8 @@
   </object>
  </objectgroup>
  <objectgroup id="3" name="Ground">
-  <object id="9" name="Ground" x="0" y="291" width="1503" height="26"/>
-  <object id="25" x="1490.67" y="-6.66667" width="13.3333" height="322.667"/>
+  <object id="9" name="Ground" x="1.13687e-13" y="291" width="1503" height="26"/>
+  <object id="25" x="1490.67" y="1.33333" width="10.6666" height="314.667"/>
  </objectgroup>
  <objectgroup id="4" name="Torch">
   <object id="10" gid="153" x="165" y="287" width="32" height="64">
@@ -1097,7 +1097,7 @@
   <object id="8" x="1" y="-1" width="1503.33" height="351"/>
  </objectgroup>
  <objectgroup id="11" name="Camera">
-  <object id="20" x="-1.33699" y="-4.35815" width="1503.03" height="357.576"/>
+  <object id="20" x="-0.00365667" y="-0.358153" width="1503.03" height="357.576"/>
  </objectgroup>
  <objectgroup id="9" name="MoneyBagTrigger">
   <object id="17" x="1407.5" y="274" width="75.5" height="10">

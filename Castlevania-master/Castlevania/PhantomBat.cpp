@@ -15,7 +15,11 @@ void PhantomBat::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 	if (this->IsDestroy())
 	{
-		this->hp = 0;
+		if (dynamic_cast<PlayScene*>(scene))
+		{
+			PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+			pScene->GetHub()->SetBossHP(this->hp);
+		}
 		return;
 	}
 	if (this->setDestroy)
@@ -35,6 +39,11 @@ void PhantomBat::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		cy = activeArea.top + abs(activeArea.top - activeArea.bottom) / 2;
 		/*HandleSpawnItem::GetInstance()->SpawnItem(ITEMDEF::ITDCRYSTALL, cx, cy, true);*/
 		this->isDestroy = true;
+		if (dynamic_cast<PlayScene*>(scene))
+		{
+			PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+			pScene->GetHub()->SetBossHP(0);
+		}
 		return;
 	}
 
@@ -130,9 +139,9 @@ void PhantomBat::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			}
 			//HandleSpawnEnemy::GetInstance()->SpawnFireBall(x + 35, y, nx, fireBall_vy);
 			this->outOfArea = false;
+			return;
 
 		}
-		return;
 	}
 
 

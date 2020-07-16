@@ -8,7 +8,7 @@
 #include "Hub.h"
 #include "Grid.h"
 class Hub;
-class PlayScene:public Scene
+class PlayScene :public Scene
 {
     RECT cameraBoder;
     CSIMON* SIMON;
@@ -17,29 +17,32 @@ class PlayScene:public Scene
     Map* gameMap;
     void LoadSprite(const std::string& filePath, const int tex);
     void LoadAnimation(const string& filePath);
-    
+
     std::queue<LPGAMEOBJECT> qObjects;
 
     SimonProperties* simon_properties;
 
     unsigned int stateTime = 300;
     void GameTimeCounter();
-    
+
     DWORD timeCounter_start = 0;
 
     RECT BossCamera;
 
     Grid* grid;
+
+    void GetListobjectFromGrid();
+    void UpdateGrid();
 public:
-    PlayScene(int id, std::string filepath,int TexId,std::string Map,int StageID):Scene(id,filepath,TexId,Map,StageID)
+    PlayScene(int id, std::string filepath, int TexId, std::string Map, int StageID) :Scene(id, filepath, TexId, Map, StageID)
     {
         simon_properties = NULL;
     }
     D3DXVECTOR2 GetCamera();
-    void SpawnObject(LPGAMEOBJECT obj) { this->qObjects.push(obj); }
+    void SpawnObject(LPGAMEOBJECT obj) { grid->Add(obj); }
     void Load() override;
     void UnLoad() override;
-    
+
     void LoadDefault();
     void LoadSpriteDefault(const std::string& filePath, const int tex);
     void LoadAnimationDefault(const string& filePath);
@@ -47,32 +50,31 @@ public:
     void Update(DWORD deltaTime) override;
     void Render() override;
 
-     void OnKeyDown(int KeyCode) override;
-     void OnKeyUp(int KeyCode) override;
-     void KeyState(BYTE* states) override;
-    
-     CSIMON* GetSimon()
-     {
-         return this->SIMON;
-     }
+    void OnKeyDown(int KeyCode) override;
+    void OnKeyUp(int KeyCode) override;
+    void KeyState(BYTE* states) override;
 
-     unsigned int GetTime() {
-         return this->stateTime;
-     }
+    CSIMON* GetSimon()
+    {
+        return this->SIMON;
+    }
 
-     int GetStageID()
-     {
-         return this->StageID;
-     }
+    unsigned int GetTime() {
+        return this->stateTime;
+    }
 
-     RECT GetBossCamera()
-     {
-         return this->BossCamera;
-     }
+    int GetStageID()
+    {
+        return this->StageID;
+    }
 
-     Hub* GetHub()
-     {
-         return this->hub;
-     }
+    RECT GetBossCamera()
+    {
+        return this->BossCamera;
+    }
+
+    Hub* GetHub()
+    {
+        return this->hub;
+    }
 };
-

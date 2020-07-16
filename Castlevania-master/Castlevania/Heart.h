@@ -4,7 +4,7 @@
 
 #define HEART_WIDTH  16
 #define HEART_HEIGHT 16
-#define HEART_MOVING_VX 0.15f
+#define HEART_MOVING_VX 0.2f
 #define HEART_MOVING_VY 0.05f
 #define HEART_OX_HEIGHT 20 
 

@@ -11,7 +11,8 @@
 using namespace std;
 
 #define ID_TEX_BBOX -100		// special texture to draw object bounding box
-#define ID_TEX_SPRITE_BBOX -101
+#define ID_TEX_SPRITE_BBOX_RED -101
+#define ID_TEX_SPRITE_BBOX_BLUE -102
 
 class CGameObject; 
 typedef CGameObject * LPGAMEOBJECT;

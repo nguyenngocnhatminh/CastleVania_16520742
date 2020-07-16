@@ -29,19 +29,16 @@ private:
 
 	std::vector<std::vector<cellObjects>> cells; //mang 2 chieu luu object
 	std::vector<LPGAMEOBJECT> alwaysUpdateObject;
-	std::vector<LPGAMEOBJECT> staticOject;
 public:
-	void RenderCell(RECT rec, int color, int alpha = 64);
-
-	void BuildGrid(const std::string& filePath);
-	void Add(LPGAMEOBJECT object);
-	void AddToAlwayUpdateObjects(LPGAMEOBJECT object);
+	void Add(LPGAMEOBJECT object,bool isAlwaysUpdate = false);
 	void Update(LPGAMEOBJECT object);
-	void Update(float dt);
-	void ResetStaticObject();
 	void GetListobject(vector<LPGAMEOBJECT>& listobjects);
+
+	void RenderCell(RECT rec, int color, int alpha = 64);
 	Grid(unsigned int mapWidth, unsigned int mapHeight);
 	void Render();
+
+	void CleanObject();
 	~Grid();
 };
 

@@ -300,6 +300,11 @@ public:
 		this->score = x;
 	}
 
+	void AddScore(int x)
+	{
+		this->score += x;
+	}
+
 	bool GetIsOnStair()
 	{
 		return this->isOnStair;

@@ -2,7 +2,7 @@
 
 #include"GameObject.h"
 
-#define ITEM_GRAVITY			0.002f
+#define ITEM_GRAVITY			0.001f
 #define ITEM_HIDING_TIME 300// chờ cho effect xong
 
 #define BIGHEART 1

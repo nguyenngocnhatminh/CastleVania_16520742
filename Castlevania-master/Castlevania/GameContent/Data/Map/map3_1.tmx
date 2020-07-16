@@ -529,7 +529,7 @@
   </data>
  </layer>
  <objectgroup id="2" name="Player">
-  <object id="3" x="281.803" y="268.596" width="34" height="50"/>
+  <object id="3" x="1343.79" y="240.526" width="34" height="50"/>
  </objectgroup>
  <objectgroup id="4" name="Ground">
   <object id="6" x="108" y="288" width="134" height="30"/>
@@ -542,7 +542,7 @@
   <object id="17" x="1332" y="292.667" width="172" height="23.3333"/>
  </objectgroup>
  <objectgroup id="3" name="Camera">
-  <object id="2" x="5.00585" y="-5.16959" width="1502" height="356">
+  <object id="2" x="3.83626" y="-4" width="1502" height="356">
    <properties>
     <property name="Direction" value="1"/>
    </properties>

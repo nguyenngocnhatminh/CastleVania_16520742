@@ -173,6 +173,7 @@ void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_object
 								item->SetPosition(f->x, f->y);
 								pScene->SpawnObject(item);
 							}
+							f->SetHP(0);
 							f->Destroy();
 						}
 

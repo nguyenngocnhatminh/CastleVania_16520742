@@ -16,6 +16,10 @@
 
 void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
+	if (isDestroy)
+	{
+		return;
+	}
 
 	if (dynamic_cast<PlayScene*>(scene))
 	{
@@ -24,12 +28,12 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 		if (x<cam.x || x>cam.x + SCREENSIZE::WIDTH || y < cam.y || y > cam.y+ SCREENSIZE::HEIGHT)
 		{
-			this->isDestroy = true;
+			this->setDestroy = true;
 		}
 		
 	}
 
-	if (isDestroy)
+	if (setDestroy)
 	{
 		if (dynamic_cast<PlayScene*>(scene))
 		{
@@ -39,7 +43,7 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				pScene->GetSimon()->UpCurrentShoot();
 			}
 		}
-		return;
+		this->isDestroy = true;
 	}
 	CGameObject::Update(dt, scene);
 
@@ -174,12 +178,6 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 		coEvents.clear();
 
-
-		if (dynamic_cast<PlayScene*>(scene))
-		{
-			PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-			this->SetDame(pScene->GetSimon()->GetShootState());
-		}
 		// turn off collision when die 
 
 		CalcPotentialCollisions(coObjects, coEvents);
@@ -212,11 +210,6 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				}
 				else if (dynamic_cast<BreakWall*>(e->obj))
 				{
-					if (dynamic_cast<Axe*>(e->obj))
-					{
-						x += dx;
-						y += dy;
-					}
 					if (vy != 0)	// vy > 0 la nhung vu khi roi duoc xuong dat
 						this->is_touchable_ground = true;
 					else
@@ -320,7 +313,7 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				else {
 					if (nx != 0)
 						x += dx;
-					else if (nx != 0)
+					if (ny != 0)
 						y += dy;
 				}
 			}

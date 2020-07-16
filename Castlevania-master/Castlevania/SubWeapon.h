@@ -9,7 +9,7 @@ protected:
 	float width;
 	bool is_touchable_ground;
 	int heart_cost;
-	int dame = 1;
+	int dame = 2;
 	bool collideOneTime = false;
 	bool hitObject = false;
 

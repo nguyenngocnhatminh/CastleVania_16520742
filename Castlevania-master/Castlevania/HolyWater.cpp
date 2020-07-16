@@ -1,6 +1,8 @@
 #include "HolyWater.h"
 #include"Ground.h"
 #include"Simon.h"
+#include "Enemy.h"
+#include "define.h"
 void HolyWater::Render()
 {
 	int ani;
@@ -17,23 +19,20 @@ void HolyWater::Render()
 
 void HolyWater::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
-	if (this->setDestroy)
-	{
-		this->isDestroy = true;
-	}
-	if (state == HOLYWATER_STATE_JAR)
+	vy += HOLYWATER_GRAVITY * dt;
+
+	if (this->state == HOLYWATER_ANI_JAR)
 	{
 		if (nx > 0)
 		{
 			this->vx = HOLYWATER_FALLING_VX;
 		}
-		else
+		else if (nx < 0)
 		{
 			this->vx = -HOLYWATER_FALLING_VX;
 		}
 	}
 
-	vy += HOLYWATER_GRAVITY * dt;
 	CGameObject::Update(dt,scene);
 
 	if (this->burning_start == 0)
@@ -42,16 +41,99 @@ void HolyWater::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		{
 			this->burning_start = GetTickCount64();
 		}
+
 	}
-	else if (GetTickCount64() - burning_start > HOLYWATER_BURNING_TIME)
-	{
+	else if (GetTickCount64() - burning_start > HOLYWATER_BURNING_TIME) {
 		this->Destroy();
 	}
-	if (this->is_touchable_ground == true)
+
+	if (dynamic_cast<PlayScene*>(scene))
 	{
-		this->SetState(HOLYWATER_STATE_BURNING);
+		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+		D3DXVECTOR2 cam = pScene->GetCamera();
+
+		if (x<cam.x || x>cam.x + SCREENSIZE::WIDTH || y < cam.y || y > cam.y + SCREENSIZE::HEIGHT)
+		{
+			this->isDestroy = true;
+		}
+
 	}
-	SubWeapon::Update(dt, scene, coObjects);
+
+	if (isDestroy)
+	{
+		if (dynamic_cast<PlayScene*>(scene))
+		{
+			PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+			if (pScene->GetSimon()->EqualShot())
+			{
+				pScene->GetSimon()->UpCurrentShoot();
+			}
+		}
+		return;
+	}
+
+	vector<LPCOLLISIONEVENT> coEvents;
+	vector<LPCOLLISIONEVENT> coEventsResult;
+
+	coEvents.clear();
+
+	// turn off collision when die 
+
+	CalcPotentialCollisions(coObjects, coEvents);
+
+
+	// No collision occured, proceed normally
+	if (coEvents.size() == 0)
+	{
+		x += dx;
+		y += dy;
+	}
+	else
+	{
+		float min_tx, min_ty, nx = 0, ny;
+
+
+		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+
+		x += min_tx * dx + nx * 0.4f;
+		if (ny <= 0)
+			y += min_ty * dy + ny * 0.4f;
+
+		for (UINT i = 0; i < coEventsResult.size(); i++)
+		{
+			LPCOLLISIONEVENT e = coEventsResult[i];
+			if (dynamic_cast<Ground*>(e->obj)) {
+
+				this->SetState(HOLYWATER_STATE_BURNING);
+			}
+			else if (dynamic_cast<Enemy*>(e->obj)) {
+				Enemy* z = dynamic_cast<Enemy*>(e->obj);
+				if (!z->isDestroy)
+				{
+
+					z->SubtractHP(this->dame);
+					if (z->GetHP() == 0)
+					{
+						if (dynamic_cast<PlayScene*>(scene))
+						{
+							PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+							pScene->GetSimon()->AddScore(z->GetScore());
+							z->Destroy();
+						}
+
+					}
+				}
+			}
+			else {
+				if (e->nx != 0)
+					x += dx;
+				if (e->ny != 0)
+					y += dy;
+			}
+		}
+		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+	}
+
 
 }
 
@@ -69,13 +151,13 @@ void HolyWater::SetState(int state)
 	this->state = state;
 	switch (state)
 	{
-	case HOLYWATER_STATE_JAR:
-		this->vy = -HOLYWATER_FALLING_VY;
-		break;
-	case HOLYWATER_STATE_BURNING:
-	{
-		this->vx = 0;
-		this->vy = 0;
-	}
+		case HOLYWATER_STATE_JAR:
+			this->vy = -HOLYWATER_FALLING_VY;
+			break;
+		case HOLYWATER_STATE_BURNING:
+		{
+			this->vx = 0;
+			this->vy = 0;
+		}
 	}
 }

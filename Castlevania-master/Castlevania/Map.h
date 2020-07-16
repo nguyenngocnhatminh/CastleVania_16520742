@@ -45,6 +45,15 @@ private:
 	void BuildObjectLayer(xml_node<>* node);
 public:
 
+	int getWidth()
+	{
+		return this->width*tileWidth;
+	}
+
+	int getHeight()
+	{
+		return this->height*tileHeight;
+	}
 
 	std::map<std::string, ObjectLayer*> GetObjectLayer()
 	{

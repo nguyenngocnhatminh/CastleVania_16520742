@@ -56,15 +56,15 @@ void PlayScene::LoadSprite(const std::string& filePath, const int tex)
 	rapidxml::xml_document<> doc;
 	doc.parse<0>(xmlFile.data());
 
-	
-	xml_node<>* rootNode = doc.first_node("resource"); 
+
+	xml_node<>* rootNode = doc.first_node("resource");
 	xml_node<>* spriteSheetNode = rootNode->first_node("spritesheet");
 
 	// lập toàn bộ các node con của node gamedata
 
-	for (xml_node<>* child = spriteSheetNode->first_node(); child; child = child->next_sibling()) 
+	for (xml_node<>* child = spriteSheetNode->first_node(); child; child = child->next_sibling())
 	{
-	
+
 		const std::string& ID = std::string(child->first_attribute("ID")->value());
 
 		xml_node<>* frameNode = child->first_node("frame");
@@ -91,9 +91,9 @@ void PlayScene::LoadAnimation(const string& filePath)
 	CAnimations* animations = CAnimations::GetInstance();
 	LPANIMATION ani;
 
-	char* fileLoc = new char[filePath.size() + 1]; 
+	char* fileLoc = new char[filePath.size() + 1];
 #
-	  
+
 #ifdef MACOS
 	strlcpy(fileLoc, file.c_str(), file.size() + 1);
 #else
@@ -106,7 +106,7 @@ void PlayScene::LoadAnimation(const string& filePath)
 	doc.parse<0>(xmlFile.data());
 
 	xml_node<>* rootNode = doc.first_node("resource");
-	xml_node<>* aniNode = rootNode->first_node("animations"); 
+	xml_node<>* aniNode = rootNode->first_node("animations");
 
 
 	for (xml_node<>* child = aniNode->first_node(); child; child = child->next_sibling())
@@ -114,7 +114,7 @@ void PlayScene::LoadAnimation(const string& filePath)
 
 		const std::string& ID = std::string(child->first_attribute("ID")->value());
 		int timeLoop = std::atoi(child->first_attribute("defaulttime")->value());
-		ani = new CAnimation(timeLoop);	
+		ani = new CAnimation(timeLoop);
 		for (xml_node<>* grand = child->first_node(); grand; grand = grand->next_sibling())
 		{
 			const std::string& spriteID = std::string(grand->first_attribute("spriteID")->value());
@@ -142,7 +142,7 @@ void PlayScene::Load()
 
 	const std::string filePath = this->MapPath;
 
-	char* fileLoc = new char[filePath.size() + 1]; 
+	char* fileLoc = new char[filePath.size() + 1];
 #ifdef MACOS
 	strlcpy(fileLoc, file.c_str(), file.size() + 1);
 #else
@@ -154,12 +154,12 @@ void PlayScene::Load()
 	rapidxml::xml_document<> doc;
 	doc.parse<0>(xmlFile.data());
 
-	
-	xml_node<>* rootNode = doc.first_node("Base"); 
+
+	xml_node<>* rootNode = doc.first_node("Base");
 
 	xml_node<>* texNode = rootNode->first_node("textures");
 
-	for (xml_node<>* child = texNode->first_node(); child; child = child->next_sibling()) 
+	for (xml_node<>* child = texNode->first_node(); child; child = child->next_sibling())
 	{
 		int idTex;
 		int red;
@@ -180,7 +180,7 @@ void PlayScene::Load()
 	}
 
 
-	xml_node<>* spriteNode = rootNode->first_node("sprites"); 
+	xml_node<>* spriteNode = rootNode->first_node("sprites");
 	//load sprite
 	for (xml_node<>* child = spriteNode->first_node(); child; child = child->next_sibling()) //cú pháp lập
 	{
@@ -210,7 +210,9 @@ void PlayScene::Load()
 
 	gameMap->BuildMap(FilePath);
 
-	SIMON = new CSIMON();	
+	grid = new Grid(gameMap->getWidth(), gameMap->getHeight());
+
+	SIMON = new CSIMON();
 
 	SIMON->SetlastState(CGame::GetInstance()->GetSimonProp());
 	if (this->SIMON->GetState() == SIMON_STATE_DIE)
@@ -222,9 +224,9 @@ void PlayScene::Load()
 	hub = new Hub(this);
 	CGame::GetInstance()->SetSimonProp(new SimonProperties());
 
-	objects.push_back(SIMON);
+	grid->Add(SIMON);
 
-	
+
 	auto objectLayer = gameMap->GetObjectLayer();
 	for (auto const& x : objectLayer)
 	{
@@ -257,7 +259,8 @@ void PlayScene::Load()
 				Ground* ground = new Ground();
 				ground->SetPosition(y.second->GetX(), y.second->GetY());
 				ground->SetSize(y.second->GetWidth(), y.second->GetHeight());
-				objects.push_back(ground);
+				grid->Add(ground,true);
+
 			}
 			break;
 		case OSkeletonBlock:
@@ -266,7 +269,7 @@ void PlayScene::Load()
 				SkeletonBlock* ground = new SkeletonBlock();
 				ground->SetPosition(y.second->GetX(), y.second->GetY());
 				ground->SetSize(y.second->GetWidth(), y.second->GetHeight());
-				objects.push_back(ground);
+				grid->Add(ground, true);
 			}
 			break;
 		case ODeathZone:
@@ -275,7 +278,7 @@ void PlayScene::Load()
 				DeathZone* ground = new DeathZone();
 				ground->SetPosition(y.second->GetX(), y.second->GetY());
 				ground->SetSize(y.second->GetWidth(), y.second->GetHeight());
-				objects.push_back(ground);
+				grid->Add(ground, true);
 			}
 			break;
 		case OBossTrigger:
@@ -284,7 +287,7 @@ void PlayScene::Load()
 				BossTrigger* trigger = new BossTrigger();
 				trigger->SetPosition(y.second->GetX(), y.second->GetY());
 				trigger->SetSize(y.second->GetWidth(), y.second->GetHeight());
-				objects.push_back(trigger);
+				grid->Add(trigger, true);
 			}
 			break;
 		case OMoneyBagTrigger:
@@ -297,12 +300,12 @@ void PlayScene::Load()
 				for (auto const& child : moneyBagLayer->GetObjectGroup())
 				{
 					ItemCollection* item = new ItemCollection();
-					Item *mnBag = item->SpawnItem(y.second->GetProperty("item"),child.second->GetX());
+					Item* mnBag = item->SpawnItem(y.second->GetProperty("item"), child.second->GetX());
 					mnBag->SetIsHidden(true);
 					mnBag->SetPosition(child.second->GetX(), child.second->GetY() - child.second->GetHeight());
 					trigger->SetItem(mnBag);
 				}
-				objects.push_back(trigger);
+				grid->Add(trigger, true);
 			}
 			break;
 		case OSitTrigger:
@@ -315,12 +318,12 @@ void PlayScene::Load()
 				for (auto const& child : moneyBagLayer->GetObjectGroup())
 				{
 					ItemCollection* item = new ItemCollection();
-					Item* mnBag = item->SpawnItem(y.second->GetProperty("item"),child.second->GetX());
+					Item* mnBag = item->SpawnItem(y.second->GetProperty("item"), child.second->GetX());
 					mnBag->SetIsHidden(true);
 					mnBag->SetPosition(child.second->GetX(), child.second->GetY() - child.second->GetHeight());
 					trigger->SetItem(mnBag);
 				}
-				objects.push_back(trigger);
+				grid->Add(trigger, true);
 			}
 			break;
 		case OTorch:
@@ -329,10 +332,8 @@ void PlayScene::Load()
 				Torch* torch = new Torch();
 				torch->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				torch->SetItem(y.second->GetProperty("item"));
-				objects.push_back(torch);
+				grid->Add(torch);
 			}
-			break;
-		case ONextmap:
 			break;
 		case OPortal:
 			for (auto const& y : x.second->GetObjectGroup())
@@ -341,7 +342,7 @@ void PlayScene::Load()
 				portal->SetSize(y.second->GetWidth(), y.second->GetHeight());
 				portal->SetPosition(y.second->GetX(), y.second->GetY());
 				portal->setNextMapId(y.second->GetProperty("Map_ID"));
-				objects.push_back(portal);
+				grid->Add(portal,true);
 			}
 			break;
 		case OSkeletonTrigger:
@@ -352,11 +353,8 @@ void PlayScene::Load()
 				trigger->SetPosition(y.second->GetX(), y.second->GetY());
 				trigger->SetDirection(y.second->GetProperty("Direction"));
 				objects.push_back(trigger);
+				grid->Add(trigger,true);
 			}
-		case OMoneyBag:
-			break;
-		case OCastle:
-			break;
 		case OCam:
 			for (auto const& y : x.second->GetObjectGroup())
 			{
@@ -387,7 +385,8 @@ void PlayScene::Load()
 				stair->SetDirection(y.second->GetProperty("direction"));
 				int x = y.second->GetProperty("isSpecial");
 				stair->SetSpecial(x);
-				objects.push_back(stair);
+				grid->Add(stair);
+
 			}
 			break;
 		case OBirck:
@@ -396,7 +395,8 @@ void PlayScene::Load()
 				BreakWall* breakwall = new BreakWall();
 				breakwall->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				breakwall->SetItem(y.second->GetProperty("item"));
-				objects.push_back(breakwall);
+				grid->Add(breakwall,true);
+
 			}
 			break;
 		case OCandle:
@@ -405,7 +405,7 @@ void PlayScene::Load()
 				Candle* candle = new Candle();
 				candle->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				candle->SetItem(y.second->GetProperty("item"));
-				objects.push_back(candle);
+				grid->Add(candle);
 			}
 			break;
 		case OBridge:
@@ -413,7 +413,8 @@ void PlayScene::Load()
 			{
 				Bridge* bridge = new Bridge();
 				bridge->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
-				objects.push_back(bridge);
+				grid->Add(bridge,true);
+
 			}
 			break;
 		case OEnemyTrigger:
@@ -426,7 +427,8 @@ void PlayScene::Load()
 				enemy->SetRange(y.second->GetProperty("Range"));
 				enemy->SetZone(y.second->GetProperty("Range"), y.second->GetX());
 				enemy->SetType(y.second->GetProperty("Type"));
-				objects.push_back(enemy);
+				grid->Add(enemy);
+
 			}
 			break;
 		case OBat:
@@ -435,7 +437,7 @@ void PlayScene::Load()
 				Bat* enemy = new Bat();
 				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				enemy->SetStartY(y.second->GetY() - y.second->GetHeight());
-				objects.push_back(enemy);
+				grid->Add(enemy);
 			}
 			break;
 		case OGhost:
@@ -444,7 +446,7 @@ void PlayScene::Load()
 				Ghost* enemy = new Ghost();
 				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				enemy->SetStartDirection(y.second->GetProperty("Direction"));
-				objects.push_back(enemy);
+				grid->Add(enemy);
 			}
 			break;
 		case OMonkey:
@@ -453,7 +455,7 @@ void PlayScene::Load()
 				Monkey* enemy = new Monkey();
 				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				enemy->SetStartDirection(y.second->GetProperty("Direction"));
-				objects.push_back(enemy);
+				grid->Add(enemy);
 			}
 			break;
 		case OSkeleton:
@@ -462,7 +464,7 @@ void PlayScene::Load()
 				Skeleton* enemy = new Skeleton();
 				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				enemy->SetStartDirection(y.second->GetProperty("Direction"));
-				objects.push_back(enemy);
+				grid->Add(enemy);
 			}
 			break;
 		case ORaven:
@@ -472,7 +474,7 @@ void PlayScene::Load()
 				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				enemy->SetNx(y.second->GetProperty("Direction"));
 				enemy->SetStartY(y.second->GetY());
-				objects.push_back(enemy);
+				grid->Add(enemy);
 			}
 			break;
 		case OZombie:
@@ -481,7 +483,7 @@ void PlayScene::Load()
 				Zombie* enemy = new Zombie();
 				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				enemy->SetNx(y.second->GetProperty("Direction"));
-				objects.push_back(enemy);
+				grid->Add(enemy);
 			}
 			break;
 		case OBoss:
@@ -489,10 +491,8 @@ void PlayScene::Load()
 			{
 				PhantomBat* boss = new PhantomBat();
 				boss->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
-				objects.push_back(boss);
+				grid->Add(boss);
 			}
-			break;
-		case OBossBorder:
 			break;
 		default:
 			break;
@@ -502,7 +502,7 @@ void PlayScene::Load()
 
 	}
 	CGame::GetInstance()->SetCamPos(0, 0);
-	}
+}
 
 // dọn rác
 void PlayScene::UnLoad()
@@ -513,12 +513,19 @@ void PlayScene::UnLoad()
 		prop->SetProperties(SIMON->GetWhip()->GetState(), SIMON->getCurrentSubweapon(), SIMON->GetHeart(), SIMON->GetHp(), SIMON->GetScore());
 		CGame::GetInstance()->SetSimonProp(prop);
 	}
+	if (grid != NULL)
+	{
+		grid->CleanObject();
+	}
 	for (int i = 0; i < objects.size(); i++)
 	{
-		delete objects[i];
+		if (!objects[i]->IsDestroy())
+		{
+			delete objects[i];
+		}
 	}
 	objects.clear();
-	
+
 }
 
 void PlayScene::GameTimeCounter()
@@ -546,6 +553,8 @@ void PlayScene::Update(DWORD dt)
 
 	/// Thêm các object trong hàng đợi vào ds object
 
+	GetListobjectFromGrid();
+
 	while (!qObjects.empty()) // lập nếu queue còn phần tử
 	{
 		this->objects.push_back(qObjects.front());
@@ -553,7 +562,7 @@ void PlayScene::Update(DWORD dt)
 	}
 
 	vector<LPGAMEOBJECT> coObjects;
-	for (int i = 1; i < objects.size(); i++)
+	for (int i = 0; i < objects.size(); i++)
 	{
 		coObjects.push_back(objects[i]);
 	}
@@ -564,7 +573,7 @@ void PlayScene::Update(DWORD dt)
 		objects[i]->Update(dt, this, &coObjects);
 	}
 
-	if (SIMON==NULL)
+	if (SIMON == NULL)
 	{
 		return;
 	}
@@ -574,7 +583,7 @@ void PlayScene::Update(DWORD dt)
 	SIMON->GetPosition(cx, cy);
 	startpoint = SIMON->getStartPoint();
 	startpoint -= SCREEN_WIDTH / 2;
-	cx = cx- SCREEN_WIDTH / 2-SIMON_BBOX_WIDTH;
+	cx = cx - SCREEN_WIDTH / 2 - SIMON_BBOX_WIDTH;
 	cy -= SCREEN_HEIGHT / 2;
 	if (startpoint > this->cameraBoder.right - SCREENSIZE::WIDTH)
 	{
@@ -594,7 +603,7 @@ void PlayScene::Update(DWORD dt)
 		}
 		else ++it;
 	}
-	
+
 	if (this->SIMON->GetSwitchScene() >= 0)
 	{
 		CGame::GetInstance()->SwitchScene(SIMON->GetSwitchScene());
@@ -605,6 +614,7 @@ void PlayScene::Update(DWORD dt)
 		CGame::GetInstance()->SetCamPos(this->BossCamera.left, this->BossCamera.top);
 	}
 	hub->Update();
+	UpdateGrid();
 }
 
 
@@ -630,17 +640,17 @@ void PlayScene::OnKeyDown(int KeyCode)
 	{
 	case DIK_SPACE:
 		// ta cần kiểm tra
-		if (SIMON->GetState() != SIMON_STATE_JUMP && SIMON->GetState() != SIMON_STATE_SIT && !SIMON->GetFightTime()&&!SIMON->CheckIsOnStair())
+		if (SIMON->GetState() != SIMON_STATE_JUMP && SIMON->GetState() != SIMON_STATE_SIT && !SIMON->GetFightTime() && !SIMON->CheckIsOnStair())
 		{ // ngooif thi k cho nhay
 			SIMON->SetState(SIMON_STATE_JUMP);
-		}			
+		}
 		break;
 
 	case DIK_Z:
 		if (!SIMON->GetFightTime())
 		{
 
-			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->getCurrentSubweapon()!=0&& !SIMON->IsSpawnSubWeapon()&&!SIMON->CheckIsOnStair())
+			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->getCurrentSubweapon() != 0 && !SIMON->IsSpawnSubWeapon() && !SIMON->CheckIsOnStair())
 			{
 				if (CGame::GetInstance()->IsKeyDown(DIK_DOWN))
 					SIMON->SetState(SIMON_STATE_IDLE);
@@ -666,7 +676,7 @@ void PlayScene::OnKeyDown(int KeyCode)
 			{
 				SIMON->SetState(SIMON_STATE_FIGHT_SIT);
 			}
-			else if (SIMON->GetState()==SIMON_STATE_DOWNSTAIR_IDLE)
+			else if (SIMON->GetState() == SIMON_STATE_DOWNSTAIR_IDLE)
 			{
 				SIMON->SetState(SIMON_STATE_DOWNSTAIR_ATTACK);
 			}
@@ -676,7 +686,7 @@ void PlayScene::OnKeyDown(int KeyCode)
 			}
 			else
 			{
-				if(!SIMON->CheckIsOnStair())
+				if (!SIMON->CheckIsOnStair())
 					SIMON->SetState(SIMON_STATE_FIGHT_STAND);
 			}
 
@@ -1057,4 +1067,24 @@ void PlayScene::LoadAnimationDefault(const string& filePath)
 		animations->Add(ID, ani);
 	}
 
+}
+
+
+void PlayScene::GetListobjectFromGrid()
+{
+	objects.clear();
+
+
+	grid->GetListobject(objects);
+}
+
+void PlayScene::UpdateGrid()
+{
+	for (size_t i = 0; i < this->objects.size(); i++)
+	{
+		LPGAMEOBJECT obj = this->objects.at(i);
+		float x_, y_;
+		obj->GetPosition(x_, y_);
+		grid->Update(obj);
+	}
 }

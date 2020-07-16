@@ -11,7 +11,7 @@
 #include "BreakWall.h"
 
 
-Grid::Grid(unsigned int mapWidth, unsigned int mapHeight):mapWidth(mapWidth),mapHeight(mapHeight+80)
+Grid::Grid(unsigned int mapWidth, unsigned int mapHeight):mapWidth(mapWidth),mapHeight(mapHeight+100)
 {
 	//ceil tra ve gia tri nguyen nho nhat sau so do 1.6 => 2, 2.3=>3
 	this->numXCell = ceil((float)this->mapWidth / this->cellSize) + 1;
@@ -20,6 +20,7 @@ Grid::Grid(unsigned int mapWidth, unsigned int mapHeight):mapWidth(mapWidth),map
 	//clear grid
 
 	this->cells.resize(numYCell);
+
 	for (int i = 0; i < numYCell; i++)
 		cells[i].resize(numXCell);
 	for (size_t i = 0; i < numYCell; i++)
@@ -30,13 +31,25 @@ Grid::Grid(unsigned int mapWidth, unsigned int mapHeight):mapWidth(mapWidth),map
 		}
 	}
 
-
-	this->alwaysUpdateObject.clear();
-	this->staticOject.clear();
 }
 
 Grid::~Grid()
 {}
+
+void Grid::CleanObject()
+{
+	if (numYCell > 0 && numXCell > 0)
+	{
+		for (size_t i = 0; i < numYCell; i++)
+		{
+			for (size_t j = 0; j < numXCell; j++)
+			{
+				this->cells[i][j].clear();
+			}
+		}
+		this->alwaysUpdateObject.clear();
+	}
+}
 
 void Grid::RenderCell(RECT rec, int color, int alpha)
 {
@@ -46,13 +59,13 @@ void Grid::RenderCell(RECT rec, int color, int alpha)
 	switch (color)
 	{
 	case COLOR_RED:
-		bbox = CTextures::GetInstance()->Get(ID_TEX_SPRITE_BBOX);
+		bbox = CTextures::GetInstance()->Get(ID_TEX_SPRITE_BBOX_RED);
 		break;
 	case COLOR_BLUE:
-		bbox = CTextures::GetInstance()->Get(ID_TEX_BBOX);
+		bbox = CTextures::GetInstance()->Get(ID_TEX_SPRITE_BBOX_BLUE);
 		break;
 	default:
-		bbox = CTextures::GetInstance()->Get(ID_TEX_BBOX);
+		bbox = CTextures::GetInstance()->Get(ID_TEX_SPRITE_BBOX_BLUE);
 		break;
 	}
 
@@ -62,7 +75,7 @@ void Grid::RenderCell(RECT rec, int color, int alpha)
 	rect.bottom = (int)rec.bottom - (int)rec.top;
 
 
-	CGame::GetInstance()->DrawUI(true, 0 , rec.left, rec.top + 80, bbox, rect.left, rect.top, rect.right, rect.bottom, alpha);
+	CGame::GetInstance()->DrawUI(true, 0 , rec.left, rec.top, bbox, rect.left, rect.top, rect.right, rect.bottom, alpha);
 
 }
 
@@ -90,7 +103,7 @@ void Grid::Render()
 		for (int j = startCol; j < endCol; j++)
 		{
 			string _UIinfo = "";
-			//left			top			right					bottom
+							//left			top			right					bottom
 			RECT cell = { j * cellSize,i * cellSize,j * cellSize + cellSize ,i * cellSize + cellSize };
 			//so le mau cho de nhin :))
 			if (i % 2 == 0)
@@ -107,7 +120,6 @@ void Grid::Render()
 				else
 					RenderCell(cell, COLOR_RED, 100);
 			}
-			//CGame::GetInstance()->DrawUIText(_UIinfo, cell);
 		}
 	}
 
@@ -123,12 +135,7 @@ bool AABB(float l, float t, float r, float b, float l1, float t1, float r1, floa
 	return !(left > 0 || right < 0 || top < 0 || bottom > 0);
 }
 
-void Grid::AddToAlwayUpdateObjects(LPGAMEOBJECT object)
-{
-	this->alwaysUpdateObject.push_back(object);
-}
-
-void Grid::Add(LPGAMEOBJECT object)
+void Grid::Add(LPGAMEOBJECT object, bool isAlwaysUpdate)
 {
 	float x_, y_;
 	object->GetPosition(x_, y_);
@@ -147,16 +154,10 @@ void Grid::Add(LPGAMEOBJECT object)
 	}
 
 	object->SetCellIndex(cellX, cellY);
-	this->cells[cellY][cellX].push_back(object);
-	
-	if (dynamic_cast<Candle*>(object)
-		|| dynamic_cast<Torch*>(object)
-		|| dynamic_cast<BreakWall*>(object)
-		//||dynamic_cast<BossZone*>(object)
-		)
-	{
-		this->staticOject.push_back(object);
-	}
+	if (!isAlwaysUpdate)
+		this->cells[cellY][cellX].push_back(object);
+	else
+		alwaysUpdateObject.push_back(object);
 
 }
 
@@ -244,18 +245,6 @@ void Grid::GetListobject(vector<LPGAMEOBJECT>& listobjects)
 	}
 }
 
-void Grid::ResetStaticObject()
-{
-	for (size_t i = 0; i < this->staticOject.size(); i++)
-	{
-		LPGAMEOBJECT object = this->staticOject.at(i);
-		if (object->IsDestroy())
-		{
-			object->isDestroy = false;
-		}
-	}
-}
-
 void Grid::Update(LPGAMEOBJECT object)
 {
 	float cx, cy;
@@ -279,18 +268,8 @@ void Grid::Update(LPGAMEOBJECT object)
 				|| dynamic_cast<Enemy*>(object)
 				|| dynamic_cast<SubWeapon*>(object))
 			{
-				//if (!dynamic_cast<PhantomBat*>(object))
-				//{
-				//	object->Destroy();
-				//}
 				object->Destroy();
 			}
-	}
-
-	//ra khoi map => destroy
-	if (x<-15 || x>mapWidth || y<0 || y>SCREENSIZE::HEIGHT)
-	{
-		object->Destroy();
 	}
 
 	CellIndex oldCell = object->GetCellIndex();
@@ -302,8 +281,7 @@ void Grid::Update(LPGAMEOBJECT object)
 
 	if (!dynamic_cast<Torch*>(object)
 		&& !dynamic_cast<Candle*>(object)
-		&& !dynamic_cast<BreakWall*>(object)
-		/*&&!dynamic_cast<BoosZone*>(object)*/)
+		&& !dynamic_cast<BreakWall*>(object))
 	{
 		if (object->IsDestroy())
 		{
@@ -314,8 +292,6 @@ void Grid::Update(LPGAMEOBJECT object)
 				}
 				else ++it;
 			}
-			// xóa luôn
-			delete object;
 			return;
 		}
 	}
@@ -339,65 +315,3 @@ void Grid::Update(LPGAMEOBJECT object)
 	Add(object);
 
 }
-
-void Grid::Update(float dt)
-{
-
-}
-
-//void Grid::BuildGrid(const std::string& filePath)
-//{
-//	char* fileLoc = new char[filePath.size() + 1]; // 1
-//
-//	   //TODO: make multi format version of string copy
-//#ifdef MACOS
-//	strlcpy(fileLoc, file.c_str(), file.size() + 1);
-//#else
-//	strcpy_s(fileLoc, filePath.size() + 1, filePath.c_str());
-//#endif 
-//
-//	//TODO: error checking - check file exists before attempting open.
-//	rapidxml::file<> xmlFile(fileLoc);
-//	rapidxml::xml_document<> doc;
-//	doc.parse<0>(xmlFile.data());
-//
-//	xml_node<>* rootNode = doc.first_node("map");
-//	xml_attribute<>* gridAtribute = rootNode->first_attribute("CellSize");
-//	if (gridAtribute == NULL)
-//	{
-//		xml_attribute<>* atribute = doc.allocate_attribute("CellSize", "256");
-//		rootNode->append_attribute(atribute);
-//
-//	}
-//	else {
-//		return;
-//	}
-//	for (xml_node<>* child = rootNode->first_node("objectgroup"); child; child = child->next_sibling()) {
-//
-//		int id = std::atoi(child->first_attribute("id")->value()); // lay ID Object group
-//		std::string objectGroupName = std::string(child->first_attribute("name")->value()); // lay ten object group
-//		for (xml_node<>* smailchild = child->first_node(); smailchild; smailchild = smailchild->next_sibling()) {
-//			int x = 0, y = 0, w = 0, h = 0;
-//			x = std::stof(smailchild->first_attribute("x")->value());
-//			y = std::stof(smailchild->first_attribute("y")->value());
-//			w = std::atoi(smailchild->first_attribute("width")->value());
-//			h = std::atoi(smailchild->first_attribute("height")->value());
-//			int scid = std::atoi(smailchild->first_attribute("id")->value()); // lay ID
-//
-//
-//			xml_attribute<>* cellX = doc.allocate_attribute("cellcol", "256");
-//			smailchild->append_attribute(cellX);
-//
-//
-//
-//		}
-//
-//
-//
-//	}
-//
-//
-//	std::ofstream theFile(filePath.c_str());
-//	theFile << doc;
-//	theFile.close();
-//}
