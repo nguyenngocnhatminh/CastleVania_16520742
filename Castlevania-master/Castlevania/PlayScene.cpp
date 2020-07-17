@@ -483,6 +483,7 @@ void PlayScene::Load()
 				Zombie* enemy = new Zombie();
 				enemy->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				enemy->SetNx(y.second->GetProperty("Direction"));
+				enemy->SetStartPositon(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 				grid->Add(enemy);
 			}
 			break;

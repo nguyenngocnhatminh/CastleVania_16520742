@@ -1,13 +1,17 @@
 #include "Zombie.h"
 #include "Ground.h"
+#include "define.h"
 
 
 void Zombie::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
-	left = x;
-	top = y + 2;
-	right = left + ZOMBIE_BBOX_WIDTH;
-	bottom = top + ZOMBIE_BBOX_HEIGHT ;
+	if (this->isVisible == true)
+	{
+		left = x;
+		top = y + 2;
+		right = left + ZOMBIE_BBOX_WIDTH;
+		bottom = top + ZOMBIE_BBOX_HEIGHT;
+	}
 }
 
 void Zombie::Render()
@@ -21,23 +25,47 @@ void Zombie::Render()
 
 void Zombie::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
-	if (this->IsDestroy())
+	if (dynamic_cast<PlayScene*>(scene))
+	{
+		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+		D3DXVECTOR2 cam = pScene->GetCamera();
+
+		if (x < cam.x || y < cam.y || y > cam.y + SCREENSIZE::HEIGHT)
+		{
+			this->Destroy();
+		}
+
+	}
+
+	if (this->isDestroy)
 	{
 		this->isVisible = false;
-		if (time_respawn != 0)
+		if (time_respawn == 0)
 		{
 			time_respawn = GetTickCount();
 		}
-	}
+		this->isDestroy = false;
+	}			
 	if (time_respawn > 0)
 	{
-		if (GetTickCount() - time_respawn > 350)
+		if (dynamic_cast<PlayScene*>(scene))
 		{
-			this->SetPosition(start_x, start_y);
-			this->isVisible = true;
-			time_respawn = 0;
+			PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+			CSIMON* simon = pScene->GetSimon();
+			if ((simon->x + SCREENSIZE::WIDTH / 2 <= this->start_x && this->nx < 0)
+				|| (this->start_x + SCREENSIZE::WIDTH / 2 <= simon->x && this->nx > 0))
+			{
+				if (GetTickCount() - time_respawn > ZOMBIE_TIME_RESPAWN)
+				{
+					this->SetPosition(start_x, start_y);
+					this->isVisible = true;
+					time_respawn = 0;
+				}
+			}
+
 		}
 	}
+	
 	//	if (reSpawn) return;
 		//DebugOut(L"update \n");
 	if (isVisible == true)

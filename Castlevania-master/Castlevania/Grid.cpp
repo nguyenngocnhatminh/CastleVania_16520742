@@ -257,22 +257,6 @@ void Grid::Update(LPGAMEOBJECT object)
 	float l, t, r, b;
 	object->GetBoundingBox(l, t, r, b);
 
-	if (AABB(l, t, r, b, cx, cy, cx + SCREENSIZE::WIDTH, cy + SCREENSIZE::HEIGHT))
-	{
-		object->SetActive();
-	}
-	else
-	{
-		if (object->CheckActive())
-		{
-			if (dynamic_cast<Item*>(object)
-				|| dynamic_cast<Enemy*>(object))
-			{
-				object->Destroy();
-			}
-		}
-	}
-
 	CellIndex oldCell = object->GetCellIndex();
 	//tim vi tri cu cua cell chua object
 	//xem object dang o cell nao

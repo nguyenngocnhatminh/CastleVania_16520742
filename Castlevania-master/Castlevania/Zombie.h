@@ -12,6 +12,8 @@
 
 #define ZOMBIE_DIRECTION_RIGHT 1
 #define ZOMBIE_DIRECTION_LEFT -1
+
+#define ZOMBIE_TIME_RESPAWN 1500
 class Zombie:public Enemy
 {
 	bool isVisible;
