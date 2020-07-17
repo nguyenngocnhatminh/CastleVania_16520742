@@ -43,7 +43,7 @@ void SubWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				pScene->GetSimon()->UpCurrentShoot();
 			}
 		}
-		this->isDestroy = true;
+		this->Destroy();
 	}
 	CGameObject::Update(dt, scene);
 

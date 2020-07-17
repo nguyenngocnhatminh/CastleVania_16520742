@@ -39,7 +39,7 @@ public:
         simon_properties = NULL;
     }
     D3DXVECTOR2 GetCamera();
-    void SpawnObject(LPGAMEOBJECT obj) { grid->Add(obj); }
+    void SpawnObject(LPGAMEOBJECT obj) { qObjects.push(obj); }
     void Load() override;
     void UnLoad() override;
 

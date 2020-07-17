@@ -555,12 +555,6 @@ void PlayScene::Update(DWORD dt)
 
 	GetListobjectFromGrid();
 
-	while (!qObjects.empty()) // lập nếu queue còn phần tử
-	{
-		this->objects.push_back(qObjects.front());
-		qObjects.pop();// thêm vào object rồi thì xóa object vừa thêm khỏi queue
-	}
-
 	vector<LPGAMEOBJECT> coObjects;
 	for (int i = 0; i < objects.size(); i++)
 	{
@@ -1073,7 +1067,11 @@ void PlayScene::LoadAnimationDefault(const string& filePath)
 void PlayScene::GetListobjectFromGrid()
 {
 	objects.clear();
-
+	while (qObjects.size() > 0)
+	{
+		objects.push_back(qObjects.front());
+		qObjects.pop();
+	}
 
 	grid->GetListobject(objects);
 }

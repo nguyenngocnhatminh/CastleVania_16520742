@@ -226,23 +226,23 @@ void Grid::GetListobject(vector<LPGAMEOBJECT>& listobjects)
 				}
 			}
 		}
-
-		for (size_t i = 0; i < this->alwaysUpdateObject.size(); i++)
-		{
-			LPGAMEOBJECT ob = alwaysUpdateObject.at(i);
-			if (!ob->IsDestroy())
-			{
-				listobjects.push_back(ob);
-			}
-		}
-
-		// lấy theo thứ tự
-		listobjects.insert(listobjects.end(), itemobject.begin(), itemobject.end());
-		listobjects.insert(listobjects.end(), enemiesobject.begin(), enemiesobject.end());
-		listobjects.insert(listobjects.end(), subWeaponobject.begin(), subWeaponobject.end());
-		listobjects.insert(listobjects.end(), effectobject.begin(), effectobject.end());
-		DebugOut(L"List Object %d\n", listobjects.size());
 	}
+
+	for (size_t i = 0; i < this->alwaysUpdateObject.size(); i++)
+	{
+		LPGAMEOBJECT ob = alwaysUpdateObject.at(i);
+		if (!ob->IsDestroy())
+		{
+			listobjects.push_back(ob);
+		}
+	}
+
+	// lấy theo thứ tự
+	listobjects.insert(listobjects.end(), itemobject.begin(), itemobject.end());
+	listobjects.insert(listobjects.end(), enemiesobject.begin(), enemiesobject.end());
+	listobjects.insert(listobjects.end(), subWeaponobject.begin(), subWeaponobject.end());
+	listobjects.insert(listobjects.end(), effectobject.begin(), effectobject.end());
+	DebugOut(L"List Object %d\n", listobjects.size());
 }
 
 void Grid::Update(LPGAMEOBJECT object)
@@ -263,13 +263,14 @@ void Grid::Update(LPGAMEOBJECT object)
 	}
 	else
 	{
-		if(object->CheckActive())
+		if (object->CheckActive())
+		{
 			if (dynamic_cast<Item*>(object)
-				|| dynamic_cast<Enemy*>(object)
-				|| dynamic_cast<SubWeapon*>(object))
+				|| dynamic_cast<Enemy*>(object))
 			{
 				object->Destroy();
 			}
+		}
 	}
 
 	CellIndex oldCell = object->GetCellIndex();
