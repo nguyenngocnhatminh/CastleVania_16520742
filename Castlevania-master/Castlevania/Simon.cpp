@@ -34,6 +34,8 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	if (this->hp == 0)
 		this->SetState(SIMON_STATE_DIE);
 
+	if (this->GetState() == SIMON_STATE_DIE)
+		return;
 	if (this->fight_start!=0 && !this->isAutoWalk && this->isOnStair) {
 
 		if (whip->CheckLastFrame()) {
@@ -98,7 +100,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		CalcPotentialCollisions(coObjects, coEvents);
 
 	// reset untouchable timer if untouchable time has passed
-	if (invisible = false)
+	if (invisible == false)
 	{
 		if (GetTickCount() - untouchable_start > SIMON_UNTOUCHABLE_TIME)
 		{
@@ -358,11 +360,11 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					}
 					if (untouchable_start == 0)
 					{
-						if (!this->isOnStair)
-						{
-							this->SetState(SIMON_STATE_HURT);
-						}
 						if (untouchable != 1) {
+							if (!this->isOnStair)
+							{
+								this->SetState(SIMON_STATE_HURT);
+							}
 							this->hp--;
 							StartUntouchable();
 						}
@@ -476,37 +478,41 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 			if (CGameObject::isColliding(f))
 			{
-				if (f->GetDirection() == STAIR_BOTTOM_RIGHT && f->GetSpecial() == 1)
+				if (f->GetSpecial() == 1)
 				{
-					if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_UPSTAIR_LEFT)
+					if (f->GetDirection() == STAIR_BOTTOM_RIGHT)
 					{
-						return;
+						if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_UPSTAIR_LEFT)
+						{
+							return;
+						}
 					}
-				}
-				if (f->GetDirection() == STAIR_BOTTOM_LEFT && f->GetSpecial() == 1)
-				{
-					if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_UPSTAIR_RIGHT)
+					if (f->GetDirection() == STAIR_BOTTOM_LEFT)
 					{
-						return;
+						if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_UPSTAIR_RIGHT)
+						{
+							return;
+						}
+					
 					}
-				}
-				if (f->GetDirection() == STAIR_TOP_RIGHT && f->GetSpecial() == 1)
-				{
-					if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_DOWNSTAIR_LEFT)
+					if (f->GetDirection() == STAIR_TOP_RIGHT)
 					{
-						return;
+						if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_DOWNSTAIR_LEFT)
+						{
+							return;
+						}
+
 					}
-				}
-				if (f->GetDirection() == STAIR_TOP_LEFT && f->GetSpecial() == 1)
-				{
-					if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_DOWNSTAIR_RIGHT)
+					if (f->GetDirection() == STAIR_TOP_LEFT)
 					{
-						return;
+						if (this->GetState() != SIMON_STATE_IDLE && this->GetState() != SIMON_STATE_DOWNSTAIR_RIGHT)
+						{
+							return;
+						}
 					}
 				}
 				if (!this->isColliceWithStair) {
 					if (this->isOnStair) {
-
 						SetState(SIMON_STATE_IDLE);
 						this->isOnStair = false;
 						this->startOnStair = false;
@@ -545,11 +551,11 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				}
 				if (untouchable_start == 0)
 				{
-					if (!this->isOnStair)
-					{
-						this->SetState(SIMON_STATE_HURT);
-					}
 					if (untouchable != 1) {
+						if (!this->isOnStair)
+						{
+							this->SetState(SIMON_STATE_HURT);
+						}
 						this->hp--;
 						StartUntouchable();
 					}
@@ -946,6 +952,7 @@ void CSIMON::SetState(int state)
 		break;
 	case SIMON_STATE_IDLE:
 		vx = 0;
+		vx = 0;
 		break;
 	case SIMON_STATE_HURT:
 		if (this->fight_start>0)
@@ -986,6 +993,8 @@ void CSIMON::SetState(int state)
 		break;
 	case SIMON_STATE_DIE:
 		this->hp = 0;
+		vx = 0;
+		vy = 0;
 		break;
 	case SIMON_STATE_UPWHIP:
 		whip->UpLevel();

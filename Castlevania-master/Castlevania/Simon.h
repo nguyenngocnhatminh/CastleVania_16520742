@@ -138,6 +138,7 @@ class CSIMON : public CGameObject
 	DWORD time_spawn_sub;  //thoi gian phong vu khi phu
 
 	bool invisible;
+	bool isInSpecialStair;
 public: 
 	CSIMON() : CGameObject()
 	{
@@ -173,6 +174,7 @@ public:
 		this->AddAnimation("SIMON_ANI_DOWNSTAIR_ATTACK"); //12
 		this->AddAnimation("SIMON_ANI_HURT");
 		this->invisible = false;
+		this->isInSpecialStair = false;
 	}
 	~CSIMON() { delete whip; }
 	void ResetFightAnimation()

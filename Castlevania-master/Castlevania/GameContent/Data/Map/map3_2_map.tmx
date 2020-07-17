@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="47" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="101">
+<map version="1.2" tiledversion="1.3.3" orientation="orthogonal" renderorder="right-down" width="47" height="11" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="103">
  <tileset firstgid="1" name="map3_2_bank.png" tilewidth="32" tileheight="32" tilecount="363" columns="33">
   <image source="map3_2_bank.png" width="1056" height="352"/>
  </tileset>
@@ -628,7 +628,7 @@
     <property name="direction" value="3"/>
    </properties>
   </object>
-  <object id="56" x="803.334" y="150.667" width="29.3334" height="10.6667">
+  <object id="56" x="804.334" y="149.667" width="29.3334" height="10.6667">
    <properties>
     <property name="direction" value="3"/>
    </properties>
@@ -654,7 +654,7 @@
     <property name="isSpecial" value="1"/>
    </properties>
   </object>
-  <object id="91" x="85" y="277" width="29" height="10">
+  <object id="91" x="95.76" y="278.5" width="27" height="9.5">
    <properties>
     <property name="direction" value="2"/>
     <property name="isSpecial" value="1"/>

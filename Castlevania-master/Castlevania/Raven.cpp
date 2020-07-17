@@ -76,14 +76,11 @@ int Raven::GetState()
 void Raven::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
 
-	CGameObject::Update(dt, scene);
-
 	if (isDestroy)
 	{
 		return;
 	}
-	if (this->IsDestroy())
-		return;
+
 	CGameObject::Update(dt, scene);
 
 	vector<LPCOLLISIONEVENT> coEvents;

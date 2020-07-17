@@ -1,4 +1,5 @@
 ﻿#include "SkeletonWeapon.h"
+#include "define.h"
 
 void SkeletonWeapon::Render()
 {
@@ -15,8 +16,6 @@ void SkeletonWeapon::GetBoundingBox(float& l, float& t, float& r, float& b)
 
 void SkeletonWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
-	if (this->IsDestroy())
-		return;
 	CGameObject::Update(dt, scene);
 
 	vector<LPCOLLISIONEVENT> coEvents;
@@ -30,11 +29,15 @@ void SkeletonWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* collia
 		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
 		D3DXVECTOR2 cam = pScene->GetCamera();
 
-		if (y<cam.y)
+		if (y < cam.y || y > cam.y + SCREENSIZE::HEIGHT - 100)
 		{
-			this->Destroy();
+			this->isDestroy = true;
 		}
+
 	}
+
+	if (this->isDestroy)
+		return;
 
 	if (!this->IsAttack())
 	{
