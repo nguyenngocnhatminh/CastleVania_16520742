@@ -81,6 +81,7 @@
 #define SIMON_SMALL_BBOX_HEIGHT 15
 
 #define SIMON_UNTOUCHABLE_TIME 5000
+#define SIMON_INVISIVLE_TIME 8000
 
 #define Time_UpWhip 500
 
@@ -135,6 +136,8 @@ class CSIMON : public CGameObject
 	bool isFightWithBoss;
 
 	DWORD time_spawn_sub;  //thoi gian phong vu khi phu
+
+	bool invisible;
 public: 
 	CSIMON() : CGameObject()
 	{
@@ -169,6 +172,7 @@ public:
 		this->AddAnimation("SIMON_ANI_UPSTAIR_ATTACK");    //11
 		this->AddAnimation("SIMON_ANI_DOWNSTAIR_ATTACK"); //12
 		this->AddAnimation("SIMON_ANI_HURT");
+		this->invisible = false;
 	}
 	~CSIMON() { delete whip; }
 	void ResetFightAnimation()

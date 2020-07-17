@@ -98,10 +98,22 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		CalcPotentialCollisions(coObjects, coEvents);
 
 	// reset untouchable timer if untouchable time has passed
-	if (GetTickCount() - untouchable_start > SIMON_UNTOUCHABLE_TIME)
+	if (invisible = false)
 	{
-		untouchable_start = 0;
-		untouchable = 0;
+		if (GetTickCount() - untouchable_start > SIMON_UNTOUCHABLE_TIME)
+		{
+			untouchable_start = 0;
+			untouchable = 0;
+		}
+	}
+	else
+	{
+		if (GetTickCount() - untouchable_start > SIMON_INVISIVLE_TIME)
+		{
+			untouchable_start = 0;
+			untouchable = 0;
+			invisible = false;
+		}
 	}
 
 	if (dynamic_cast<PlayScene*>(scene))
@@ -272,6 +284,11 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 							this->CurrentShoot = this->ShootState;
 							this->ResetSpawnSubWeapon();
 
+						}
+						if (dynamic_cast<GoldPotion*>(e->obj))
+						{
+							invisible = true;
+							StartUntouchable();
 						}
 						this->score += item->GetScore();
 						item->Destroy();
