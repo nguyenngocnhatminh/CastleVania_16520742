@@ -756,6 +756,14 @@ void PlayScene::OnKeyDown(int KeyCode)
 	case DIK_J:
 		this->SIMON->UpHeart();
 		break;
+	case DIK_M:
+		item = itemcollection->SpawnItem(FOOD, this->GetSimon()->x + 100);
+		item->SetPosition(this->GetSimon()->x + 100, this->GetSimon()->y - 100);
+		this->SpawnObject(item);
+		break;
+	case DIK_N:
+		this->SIMON->SetHp(1);
+		break;
 	}
 
 }

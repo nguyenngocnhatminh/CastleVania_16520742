@@ -292,6 +292,10 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 							invisible = true;
 							StartUntouchable();
 						}
+						if (dynamic_cast<Food*>(e->obj))
+						{
+							this->hp = 16;
+						}
 						this->score += item->GetScore();
 						item->Destroy();
 					}
@@ -465,6 +469,10 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 							this->SetShootState(TRIPLE_SHOT_STATE);
 							this->CurrentShoot = this->ShootState;
 							this->ResetSpawnSubWeapon();
+						}
+						if (dynamic_cast<Food*>(f))
+						{
+							this->hp=16;
 						}
 						this->score += item->GetScore();
 						item->Destroy();

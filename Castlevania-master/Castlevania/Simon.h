@@ -139,6 +139,10 @@ class CSIMON : public CGameObject
 
 	bool invisible;
 	bool isInSpecialStair;
+
+	DWORD time_up_hp;
+
+	bool eat_food;
 public: 
 	CSIMON() : CGameObject()
 	{
@@ -175,6 +179,8 @@ public:
 		this->AddAnimation("SIMON_ANI_HURT");
 		this->invisible = false;
 		this->isInSpecialStair = false;
+		this->time_up_hp = 0;
+		this->eat_food = false;
 	}
 	~CSIMON() { delete whip; }
 	void ResetFightAnimation()
