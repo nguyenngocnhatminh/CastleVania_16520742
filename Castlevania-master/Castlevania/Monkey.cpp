@@ -184,7 +184,7 @@ void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 			float l, t, r, b, gl, gt, gr, gb;
 			f->GetBoundingBox(gl, gt, gr, gb);
 			this->GetBoundingBox(l, t, r, b);
-			gt -= 20;
+			b += 15;
 			if (AABB(l, t, r, b, gl, gt, gr, gb))
 			{
 				tourchGround = true;
@@ -192,14 +192,13 @@ void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 		}
 	}
 
-	if (tourchGround == true
+	if (!tourchGround
 		&& this->GetState()!=MONKEY_STATE_JUMP
 		&& this->GetState()!=MONKEY_STATE_PREPARE)
 	{
 		this->SetState(MONKEY_STATE_IDLE);
 		this->vy = 0;
 		this->vx = 0;
-
 	}
 
 

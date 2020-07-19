@@ -402,7 +402,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 			float l, t, r, b, el, et, er, eb;
 			this->GetBoundingBox(l, t, r, b);
-			b = b + 15; // hehehe offset 5pixel
+			b = b + 15; 
 			f->GetBoundingBox(el, et, er, eb);
 			if (CGameObject::AABB(l, t, r, b, el, et, er, eb))
 			{
@@ -416,7 +416,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 			float l, t, r, b, el, et, er, eb;
 			this->GetBoundingBox(l, t, r, b);
-			b = b + 15; // hehehe offset 5pixel
+			b += 15; 
 			f->GetBoundingBox(el, et, er, eb);
 			if (CGameObject::AABB(l, t, r, b, el, et, er, eb))
 			{
@@ -604,7 +604,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			&& this->state != SIMON_STATE_HURT
 			&& this->state != SIMON_STATE_UPWHIP) {
 			SetState(SIMON_STATE_IDLE);
-
 		}
 
 	}
@@ -963,7 +962,6 @@ void CSIMON::SetState(int state)
 		isSitting = true;
 		break;
 	case SIMON_STATE_IDLE:
-		vx = 0;
 		vx = 0;
 		break;
 	case SIMON_STATE_HURT:

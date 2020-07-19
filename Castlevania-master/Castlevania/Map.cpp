@@ -188,6 +188,9 @@ void Map::BuildObjectLayer(xml_node<>* rootNode)
 		this->objectLayers.insert(std::make_pair(name, objectlayer));
 
 
+
+
+
 	}
 }
 

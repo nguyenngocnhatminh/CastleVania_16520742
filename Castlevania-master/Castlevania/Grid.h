@@ -4,8 +4,10 @@
 #include<vector>
 #include<Windows.h>
 #include<string>
-#include"Library/RapidXML//rapidxml.hpp"
-#include"Library/RapidXML//rapidxml_utils.hpp"
+#include"Library/RapidXML/rapidxml.hpp"
+#include"Library/RapidXML/rapidxml_utils.hpp"
+#include"Library/RapidXML/rapidxml_print.hpp"
+
 
 using namespace rapidxml;
 #define CELL_SIZE 256
@@ -29,11 +31,12 @@ private:
 
 	std::vector<std::vector<cellObjects>> cells; //mang 2 chieu luu object
 	std::vector<LPGAMEOBJECT> alwaysUpdateObject;
+
 public:
 	void Add(LPGAMEOBJECT object,bool isAlwaysUpdate = false);
 	void Update(LPGAMEOBJECT object);
 	void GetListobject(vector<LPGAMEOBJECT>& listobjects);
-
+	
 	void RenderCell(RECT rec, int color, int alpha = 64);
 	Grid(unsigned int mapWidth, unsigned int mapHeight);
 	void Render();

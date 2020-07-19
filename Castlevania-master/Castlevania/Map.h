@@ -61,6 +61,11 @@ public:
 
 	}
 
+	int GetMapID()
+	{
+		return this->MapID;
+	}
+
 
 	Map(int texID,int id) :width(0), height(0), tileWidth(0), tileHeight(0) 
 	{ 

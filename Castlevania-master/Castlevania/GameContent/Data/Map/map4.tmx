@@ -601,10 +601,10 @@
   <object id="9" x="2.11076" y="289.175" width="1502.86" height="31.6614"/>
  </objectgroup>
  <objectgroup id="3" name="Player">
-  <object id="2" x="55.2247" y="9.92085" width="48" height="80"/>
+  <object id="2" x="30.2247" y="63.9209" width="24" height="32"/>
  </objectgroup>
  <objectgroup id="4" name="Camera">
-  <object id="1" x="7.14579e-08" y="7.1458e-08" width="1506" height="352"/>
+  <object id="1" x="-3" y="1" width="1506" height="352"/>
  </objectgroup>
  <objectgroup id="6" name="Brick">
   <object id="24" gid="135" x="1376.33" y="257" width="32" height="32">

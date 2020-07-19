@@ -1,16 +1,5 @@
-﻿  Bat.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Bat.h(19,1): warning C4005: 'RANGE_FROM_SIMON_X': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SkeletonTrigger.h(3): message : see previous definition of 'RANGE_FROM_SIMON_X'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Bat.h(20,1): warning C4005: 'RANGE_FROM_SIMON_Y': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SkeletonTrigger.h(4): message : see previous definition of 'RANGE_FROM_SIMON_Y'
-  Enemy.cpp
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
-  Monkey.cpp
+﻿  Monkey.cpp
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Monkey.cpp(108,39): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-  Generating Code...
   Castlevania.vcxproj -> D:\hoc\Game\CastleVania\Castlevania-master\Debug\Castlevania.exe

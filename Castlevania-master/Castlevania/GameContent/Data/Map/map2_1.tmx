@@ -227,7 +227,7 @@
   </object>
  </objectgroup>
  <objectgroup id="7" name="Camera">
-  <object id="22" x="-1" y="-0.5" width="509.667" height="383"/>
+  <object id="22" x="-1" y="4.5" width="509.667" height="383"/>
  </objectgroup>
  <objectgroup id="10" name="MoneyBagTrigger">
   <object id="76" x="448" y="217" width="29" height="9">
@@ -268,7 +268,7 @@
   <object id="77" gid="99" x="256" y="384" width="31" height="30"/>
  </objectgroup>
  <objectgroup id="2" name="Player">
-  <object id="13" x="45.667" y="278.333" width="25.3333" height="70.6667"/>
+  <object id="13" x="53.667" y="320.333" width="25.3333" height="32"/>
  </objectgroup>
  <objectgroup id="11" name="Stair">
   <object id="14" x="210.5" y="342" width="29.5" height="7">
