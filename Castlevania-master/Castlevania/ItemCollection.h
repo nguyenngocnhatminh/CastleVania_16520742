@@ -13,6 +13,7 @@
 #include"Food.h"
 #include"GoldPotion.h"
 #include"TripleShot.h"
+#include"StopWatchItem.h"
 
 #define BIGHEART 1
 #define SMALLHEART 2
@@ -27,6 +28,7 @@
 #define FOOD 11
 #define GOLDPOTION 12
 #define TRIPLESHOT 13
+#define STOPWATCH 14
 class ItemCollection
 {
 	int idItem;

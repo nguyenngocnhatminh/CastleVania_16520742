@@ -33,6 +33,8 @@ class PlayScene :public Scene
 
     void GetListobjectFromGrid();
     void UpdateGrid();
+
+    bool isFreeze = false;
 public:
     PlayScene(int id, std::string filepath, int TexId, std::string Map, int StageID) :Scene(id, filepath, TexId, Map, StageID)
     {
@@ -76,5 +78,15 @@ public:
     Hub* GetHub()
     {
         return this->hub;
+    }
+
+    void SetIsFreeze(bool isfreeze)
+    {
+        this->isFreeze = isfreeze;
+    }
+
+    bool GetIsFreeze()
+    {
+        return this->isFreeze;
     }
 };

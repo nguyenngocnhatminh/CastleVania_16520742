@@ -1,5 +1,7 @@
 ﻿#include "Item.h"
 #include"Ground.h"
+#include "PlayScene.h"
+#include "define.h"
 void Item::Render()
 {
 
@@ -20,6 +22,19 @@ void Item::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	{
 		return;
 	}
+
+	if (dynamic_cast<PlayScene*>(scene))
+	{
+		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+		D3DXVECTOR2 cam = pScene->GetCamera();
+
+		if (y < cam.y || y > cam.y + SCREENSIZE::HEIGHT - 100)
+		{
+			this->isDestroy = true;
+		}
+
+	}
+
 	CGameObject::Update(dt, scene);
 	vy += ITEM_GRAVITY * dt;
 

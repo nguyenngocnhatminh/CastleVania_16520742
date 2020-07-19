@@ -25,6 +25,7 @@ void Zombie::Render()
 
 void Zombie::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
+	Enemy::Update(dt, scene, coObjects);
 	if (dynamic_cast<PlayScene*>(scene))
 	{
 		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);

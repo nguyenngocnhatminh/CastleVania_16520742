@@ -274,6 +274,10 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						{
 							currenSubWeapon = AXE;
 						}
+						if (dynamic_cast<StopWatchItem*>(e->obj))
+						{
+							currenSubWeapon = STOPWATCH;
+						}
 						if (dynamic_cast<DoubleShot*>(e->obj))
 						{
 							this->SetShootState(DOUBLE_SHOT_STATE);
@@ -344,7 +348,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				else if (dynamic_cast<Boomerang*>(e->obj))
 				{
 					Boomerang* bom= dynamic_cast<Boomerang*>(e->obj);
-					bom->Destroy();
+					bom->setDestroy = true;
 				}
 				else if (dynamic_cast<Enemy*>(e->obj))
 				{

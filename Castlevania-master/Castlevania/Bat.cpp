@@ -61,8 +61,10 @@ void Bat::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects
 {
 	if (this->IsDestroy())
 		return;
-	CGameObject::Update(dt, scene);
 
+	Enemy::Update(dt, scene, colliable_objects);
+
+	CGameObject::Update(dt, scene);
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
 

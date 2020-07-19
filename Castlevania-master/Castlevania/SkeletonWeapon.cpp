@@ -16,6 +16,7 @@ void SkeletonWeapon::GetBoundingBox(float& l, float& t, float& r, float& b)
 
 void SkeletonWeapon::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
+	Enemy::Update(dt, scene, colliable_objects);
 	CGameObject::Update(dt, scene);
 
 	vector<LPCOLLISIONEVENT> coEvents;

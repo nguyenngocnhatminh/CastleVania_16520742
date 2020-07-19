@@ -633,7 +633,7 @@
     <property name="direction" value="3"/>
    </properties>
   </object>
-  <object id="58" x="732" y="272" width="32" height="14.6667">
+  <object id="58" x="731" y="274" width="32" height="11.6667">
    <properties>
     <property name="direction" value="0"/>
    </properties>

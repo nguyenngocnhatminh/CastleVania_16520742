@@ -34,6 +34,7 @@ void Skeleton::GetBoundingBox(float& l, float& t, float& r, float& b)
 
 void Skeleton::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
+	Enemy::Update(dt, scene, colliable_objects);
 	CGameObject::Update(dt, scene);
 
 	vector<LPCOLLISIONEVENT> coEvents;
@@ -198,10 +199,9 @@ void Skeleton::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_ob
 
 	if (!flagOnGround)
 	{
-		if ( this->state != SKELETON_STATE_JUMP) {
+		if (this->state != SKELETON_STATE_JUMP) {
 			SetState(SKELETON_STATE_WALK);
 		}
-
 	}
 
 	if (!this->spawnweapon && this->IsAttack())

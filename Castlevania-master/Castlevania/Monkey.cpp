@@ -30,6 +30,7 @@ void Monkey::GetBoundingBox(float& l, float& t, float& r, float& b)
 
 void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
+	Enemy::Update(dt, scene, colliable_objects);
 
 	CGameObject::Update(dt, scene);
 
@@ -175,6 +176,33 @@ void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 
 	}
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+	bool tourchGround = false;
+	for (size_t i = 0; i < colliable_objects->size(); i++)
+	{
+		if (dynamic_cast<Ground*>(colliable_objects->at(i))) {
+			Ground* f = dynamic_cast<Ground*>(colliable_objects->at(i));
+			float l, t, r, b, gl, gt, gr, gb;
+			f->GetBoundingBox(gl, gt, gr, gb);
+			this->GetBoundingBox(l, t, r, b);
+			gt -= 20;
+			if (AABB(l, t, r, b, gl, gt, gr, gb))
+			{
+				tourchGround = true;
+			}
+		}
+	}
+
+	if (tourchGround == true
+		&& this->GetState()!=MONKEY_STATE_JUMP
+		&& this->GetState()!=MONKEY_STATE_PREPARE)
+	{
+		this->SetState(MONKEY_STATE_IDLE);
+		this->vy = 0;
+		this->vx = 0;
+
+	}
+
+
 }
 
 int Monkey::GetState() {
@@ -187,6 +215,7 @@ void Monkey::SetState(int state)
 	switch (state)
 	{
 	case MONKEY_STATE_IDLE:
+		vy = 0;
 		vx = 0;
 		break;
 	case MONKEY_STATE_PREPARE:

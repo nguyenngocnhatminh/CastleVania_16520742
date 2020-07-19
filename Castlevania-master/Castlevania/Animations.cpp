@@ -23,7 +23,10 @@ void CAnimation::Render(int nx, float x, float y, int alpha)
 		DWORD t = frames[currentFrame]->GetTime();
 		if (now - lastFrameTime > t)
 		{
-			currentFrame++;
+			if (!isLock)
+			{
+				currentFrame++;
+			}
 			lastFrameTime = now;
 			if (currentFrame == frames.size()) currentFrame = 0;
 		}

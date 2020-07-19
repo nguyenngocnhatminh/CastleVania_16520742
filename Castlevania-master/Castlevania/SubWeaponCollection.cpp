@@ -16,5 +16,8 @@ SubWeapon* SubWeaponCollection::SpawnSubWeapon(int id)
 		case AXE:
 			return new Axe();
 			break;
+		case STOPWATCH:
+			return new StopWatch();
+			break;
 	}
 }

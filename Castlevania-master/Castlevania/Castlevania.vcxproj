@@ -196,6 +196,7 @@
     <ClInclude Include="SpearGuard.h" />
     <ClInclude Include="Stair.h" />
     <ClInclude Include="StopWatch.h" />
+    <ClInclude Include="StopWatchItem.h" />
     <ClInclude Include="TileLayer.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MoneyBag.h" />
@@ -268,6 +269,7 @@
     <ClCompile Include="SpearGuard.cpp" />
     <ClCompile Include="Stair.cpp" />
     <ClCompile Include="StopWatch.cpp" />
+    <ClCompile Include="StopWatchItem.cpp" />
     <ClCompile Include="TileLayer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />

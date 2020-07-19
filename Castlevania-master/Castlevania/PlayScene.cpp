@@ -658,7 +658,7 @@ void PlayScene::OnKeyDown(int KeyCode)
 				SIMON->SpawnSubWeapon(false);
 			}
 
-			if (!CGame::GetInstance()->IsKeyDown(DIK_UP) || SIMON->GetCurrentShoot() < 1)
+			if (!CGame::GetInstance()->IsKeyDown(DIK_UP) || SIMON->GetCurrentShoot() < 1 || SIMON->GetHeart()<=0)
 			{
 				SIMON->ResetSpawnWhip();
 			}
@@ -740,6 +740,11 @@ void PlayScene::OnKeyDown(int KeyCode)
 		break;
 	case DIK_P:
 		item = itemcollection->SpawnItem(BOOMERANG, this->GetSimon()->x + 100);
+		item->SetPosition(this->GetSimon()->x + 100, this->GetSimon()->y - 100);
+		this->SpawnObject(item);
+		break;
+	case DIK_Y:
+		item = itemcollection->SpawnItem(STOPWATCH, this->GetSimon()->x + 100);
 		item->SetPosition(this->GetSimon()->x + 100, this->GetSimon()->y - 100);
 		this->SpawnObject(item);
 		break;

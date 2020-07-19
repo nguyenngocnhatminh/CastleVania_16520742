@@ -59,6 +59,9 @@ void Hub::Render()
 	case BOOMERANG:
 		SubWeapon = "BOOMERANG_UI_SPRITE";
 		break;
+	case STOPWATCH:
+		SubWeapon = "STOP_WATCH_UI_SPRITE";
+		break;
 	}
 	if (SubWeapon != "")
 	{

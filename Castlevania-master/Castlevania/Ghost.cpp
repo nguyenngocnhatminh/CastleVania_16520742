@@ -34,6 +34,9 @@ void Ghost::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objec
 {
 	if (this->IsDestroy())
 		return;
+
+	Enemy::Update(dt, scene, colliable_objects);
+
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
 

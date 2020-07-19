@@ -80,7 +80,7 @@ void Raven::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objec
 	{
 		return;
 	}
-
+	Enemy::Update(dt, scene, colliable_objects);
 	CGameObject::Update(dt, scene);
 
 	vector<LPCOLLISIONEVENT> coEvents;

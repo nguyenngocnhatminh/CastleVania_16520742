@@ -43,6 +43,9 @@ Item* ItemCollection::SpawnItem(int id,int x)
 		case TRIPLESHOT:
 			return new TripleShot();
 			break;
+		case STOPWATCH:
+			return new StopWatchItem();
+			break;
 	}
 }
 

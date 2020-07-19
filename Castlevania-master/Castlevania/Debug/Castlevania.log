@@ -1,29 +1,16 @@
-﻿  Simon.cpp
+﻿  Bat.cpp
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Heart.h(20,14): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(21,1): warning C4005: 'MONEYBAG': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(11): message : see previous definition of 'MONEYBAG'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(22,1): warning C4005: 'CROWN': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(12): message : see previous definition of 'CROWN'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.h(8,1): warning C4005: 'DAGGER': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Item.h(10): message : see previous definition of 'DAGGER'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.h(9,1): warning C4005: 'BOOMERANG': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(23): message : see previous definition of 'BOOMERANG'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.h(10,1): warning C4005: 'HOLYWATER': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(25): message : see previous definition of 'HOLYWATER'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SubWeaponCollection.h(11,1): warning C4005: 'AXE': macro redefinition
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\ItemCollection.h(26): message : see previous definition of 'AXE'
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Bat.h(19,1): warning C4005: 'RANGE_FROM_SIMON_X': macro redefinition
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SkeletonTrigger.h(3): message : see previous definition of 'RANGE_FROM_SIMON_X'
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Bat.h(20,1): warning C4005: 'RANGE_FROM_SIMON_Y': macro redefinition
 D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\SkeletonTrigger.h(4): message : see previous definition of 'RANGE_FROM_SIMON_Y'
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(642,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(642,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(646,64): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(653,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(672,73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(672,38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(676,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Simon.cpp(676,38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Enemy.cpp
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
+  Monkey.cpp
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(29,24): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\TileLayer.h(31,25): warning C4018: '<': signed/unsigned mismatch
+D:\hoc\Game\CastleVania\Castlevania-master\Castlevania\Monkey.cpp(108,39): warning C4244: '=': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+  Generating Code...
   Castlevania.vcxproj -> D:\hoc\Game\CastleVania\Castlevania-master\Debug\Castlevania.exe

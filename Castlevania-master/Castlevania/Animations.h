@@ -25,6 +25,8 @@ class CAnimation
 	int currentFrame;
 	vector<LPANIMATION_FRAME> frames;
 	bool isDefault = false;
+
+	bool isLock;
 public:
 	CAnimation(int defaultTime) { this->defaultTime = defaultTime; lastFrameTime = -1; currentFrame = -1; }
 	void Add(string spriteId, DWORD time = 0);
@@ -32,6 +34,16 @@ public:
 	int GetCurrentFrame() { return this->currentFrame; }
 	void Render(int nx, float x, float y, int alpha = 255);
 	int GetlastFrame() { return frames.size() - 1; }
+	void LockAnimation(bool flag)
+	{
+		this->isLock = flag;
+	}
+
+	bool CheckLockAnimation()
+	{
+		return this->isLock;
+	}
+
 	void SetIsDefault(bool df)
 	{
 		this->isDefault = df;

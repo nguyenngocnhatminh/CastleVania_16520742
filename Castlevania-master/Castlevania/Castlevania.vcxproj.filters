@@ -291,6 +291,9 @@
     <ClInclude Include="StopWatch.h">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
     </ClInclude>
+    <ClInclude Include="StopWatchItem.h">
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -499,6 +502,9 @@
     </ClCompile>
     <ClCompile Include="StopWatch.cpp">
       <Filter>Source Files\Object\PlayerAndWeapon\SubWeapon</Filter>
+    </ClCompile>
+    <ClCompile Include="StopWatchItem.cpp">
+      <Filter>Source Files\Object\Item\Weapon &amp; Subweapon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
