@@ -1,8 +1,10 @@
 #include "Enemy.h"
+#include "define.h"
 
 void Enemy::Render()
 {
 	animations[0]->Render(nx, x, y);
+	//RenderBoundingBox();
 }
 
 void Enemy::SetIsAttack(bool x)
@@ -23,6 +25,17 @@ void Enemy::SpawnItem()
 
 void Enemy::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
+	if (dynamic_cast<PlayScene*>(scene))
+	{
+		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
+		D3DXVECTOR2 cam = pScene->GetCamera();
+
+		if (y < cam.y || y > cam.y + SCREENSIZE::HEIGHT - 100)
+		{
+			this->isDestroy = true;
+		}
+
+	}
 	if (dynamic_cast<PlayScene*>(scene))
 	{
 		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);

@@ -4,8 +4,9 @@
 #include<d3dx9.h>
 #include<string>
 #include"ObjectLayer.h"
-#include<rapidxml/rapidxml.hpp>
-#include<rapidxml/rapidxml_utils.hpp>
+#include"Library/RapidXML/rapidxml.hpp"
+#include"Library/RapidXML/rapidxml_utils.hpp"
+#include"Library/RapidXML/rapidxml_print.hpp"
 using namespace rapidxml;
 
 

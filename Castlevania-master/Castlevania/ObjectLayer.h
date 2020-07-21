@@ -18,10 +18,16 @@ private:
 	float y;
 	float width;
 	float height;
+	int column;
+	int row;
 	std::map<std::string, OProperty*> properties;
 public:
-	ObjectTile(int id, float x, float y, float width, float height) :id(id), x(x), y(y)
-		, width(width), height(height) {};
+	ObjectTile(int id, float x, float y, float width, float height,int column= -1,int row= -1) :id(id), x(x), y(y)
+		, width(width), height(height) 
+	{
+		this->column = column;
+		this->row = row;
+	};
 
 	void SetProerties(std::map<std::string, OProperty*> properties) { this->properties = properties; };
 	int GetID() { return id; }
@@ -29,6 +35,8 @@ public:
 	float GetY() { return y; }
 	float GetWidth() { return width; }
 	float GetHeight() { return height; }
+	int GetColumn() { return column; }
+	int GetRow() { return row; }
 
 	int GetProperty(std::string key);
 

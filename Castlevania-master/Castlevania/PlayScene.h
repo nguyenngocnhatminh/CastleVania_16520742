@@ -41,6 +41,14 @@ public:
         simon_properties = NULL;
     }
     D3DXVECTOR2 GetCamera();
+    void SetCamera(RECT border)
+    {
+        this->cameraBoder = border;
+    }
+    void SetBossCamera(RECT border)
+    {
+        this->BossCamera = border;
+    }
     void SpawnObject(LPGAMEOBJECT obj) { qObjects.push(obj); }
     void Load() override;
     void UnLoad() override;
@@ -59,6 +67,11 @@ public:
     CSIMON* GetSimon()
     {
         return this->SIMON;
+    }
+
+    void SetSimon(CSIMON* simon)
+    {
+        this->SIMON = simon;
     }
 
     unsigned int GetTime() {

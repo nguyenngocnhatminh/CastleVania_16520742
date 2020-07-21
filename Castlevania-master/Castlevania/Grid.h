@@ -7,7 +7,7 @@
 #include"Library/RapidXML/rapidxml.hpp"
 #include"Library/RapidXML/rapidxml_utils.hpp"
 #include"Library/RapidXML/rapidxml_print.hpp"
-
+#include"Map.h"
 
 using namespace rapidxml;
 #define CELL_SIZE 256
@@ -29,10 +29,15 @@ private:
 	unsigned int numXCell;
 	unsigned int numYCell;
 
+	std::map<std::string, ObjectLayer*> objectLayers;
 	std::vector<std::vector<cellObjects>> cells; //mang 2 chieu luu object
 	std::vector<LPGAMEOBJECT> alwaysUpdateObject;
 
 public:
+	void LoadGrid(const std::string FilePath,Scene* scene);
+
+	void AddDefaultGrid(LPGAMEOBJECT object, bool isAlwaysUpdate = false);
+
 	void Add(LPGAMEOBJECT object,bool isAlwaysUpdate = false);
 	void Update(LPGAMEOBJECT object);
 	void GetListobject(vector<LPGAMEOBJECT>& listobjects);

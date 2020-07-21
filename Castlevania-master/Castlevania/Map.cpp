@@ -142,6 +142,26 @@ void Map::BuildTileSet(xml_node<>* node)
 void Map::BuildObjectLayer(xml_node<>* rootNode)
 {
 
+	rapidxml::xml_document<> doc;
+	
+	xml_attribute<>* cellX = doc.allocate_attribute("cellcol", "256");
+	xml_node<>* decl = doc.allocate_node(node_declaration);
+	decl->append_attribute(doc.allocate_attribute("version", "1.0"));
+	decl->append_attribute(doc.allocate_attribute("encoding", "utf-8"));
+	doc.append_node(decl);
+	
+	int numCol = ceil((float)(this->width * this->tileWidth) / 256) + 1;
+	
+	int numRow = ceil((float)(this->height * this->tileHeight) / 256);
+
+	xml_node<>* root = doc.allocate_node(node_element, "grid");
+	root->append_attribute(doc.allocate_attribute("id", doc.allocate_string(std::to_string(this->MapID).c_str())));
+	root->append_attribute(doc.allocate_attribute("cellSize", "256"));
+	
+	root->append_attribute(doc.allocate_attribute("numCol", doc.allocate_string(std::to_string(numCol).c_str())));
+	root->append_attribute(doc.allocate_attribute("numRow", doc.allocate_string(std::to_string(numRow).c_str())));
+	doc.append_node(root);
+
 	for (xml_node<>* child = rootNode->first_node("objectgroup"); child; child = child->next_sibling()) //cú pháp lập
 	{
 		const std::string nodeName = child->name();
@@ -150,10 +170,17 @@ void Map::BuildObjectLayer(xml_node<>* rootNode)
 			continue;
 		}
 
+		xml_node<>* objectGroupNode = doc.allocate_node(node_element, "objectgroup");
+
 		ObjectLayer* objectlayer;
 
 		const std::string name = std::string(child->first_attribute("name")->value());
 		const int id = std::atoi(child->first_attribute("id")->value());
+
+		objectGroupNode->append_attribute(doc.allocate_attribute("name", doc.allocate_string(name.c_str())));
+		objectGroupNode->append_attribute(doc.allocate_attribute("id", doc.allocate_string(std::to_string(id).c_str())));
+		root->append_node(objectGroupNode);
+
 		std::map<int, ObjectTile*> objectgroup;
 
 		for (xml_node<>* ggchild = child->first_node(); ggchild; ggchild = ggchild->next_sibling()) 
@@ -164,12 +191,36 @@ void Map::BuildObjectLayer(xml_node<>* rootNode)
 			const float width = std::atof(ggchild->first_attribute("width")->value());
 			const float height = std::atof(ggchild->first_attribute("height")->value());
 
+			int column = x / 256;
+			int row = y / 256;
+
+			std::string lName = "NONAME";
+			xml_attribute<>* name = ggchild->first_attribute("name");
+			if (name != NULL)
+			{
+				lName = name->value();
+			}
+
+			xml_node<>* objectNode = doc.allocate_node(node_element, "object");
+
+			objectNode->append_attribute(doc.allocate_attribute("id", doc.allocate_string(std::to_string(ggid).c_str())));
+			objectNode->append_attribute(doc.allocate_attribute("col", doc.allocate_string(std::to_string(column).c_str())));
+			objectNode->append_attribute(doc.allocate_attribute("row", doc.allocate_string(std::to_string(row).c_str())));
+			objectNode->append_attribute(doc.allocate_attribute("x", doc.allocate_string(std::to_string(x).c_str())));
+			objectNode->append_attribute(doc.allocate_attribute("y", doc.allocate_string(std::to_string(y).c_str())));
+			objectNode->append_attribute(doc.allocate_attribute("width", doc.allocate_string(std::to_string(width).c_str())));
+			objectNode->append_attribute(doc.allocate_attribute("height", doc.allocate_string(std::to_string(height).c_str())));
+			objectNode->append_attribute(doc.allocate_attribute("name", doc.allocate_string(lName.c_str())));
+			objectGroupNode->append_node(objectNode);
+
 
 
 			xml_node<>* propNode = ggchild->first_node("properties");
 			ObjectTile* object = new ObjectTile(ggid, x, y, width, height);
 			if (propNode != NULL)
 			{
+				xml_node<>* PropertiesNode = doc.allocate_node(node_element, "properties");
+				objectNode->append_node(PropertiesNode);
 				std::map<std::string, OProperty*> properties;
 				for (xml_node<>* pchild = propNode->first_node(); pchild; pchild = pchild->next_sibling()) //cú pháp lập
 				{
@@ -178,6 +229,10 @@ void Map::BuildObjectLayer(xml_node<>* rootNode)
 					property->value = std::atoi(pchild->first_attribute("value")->value());
 					properties.insert(std::make_pair(property->name, property));
 
+					xml_node<>* propertyNode = doc.allocate_node(node_element, "property");
+					PropertiesNode->append_node(propertyNode);
+					propertyNode->append_attribute(doc.allocate_attribute("name", doc.allocate_string(property->name.c_str())));
+					propertyNode->append_attribute(doc.allocate_attribute("value", doc.allocate_string(to_string(property->value).c_str())));
 				}
 				object->SetProerties(properties);
 			}
@@ -186,12 +241,11 @@ void Map::BuildObjectLayer(xml_node<>* rootNode)
 		}
 		objectlayer = new ObjectLayer(id, name, objectgroup);
 		this->objectLayers.insert(std::make_pair(name, objectlayer));
-
-
-
-
-
 	}
+
+	std::ofstream theFile("GameContent\\Data\\Grid\\grid.xml");
+	theFile << doc;
+	theFile.close();
 }
 
 void Map::Render(D3DXVECTOR2 camera)

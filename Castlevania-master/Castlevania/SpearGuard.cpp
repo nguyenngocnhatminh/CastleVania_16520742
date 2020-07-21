@@ -3,7 +3,7 @@
 void SpearGuard::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
 	l = x;
-	t = y;
+	t = y + 10;
 	r = x + SPEAR_BBOX_WIDTH;
 	b = y + SPEAR_BBOX_HEIGHT;
 

@@ -29,8 +29,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, scene);
 
-	this->GetWhip()->SetDamage(this->ShootState);
-
 	if (this->hp == 0)
 		this->SetState(SIMON_STATE_DIE);
 
