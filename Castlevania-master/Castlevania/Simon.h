@@ -10,8 +10,10 @@
 #define SIMON_UPSTAIR_VELOCITY 0.04f
 //0.1f
 #define SIMON_JUMP_SPEED_Y		0.55f
-#define SIMON_JUMP_DEFLECT_SPEED 0.2f
+#define SIMON_JUMP_SPEED_X 0.15f
+#define SIMON_JUMP_DEFLECT_SPEED 0.1f
 #define SIMON_GRAVITY			0.002f
+#define SIMON_GRAVITY_VY 0.2f
 #define SIMON_FALLDOWN_VY 0.8f
 #define SIMON_DIE_DEFLECT_SPEED	 0.5f
 #define SIMON_HURT_SPEED_Y 0.35f
@@ -27,7 +29,7 @@
 #define SIMON_STATE_DIE 7
 #define SIMON_STATE_UPWHIP 8
 #define SIMON_STATE_ENTERCASTLE 9
-#define SIMON_STATE_FALLDOWN 10
+#define SIMON_STATE_FALLDOWN 19
 
 //len xuong cau thang
 #define SIMON_STATE_UPSTAIR_IDLE 10
@@ -387,5 +389,10 @@ public:
 	void SetTimeSpawnSub(DWORD flag)
 	{
 		this->time_spawn_sub = flag;
+	}
+
+	bool GetIsInBrigde()
+	{
+		return this->isInBridge;
 	}
 };

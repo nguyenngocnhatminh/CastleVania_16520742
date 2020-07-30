@@ -24,7 +24,7 @@ class Whip:public CGameObject
 {
 private:
 	UINT  damage = 1;
-	int state = 2;
+	int state = 0;
 	unsigned int damege;
 	bool collideOneTime = false;
 	bool hitObject = false;

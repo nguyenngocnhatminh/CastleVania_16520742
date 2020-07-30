@@ -29,7 +29,7 @@ void Dagger::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 
 		if (x<cam.x || x>cam.x + SCREENSIZE::WIDTH)
 		{
-			this->isDestroy = true;
+			this->setDestroy = true;
 		}
 	}
 

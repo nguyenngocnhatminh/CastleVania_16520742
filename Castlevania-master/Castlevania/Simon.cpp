@@ -24,6 +24,7 @@
 #include "SitTrigger.h"
 #include "BossTrigger.h"
 #include "DeathZone.h"
+#include "Zombie.h"
 
 void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 {
@@ -151,11 +152,13 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			LPCOLLISIONEVENT e = coEventsResult[i];
 		
 			if (dynamic_cast<Ground*>(e->obj)) {
-				if (e->ny != 0)
+				if (e->ny < 0)
 				{ 
-					if (GetState() == SIMON_STATE_JUMP || GetState()==SIMON_STATE_HURT) {
+					if (GetState() == SIMON_STATE_JUMP || (GetState()==SIMON_STATE_HURT && this->vy != -SIMON_HURT_SPEED_Y)
+						||GetState()==SIMON_STATE_FALLDOWN) {
 						SetState(SIMON_STATE_IDLE);
 					}
+
 					if (this->state == SIMON_STATE_FIGHT_STAND)
 					{
 						vx = 0;
@@ -164,7 +167,12 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						x += dx;
 						y += dy;
 					}
-					if (ny != 0) vy = 0;
+					this->isInBridge = false;
+				}
+				else if (e->ny > 0)
+				{
+					x += dx;
+					y += dy;
 				}
 				else if (e->nx != 0) {
 					if (this->startOnStair || this->isOnStair)
@@ -179,12 +187,15 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			}
 			else if (dynamic_cast<Portal*>(e->obj))
 			{
-				auto portal = dynamic_cast<Portal*>(e->obj);
-				this->Switch_scene = portal->GetNextMapId();
+				if (this->GetState() != SIMON_STATE_HURT || this->GetState() != SIMON_STATE_FALLDOWN || this->GetState() != SIMON_STATE_JUMP)
+				{
+					auto portal = dynamic_cast<Portal*>(e->obj);
+					this->Switch_scene = portal->GetNextMapId();
+				}
 			}
 			else if (dynamic_cast<BreakWall*>(e->obj)) {
 				if (e->ny != 0) { // kiểm tra va chạm trục y có va chạm trục y nhảy vào đây
-					if (GetState() == SIMON_STATE_JUMP) {
+					if (GetState() == SIMON_STATE_JUMP || GetState() == SIMON_STATE_HURT) {
 						SetState(SIMON_STATE_IDLE);
 					}
 					if (this->state == SIMON_STATE_FIGHT_STAND)
@@ -220,7 +231,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			{
 				Bridge* bridge = dynamic_cast<Bridge*>(e->obj);
 				if (e->ny != 0) { // kiểm tra va chạm trục y có va chạm trục y nhảy vào đây
-					if (GetState() == SIMON_STATE_JUMP && vy >= 0) {
+					if ((GetState() == SIMON_STATE_JUMP || GetState()==SIMON_STATE_HURT)) {
 						SetState(SIMON_STATE_IDLE);
 					}
 					if (this->state == SIMON_STATE_FIGHT_STAND)
@@ -228,7 +239,8 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						vx = 0;
 					}
 					if (ny != 0) vy = 0;
-					this->x += bridge->dx * 2;
+					this->isInBridge = true;
+					this->x += bridge->dx;
 
 				}
 			}
@@ -303,7 +315,6 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					}
 
 				}
-
 				else if (dynamic_cast<MoneyTrigger*>(e->obj))
 				{
 					if (e->nx != 0) // va chạm chiều x
@@ -346,7 +357,10 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				else if (dynamic_cast<Boomerang*>(e->obj))
 				{
 					Boomerang* bom= dynamic_cast<Boomerang*>(e->obj);
-					bom->setDestroy = true;
+					if (bom->GetIsBack())
+					{
+						bom->setDestroy = true;
+					}
 				}
 				else if (dynamic_cast<Enemy*>(e->obj))
 				{
@@ -364,6 +378,8 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 							bat->Destroy();
 						}
 					}
+					if (dynamic_cast<Zombie*>(e->obj))
+						break;
 					if (untouchable_start == 0)
 					{
 						if (untouchable != 1) {
@@ -375,6 +391,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 							StartUntouchable();
 						}
 					}
+
 				}
 				else
 				{
@@ -394,7 +411,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	for (std::size_t i = 0; i < coObjects->size(); i++)
 	{
 		LPGAMEOBJECT e = coObjects->at(i);
-		if (dynamic_cast<Ground*>(e) && !flagOnGround) // BUG khi đứng lên brick
+		if (dynamic_cast<Ground*>(e) && !flagOnGround) 
 		{
 			Ground* f = dynamic_cast<Ground*> (e);
 
@@ -408,7 +425,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			}
 		}
 
-		if (dynamic_cast<BreakWall*>(e) && !flagOnGround) // BUG khi đứng lên brick
+		if (dynamic_cast<BreakWall*>(e) && !flagOnGround) 
 		{
 			BreakWall* f = dynamic_cast<BreakWall*> (e);
 
@@ -488,6 +505,10 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 			if (CGameObject::isColliding(f))
 			{
+				if (vy > 0.2f)
+				{
+					vy = 0.2f;
+				}
 				if (f->GetSpecial() == 1)
 				{
 					if (f->GetDirection() == STAIR_BOTTOM_RIGHT)
@@ -503,7 +524,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 						{
 							return;
 						}
-					
+
 					}
 					if (f->GetDirection() == STAIR_TOP_RIGHT)
 					{
@@ -537,12 +558,13 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				}
 			}
 			else if (f->CheckActive())
-			{
-				f->SetActive(false);
-				this->isColliceWithStair = false;
-				if (!this->isOnStair)
-					this->StairDirection = -1;
-			}
+				{
+					f->SetActive(false);
+					this->isColliceWithStair = false;
+					if (!this->isOnStair)
+						this->StairDirection = -1;
+				}
+			
 		}
 		else if (dynamic_cast<Enemy*>(e))
 		{
@@ -564,7 +586,7 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 					if (untouchable != 1) {
 						if (!this->isOnStair)
 						{
-							this->SetState(SIMON_STATE_HURT);
+							this->SetState(SIMON_STATE_HURT);						
 						}
 						this->hp--;
 						StartUntouchable();
@@ -592,16 +614,37 @@ void CSIMON::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				}
 			}
 		}
+		if (dynamic_cast<Boomerang*>(e))
+		{
+			Boomerang* boom = dynamic_cast<Boomerang*>(e);
+			if (CGameObject::isColliding(boom))
+			{
+				if (boom->GetIsBack() == true)
+				{
+					boom->setDestroy = true;
+				}
+			}
+		}
+		if (dynamic_cast<GoldPotion*>(e))
+		{
+			GoldPotion* boom = dynamic_cast<GoldPotion*>(e);
+			if (CGameObject::isColliding(boom))
+			{
+				invisible = true;
+				StartUntouchable();
+			}
+		}
 	}
 	if (!flagOnGround)
 	{
-		if (!isFirstStepOnStair && !isOnStair
+		if (!isFirstStepOnStair && !isOnStair &&!isInBridge
 			&& this->state != SIMON_STATE_JUMP
 			&& this->state != SIMON_STATE_FIGHT_STAND
 			&& this->state != SIMON_STATE_DIE
 			&& this->state != SIMON_STATE_HURT
 			&& this->state != SIMON_STATE_UPWHIP) {
-			SetState(SIMON_STATE_IDLE);
+			SetState(SIMON_STATE_FALLDOWN);
+			
 		}
 
 	}
@@ -683,6 +726,9 @@ void CSIMON::Render()
 	case SIMON_STATE_IDLE:
 		ani = SIMON_ANI_IDLE;
 		break;
+	case SIMON_STATE_FALLDOWN:
+		ani = SIMON_ANI_IDLE;
+		break;
 	case SIMON_STATE_ENTERCASTLE:
 	case SIMON_STATE_WALKING_RIGHT:
 		ani = SIMON_ANI_WALKING;
@@ -749,7 +795,7 @@ void CSIMON::Render()
 
 	animations[ani]->Render(nx,x, y, alpha);
 
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 
 void CSIMON::HandleFirstStepOnStair()
@@ -928,11 +974,6 @@ void CSIMON::SetState(int state)
 	isSitting = false;
 	switch (state)
 	{
-	case SIMON_STATE_ENTERCASTLE:
-		this->ResetFightAnimation();
-		nx = 1;
-		vx = SIMON_WALKING_SPEED / 2;
-		break;
 	case SIMON_STATE_WALKING_RIGHT:
 		if (this->isAutoWalk)
 		{
@@ -957,10 +998,17 @@ void CSIMON::SetState(int state)
 		break;
 	case SIMON_STATE_JUMP: 
 		vy = -SIMON_JUMP_SPEED_Y;
+		if (CGame::GetInstance()->IsKeyDown(DIK_RIGHT)||CGame::GetInstance()->IsKeyDown(DIK_LEFT))
+		{
+			vx = SIMON_JUMP_SPEED_X * nx;
+		}
 		isSitting = true;
 		break;
 	case SIMON_STATE_IDLE:
 		vx = 0;
+		break;
+	case SIMON_STATE_FALLDOWN:
+		vy = SIMON_FALLDOWN_VY;
 		break;
 	case SIMON_STATE_HURT:
 		if (this->fight_start>0)
@@ -1036,6 +1084,7 @@ void CSIMON::SetState(int state)
 		vy = SIMON_UPSTAIR_VELOCITY;
 		vx = -SIMON_UPSTAIR_VELOCITY;
 		nx = -1;
+
 		break;
 	}
 	case SIMON_STATE_DOWNSTAIR_RIGHT:
@@ -1043,6 +1092,7 @@ void CSIMON::SetState(int state)
 		vy = SIMON_UPSTAIR_VELOCITY;
 		vx = SIMON_UPSTAIR_VELOCITY;
 		nx = 1;
+
 		break;
 	}
 	case SIMON_STATE_DOWNSTAIR_IDLE:
@@ -1152,5 +1202,6 @@ void CSIMON::SetlastState(SimonProperties* prop)
 	this->heart = prop->GetHeart();
 	this->hp = prop->GetHp();
 	this->score = prop->GetScore();
+	this->ShootState = prop->GetShootstate();
 }
 

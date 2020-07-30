@@ -12,6 +12,13 @@ void Zombie::GetBoundingBox(float& left, float& top, float& right, float& bottom
 		right = left + ZOMBIE_BBOX_WIDTH;
 		bottom = top + ZOMBIE_BBOX_HEIGHT;
 	}
+	else
+	{
+		left = 0;
+		top = 0;
+		right = 0;
+		bottom = 0;
+	}
 }
 
 void Zombie::Render()
@@ -20,6 +27,7 @@ void Zombie::Render()
 	{
 		animations[0]->Render(nx, x, y);
 	}
+	RenderBoundingBox();
 }
 
 
@@ -33,19 +41,19 @@ void Zombie::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 		if (x < cam.x || y < cam.y || y > cam.y + SCREENSIZE::HEIGHT)
 		{
-			this->Destroy();
+			this->SetDestroy();
 		}
 
 	}
 
-	if (this->isDestroy)
+	if (this->setDestroy)
 	{
 		this->isVisible = false;
 		if (time_respawn == 0)
 		{
 			time_respawn = GetTickCount();
 		}
-		this->isDestroy = false;
+		this->setDestroy = false;
 	}			
 	if (time_respawn > 0)
 	{
@@ -67,8 +75,6 @@ void Zombie::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		}
 	}
 	
-	//	if (reSpawn) return;
-		//DebugOut(L"update \n");
 	if (isVisible == true)
 	{
 		CGameObject::Update(dt, scene);
@@ -77,10 +83,7 @@ void Zombie::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 
 		coEvents.clear();
 		CalcPotentialCollisions(coObjects, coEvents);
-		//
-		// TO-DO: make sure Goomba can interact with the world and to each of them too!
-		// 
-			// Simple fall down
+
 		vy += ZOMBIE_GRAVITY * dt;
 		if (nx == ZOMBIE_DIRECTION_RIGHT) vx = ZOMBIE_WALKING_SPEED;
 		else if (nx == ZOMBIE_DIRECTION_LEFT) vx = -ZOMBIE_WALKING_SPEED;

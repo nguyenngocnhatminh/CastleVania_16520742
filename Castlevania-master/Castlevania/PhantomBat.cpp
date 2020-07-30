@@ -82,7 +82,7 @@ void PhantomBat::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		return;
 	}
 
-
+	Enemy::Update(dt, scene);
 	CGameObject::Update(dt,scene);
 	x += dx;
 	y += dy;
@@ -126,10 +126,9 @@ void PhantomBat::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 	else if (waiting_start != 0)
 	{
 
-		if (this->outOfArea) //bắn fireball
+		if (this->outOfArea) 
 		{
 			int nx;
-			float fireBall_vy = ((t + (b - t) / 2) - y) / 1200;
 			if ((x + 35) > l + (r - l) / 2)
 			{
 				nx = -1;
@@ -137,7 +136,6 @@ void PhantomBat::Update(DWORD dt,Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			else {
 				nx = 1;
 			}
-			//HandleSpawnEnemy::GetInstance()->SpawnFireBall(x + 35, y, nx, fireBall_vy);
 			this->outOfArea = false;
 			return;
 

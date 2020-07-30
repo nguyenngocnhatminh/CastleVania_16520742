@@ -1,7 +1,7 @@
 #pragma once
 #include"Enemy.h"
 #define SPEAR_BBOX_WIDTH 32
-#define	SPEAR_BBOX_HEIGHT 60
+#define	SPEAR_BBOX_HEIGHT 62
 
 #define SPEAR_GUARD_RIGHT 1
 #define SPEAR_GUARD_LEFT -1

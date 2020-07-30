@@ -226,7 +226,7 @@ void PlayScene::UnLoad()
 	if (SIMON != NULL)
 	{
 		SimonProperties* prop = new SimonProperties();
-		prop->SetProperties(SIMON->GetWhip()->GetState(), SIMON->getCurrentSubweapon(), SIMON->GetHeart(), SIMON->GetHp(), SIMON->GetScore());
+		prop->SetProperties(SIMON->GetWhip()->GetState(), SIMON->getCurrentSubweapon(), SIMON->GetHeart(), SIMON->GetHp(), SIMON->GetScore(),SIMON->GetShootState());
 		CGame::GetInstance()->SetSimonProp(prop);
 	}
 	if (grid != NULL)
@@ -363,7 +363,9 @@ void PlayScene::OnKeyDown(int KeyCode)
 			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->getCurrentSubweapon() != 0 && !SIMON->IsSpawnSubWeapon() && !SIMON->CheckIsOnStair())
 			{
 				if (CGame::GetInstance()->IsKeyDown(DIK_DOWN))
+				{
 					SIMON->SetState(SIMON_STATE_IDLE);
+				}
 				SIMON->SpawnSubWeapon(true);
 				SIMON->SetIsSpawnWhip(false);
 				SIMON->SetTimeSpawnSub(GetTickCount());
@@ -373,11 +375,11 @@ void PlayScene::OnKeyDown(int KeyCode)
 				SIMON->SpawnSubWeapon(false);
 			}
 
-			if (!CGame::GetInstance()->IsKeyDown(DIK_UP) || SIMON->GetCurrentShoot() < 1 || SIMON->GetHeart()<=0)
+			if (!CGame::GetInstance()->IsKeyDown(DIK_UP) || SIMON->GetCurrentShoot() < 1 || SIMON->GetHeart() <=0 )
 			{
 				SIMON->ResetSpawnWhip();
 			}
-			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->GetCurrentShoot() >= 1)
+			if (CGame::GetInstance()->IsKeyDown(DIK_UP) && SIMON->GetCurrentShoot() >= 1 && SIMON->GetHeart() > 0)
 			{
 				SIMON->ResetSpawnSubWeapon();
 			}
@@ -402,12 +404,6 @@ void PlayScene::OnKeyDown(int KeyCode)
 
 		}
 		break;
-	case DIK_A: // reset
-		SIMON->SetState(SIMON_STATE_IDLE);
-		SIMON->SetLevel(SIMON_LEVEL_BIG);
-		SIMON->SetPosition(50.0f, 0.0f);
-		SIMON->SetSpeed(0, 0);
-		break;
 	case DIK_1:
 		CGame::GetInstance()->SwitchScene(0);
 		break;
@@ -421,7 +417,6 @@ void PlayScene::OnKeyDown(int KeyCode)
 		CGame::GetInstance()->SwitchScene(3);
 		break;
 	case DIK_5:
-		this->SIMON->SetState(SIMON_STATE_IDLE);
 		CGame::GetInstance()->SwitchScene(4);
 		break;
 	case DIK_6:
@@ -434,9 +429,6 @@ void PlayScene::OnKeyDown(int KeyCode)
 		break;
 	case DIK_Q:
 		SIMON->y -= 200;
-		break;
-	case DIK_E:
-		SIMON->y += 50;
 		break;
 	case DIK_U:
 		item = itemcollection->SpawnItem(AXE, this->GetSimon()->x + 100);
@@ -484,6 +476,12 @@ void PlayScene::OnKeyDown(int KeyCode)
 	case DIK_N:
 		this->SIMON->SetHp(1);
 		break;
+	case DIK_V:
+		this->SIMON->GetWhip()->SetState(2);
+		break;
+	case DIK_B:
+		this->SIMON->GetWhip()->SetState(0);
+		break;
 	}
 
 }
@@ -499,6 +497,8 @@ void PlayScene::KeyState(BYTE* states)
 	{
 		SIMON->ResetUpgrageTime();
 		SIMON->SetState(SIMON_STATE_IDLE);
+
+
 	}
 	if (SIMON->GetState() == SIMON_STATE_ENTERCASTLE) return;
 	if (SIMON->GetState() == SIMON_STATE_UPWHIP) return;
@@ -529,6 +529,7 @@ void PlayScene::KeyState(BYTE* states)
 			break;
 		case  SIMON_STATE_FIGHT_STAND:
 			SIMON->SetState(SIMON_STATE_IDLE);
+
 			break;
 
 		}
@@ -613,8 +614,10 @@ void PlayScene::KeyState(BYTE* states)
 		}
 		else
 		{
-
-			SIMON->SetState(SIMON_STATE_IDLE);
+			if (SIMON->GetState() != SIMON_STATE_HURT)
+			{
+				SIMON->SetState(SIMON_STATE_IDLE);
+			}
 
 		}
 	}

@@ -18,6 +18,7 @@ public:
 		this->vx = AXE_SPEED_VX;
 		this->vy = -AXE_SPEED_VY;
 		this->SetHeartCost(AXE_HEART_COST);
+		this->dame = 2;
 	}
 	~Axe();
 	virtual void Render();

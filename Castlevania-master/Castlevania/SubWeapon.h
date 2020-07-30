@@ -9,10 +9,10 @@ protected:
 	float width;
 	bool is_touchable_ground;
 	int heart_cost;
-	int dame = 2;
+	int dame = 1;
 	bool collideOneTime = false;
 	bool hitObject = false;
-
+	bool isDameBoss = false;
 public:
 
 	virtual void Render() {};
@@ -27,6 +27,13 @@ public:
 	int GetHeartCotst();
 	void SetDame(int x);
 	int GetDame();
-
+	void SetCollideOneTime()
+	{
+		this->collideOneTime = false;
+	}
+	bool GetCollideOneTime()
+	{
+		return this->collideOneTime;
+	}
 };
 

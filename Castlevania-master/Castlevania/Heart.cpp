@@ -1,5 +1,6 @@
 #include "Heart.h"
 #include"Ground.h"
+#include "BreakWall.h"
 void Heart::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
 	l = x;
@@ -67,6 +68,10 @@ void Heart::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				if (nx != 0) vx = 0;
 				if (ny != 0) vy = 0;
 			}
+			else if (dynamic_cast<BreakWall*>(e->obj)) {
+				if (nx != 0) vx = 0;
+				if (ny != 0) vy = 0;
+			}
 			else
 			{
 				if (e->nx != 0)
@@ -86,6 +91,19 @@ void Heart::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 		if (dynamic_cast<Ground*>(e))
 		{
 			Ground* f = dynamic_cast<Ground*> (e);
+
+			float l, t, r, b, el, et, er, eb;
+			this->GetBoundingBox(l, t, r, b);
+			b = b;
+			f->GetBoundingBox(el, et, er, eb);
+			if (CGameObject::AABB(l, t, r, b, el, et, er, eb))
+			{
+				vy = 0;
+			}
+		}
+		if (dynamic_cast<BreakWall*>(e))
+		{
+			BreakWall* f = dynamic_cast<BreakWall*> (e);
 
 			float l, t, r, b, el, et, er, eb;
 			this->GetBoundingBox(l, t, r, b);

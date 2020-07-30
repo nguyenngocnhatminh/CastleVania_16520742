@@ -42,20 +42,6 @@ void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 	if (dynamic_cast<PlayScene*>(scene))
 	{
 		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
-		D3DXVECTOR2 cam = pScene->GetCamera();
-
-		if (x<cam.x || x>cam.x + SCREENSIZE::WIDTH)
-		{
-			if(IsAttack())
-			{
-				this->Destroy();
-			}
-		}
-	}
-
-	if (dynamic_cast<PlayScene*>(scene))
-	{
-		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
 		if (!this->IsAttack())
 		{
 			if (this->nx == MONKEY_JUMP_RIGHT)
@@ -161,7 +147,6 @@ void Monkey::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_obje
 						else
 							this->SetState(MONKEY_STATE_IDLE);
 					}
-					if (ny != 0) vy = 0;
 				}
 			}
 			else
@@ -221,10 +206,11 @@ void Monkey::SetState(int state)
 		vx = 0;
 		break;
 	case MONKEY_STATE_JUMP:
-		if (isPrepare == true)
+		if (this->isFirstJump != false)
 		{
-			vy = -MONKEY_SPEED_Y_LOW;
-			vx = MONKEY_SPEED_X;
+			vx = MONKEY_SPEED_X_FIRST;
+			vy = -MONKEY_SPEED_Y_FIRST;
+			this->isFirstJump = false;
 		}
 		else
 		{
@@ -238,7 +224,6 @@ void Monkey::SetState(int state)
 				vy = -MONKEY_SPEED_Y_HIGH;
 				vx = MONKEY_SPEED_X;
 			}
-			
 		}
 		break;
 	}

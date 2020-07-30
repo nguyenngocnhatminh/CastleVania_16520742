@@ -2,6 +2,7 @@
 #include"Ground.h"
 #include "PlayScene.h"
 #include "define.h"
+#include "BreakWall.h"
 void Item::Render()
 {
 
@@ -70,6 +71,10 @@ void Item::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 				if (nx != 0) vx = 0;
 				if (ny != 0) vy = 0;
 			}
+			else if (dynamic_cast<BreakWall*>(e->obj)) {
+				if (nx != 0) vx = 0;
+				if (ny != 0) vy = 0;
+			}
 			else
 			{
 				if (e->nx != 0)
@@ -97,6 +102,22 @@ void Item::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coObjects)
 			if (CGameObject::AABB(l, t, r, b, el, et, er, eb))
 			{
 				if ( this->y <= e->y) 
+				{
+					vy = 0;
+				}
+			}
+		}
+		if (dynamic_cast<BreakWall*>(e))
+		{
+			BreakWall* f = dynamic_cast<BreakWall*> (e);
+
+			float l, t, r, b, el, et, er, eb;
+			this->GetBoundingBox(l, t, r, b);
+			b = b;
+			f->GetBoundingBox(el, et, er, eb);
+			if (CGameObject::AABB(l, t, r, b, el, et, er, eb))
+			{
+				if (this->y <= e->y)
 				{
 					vy = 0;
 				}

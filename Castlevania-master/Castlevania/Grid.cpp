@@ -163,11 +163,7 @@ void Grid::LoadGrid(const std::string FilePath,Scene* scene)
 		pScene->SetSimon(new CSIMON());
 
 		pScene->GetSimon()->SetlastState(CGame::GetInstance()->GetSimonProp());
-		if (pScene->GetSimon()->GetState() == SIMON_STATE_DIE)
-		{
-			pScene->GetSimon()->SetHp(16);
-			pScene->GetSimon()->SetState(SIMON_STATE_IDLE);
-		}
+
 
 		CGame::GetInstance()->SetSimonProp(new SimonProperties());
 
@@ -193,6 +189,8 @@ void Grid::LoadGrid(const std::string FilePath,Scene* scene)
 					catch (exception ex)
 					{
 						pScene->GetSimon()->SetState(SIMON_STATE_IDLE);
+						DebugOut(L"1 \n ");
+
 					}
 					pScene->GetSimon()->SetCellIndex(y.second->GetColumn(), y.second->GetRow());
 					AddDefaultGrid(pScene->GetSimon());
@@ -372,7 +370,7 @@ void Grid::LoadGrid(const std::string FilePath,Scene* scene)
 					Bridge* bridge = new Bridge();
 					bridge->SetPosition(y.second->GetX(), y.second->GetY() - y.second->GetHeight());
 					bridge->SetCellIndex(y.second->GetColumn(), y.second->GetRow());
-					AddDefaultGrid(bridge, true);
+					AddDefaultGrid(bridge);
 
 				}
 				break;
@@ -465,6 +463,12 @@ void Grid::LoadGrid(const std::string FilePath,Scene* scene)
 				break;
 			}
 
+		}
+		if (pScene->GetSimon()->GetState() == SIMON_STATE_DIE)
+		{
+			pScene->GetSimon()->SetHp(16);
+			pScene->GetSimon()->SetState(SIMON_STATE_IDLE);
+			DebugOut(L"2\n ");
 		}
 	}
 
@@ -659,10 +663,6 @@ void Grid::GetListobject(vector<LPGAMEOBJECT>& listobjects)
 						ortheroject.push_back(obj);
 					}
 				}
-				else
-				{
-					DebugOut(L"khong nhan dien duoc object");
-				}
 			}
 		}
 	}
@@ -682,7 +682,6 @@ void Grid::GetListobject(vector<LPGAMEOBJECT>& listobjects)
 	listobjects.insert(listobjects.end(), enemiesobject.begin(), enemiesobject.end());
 	listobjects.insert(listobjects.end(), subWeaponobject.begin(), subWeaponobject.end());
 	listobjects.insert(listobjects.end(), effectobject.begin(), effectobject.end());
-	DebugOut(L"List Object %d\n", listobjects.size());
 }
 
 void Grid::Update(LPGAMEOBJECT object)

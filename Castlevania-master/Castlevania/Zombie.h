@@ -16,7 +16,6 @@
 #define ZOMBIE_TIME_RESPAWN 1500
 class Zombie:public Enemy
 {
-	bool isVisible;
 	DWORD time_respawn;
 	float start_x;
 	float start_y;

@@ -12,7 +12,11 @@
 #define MONKEY_SPEED_X 0.2f
 #define MONKEY_SPEED_X_LOW 0.5f
 #define MONKEY_SPEED_Y_HIGH 0.65f
-#define MONKEY_SPEED_Y_LOW 0.25f
+#define MONKEY_SPEED_Y_LOW 0.35f
+
+#define MONKEY_SPEED_Y_FIRST 0.45f
+#define MONKEY_SPEED_X_FIRST 0.35f
+
 #define MONKEY_GRAVITY 0.002f
 #define MONKEY_FALL_VY 0.2f
 
@@ -39,6 +43,7 @@ class Monkey:public Enemy
 	DWORD time_prepare;
 	int start_direction;
 	int range;
+	bool isFirstJump ;
 
 public:
 	Monkey()
@@ -51,6 +56,7 @@ public:
 		this->SetHP(MONKEY_HP);
 		this->SetScore(MONKEY_SCORE);
 		this->range = RANGE_FIRST_JUMP;
+		this->isFirstJump = true;
 	}
 	virtual void Render();
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

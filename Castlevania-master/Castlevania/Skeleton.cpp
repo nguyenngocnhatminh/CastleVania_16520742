@@ -52,12 +52,13 @@ void Skeleton::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_ob
 	{
 		PlayScene* pScene = dynamic_cast<PlayScene*>(scene);
 		D3DXVECTOR2 cam = pScene->GetCamera();
-		if (cam.x != 0)
+		float sx, sy;
+		pScene->GetSimon()->GetPosition(sx, sy);
+		float range = abs(sx - x);
+		if (x > cam.x && x < cam.x + SCREENSIZE::WIDTH && range <= SCREENSIZE::WIDTH)
 		{
-			if (x > cam.x && x < cam.x + SCREENSIZE::WIDTH)
-			{
+			if(!this->IsAttack())
 				this->SetIsAttack(true);
-			}
 		}
 
 		if(this->x > pScene->GetSimon()->x 

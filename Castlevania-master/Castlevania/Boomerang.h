@@ -11,6 +11,8 @@
 class Boomerang :public SubWeapon
 {
 	int boomerang_range = 50;
+	bool isBack = false;
+	bool BacktoSimon = false;
 public:
 	Boomerang() :SubWeapon() {
 		AddAnimation("BOOMERANG_ANI");
@@ -21,5 +23,9 @@ public:
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects = NULL);
 	virtual void SetWidth() { this->width = BOOMERANG_BBOX_WIDTH; }
 	virtual void SetHeight() { this->height = BOOMERANG_BBOX_HEIGHT; }
+	bool GetIsBack()
+	{
+		return this->isBack;
+	}
 };
 

@@ -23,7 +23,7 @@ bool Whip::CheckLastFrame()
 		}
 	}
 	else {
-		if (animations[ani]->GetCurrentFrame() < 8) 
+		if (animations[ani]->GetCurrentFrame() < 10) 
 		{
 			return false;
 		}
@@ -32,7 +32,7 @@ bool Whip::CheckLastFrame()
 }
 void Whip::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)
 {
-	int ani = getCurrentAni();
+	int ani = this->GetState();
 	if (ani < 2)
 	{
 		if (animations[ani]->GetCurrentFrame() < animations[ani]->GetlastFrame())

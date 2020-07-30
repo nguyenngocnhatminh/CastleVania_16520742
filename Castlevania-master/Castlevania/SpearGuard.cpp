@@ -3,10 +3,9 @@
 void SpearGuard::GetBoundingBox(float& l, float& t, float& r, float& b)
 {
 	l = x;
-	t = y + 10;
+	t = y + 5;
 	r = x + SPEAR_BBOX_WIDTH;
 	b = y + SPEAR_BBOX_HEIGHT;
-
 }
 
 void SpearGuard::Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* colliable_objects)

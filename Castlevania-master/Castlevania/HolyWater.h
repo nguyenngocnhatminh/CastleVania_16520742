@@ -24,6 +24,8 @@ class HolyWater:public SubWeapon
 	int state;
 	DWORD burning_start;
 	DWORD burningAttack_start;
+	bool collideOneTime = false;
+	bool hitObject = false;
 	public:
 	HolyWater():SubWeapon()
 	{
@@ -31,6 +33,7 @@ class HolyWater:public SubWeapon
 		AddAnimation("HOLYWATER_ANI_BURNING");
 		this->SetState(HOLYWATER_STATE_JAR);
 		this->SetHeartCost(HOLYWATER_HEART_COST);
+		this->SetDame(1);
 	}
 	virtual void Render();
 	virtual void Update(DWORD dt, Scene* scene, vector<LPGAMEOBJECT>* coOjects = NULL);
